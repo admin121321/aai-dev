@@ -58,6 +58,11 @@
                         @else
                             
                             <div class="navbar-nav w-100">
+                                <br>
+                                <div class="ms-3">
+                                    <h6 class="mb-0 center"> {{ Auth::user()->name }}</h6>
+                                    <!-- <span>Admin</span> -->
+                                </div>
                                 <a class="nav-item nav-link" href="{{ route('home') }}">
                                 <i class="fa fa-laptop me-2"></i>{{ __('Beranda') }}
                                 </a>
