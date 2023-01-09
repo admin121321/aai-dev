@@ -18,20 +18,20 @@
                 <!-- End users -->
                 <!-- Menu -->
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer me-2"></i>Dashboard</a>
+                    <a href="{{ url('/home') }}" class="nav-item nav-link active"><i class="fa fa-tachometer me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-users me-2"></i>Users</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="button.html" class="dropdown-item">Akun</a>
-                            <a href="typography.html" class="dropdown-item">Jabatan</a>
-                            <a href="typography.html" class="dropdown-item">Kedinasan</a>
+                            <a href="typography.html" class="dropdown-item">Unit Kerja</a>
+                            <a href="typography.html" class="dropdown-item">Instansi</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-newspaper-o me-2"></i>Posting</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Buat Kategori</a>
-                            <a href="typography.html" class="dropdown-item">Buat Posting</a>
+                            <a href="{{ url('/kategori-posting') }}" class="dropdown-item">Kategori</a>
+                            <a href="typography.html" class="dropdown-item">Publish</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
