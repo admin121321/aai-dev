@@ -22,7 +22,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-users me-2"></i>Users</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Akun</a>
+                            <a href="{{ url('/users') }}" class="dropdown-item">Akun</a>
                             <a href="typography.html" class="dropdown-item">Unit Kerja</a>
                             <a href="typography.html" class="dropdown-item">Instansi</a>
                         </div>
@@ -37,13 +37,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Halaman</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">AD/ART</a>
-                            <a href="signup.html" class="dropdown-item">Keanggotaan</a>
-                            <a href="404.html" class="dropdown-item">PerPu</a>
-                            <a href="blank.html" class="dropdown-item">PerMen</a>
-                            <a href="blank.html" class="dropdown-item">PerDa DKI</a>
-                            <a href="blank.html" class="dropdown-item">PerGub DKI</a>
-                            <a href="blank.html" class="dropdown-item">Kontak Kami</a>
+                            <a href="signin.html" class="dropdown-item">Publish</a>
                         </div>
                     </div>
                 </div>

@@ -14,8 +14,22 @@ class KategoriPostingsController extends Controller
     public function index()
     {
         //
-        $KategoriPostings= KategoriPosting::paginate(10);
-        return view('kategoriPostings.index', compact('KategoriPostings'));
+        // $KategoriPostings= KategoriPosting::paginate(10);
+        // return view('kategoriPostings.index', compact('KategoriPostings'));
+        return view('kategoripostings.index');
+    }
+
+     //View Cari
+     // Fetch records
+     public function getKategoripostings(Request $request)
+     {
+        $KategoriPostings = KategoriPosting::all();
+        if($request->keyword != ''){
+        $KategoriPostings = KategoriPosting::where('nama_kategori','LIKE','%'.$request->keyword.'%')->get();
+        }
+      return response()->json([
+         'KategoriPostings' => $KategoriPostings
+      ]);
     }
 
     /**
