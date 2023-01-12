@@ -3,9 +3,6 @@
 <div class="container">
     <div class="row">
         <div class="col-12 table-responsive">
-        <br />
-        <h3 align="center">Laravel 9 CRUD Datatables Yajra Server Side (Create, Read, Upate and Delete) with Bootstrap 5 Modal</h3>
-        <br />
         <div align="right">
             <button type="button" name="create_record" id="create_record" class="btn btn-success"> <i class="bi bi-plus-square"></i> Add</button>
         </div>

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KategoriPostingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +37,8 @@ Route::get('/users/edit/{id}/', [App\Http\Controllers\UserController::class, 'ed
 Route::post('/users/update', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
 Route::get('/users/destroy/{id}/', [App\Http\Controllers\UserController::class, 'destroy']);
 // Kategori
-Route::get('/kategori-posting', [App\Http\Controllers\KategoriPostingsController::class, 'index'])->name('kategori-postings');
-Route::post('/kategori-posting/cari/', [App\Http\Controllers\KategoriPostingsController::class, 'getKategoripostings'])->name('KategoriPostings.cari');
-Route::post('/kategori-posting', [App\Http\Controllers\KategoriPostingsController::class, 'create'])->name('create-kategori-postings');
+Route::get('/kategori-posting', [App\Http\Controllers\KategoriPostingsController::class, 'index'])->name('kategoriPostings.index');
+Route::post('/kategori-posting/store/', [App\Http\Controllers\KategoriPostingsController::class, 'store'])->name('kategoriPostings.store');
+Route::get('/kategori-posting/edit/{id}', [App\Http\Controllers\KategoriPostingsController::class, 'edit'])->name('kategoriPostings.edit');
+Route::post('/kategori-posting/update', [App\Http\Controllers\KategoriPostingsController::class, 'update'])->name('kategoriPostings.update');
+Route::get('/kategori-posting/destroy/{id}', [App\Http\Controllers\KategoriPostingsController::class, 'destroy'])->name('kategoriPostings.destroy');

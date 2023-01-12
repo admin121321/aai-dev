@@ -8,90 +8,195 @@
                         <a href="">Tampikan Semua</a>
                     </div>
                     <!-- card-body -->
-                    <div class="card-body">
-                        <div class="row row-sm">
-                        <div class="col-6 col-lg-3">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-                                Buat Kategori
-                            </button>
+                    <div class="row">
+                        <div class="col-12 table-responsive">
+                        <div align="right">
+                            <button type="button" name="create_record" id="create_record" class="btn btn-success"> <i class="bi bi-plus-square"></i> Add</button>
                         </div>
-                        <div class="col-6 col-lg-9">
-                            <div class="col-lg-12">
-                            <!-- input-group -->
-                            <form action="#" method="GET">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="cari" placeholder="Cari Instansi .." value="{{ old('cari') }}">
-                                <span class="input-group-btn">
-                                <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
-                                </span>
-                            </div>
-                            </form>
-                            <!-- input-group -->
-                            </div>
-                        </div>
+                        <br />
+                            <table class="table text-start align-middle table-bordered table-hover mb-0 kategori_datatable"> 
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nama Kategori</th>
+                                        <th width="180px">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
                         </div>
                     </div>
                     <!-- card-body -->
-                    {{ csrf_field() }}
-                    <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
-                            <thead>
-                                <tr class="text-dark">
-                                    <!-- <th scope="col"><input class="form-check-input" type="checkbox"></th> -->
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Nama Kategori</th>
-                                    <th scope="col">Tgl Input</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach ($KategoriPostings as $KategoriPosting)
-                                <tr>
-                                    <!-- <td><input class="form-check-input" type="checkbox"></td> -->
-                                    <td>{{ $KategoriPosting->id_kategori}}</td>
-                                    <td>{{ $KategoriPosting->nama_kategori}}</td>
-                                    <td>{{ $KategoriPosting->created_at}}</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary" href="">Detil</a>
-                                        <a class="btn btn-sm btn-primary" href="">Update</a>
-                                        <a class="btn btn-sm btn-primary" href="">Hapus</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
                  <!-- Modal -->
-                <div class="modal" id="myModal">
+                 <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-
-                        <!-- Modal Header -->
+                        <form method="post" id="sample_form" class="form-horizontal">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="ModalLabel">Tambah Kategori</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <span id="form_result"></span>
+                                <div class="form-group">
+                                    <label>Name Kategori: </label>
+                                    <input type="text" name="nama_kategori" id="nama_kategori" class="form-control" />
+                                </div>
+                                <input type="hidden" name="action" id="action" value="Add" />
+                                <input type="hidden" name="hidden_id" id="hidden_id" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <input type="submit" name="action_button" id="action_button" value="Add" class="btn btn-info" />
+                            </div>
+                        </form>  
+                        </div>
+                    </div>
+                </div>
+ 
+                <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                    <form method="post" id="sample_form" class="form-horizontal">
                         <div class="modal-header">
-                            <h4 class="modal-title">Input Kategori</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            <h5 class="modal-title" id="ModalLabel">Confirmation</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-
-                        <!-- Modal body -->
                         <div class="modal-body">
-                            Modal body..
+                            <h4 align="center" style="margin:0;">Are you sure you want to remove this data?</h4>
                         </div>
-
-                        <!-- Modal footer -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" name="ok_button" id="ok_button" class="btn btn-danger">OK</button>
                         </div>
-
-                        </div>
+                    </form>  
+                    </div>
                     </div>
                 </div>
 
  </div>
-<!-- Recent Sintring End -->
-<!-- <script>
-        $(function() {
-            $('.exampleModal').modal('show');
+ <script type="text/javascript">
+$(document).ready(function() {
+    var table = $('.kategori_datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('kategoriPostings.index') }}",
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'nama_kategori', name: 'nama_kategori'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+        ]
+    });
+ 
+    $('#create_record').click(function(){
+        $('.modal-title').text('Add New Record');
+        $('#action_button').val('Add');
+        $('#action').val('Add');
+        $('#form_result').html('');
+ 
+        $('#formModal').modal('show');
+    });
+ 
+    $('#sample_form').on('submit', function(event){
+        event.preventDefault(); 
+        var action_url = '';
+ 
+        if($('#action').val() == 'Add')
+        {
+            action_url = "{{ route('kategoriPostings.store') }}";
+        }
+ 
+        if($('#action').val() == 'Edit')
+        {
+            action_url = "{{ route('kategoriPostings.update') }}";
+        }
+ 
+        $.ajax({
+            type: 'post',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            url: action_url,
+            data:$(this).serialize(),
+            dataType: 'json',
+            success: function(data) {
+                console.log('success: '+data);
+                var html = '';
+                if(data.errors)
+                {
+                    html = '<div class="alert alert-danger">';
+                    for(var count = 0; count < data.errors.length; count++)
+                    {
+                        html += '<p>' + data.errors[count] + '</p>';
+                    }
+                    html += '</div>';
+                }
+                if(data.success)
+                {
+                    html = '<div class="alert alert-success">' + data.success + '</div>';
+                    $('#sample_form')[0].reset();
+                    $('#kategori_table').DataTable().ajax.reload();
+                }
+                $('#form_result').html(html);
+            },
+            error: function(data) {
+                var errors = data.responseJSON;
+                console.log(errors);
+            }
         });
-      </script> -->
+    });
+ 
+    $(document).on('click', '.edit', function(event){
+        event.preventDefault(); 
+        var id = $(this).attr('id'); alert(id);
+        $('#form_result').html('');
+ 
+         
+ 
+        $.ajax({
+            url :"/kategori-posting/edit/"+id+"/",
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            dataType:"json",
+            success:function(data)
+            {
+                console.log('success: '+data);
+                $('#nama_kategori').val(data.result.nama_kategori);
+                $('#hidden_id').val(id);
+                $('.modal-title').text('Edit Record');
+                $('#action_button').val('Update');
+                $('#action').val('Edit'); 
+                $('.editpass').hide(); 
+                $('#formModal').modal('show');
+            },
+            error: function(data) {
+                var errors = data.responseJSON;
+                console.log(errors);
+            }
+        })
+    });
+ 
+    var id;
+ 
+    $(document).on('click', '.delete', function(){
+        id = $(this).attr('id');
+        $('#confirmModal').modal('show');
+    });
+ 
+    $('#ok_button').click(function(){
+        $.ajax({
+            url:"kategori-posting/destroy/"+id,
+            beforeSend:function(){
+                $('#ok_button').text('Deleting...');
+            },
+            success:function(data)
+            {
+                setTimeout(function(){
+                $('#confirmModal').modal('hide');
+                $('#kategori_table').DataTable().ajax.reload();
+                alert('Data Deleted');
+                }, 2000);
+            }
+        })
+    });
+});
+</script>
 @endsection

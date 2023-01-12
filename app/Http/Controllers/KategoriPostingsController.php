@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\KategoriPosting; 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use DataTables;
+use Validator;
 
 class KategoriPostingsController extends Controller
 {
@@ -11,90 +14,79 @@ class KategoriPostingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-        // $KategoriPostings= KategoriPosting::paginate(10);
-        // return view('kategoriPostings.index', compact('KategoriPostings'));
-        return view('kategoripostings.index');
-    }
+   //
+   public function index(Request $request)
+   {
+       if ($request->ajax()) {
+           $data = KategoriPosting::select('id','nama_kategori')->get();
+           return Datatables::of($data)->addIndexColumn()
+               ->addColumn('action', function($data){
+                   $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"> <i class="bi bi-pencil-square"></i>Edit</button>';
+                   $button .= '   <button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm"> <i class="bi bi-backspace-reverse-fill"></i> Delete</button>';
+                   return $button;
+               })
+               ->make(true);
+       }
 
-     //View Cari
-     // Fetch records
-     public function getKategoripostings(Request $request)
-     {
-        $KategoriPostings = KategoriPosting::all();
-        if($request->keyword != ''){
-        $KategoriPostings = KategoriPosting::where('nama_kategori','LIKE','%'.$request->keyword.'%')->get();
-        }
-      return response()->json([
-         'KategoriPostings' => $KategoriPostings
-      ]);
-    }
+       return view('kategoriPostings.index');
+   }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+   public function store(Request $request)
+   {
+       $rules = array(
+           'nama_kategori' =>  'required'
+       );
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+       $error = Validator::make($request->all(), $rules);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+       if($error->fails())
+       {
+           return response()->json(['errors' => $error->errors()->all()]);
+       }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+       $form_data = array(
+           'nama_kategori' =>  $request->nama_kategori
+       );
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+       KategoriPosting::create($form_data);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+       return response()->json(['success' => 'Data Added successfully.']);
+   }
+
+   public function edit($id)
+   {
+       if(request()->ajax())
+       {
+           $data = KategoriPosting::findOrFail($id);
+           return response()->json(['result' => $data]);
+       }
+   }
+
+   public function update(Request $request)
+   {
+       $rules = array(
+           'nama_kategori'        =>  'required',
+       );
+
+       $error = Validator::make($request->all(), $rules);
+
+       if($error->fails())
+       {
+           return response()->json(['errors' => $error->errors()->all()]);
+       }
+
+       $form_data = array(
+           'nama_kategori'    =>  $request->nama_kategori
+       );
+
+       KategoriPosting::whereId($request->hidden_id)->update($form_data);
+
+       return response()->json(['success' => 'Data is successfully updated']);
+   }
+
+   public function destroy($id)
+   {
+       $data = KategoriPosting::findOrFail($id);
+       $data->delete();
+   }
 }
