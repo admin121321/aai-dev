@@ -31,7 +31,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-newspaper-o me-2"></i>Posting</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="{{ url('/kategori-posting') }}" class="dropdown-item">Kategori</a>
-                            <a href="typography.html" class="dropdown-item">Publish</a>
+                            <a href="{{ url('/posting') }}" class="dropdown-item">Publish</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">

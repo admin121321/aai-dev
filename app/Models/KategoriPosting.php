@@ -11,4 +11,9 @@ class KategoriPosting extends Model
     protected $fillable = [
         'nama_kategori',
     ];
+
+    public function Posting()
+    {
+        return $this->belongsTo(Posting::class);
+    }
 }

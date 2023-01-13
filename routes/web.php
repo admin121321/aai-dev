@@ -42,3 +42,9 @@ Route::post('/kategori-posting/store/', [App\Http\Controllers\KategoriPostingsCo
 Route::get('/kategori-posting/edit/{id}', [App\Http\Controllers\KategoriPostingsController::class, 'edit'])->name('kategoriPostings.edit');
 Route::post('/kategori-posting/update', [App\Http\Controllers\KategoriPostingsController::class, 'update'])->name('kategoriPostings.update');
 Route::get('/kategori-posting/destroy/{id}', [App\Http\Controllers\KategoriPostingsController::class, 'destroy'])->name('kategoriPostings.destroy');
+// Posting
+Route::get('/posting', [App\Http\Controllers\PostingsController::class, 'index'])->name('postings.index');
+Route::post('/posting/store/', [App\Http\Controllers\PostingsController::class, 'store'])->name('postings.store');
+Route::get('/posting/edit/{id}', [App\Http\Controllers\PostingsController::class, 'edit'])->name('postings.edit');
+Route::post('/posting/update', [App\Http\Controllers\PostingsController::class, 'update'])->name('postings.update');
+Route::get('/posting/destroy/{id}', [App\Http\Controllers\PostingsController::class, 'destroy'])->name('postings.destroy');
