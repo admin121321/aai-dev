@@ -13,7 +13,7 @@ class PostingsController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Posting::select('id','id_user', 'id_kategori', 'judul', 'deskripsi')->get();
+            $data = Posting::select('id','id_user', 'id_kategori', 'judul', 'gambar', 'deskripsi')->get();
             return Datatables::of($data)->addIndexColumn()
                 ->addColumn('action', function($data){
                     $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"> <i class="bi bi-pencil-square"></i>Edit</button>';
@@ -32,6 +32,7 @@ class PostingsController extends Controller
             'id_user' =>  'required',
             'id_kategori' =>  'required',
             'judul' =>  'required',
+            'gambar' =>  'required',
             'deskripsi'=>  'required'
         );
  
@@ -47,6 +48,7 @@ class PostingsController extends Controller
             'id_user'  =>  $request->id_user,
             'id_kategori' =>  $request->id_kategori,
             'judul' =>  $request->judul,
+            'gambar' =>  $request->gambar,
             'deskripsi'=>  $request->deskripsi,
         );
  
@@ -70,6 +72,7 @@ class PostingsController extends Controller
             'id_user' =>  'required',
             'id_kategori' =>  'required',
             'judul' =>  'required',
+            'gambar' =>  'required',
             'deskripsi'=>  'required'
         );
  
@@ -84,6 +87,7 @@ class PostingsController extends Controller
             'id_user'  =>  $request->id_user,
             'id_kategori' =>  $request->id_kategori,
             'judul' =>  $request->judul,
+            'gambar' =>  $request->gambar,
             'deskripsi'=>  $request->deskripsi,
         );
  

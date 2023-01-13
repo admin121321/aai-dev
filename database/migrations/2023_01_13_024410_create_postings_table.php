@@ -18,6 +18,7 @@ class CreatePostingsTable extends Migration
             $table->integer('id_user')->unsigned();
             $table->integer('id_kategori')->unsigned();
             $table->string('judul');
+            $table->string('gambar');
             $table->text('deskripsi');
             $table->timestamps();
         });

@@ -21,6 +21,7 @@
                                         <th>ID User</th>
                                         <th>Kategori</th>
                                         <th>Judul</th>
+                                        <th>Gambar</th>
                                         <th>Deskripsi</th>
                                         <th width="180px">Action</th>
                                     </tr>
@@ -53,6 +54,10 @@
                                 <div class="form-group">
                                     <label>Judul: </label>
                                     <input type="text" name="judul" id="judul" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Gambar: </label>
+                                    <input type="text" name="gambar" id="gambar" class="form-control" />
                                 </div>
                                 <div class="form-group">
                                     <label>Deskripsi: </label>
@@ -102,6 +107,7 @@ $(document).ready(function() {
             {data: 'id_user', name: 'id_user'},
             {data: 'id_kategori', name: 'id_kategori'},
             {data: 'judul', name: 'judul'},
+            {data: 'gambar', name: 'gambar'},
             {data: 'deskripsi', name: 'deskripsi'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
@@ -180,6 +186,7 @@ $(document).ready(function() {
                 $('#id_user').val(data.result.id_user);
                 $('#id_kategori').val(data.result.id_kategori);
                 $('#judul').val(data.result.judul);
+                $('#gambar').val(data.result.gambar);
                 $('#deskripsi').val(data.result.deskripsi);
                 $('#hidden_id').val(id);
                 $('.modal-title').text('Edit Record');

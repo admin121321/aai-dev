@@ -9,7 +9,7 @@ class Posting extends Model
 {
     // use HasFactory;
     protected $fillable = [
-        'id_user', 'id_kategori', 'judul', 'deskripsi'
+        'id_user', 'id_kategori', 'gambar', 'judul', 'deskripsi'
     ];
     public function KategoriPosting()
     {
