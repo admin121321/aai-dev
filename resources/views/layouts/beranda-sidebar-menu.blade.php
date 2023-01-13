@@ -31,13 +31,14 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-newspaper-o me-2"></i>Posting</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="{{ url('/kategori-posting') }}" class="dropdown-item">Kategori</a>
-                            <a href="{{ url('/posting') }}" class="dropdown-item">Publish</a>
+                            <a href="{{ url('/posting') }}" class="dropdown-item">Posting</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Halaman</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">Publish</a>
+                            <a href="#" class="dropdown-item">Kategori</a>
+                            <a href="{{ url('/halaman') }}" class="dropdown-item">Halaman</a>
                         </div>
                     </div>
                 </div>
