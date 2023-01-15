@@ -19,7 +19,6 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>ID User</th>
-                                        <th>Kategori</th>
                                         <th>Nama Halaman</th>
                                         <th>Gambar</th>
                                         <th>Deskripsi</th>
@@ -46,10 +45,6 @@
                                 <div class="form-group">
                                     <label>ID user: </label>
                                     <input type="text" name="id_user" id="id_user" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <label>ID Kategori: </label>
-                                    <input type="text" name="id_kategori" id="id_kategori" class="form-control" />
                                 </div>
                                 <div class="form-group">
                                     <label>Nama Halaman: </label>
@@ -105,7 +100,6 @@ $(document).ready(function() {
         columns: [
             {data: 'id', name: 'id'},
             {data: 'id_user', name: 'id_user'},
-            {data: 'id_kategori', name: 'id_kategori'},
             {data: 'judul', name: 'judul'},
             {data: 'gambar', name: 'gambar'},
             {data: 'deskripsi', name: 'deskripsi'},
@@ -184,7 +178,6 @@ $(document).ready(function() {
             {
                 console.log('success: '+data);
                 $('#id_user').val(data.result.id_user);
-                $('#id_kategori').val(data.result.id_kategori);
                 $('#judul').val(data.result.judul);
                 $('#gambar').val(data.result.gambar);
                 $('#deskripsi').val(data.result.deskripsi);

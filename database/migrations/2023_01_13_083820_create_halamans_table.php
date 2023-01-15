@@ -16,7 +16,6 @@ class CreateHalamansTable extends Migration
         Schema::create('halamans', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_user')->unsigned();
-            $table->integer('id_kategori')->unsigned();
             $table->string('judul');
             $table->string('gambar');
             $table->text('deskripsi');

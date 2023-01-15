@@ -14,7 +14,7 @@ class HalamansController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Halamans::select('id','id_user', 'id_kategori', 'judul', 'gambar', 'deskripsi')->get();
+            $data = Halamans::select('id','id_user', 'judul', 'gambar', 'deskripsi')->get();
             return Datatables::of($data)->addIndexColumn()
                 ->addColumn('action', function($data){
                     $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"> <i class="bi bi-pencil-square"></i>Edit</button>';
@@ -33,7 +33,6 @@ class HalamansController extends Controller
     {
         $rules = array(
             'id_user'             =>  'required',
-            'id_kategori'         =>  'required',
             'judul'               =>  'required',
             'gambar'              =>  'required',
             'deskripsi'           =>  'required'
@@ -49,7 +48,6 @@ class HalamansController extends Controller
         $form_data = array(
             // 'id_user'  =>  $request-> Auth::user()->id,
             'id_user'             =>  $request->id_user,
-            'id_kategori'         =>  $request->id_kategori,
             'judul'               =>  $request->judul,
             'gambar'              =>  $request->gambar,
             'deskripsi'           =>  $request->deskripsi,
@@ -73,8 +71,7 @@ class HalamansController extends Controller
     {
         $rules = array(
             'id_user'             =>  'required',
-            'id_kategori'         =>  'required',
-            'judul'             =>  'required',
+            'judul'               =>  'required',
             'gambar'              =>  'required',
             'deskripsi'           =>  'required'
         );
@@ -88,7 +85,6 @@ class HalamansController extends Controller
  
         $form_data = array(
             'id_user'             =>  $request->id_user,
-            'id_kategori'         =>  $request->id_kategori,
             'judul'               =>  $request->judul,
             'gambar'              =>  $request->gambar,
             'deskripsi'           =>  $request->deskripsi,

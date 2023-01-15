@@ -9,6 +9,6 @@ class Halamans extends Model
 {
     // use HasFactory;
     protected $fillable = [
-        'id_user', 'id_kategori', 'judul', 'gambar', 'deskripsi'
+        'id_user', 'judul', 'gambar', 'deskripsi'
     ];
 }
