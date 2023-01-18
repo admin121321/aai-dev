@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Posting; 
+use App\Models\Posting;
+use App\Models\KategoriPosting;  
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
@@ -10,7 +11,7 @@ use Validator;
 class PostingsController extends Controller
 {
     //
-    public function index(Request $request)
+    public function index(Request $request, KategoriPosting $KategoriPosting)
     {
         if ($request->ajax()) {
             $data = Posting::select('id','id_user', 'id_kategori', 'judul', 'gambar', 'deskripsi')->get();
@@ -22,18 +23,17 @@ class PostingsController extends Controller
                 })
                 ->make(true);
         }
- 
         return view('Postings.index');
     }
  
     public function store(Request $request)
     {
         $rules = array(
-            'id_user' =>  'required',
+            'id_user'     =>  'required',
             'id_kategori' =>  'required',
-            'judul' =>  'required',
-            'gambar' =>  'required',
-            'deskripsi'=>  'required'
+            'judul'       =>  'required',
+            'gambar'      =>  'required',
+            'deskripsi'   =>  'required'
         );
  
         $error = Validator::make($request->all(), $rules);
@@ -42,14 +42,14 @@ class PostingsController extends Controller
         {
             return response()->json(['errors' => $error->errors()->all()]);
         }
- 
+        $KategoriPostings = KategoriPosting::all();
         $form_data = array(
             // 'id_user'  =>  $request-> Auth::user()->id,
-            'id_user'  =>  $request->id_user,
-            'id_kategori' =>  $request->id_kategori,
-            'judul' =>  $request->judul,
-            'gambar' =>  $request->gambar,
-            'deskripsi'=>  $request->deskripsi,
+            'id_user'     =>  $request->id_user,
+            'id_kategori' =>  strtoupper($request->id_kategori),
+            'judul'       =>  $request->judul,
+            'gambar'      =>  $request->gambar,
+            'deskripsi'   =>  $request->deskripsi,
         );
  
         Posting::create($form_data);
@@ -69,11 +69,11 @@ class PostingsController extends Controller
     public function update(Request $request)
     {
         $rules = array(
-            'id_user' =>  'required',
+            'id_user'     =>  'required',
             'id_kategori' =>  'required',
-            'judul' =>  'required',
-            'gambar' =>  'required',
-            'deskripsi'=>  'required'
+            'judul'       =>  'required',
+            'gambar'      =>  'required',
+            'deskripsi'   =>  'required'
         );
  
         $error = Validator::make($request->all(), $rules);
@@ -84,11 +84,11 @@ class PostingsController extends Controller
         }
  
         $form_data = array(
-            'id_user'  =>  $request->id_user,
+            'id_user'     =>  $request->id_user,
             'id_kategori' =>  $request->id_kategori,
-            'judul' =>  $request->judul,
-            'gambar' =>  $request->gambar,
-            'deskripsi'=>  $request->deskripsi,
+            'judul'       =>  $request->judul,
+            'gambar'      =>  $request->gambar,
+            'deskripsi'   =>  $request->deskripsi,
         );
  
         Posting::whereId($request->hidden_id)->update($form_data);

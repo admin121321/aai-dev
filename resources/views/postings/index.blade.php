@@ -49,7 +49,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label>ID Kategori: </label>
-                                    <input type="text" name="id_kategori" id="id_kategori" class="form-control" />
+                                    <select class="form-control" id="id_kategori" name="id_kategori">
+                                        <option>--Pilih Unit Kerja--</option>
+                                        @foreach(App\Models\KategoriPosting::all() as $kategori)
+                                        <option value="{{ $kategori->id}}" id="id_kategori">{{ $kategori->nama_kategori }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Judul: </label>
@@ -111,6 +116,16 @@ $(document).ready(function() {
             {data: 'deskripsi', name: 'deskripsi'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
+    });
+
+    $(document).ready(function() {
+        $(document).on('change', '.kategoriPost', function() {
+            var id =  $('.kategoriPost').val();     // get id the value from the select
+            $('.id').val(id);   // set the textbox value
+
+            // if you want the selected text instead of the value
+            // var air_text = $('.aircraftsName option:selected').text(); 
+        });
     });
  
     $('#create_record').click(function(){
