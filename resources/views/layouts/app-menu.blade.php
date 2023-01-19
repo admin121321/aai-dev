@@ -31,13 +31,15 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('themes/css/style.css') }}" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" /> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script> -->
+    
+    <!-- JQuery Datatable-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-  
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    
+    <!-- TextArea -->
+    <script src="{{ asset('themes/tinymce/tinymce.js') }}"></script>
 </head>
 <body>
 <div class="container-xxl position-relative bg-white d-flex p-0" id="app">
@@ -77,7 +79,7 @@
     <script src="{{ asset('themes/lib/tempusdominus/js/moment.min.js') }}"></script>
     <script src="{{ asset('themes/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
     <script src="{{ asset('themes/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-
     <!-- Template Javascript -->
     <script src="{{ asset('themes/js/main.js') }}"></script>
+
 </html>

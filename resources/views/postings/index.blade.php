@@ -36,7 +36,7 @@
                  <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                        <form method="post" id="sample_form" class="form-horizontal">
+                        <form method="post" id="sample_form" enctype="multipart/form-data" class="form-horizontal">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="ModalLabel">Tambah Posting</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Deskripsi: </label>
-                                    <input type="text" name="deskripsi" id="deskripsi" class="form-control" />
+                                    <textarea type="text" name="deskripsi" id="deskripsi" rows="5" /></textarea>
                                 </div>
                                 <input type="hidden" name="action" id="action" value="Add" />
                                 <input type="hidden" name="hidden_id" id="hidden_id" />
@@ -101,8 +101,23 @@
                 </div>
 
  </div>
+ <script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+      mergetags_list: [
+        { value: 'First.Name', title: 'First Name' },
+        { value: 'Email', title: 'Email' },
+      ]
+    });
+  </script>
+
  <script type="text/javascript">
-$(document).ready(function() {
+
+    $(document).ready(function() {
     var table = $('.posting_datatable').DataTable({
         processing: true,
         serverSide: true,
