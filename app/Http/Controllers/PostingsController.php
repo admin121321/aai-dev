@@ -85,7 +85,7 @@ class PostingsController extends Controller
  
         $form_data = array(
             'id_user'     =>  $request->id_user,
-            'id_kategori' =>  $request->id_kategori,
+            'id_kategori' =>  strtoupper($request->id_kategori),
             'judul'       =>  $request->judul,
             'gambar'      =>  $request->gambar,
             'deskripsi'   =>  $request->deskripsi,

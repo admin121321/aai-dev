@@ -34,8 +34,8 @@
                 </div>
                  <!-- Modal -->
                  <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
+                    <div class="modal-dialog col-sm-12 col-xl-6">
+                        <div class="modal-content bg-light rounded h-100 p-4">
                         <form method="post" id="sample_form" enctype="multipart/form-data" class="form-horizontal">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="ModalLabel">Tambah Posting</h5>
@@ -43,30 +43,31 @@
                             </div>
                             <div class="modal-body">
                                 <span id="form_result"></span>
-                                <div class="form-group">
-                                    <label>ID user: </label>
-                                    <input type="text" name="id_user" id="id_user" class="form-control" />
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="id_user" id="id_user" class="form-control" id="floatingInput"/>
+                                    <label for="floatingInput">ID User </label>
                                 </div>
-                                <div class="form-group">
-                                    <label>ID Kategori: </label>
-                                    <select class="form-control" id="id_kategori" name="id_kategori">
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="id_kategori" name="id_kategori" aria-label="Floating label select example">
                                         <option>--Pilih Unit Kerja--</option>
                                         @foreach(App\Models\KategoriPosting::all() as $kategori)
                                         <option value="{{ $kategori->id}}" id="id_kategori">{{ $kategori->nama_kategori }}</option>
                                         @endforeach
                                     </select>
+                                    <label for="floatingTextarea">ID Kategori </label>
                                 </div>
-                                <div class="form-group">
-                                    <label>Judul: </label>
+                                <div class="form-floating mb-3">
                                     <input type="text" name="judul" id="judul" class="form-control" />
+                                    <label for="floatingInput">Judul </label>
                                 </div>
-                                <div class="form-group">
-                                    <label>Gambar: </label>
+                                <div class="form-floating mb-3">
+                                    <!-- <input type="file" name="gambar" id="gambar" class="form-control form-control-sm" /> -->
                                     <input type="text" name="gambar" id="gambar" class="form-control" />
+                                    <label for="floatingInput">Gambar </label>
                                 </div>
-                                <div class="form-group">
-                                    <label>Deskripsi: </label>
-                                    <textarea type="text" name="deskripsi" id="deskripsi" rows="5" /></textarea>
+                                <div class="form-floating">
+                                    <textarea type="text" class="form-control" name="deskripsi" id="deskripsi"/></textarea>
+                                    <label for="floatingInput">Deskripsi </label>
                                 </div>
                                 <input type="hidden" name="action" id="action" value="Add" />
                                 <input type="hidden" name="hidden_id" id="hidden_id" />
@@ -102,16 +103,25 @@
 
  </div>
  <script>
+//    $('#deskripsi').summernote({
+//     height: 300,                 // set editor height
+//     minHeight: null,             // set minimum height of editor
+//     maxHeight: null,             // set maximum height of editor
+//     focus: true                  // set focus to editable area after initializing summernote
+//     });
     tinymce.init({
-      selector: 'textarea',
-      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
-      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-      tinycomments_mode: 'embedded',
-      tinycomments_author: 'Author name',
-      mergetags_list: [
-        { value: 'First.Name', title: 'First Name' },
-        { value: 'Email', title: 'Email' },
-      ]
+      selector: '#deskripsi',
+      menubar: true,
+      toolbar: true,
+      inline: false,
+    //   plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+    //   toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+    //   tinycomments_mode: 'embedded',
+    //   tinycomments_author: 'Author name',
+    //   mergetags_list: [
+    //     { value: 'First.Name', title: 'First Name' },
+    //     { value: 'Email', title: 'Email' },
+    //   ]
     });
   </script>
 
@@ -128,19 +138,9 @@
             {data: 'id_kategori', name: 'id_kategori'},
             {data: 'judul', name: 'judul'},
             {data: 'gambar', name: 'gambar'},
-            {data: 'deskripsi', name: 'deskripsi'},
+            {data: 'deskripsi', name: 'deskripsi', type:'textarea'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
-    });
-
-    $(document).ready(function() {
-        $(document).on('change', '.kategoriPost', function() {
-            var id =  $('.kategoriPost').val();     // get id the value from the select
-            $('.id').val(id);   // set the textbox value
-
-            // if you want the selected text instead of the value
-            // var air_text = $('.aircraftsName option:selected').text(); 
-        });
     });
  
     $('#create_record').click(function(){
@@ -213,6 +213,7 @@
             success:function(data)
             {
                 console.log('success: '+data);
+                tinyMCE.activeEditor.setContent(data.result.deskripsi);
                 $('#id_user').val(data.result.id_user);
                 $('#id_kategori').val(data.result.id_kategori);
                 $('#judul').val(data.result.judul);
