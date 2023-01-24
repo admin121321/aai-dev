@@ -5,7 +5,6 @@
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0"><b>List Halaman</b></h6>
-                        <a href="">Tampikan Semua</a>
                     </div>
                     <!-- card-body -->
                     <div class="row">

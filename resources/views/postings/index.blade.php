@@ -5,7 +5,6 @@
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0"><b>List Posting</b></h6>
-                        <a href="">Tampikan Semua</a>
                     </div>
                     <!-- card-body -->
                     <div class="row">
@@ -44,7 +43,7 @@
                             <div class="modal-body">
                                 <span id="form_result"></span>
                                 <div class="form-floating mb-3">
-                                    <input type="text" name="id_user" id="id_user" class="form-control" id="floatingInput"/>
+                                    <input type="text" name="id_user" id="id_user" value="{{ Auth::user()->id }}" class="form-control"/>
                                     <label for="floatingInput">ID User </label>
                                 </div>
                                 <div class="form-floating mb-3">
@@ -138,7 +137,7 @@
             {data: 'id_kategori', name: 'id_kategori'},
             {data: 'judul', name: 'judul'},
             {data: 'gambar', name: 'gambar'},
-            {data: 'deskripsi', name: 'deskripsi', type:'textarea'},
+            {data: 'deskripsi', name: 'deskripsi'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });

@@ -46,4 +46,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Posting::class);
     }
+    public function KategoriPosting()
+    {
+        return $this->hasMany(KategoriPosting::class);
+    }
 }
