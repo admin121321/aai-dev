@@ -42,7 +42,7 @@
                             </div>
                             <div class="modal-body">
                                 <span id="form_result"></span>
-                                <div class="form-floating mb-3">
+                                <div class="form-floating mb-3" hidden>
                                     <input type="text" name="id_user" id="id_user" value="{{ Auth::user()->id }}" class="form-control"/>
                                     <label for="floatingInput">ID User </label>
                                 </div>
@@ -60,8 +60,8 @@
                                     <label for="floatingInput">Judul </label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <!-- <input type="file" name="gambar" id="gambar" class="form-control form-control-sm" /> -->
-                                    <input type="text" name="gambar" id="gambar" class="form-control" />
+                                    <input type="file" name="gambar" id="gambar" class="form-control form-control-sm" />
+                                    <!-- <input type="text" name="gambar" id="gambar" class="form-control" /> -->
                                     <label for="floatingInput">Gambar </label>
                                 </div>
                                 <div class="form-floating">
@@ -152,7 +152,8 @@
     });
  
     $('#sample_form').on('submit', function(event){
-        event.preventDefault(); 
+        event.preventDefault();
+        var formData = new FormData($(this)[0]);
         var action_url = '';
  
         if($('#action').val() == 'Add')
@@ -166,10 +167,15 @@
         }
  
         $.ajax({
-            type: 'post',
+            type: 'POST',
+            enctype: 'multipart/form-data',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             url: action_url,
-            data:$(this).serialize(),
+            processData: false,  // Important!
+            contentType: false,
+            cache: false,
+            // data:$(this).serialize(),
+            data: formData,
             dataType: 'json',
             success: function(data) {
                 console.log('success: '+data);
@@ -199,7 +205,8 @@
     });
  
     $(document).on('click', '.edit', function(event){
-        event.preventDefault(); 
+        event.preventDefault();
+        // var formData = new FormData($(this)[0]); 
         var id = $(this).attr('id'); alert(id);
         $('#form_result').html('');
  
@@ -209,6 +216,11 @@
             url :"/posting/edit/"+id+"/",
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             dataType:"json",
+            // Important!
+            // processData: false,  
+            // contentType: false,
+            // cache: false,
+            // data: formData,
             success:function(data)
             {
                 console.log('success: '+data);

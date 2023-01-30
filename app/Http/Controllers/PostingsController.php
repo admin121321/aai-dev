@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 use Validator;
+use Auth;
+use File;
+use PDF;
 
 class PostingsController extends Controller
 {
@@ -46,7 +49,8 @@ class PostingsController extends Controller
             'id_user'     =>  'required',
             'id_kategori' =>  'required',
             'judul'       =>  'required',
-            'gambar'      =>  'required',
+            'gambar'      =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'gambar'      =>  'required',
             'deskripsi'   =>  'required'
         );
  
@@ -55,22 +59,31 @@ class PostingsController extends Controller
         if($error->fails())
         {
             return response()->json(['errors' => $error->errors()->all()]);
+        }else{
+
+            $form_data = $request->all();
+            $form_data['gambar'] = time().'.'.$request->gambar->getClientOriginalExtension();
+            $request->gambar->move(public_path('images'), $form_data['gambar']);
+
+            Posting::create($form_data);
+            return response()->json(['success' => 'Data Added successfully.']);
         }
-        $KategoriPostings = KategoriPosting::all();
-        $form_data = array(
-            // 'id_user'  =>  $request-> Auth::user()->id,
-            'id_user'     =>  $request->id_user,
-            'id_kategori' =>  strtoupper($request->id_kategori),
-            'judul'       =>  $request->judul,
-            'gambar'      =>  $request->gambar,
-            'deskripsi'   =>  $request->deskripsi,
-        );
+        
+        // $KategoriPostings = KategoriPosting::all();
+        // $form_data = array(
+        //     // 'id_user'     =>  $request->Auth::user()->id_user,
+        //     'id_user'     =>  $request->id_user,
+        //     'id_kategori' =>  strtoupper($request->id_kategori),
+        //     'judul'       =>  $request->judul,
+        //     'gambar'      =>  $request->postingGambar,
+        //     'deskripsi'   =>  $request->deskripsi,
+        // );
+        
+        // Posting::create($form_data);
  
-        Posting::create($form_data);
- 
-        return response()->json(['success' => 'Data Added successfully.']);
+        // return response()->json(['success' => 'Data Added successfully.']);
     }
- 
+    
     public function edit($id)
     {
         if(request()->ajax())
