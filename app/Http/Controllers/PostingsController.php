@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\KategoriPosting;  
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use DataTables;
 use Validator;
 use Auth;
@@ -87,7 +88,7 @@ class PostingsController extends Controller
                 'id_user'     =>  'required',
                 'id_kategori' =>  'required',
                 'judul'       =>  'required',
-                'gambar'      =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                // 'gambar'      =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'deskripsi'   =>  'required'
             );
      
@@ -97,14 +98,16 @@ class PostingsController extends Controller
             {
                 return response()->json(['errors' => $error->errors()->all()]);
             }
+            $form_data = Posting::find($request->hidden_id);
             $fileName = '';
-            $data = Posting::find($request->id);
             if ($request->hasFile('gambar')) {
                 $file = $request->file('gambar');
                 $fileName = time() . '.' . $file->getClientOriginalExtension();
-                $file->storeAs('public/images', $fileName);
-                if ($data->gambar) {
-                    Storage::delete('public/images/' . $data->gambar);
+                // $file->storeAs('public/images/', $fileName);
+                // $file->public_path('images', $fileName);
+                $file->move(public_path('images'), $fileName);
+                if ($form_data->gambar) {
+                    Storage::delete('public/images/' . $form_data->gambar);
                 }
             } else {
                 $fileName = $request->gambar;
@@ -118,10 +121,9 @@ class PostingsController extends Controller
                 'gambar'      =>  $fileName
             ];
     
-            $data->update($form_data);
-            return response()->json([
-                'status' => 200,
-            ]);
+            // $data->update($form_data);
+            Posting::whereId($request->hidden_id)->update($form_data);
+            return response()->json(['success' => 'Data is successfully updated']);
  
         // $form_data = array(
         //     'id_user'     =>  $request->id_user,
@@ -137,7 +139,7 @@ class PostingsController extends Controller
         
           
     }
- 
+
     public function destroy($id)
     {
         $data = Posting::findOrFail($id);
