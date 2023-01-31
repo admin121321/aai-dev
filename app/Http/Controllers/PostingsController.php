@@ -68,22 +68,9 @@ class PostingsController extends Controller
             Posting::create($form_data);
             return response()->json(['success' => 'Data Added successfully.']);
         }
-        
-        // $KategoriPostings = KategoriPosting::all();
-        // $form_data = array(
-        //     // 'id_user'     =>  $request->Auth::user()->id_user,
-        //     'id_user'     =>  $request->id_user,
-        //     'id_kategori' =>  strtoupper($request->id_kategori),
-        //     'judul'       =>  $request->judul,
-        //     'gambar'      =>  $request->postingGambar,
-        //     'deskripsi'   =>  $request->deskripsi,
-        // );
-        
-        // Posting::create($form_data);
- 
-        // return response()->json(['success' => 'Data Added successfully.']);
+
     }
-    
+
     public function edit($id)
     {
         if(request()->ajax())
@@ -95,32 +82,60 @@ class PostingsController extends Controller
  
     public function update(Request $request)
     {
-        $rules = array(
-            'id_user'     =>  'required',
-            'id_kategori' =>  'required',
-            'judul'       =>  'required',
-            'gambar'      =>  'required',
-            'deskripsi'   =>  'required'
-        );
+
+            $rules = array(
+                'id_user'     =>  'required',
+                'id_kategori' =>  'required',
+                'judul'       =>  'required',
+                'gambar'      =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'deskripsi'   =>  'required'
+            );
+     
+            $error = Validator::make($request->all(), $rules);
+            
+            if($error->fails())
+            {
+                return response()->json(['errors' => $error->errors()->all()]);
+            }
+            $fileName = '';
+            $data = Posting::find($request->id);
+            if ($request->hasFile('gambar')) {
+                $file = $request->file('gambar');
+                $fileName = time() . '.' . $file->getClientOriginalExtension();
+                $file->storeAs('public/images', $fileName);
+                if ($data->gambar) {
+                    Storage::delete('public/images/' . $data->gambar);
+                }
+            } else {
+                $fileName = $request->gambar;
+            }
+    
+            $form_data = [
+                'id_user'     =>  $request->id_user,
+                'id_kategori' =>  strtoupper($request->id_kategori),
+                'judul'       =>  $request->judul,
+                'deskripsi'   =>  $request->deskripsi, 
+                'gambar'      =>  $fileName
+            ];
+    
+            $data->update($form_data);
+            return response()->json([
+                'status' => 200,
+            ]);
  
-        $error = Validator::make($request->all(), $rules);
+        // $form_data = array(
+        //     'id_user'     =>  $request->id_user,
+        //     'id_kategori' =>  strtoupper($request->id_kategori),
+        //     'judul'       =>  $request->judul,
+        //     'gambar'      =>  $request->gambar,
+        //     'deskripsi'   =>  $request->deskripsi,
+        // );
  
-        if($error->fails())
-        {
-            return response()->json(['errors' => $error->errors()->all()]);
-        }
+        // Posting::whereId($request->hidden_id)->update($form_data);
  
-        $form_data = array(
-            'id_user'     =>  $request->id_user,
-            'id_kategori' =>  strtoupper($request->id_kategori),
-            'judul'       =>  $request->judul,
-            'gambar'      =>  $request->gambar,
-            'deskripsi'   =>  $request->deskripsi,
-        );
- 
-        Posting::whereId($request->hidden_id)->update($form_data);
- 
-        return response()->json(['success' => 'Data is successfully updated']);
+        // return response()->json(['success' => 'Data is successfully updated']);
+        
+          
     }
  
     public function destroy($id)

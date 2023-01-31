@@ -60,9 +60,13 @@
                                     <label for="floatingInput">Judul </label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="file" name="gambar" id="gambar" class="form-control form-control-sm" />
+                                    <input type="file" name="gambar" id="gambar" class="form-control form-control-sm" accept="images/*" onchange="readURL(this);" />
                                     <!-- <input type="text" name="gambar" id="gambar" class="form-control" /> -->
+                                    <input type="hidden" name="hidden_image" id="hidden_image">
                                     <label for="floatingInput">Gambar </label>
+                                </div>
+                                <div class="form-floating mb-3" name="tampilgambar" id="tampilgambar">
+                                    <img name="tampilgambar" id="tampilgambar">
                                 </div>
                                 <div class="form-floating">
                                     <textarea type="text" class="form-control" name="deskripsi" id="deskripsi"/></textarea>
@@ -207,6 +211,7 @@
     $(document).on('click', '.edit', function(event){
         event.preventDefault();
         // var formData = new FormData($(this)[0]); 
+        var SITEURL = '{{URL::to('')}}';
         var id = $(this).attr('id'); alert(id);
         $('#form_result').html('');
  
@@ -214,13 +219,15 @@
  
         $.ajax({
             url :"/posting/edit/"+id+"/",
+            enctype: 'multipart/form-data',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             dataType:"json",
             // Important!
-            // processData: false,  
-            // contentType: false,
-            // cache: false,
+            processData: false,  
+            contentType: false,
+            cache: false,
             // data: formData,
+
             success:function(data)
             {
                 console.log('success: '+data);
@@ -228,7 +235,7 @@
                 $('#id_user').val(data.result.id_user);
                 $('#id_kategori').val(data.result.id_kategori);
                 $('#judul').val(data.result.judul);
-                $('#gambar').val(data.result.gambar);
+                // $('#gambar').val(data.result.gambar);
                 $('#deskripsi').val(data.result.deskripsi);
                 $('#hidden_id').val(id);
                 $('.modal-title').text('Edit Record');
@@ -236,6 +243,11 @@
                 $('#action').val('Edit'); 
                 $('.editpass').hide(); 
                 $('#formModal').modal('show');
+                // Image
+                $('#tampilgambar').html(
+                `<img src="/images/${data.result.gambar}" width="100" class="img-fluid img-thumbnail">`);
+                // $('#emp_id').val(data.result.id);
+                // $('#gambar').val(data.result.gambar);
             },
             error: function(data) {
                 var errors = data.responseJSON;
@@ -267,6 +279,7 @@
             }
         })
     });
+    
 });
 </script>
 @endsection
