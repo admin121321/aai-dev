@@ -51,7 +51,6 @@ class PostingsController extends Controller
             'id_kategori' =>  'required',
             'judul'       =>  'required',
             'gambar'      =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            // 'gambar'      =>  'required',
             'deskripsi'   =>  'required'
         );
  
@@ -63,7 +62,7 @@ class PostingsController extends Controller
         }else{
 
             $form_data = $request->all();
-            $form_data['gambar'] = time().'.'.$request->gambar->getClientOriginalExtension();
+            $form_data['gambar'] = date('YmdHis').'.'.$request->gambar->getClientOriginalExtension();
             $request->gambar->move(public_path('images'), $form_data['gambar']);
 
             Posting::create($form_data);
@@ -102,47 +101,45 @@ class PostingsController extends Controller
             $fileName = '';
             if ($request->hasFile('gambar')) {
                 $file = $request->file('gambar');
-                $fileName = time() . '.' . $file->getClientOriginalExtension();
-                // $file->storeAs('public/images/', $fileName);
-                // $file->public_path('images', $fileName);
+                $fileName = date('YmdHis') . '.' . $file->getClientOriginalExtension();
                 $file->move(public_path('images'), $fileName);
                 if ($form_data->gambar) {
-                    Storage::delete('public/images/' . $form_data->gambar);
+                    Storage::delete('images' . $form_data->gambar);
                 }
+                $form_data = [
+                    'id_user'     =>  $request->id_user,
+                    'id_kategori' =>  strtoupper($request->id_kategori),
+                    'judul'       =>  $request->judul,
+                    'deskripsi'   =>  $request->deskripsi, 
+                    'gambar'      =>  $fileName
+                ];
             } else {
                 $fileName = $request->gambar;
-            }
-    
-            $form_data = [
+                $form_data = [
                 'id_user'     =>  $request->id_user,
                 'id_kategori' =>  strtoupper($request->id_kategori),
                 'judul'       =>  $request->judul,
-                'deskripsi'   =>  $request->deskripsi, 
-                'gambar'      =>  $fileName
-            ];
-    
-            // $data->update($form_data);
+                'deskripsi'   =>  $request->deskripsi,
+                ];
+            }
+
             Posting::whereId($request->hidden_id)->update($form_data);
-            return response()->json(['success' => 'Data is successfully updated']);
- 
-        // $form_data = array(
-        //     'id_user'     =>  $request->id_user,
-        //     'id_kategori' =>  strtoupper($request->id_kategori),
-        //     'judul'       =>  $request->judul,
-        //     'gambar'      =>  $request->gambar,
-        //     'deskripsi'   =>  $request->deskripsi,
-        // );
- 
-        // Posting::whereId($request->hidden_id)->update($form_data);
- 
-        // return response()->json(['success' => 'Data is successfully updated']);
-        
+            return response()->json(['success' => 'Data is successfully updated']);        
           
     }
 
     public function destroy($id)
     {
-        $data = Posting::findOrFail($id);
-        $data->delete();
+        // hapus file
+		$data = Posting::where('id',$id)->first();
+		File::delete('images/'.$data->gambar);
+ 
+		// hapus data
+		Posting::where('id',$id)->delete();
+ 
+		return redirect()->back();
+
+        // $data = Posting::findOrFail($id);
+        // $data->delete();
     }
 }
