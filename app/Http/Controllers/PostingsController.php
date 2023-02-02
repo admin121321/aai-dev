@@ -79,53 +79,57 @@ class PostingsController extends Controller
             return response()->json(['result' => $data]);
         }
     }
- 
-    public function update(Request $request)
-    {
 
-            $rules = array(
-                'id_user'     =>  'required',
-                'id_kategori' =>  'required',
-                'judul'       =>  'required',
-                // 'gambar'      =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'deskripsi'   =>  'required'
-            );
-     
-            $error = Validator::make($request->all(), $rules);
-            
-            if($error->fails())
-            {
-                return response()->json(['errors' => $error->errors()->all()]);
-            }
-            $form_data = Posting::find($request->hidden_id);
-            $fileName = '';
-            if ($request->hasFile('gambar')) {
-                $file = $request->file('gambar');
-                $fileName = date('YmdHis') . '.' . $file->getClientOriginalExtension();
-                $file->move(public_path('images'), $fileName);
-                if ($form_data->gambar) {
-                    Storage::delete('images' . $form_data->gambar);
-                }
-                $form_data = [
-                    'id_user'     =>  $request->id_user,
-                    'id_kategori' =>  strtoupper($request->id_kategori),
-                    'judul'       =>  $request->judul,
-                    'deskripsi'   =>  $request->deskripsi, 
-                    'gambar'      =>  $fileName
-                ];
-            } else {
-                $fileName = $request->gambar;
-                $form_data = [
+    public function update(Request $request, Posting $posting)
+    {
+        $rules = array(
+            'id_user'     =>  'required',
+            'id_kategori' =>  'required',
+            'judul'       =>  'required',
+            // 'gambar'      =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'deskripsi'   =>  'required'
+        );
+ 
+        $error = Validator::make($request->all(), $rules);
+        
+        if($error->fails())
+        {
+            return response()->json(['errors' => $error->errors()->all()]);
+        }        
+        
+        $form_data = Posting::find($request->hidden_id);
+        $fileName  = public_path('images/').$form_data->gambar;
+        // $currentImage = $posting->gambar;
+        // $fileName = '';
+        if (File::exists($fileName)) {
+            $file = $request->file('gambar');
+            $fileName_new = date('YmdHis') . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/'), $fileName_new);
+            // Posting::make($file)->resize(250, 205)->save( public_path('images/' . $filename_new ) );
+
+            $form_data = [
                 'id_user'     =>  $request->id_user,
                 'id_kategori' =>  strtoupper($request->id_kategori),
                 'judul'       =>  $request->judul,
-                'deskripsi'   =>  $request->deskripsi,
-                ];
-            }
+                'deskripsi'   =>  $request->deskripsi, 
+                'gambar'      =>  $fileName_new
+            ];
 
-            Posting::whereId($request->hidden_id)->update($form_data);
-            return response()->json(['success' => 'Data is successfully updated']);        
-          
+            File::delete($fileName);
+
+        } else {
+            $fileName = $request->gambar;
+            $form_data = [
+            'id_user'     =>  $request->id_user,
+            'id_kategori' =>  strtoupper($request->id_kategori),
+            'judul'       =>  $request->judul,
+            'deskripsi'   =>  $request->deskripsi,
+            ];
+        }
+
+        Posting::whereId($request->hidden_id)->update($form_data);
+        return response()->json(['success' => 'Data is successfully updated']);  
+        
     }
 
     public function destroy($id)
