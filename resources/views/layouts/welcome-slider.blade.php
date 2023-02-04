@@ -1,62 +1,99 @@
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<br>
-<div class="col-sm-12 col-xl-6" style="width: 1200px; height: 550px;">
-    <div class=" carousel slide"id="demo" data-ride="carousel" style="width: 1200px; height: 550px;">
-        <!-- <h6 class="mb-4">Testimonial</h6>
-        <div class="owl-carousel testimonial-carousel">
-            <div class="testimonial-item text-center">
-                <img class="img-fluid " src="{{ asset('themes/img/testimonial-1.jpg') }}" style="width: 100px; height: 100px;">
-    
-            </div>
-            <div class="testimonial-item text-center">
-                <img class="img-fluid " src="{{ asset('themes/img/testimonial-2.jpg') }}" style="width: 100px; height: 100px;">
-              
-            </div>
-        </div> -->
-        <ul class="carousel-indicators">
-            <li data-target="#demo" data-slide-to="0" class="active"></li>
-            <li data-target="#demo" data-slide-to="1"></li>
-            <li data-target="#demo" data-slide-to="2"></li>
-        </ul>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-            <img src="{{ asset('themes/img/testimonial-1.jpg') }}" alt="Los Angeles" style="width: 1200px; height: 550px;">
-            <div class="carousel-caption">
-                <h3>Los Angeles</h3>
-                <p>We had such a great time in LA!</p>
-            </div>   
-            </div>
-            <div class="carousel-item">
-            <img src="{{ asset('themes/img/testimonial-1.jpg') }}" alt="Chicago" style="width: 1200px; height: 550px;">
-            <div class="carousel-caption">
-                <h3>Chicago</h3>
-                <p>Thank you, Chicago!</p>
-            </div>   
-            </div>
-            <div class="carousel-item">
-            <img src="{{ asset('themes/img/testimonial-1.jpg') }}" alt="New York" style="width: 1200px; height: 550px;">
-            <div class="carousel-caption">
-                <h3>New York</h3>
-                <p>We love the Big Apple!</p>
-            </div>   
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </a>
-    </div>
-</div>
+ <!-- Header -->
+ <header id="header" class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
 
-<style>
-  /* Make the image fully responsive */
-  .carousel-inner img {
-    width: 100%;
-    height: 100%;
-  }
-  </style>
+                    <!-- Text Slider -->
+                    <div class="slider-container">
+                        <div class="swiper-container text-slider">
+                            <div class="swiper-wrapper">
+                                
+                                <!-- Slide -->
+                                <div class="swiper-slide">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-xl-7">
+                                            <div class="image-container">
+                                                <img class="img-fluid" src="{{ asset('themes-frontend/images/pembekalan-a.jpg') }}" alt="alternative" style="width: 609px; height: 406px;">
+                                            </div> <!-- end of image-container -->
+                                        </div> <!-- end of col -->
+                                        <div class="col-lg-6 col-xl-5">
+                                            <div class="text-container">
+                                                <h1 class="h1-large">Desktop App Landing Page</h1>
+                                                <p class="p-large">The first desktop app for web designers. Create beautiful websites with minimum HTML/CSS</p>
+                                                <a class="btn-solid-lg page-scroll" href="#registration">FREE TRIAL</a>
+                                                <a class="btn-outline-lg page-scroll" href="#features">DISCOVER</a>
+                                            </div> <!-- end of text-container -->
+                                        </div> <!-- end of col -->
+                                    </div> <!-- end of row -->
+                                </div> <!-- end of swiper-slide -->
+                                <!-- end of slide -->
+
+                                <!-- Slide -->
+                                <div class="swiper-slide">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-xl-7">
+                                            <div class="image-container">
+                                                <img class="img-fluid" src="{{ asset('themes-frontend/images/pembekalan-b.jpg') }}" alt="alternative" style="width: 609px; height: 406px;">
+                                            </div> <!-- end of image-container -->
+                                        </div> <!-- end of col -->
+                                        <div class="col-lg-6 col-xl-5">
+                                            <div class="text-container">
+                                                <h1 class="h1-large">Web Design Desktop App</h1>
+                                                <p class="p-large">Sketch your layout, mockup the prototye and create the actual design using Revo web design app</p>
+                                                <a class="btn-solid-lg page-scroll" href="#registration">FREE TRIAL</a>
+                                                <a class="btn-outline-lg page-scroll" href="#features">DISCOVER</a>
+                                            </div> <!-- end of text-container -->
+                                        </div> <!-- end of col -->
+                                    </div> <!-- end of row -->
+                                </div> <!-- end of swiper-slide -->
+                                <!-- end of slide -->
+
+                                <!-- Slide -->
+                                <div class="swiper-slide">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-xl-7">
+                                            <div class="image-container">
+                                                <img class="img-fluid" src="{{ asset('themes-frontend/images/pembekalan-c.jpg') }}" alt="alternative" style="width: 609px; height: 406px;">
+                                            </div> <!-- end of image-container -->
+                                        </div> <!-- end of col -->
+                                        <div class="col-lg-6 col-xl-5">
+                                            <div class="text-container">
+                                                <h1 class="h1-large">Prototype And Create Designs</h1>
+                                                <p class="p-large">With Revo it's a breeze to turn your designs intro code. Use the visual builder and export as HTML</p>
+                                                <a class="btn-solid-lg page-scroll" href="#registration">FREE TRIAL</a>
+                                                <a class="btn-outline-lg page-scroll" href="#features">DISCOVER</a>
+                                            </div> <!-- end of text-container -->
+                                        </div> <!-- end of col -->
+                                    </div> <!-- end of row -->
+                                </div> <!-- end of swiper-slide -->
+                                <!-- end of slide -->
+
+                            </div> <!-- end of swiper-wrapper -->
+                            
+                            <!-- Add Arrows -->
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                            <!-- end of add arrows -->
+
+                        </div> <!-- end of swiper-container -->
+                    </div> <!-- end of slider-container -->
+                    <!-- end of text slider -->
+
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="partner-container">
+                        <p class="p-small">Featured in</p>
+                        <img class="img-fluid" src="{{ asset('themes-frontend/images/partner-logo-1.png') }}" alt="alternative">
+                        <img class="img-fluid" src="{{ asset('themes-frontend/images/partner-logo-2.png') }}" alt="alternative">
+                        <img class="img-fluid" src="{{ asset('themes-frontend/images/partner-logo-3.png') }}" alt="alternative">
+                        <img class="img-fluid" src="{{ asset('themes-frontend/images/partner-logo-4.png') }}" alt="alternative">
+                        <img class="img-fluid" src="{{ asset('themes-frontend/images/partner-logo-5.png') }}" alt="alternative">
+                    </div> <!-- end of partner-container -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
