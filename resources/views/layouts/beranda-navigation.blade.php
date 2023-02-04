@@ -1,34 +1,93 @@
-         <!-- Navbar Start -->
-         <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <!-- <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
-                </a> -->
-                <a href="#" class="sidebar-toggler flex-shrink-0">
-                    <i class="fa fa-bars"></i>
-                </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control border-0" type="search" placeholder="Search">
-                </form>
-                <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="{{ asset('themes/img/user.jpg') }}" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">{{ Auth::user()->name }}</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
-                                         <i class="fa fa-sign-out me-2"></i>{{ __('Logout') }}
-                                    </a>
+<nav class="navbar navbar-expand-lg main-navbar">
+    <form class="form-inline mr-auto">
+      <ul class="navbar-nav mr-3">
+        <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+        <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+      </ul>
+      <!-- <div class="search-element">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+        <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+        <div class="search-backdrop"></div>
+        <div class="search-result">
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <!-- Navbar End -->
+        </div>
+      </div> -->
+    </form>
+    <ul class="navbar-nav navbar-right">
+      <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
+        <div class="dropdown-menu dropdown-list dropdown-menu-right">
+          <div class="dropdown-header">Messages
+            <div class="float-right">
+              <a href="#">Mark All As Read</a>
+            </div>
+          </div>
+          <div class="dropdown-list-content dropdown-list-message">
+            <a href="#" class="dropdown-item dropdown-item-unread">
+              <div class="dropdown-item-avatar">
+                <img alt="image" src="{{ asset('themes-backend/assets/img/avatar/avatar-1.png') }}" class="rounded-circle">
+                <div class="is-online"></div>
+              </div>
+              <div class="dropdown-item-desc">
+                <b>Kusnaedi</b>
+                <p>Hello, Bro!</p>
+                <div class="time">10 Hours Ago</div>
+              </div>
+            </a>
+          </div>
+          <div class="dropdown-footer text-center">
+            <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+          </div>
+        </div>
+      </li>
+      <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
+        <div class="dropdown-menu dropdown-list dropdown-menu-right">
+          <div class="dropdown-header">Notifications
+            <div class="float-right">
+              <a href="#">Mark All As Read</a>
+            </div>
+          </div>
+          <div class="dropdown-list-content dropdown-list-icons">
+            <a href="#" class="dropdown-item dropdown-item-unread">
+              <div class="dropdown-item-icon bg-primary text-white">
+                <i class="fas fa-code"></i>
+              </div>
+              <div class="dropdown-item-desc">
+                Template update is available now!
+                <div class="time text-primary">2 Min Ago</div>
+              </div>
+            </a>
+          </div>
+          <div class="dropdown-footer text-center">
+            <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+          </div>
+        </div>
+      </li>
+      <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+        <img alt="image" src="{{ asset('themes-backend/assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
+        <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div></a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <div class="dropdown-title">Online</div>
+          <a href="features-profile.html" class="dropdown-item has-icon">
+            <i class="far fa-user"></i> Profile
+          </a>
+          <a href="features-activities.html" class="dropdown-item has-icon">
+            <i class="fas fa-bolt"></i> Activities
+          </a>
+          <a href="features-settings.html" class="dropdown-item has-icon">
+            <i class="fas fa-cog"></i> Settings
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item has-icon text-danger" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                    <i class="fa fa-sign-out me-2"></i>{{ __('Logout') }}
+          </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+        </div>
+      </li>
+    </ul>
+  </nav>
+<!-- Navbar End -->

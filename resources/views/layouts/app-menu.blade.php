@@ -13,24 +13,19 @@
     <!-- Favicon -->
     <link href="{{ asset('themes/img/favicon.ico') }}" rel="icon">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/fontawesome/css/all.min.css') }}">
 
-    <!-- Libraries Stylesheet -->
-    <link href="{{ asset('themes/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('themes/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ asset('themes/css/bootstrap.min.css') }}" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="{{ asset('themes/css/style.css') }}" rel="stylesheet">
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/jqvmap/dist/jqvmap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/summernote/summernote-bs4.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/prism/prism.css') }}">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{{ asset('themes-backend/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes-backend/assets/css/components.css') }}">
     
     <!-- JQuery Datatable-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
@@ -43,7 +38,9 @@
     
 </head>
 <body>
-<div class="container-xxl position-relative bg-white d-flex p-0" id="app">
+<div id="app">
+    <div class="main-wrapper main-wrapper-1">
+        <div class="navbar-bg"></div>
        @extends('layouts.beranda-sidebar-menu')
         <!-- Content Start -->
         <div class="content">
@@ -59,6 +56,7 @@
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
+</div>
 </body>
    <style>
         .center {
@@ -73,14 +71,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('themes/lib/chart/chart.min.js') }}"></script>
-    <script src="{{ asset('themes/lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('themes/lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('themes/lib/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('themes/lib/tempusdominus/js/moment.min.js') }}"></script>
-    <script src="{{ asset('themes/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
-    <script src="{{ asset('themes/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-    <!-- Template Javascript -->
-    <script src="{{ asset('themes/js/main.js') }}"></script>
+    <!-- <script src="{{ asset('themes-backend/assets/modules/jquery.min.js') }}"></script> -->
+    <script src="{{ asset('themes-backend/assets/modules/popper.js') }}"></script>
+    <script src="{{ asset('themes-backend/assets/modules/tooltip.js') }}"></script>
+    <script src="{{ asset('themes-backend/assets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('themes-backend/assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
+    <script src="{{ asset('themes-backend/assets/modules/moment.min.js') }}"></script>
+    <script src="{{ asset('themes-backend/assets/js/stisla.js') }}"></script>
+    
+    <!-- JS Libraies -->
+    <script src="{{ asset('themes-backend/assets/modules/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('themes-backend/assets/modules/chart.min.js') }}"></script>
+    <script src="{{ asset('themes-backend/assets/modules/owlcarousel2/dist/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('themes-backend/assets/modules/summernote/summernote-bs4.js') }}"></script>
+    <script src="{{ asset('themes-backend/assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
+
+    <!-- Page Specific JS File -->
+    <script src="{{ asset('themes-backend/assets/js/page/index.js') }}"></script>
+    
+    <!-- JS Libraies -->
+    <script src="{{ asset('themes-backend/assets/modules/prism/prism.js') }}"></script>
+
+    <!-- Page Specific JS File -->
+    <!-- <script src="{{ asset('themes-backend/assets/js/page/bootstrap-modal.js') }}"></script> -->
+
+    <!-- Template JS File -->
+    <script src="{{ asset('themes-backend/assets/js/scripts.js') }}"></script>
+    <script src="{{ asset('themes-backend/assets/js/custom.js') }}"></script>
 
 </html>

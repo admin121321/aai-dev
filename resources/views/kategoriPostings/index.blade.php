@@ -1,40 +1,40 @@
 @extends('layouts.app-menu')
 @section('content')
-<!-- Recent Sintring Start -->
- <div class="container-fluid pt-4 px-4">
-                <div class="bg-light text-center rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0"><b>List Kategori Posting</b></h6>
-                    </div>
-                    <!-- card-body -->
-                    <div class="row">
-                        <div class="col-12 table-responsive">
-                        <div align="right">
-                            <button type="button" name="create_record" id="create_record" class="btn btn-success"> <i class="bi bi-plus-square"></i> Add</button>
-                        </div>
-                        <br />
-                            <table class="table text-start align-middle table-bordered table-hover mb-0 kategori_datatable"> 
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nama Kategori</th>
-                                        <th width="180px">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- card-body -->
+
+<div class="main-content">
+    <section class="#">
+        <div class="section-header">
+            <br />
+            <div align="right">
+                <button type="button" name="create_record" id="create_record" class="btn btn-success"> <i class="bi bi-plus-square"></i> Add</button>
+            </div>
+        </div>
+        <div class="section-body">
+            <!-- card-body -->
+            <div class="row">
+                <div class="col-12 table-responsive">
+                <br />
+                    <table class="table text-start align-middle table-bordered table-hover mb-0 kategori_datatable"> 
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nama Kategori</th>
+                                <th width="180px">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
                 </div>
-                 <!-- Modal -->
-                 <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+            </div>
+            <!-- card-body -->
+             <!-- Modal -->
+             <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                         <form method="post" id="sample_form" class="form-horizontal">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="ModalLabel">Tambah Kategori</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                             </div>
                             <div class="modal-body">
                                 <span id="form_result"></span>
@@ -55,27 +55,29 @@
                 </div>
  
                 <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                    <form method="post" id="sample_form" class="form-horizontal">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="ModalLabel">Confirmation</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <h4 align="center" style="margin:0;">Are you sure you want to remove this data?</h4>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" name="ok_button" id="ok_button" class="btn btn-danger">OK</button>
-                        </div>
-                    </form>  
-                    </div>
+                   <div class="modal-dialog">
+                     <div class="modal-content">
+                        <form method="post" id="sample_form" class="form-horizontal">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="ModalLabel">Confirmation</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                            </div>
+                            <div class="modal-body">
+                                <h4 align="center" style="margin:0;">Are you sure you want to remove this data?</h4>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" name="ok_button" id="ok_button" class="btn btn-danger">OK</button>
+                            </div>
+                        </form>  
+                      </div>
                     </div>
                 </div>
+        </div> 
+    </section>
+</div>
 
- </div>
- <script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function() {
     var table = $('.kategori_datatable').DataTable({
         processing: true,

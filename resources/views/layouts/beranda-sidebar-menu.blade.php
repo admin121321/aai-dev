@@ -1,47 +1,51 @@
-   <!-- Sidebar Start -->
-   <div class="sidebar pe-4 pb-3">
-            <nav class="navbar bg-light navbar-light">
-                <a href="{{ url('/') }}" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary">{{ config('app.subname', 'AAI Jakarta') }}</h3>
-                </a>
-                <!-- Users -->
-                <div class="d-flex align-items-center ms-4 mb-4">
-                    <div class="position-relative">
-                        <img class="rounded-circle" src="{{ asset('themes/img/user.jpg') }}" alt="" style="width: 40px; height: 40px;">
-                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
-                    </div>
-                    <div class="ms-3">
-                        <h6 class="mb-0"> {{ Auth::user()->name }}</h6>
-                        <!-- <span>Admin</span> -->
-                    </div>
-                </div>
-                <!-- End users -->
-                <!-- Menu -->
-                <div class="navbar-nav w-100">
-                    <a href="{{ url('/home') }}" class="nav-item nav-link active"><i class="fa fa-tachometer me-2"></i>Dashboard</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-users me-2"></i>Users</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="{{ url('/users') }}" class="dropdown-item">Akun</a>
-                            <a href="typography.html" class="dropdown-item">Unit Kerja</a>
-                            <a href="typography.html" class="dropdown-item">Instansi</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-newspaper-o me-2"></i>Posting</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="{{ url('/kategori-posting') }}" class="dropdown-item">Kategori</a>
-                            <a href="{{ url('/posting') }}" class="dropdown-item">Posting</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Halaman</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="{{ url('/halaman') }}" class="dropdown-item">Halaman</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Menu -->
-            </nav>
+<div class="main-sidebar sidebar-style-2">
+    <aside id="sidebar-wrapper">
+        <div class="sidebar-brand">
+        <a href="{{ url('/') }}">{{ config('app.subname', 'AAI Jakarta') }}</a>
         </div>
-        <!-- Sidebar End -->
+        <div class="sidebar-brand sidebar-brand-sm">
+        <a href="{{ url('/') }}">AAI</a>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="menu-header">Dashboard</li>
+            <li class="dropdown active">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+                <ul class="dropdown-menu">
+                <li><a class="nav-link" href="{{ url('/') }}">General Dashboard</a></li>
+                </ul>
+            </li>
+            <li class="menu-header">Akun</li>
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-users"></i><span>Pengguna</span></a>
+                <ul class="dropdown-menu">
+                <li><a href="{{ url('/users') }}" class="nav-link">Users</a></li>
+                <li><a class="nav-link" href="#">Level Users</a></li>
+                <li><a class="nav-link" href="#">List Users</a></li>
+                </ul>
+            </li>
+            <li class="menu-header">Posting</li>
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-file-alt"></i><span>Posting</span></a>
+                <ul class="dropdown-menu">
+                <li><a href="{{ url('/kategori-posting') }}" class="nav-link" href="layout-default.html">kategori Posting</a></li>
+                <li><a href="{{ url('/posting') }}" class="nav-link" >Posting</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i><span>Halaman</span></a>
+                <ul class="dropdown-menu">
+                <li><a href="{{ url('/halaman') }}" class="nav-link" href="layout-default.html">Halaman</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a>
+            </li>
+        </ul>
+
+        <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+        <a href="#" class="btn btn-primary btn-lg btn-block btn-icon-split">
+            <i class="fas fa-rocket"></i> Documentation
+        </a>
+        </div>
+    </aside>
+</div>
