@@ -1,5 +1,5 @@
  <!-- Header -->
- <header id="header" class="header">
+ <header id="header" class="headerNew">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -21,8 +21,8 @@
                                             <div class="text-container">
                                                 <h1 class="h1-large">Desktop App Landing Page</h1>
                                                 <p class="p-large">The first desktop app for web designers. Create beautiful websites with minimum HTML/CSS</p>
-                                                <a class="btn-solid-lg page-scroll" href="#registration">FREE TRIAL</a>
-                                                <a class="btn-outline-lg page-scroll" href="#features">DISCOVER</a>
+                                                <a class="btn-solid-lg page-scroll" href="#registration">Detail</a>
+                                                <!-- <a class="btn-outline-lg page-scroll" href="#features">DISCOVER</a> -->
                                             </div> <!-- end of text-container -->
                                         </div> <!-- end of col -->
                                     </div> <!-- end of row -->
@@ -41,8 +41,8 @@
                                             <div class="text-container">
                                                 <h1 class="h1-large">Web Design Desktop App</h1>
                                                 <p class="p-large">Sketch your layout, mockup the prototye and create the actual design using Revo web design app</p>
-                                                <a class="btn-solid-lg page-scroll" href="#registration">FREE TRIAL</a>
-                                                <a class="btn-outline-lg page-scroll" href="#features">DISCOVER</a>
+                                                <a class="btn-solid-lg page-scroll" href="#registration">Detail</a>
+                                                <!-- <a class="btn-outline-lg page-scroll" href="#features">DISCOVER</a> -->
                                             </div> <!-- end of text-container -->
                                         </div> <!-- end of col -->
                                     </div> <!-- end of row -->
@@ -61,8 +61,8 @@
                                             <div class="text-container">
                                                 <h1 class="h1-large">Prototype And Create Designs</h1>
                                                 <p class="p-large">With Revo it's a breeze to turn your designs intro code. Use the visual builder and export as HTML</p>
-                                                <a class="btn-solid-lg page-scroll" href="#registration">FREE TRIAL</a>
-                                                <a class="btn-outline-lg page-scroll" href="#features">DISCOVER</a>
+                                                <a class="btn-solid-lg page-scroll" href="#registration">Detail</a>
+                                                <!-- <a class="btn-outline-lg page-scroll" href="#features">DISCOVER</a> -->
                                             </div> <!-- end of text-container -->
                                         </div> <!-- end of col -->
                                     </div> <!-- end of row -->
@@ -85,12 +85,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="partner-container">
-                        <p class="p-small">Featured in</p>
-                        <img class="img-fluid" src="{{ asset('themes-frontend/images/partner-logo-1.png') }}" alt="alternative">
-                        <img class="img-fluid" src="{{ asset('themes-frontend/images/partner-logo-2.png') }}" alt="alternative">
-                        <img class="img-fluid" src="{{ asset('themes-frontend/images/partner-logo-3.png') }}" alt="alternative">
-                        <img class="img-fluid" src="{{ asset('themes-frontend/images/partner-logo-4.png') }}" alt="alternative">
-                        <img class="img-fluid" src="{{ asset('themes-frontend/images/partner-logo-5.png') }}" alt="alternative">
+                        <p class="p-small">Kolaborasi dengan</p>
+                        <img class="img-fluid" src="{{ asset('themes-frontend/images/dki.png') }}" alt="alternative" style="width: 60px; height: 60px;">
+                        <img class="img-fluid" src="{{ asset('themes-frontend/images/b-logo-dispusip.png') }}" alt="alternative" style="width: 60px; height: 60px;">
+                        <img class="img-fluid" src="{{ asset('themes-frontend/images/c-logo-jdih.png') }}" alt="alternative" style="width: 60px; height: 60px;">
+                        <img class="img-fluid" src="{{ asset('themes-frontend/images/d-logo-anri.png') }}" alt="alternative" style="width: 60px; height: 60px;">
+                        <img class="img-fluid" src="{{ asset('themes-frontend/images/e-logo-ptsp.png') }}" alt="alternative" style="width: 60px; height: 60px;">
                     </div> <!-- end of partner-container -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->

@@ -1,3 +1,101 @@
+<!-- Tentang Kami -->
+<div class="tabs" id="tentangkami">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-xl-5">
+                    <div class="tabs-container">
+            
+                        <!-- Tabs Links -->
+                        <ul class="nav nav-tabs" id="revoTabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="nav-tab-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">TENTANG KAMI</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="nav-tab-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">VISI dan MISI</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="nav-tab-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">AD / ART</a>
+                            </li>
+                        </ul>
+                        <!-- end of tabs links -->
+                        
+                        <!-- Tabs Content -->
+                        <div class="tab-content" id="revoTabsContent">
+        
+                            <!-- Tab -->
+                            <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab-1">
+                                <h4>Prototype Easier With Revo</h4>
+                                <p>It's now easier than ever to get your ideas into completed designs with Revo desktop app. Our <a class="turquoise page-scroll" href="#features">features</a> section shows how we are able to achieve all this.</p>
+                                <ul class="list-unstyled li-space-lg">
+                                    <li class="media">
+                                        <i class="fas fa-square"></i>
+                                        <div class="media-body"><strong>Experienced teams</strong> of top designers and developers</div>
+                                    </li>
+                                    <li class="media">
+                                        <i class="fas fa-square"></i>
+                                        <div class="media-body"><strong>Enthusiastic passion</strong> for all things web design related</div>
+                                    </li>
+                                    <li class="media">
+                                        <i class="fas fa-square"></i>
+                                        <div class="media-body"><strong>Focus on simplicity</strong> when it comes to the user interface</div>
+                                    </li>
+                                </ul>
+                            </div> <!-- end of tab-pane --> 
+                            <!-- end of tab -->
+        
+                            <!-- Tab -->
+                            <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab-2">
+                                <ul class="list-unstyled li-space-lg">
+                                    <li class="media">
+                                        <div class="media-bullet">1.</div>
+                                        <div class="media-body"><strong>Speed</strong> is important for our users so we invest a lot of time and resources to make everything work faster</div>
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-bullet">2.</div>
+                                        <div class="media-body"><strong>Reliability</strong> is what we're focused on achieving besides speed because we want our app to work all the time</div>
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-bullet">3.</div>
+                                        <div class="media-body"><strong>Standards</strong> are another factor that we take into consideration when developing our tools</div>
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-bullet">4.</div>
+                                        <div class="media-body"><strong>Performance</strong> is a key factor for our desktop apps</div>
+                                    </li>
+                                </ul>
+                            </div> <!-- end of tab-pane -->
+                            <!-- end of tab -->
+        
+                            <!-- Tab -->
+                            <div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="tab-3">
+                                <p><strong>Our goal is to empower</strong> web designers and developers reach their full potential and help them get their designs from layouts to code in the shortest amount of time.</p>
+                                <p><strong>Design and layouts</strong> are the main focus of our apps but we also work on export-to-code functionalities.</p>
+                                <ul class="list-unstyled li-space-lg">
+                                    <li class="media">
+                                        <i class="fas fa-square"></i>
+                                        <div class="media-body">It's a fun and captivating endeavour that we love</div>
+                                    </li>
+                                    <li class="media">
+                                        <i class="fas fa-square"></i>
+                                        <div class="media-body">We're passionate about our work and it shows</div>
+                                    </li>
+                                </ul>
+                            </div> <!-- end of tab-pane -->
+                            <!-- end of tab -->
+        
+                        </div> <!-- end of tab-content -->
+                        <!-- end of tabs content -->
+        
+                    </div> <!-- end of tabs-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-6 col-xl-7">
+                    <div class="image-container">
+                        <img class="img-fluid" src="{{ asset('themes-frontend/images/logo-aai.png') }}" alt="alternative">
+                    </div> <!-- end of image-container -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> 
 <!-- Registration -->
 <div id="registration" class="form-1 bg-dark-blue">
         <div class="container">
@@ -276,7 +374,8 @@
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
         </div> <!-- end of container -->
-    </div> <!-- end of tabs -->
+    </div> 
+    <!-- end of tabs -->
     <!-- end of details 2 -->
 
 
@@ -307,9 +406,60 @@
     </div> <!-- end of basic-2 -->
     <!-- end of video -->
 
+<!-- Kontak -->
+<div id="kontak" class="form-1 bg-dark-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="text-container">
+                        <h2>Register For The Free Trial</h2>
+                        <p>You are just a few clicks away from using the first desktop app dedicated to web designers and developers. Fill out the form to get the 30-day trial and you will receive the download link</p>
+                        <ul class="list-unstyled li-space-lg">
+                            <li class="media">
+                                <i class="fas fa-square"></i><div class="media-body"><strong>Prototype easier</strong> using intuitive features and design tools</div>
+                            </li>
+                            <li class="media">
+                                <i class="fas fa-square"></i><div class="media-body"><strong>Design layouts</strong> with faster with efficient components</div>
+                            </li>
+                            <li class="media">
+                                <i class="fas fa-square"></i><div class="media-body"><strong>Export to code</strong> and effortlessly upload your projects online</div>
+                            </li>
+                        </ul>
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-6">
+
+                    <!-- Registration Form -->
+                    <form id="registrationForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="rname" required>
+                            <label class="label-control" for="rname">Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="roccupation" required>
+                            <label class="label-control" for="roccupation">Occupation</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control-input" id="remail" required>
+                            <label class="label-control" for="remail">Email</label>
+                        </div>
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="rterms" value="Agreed-to-Terms" required>I agree with the website's <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms & Conditions</a>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="form-control-submit-button">SIGN UP</button>
+                        </div>
+                    </form>
+                    <!-- end of registration form -->
+
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of form-1 -->
+    <!-- end of registration -->
 
     <!-- Testimonials -->
-    <div class="slider-1">
+    <div class="slider-1" id="testimonials">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

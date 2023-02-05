@@ -15,16 +15,47 @@
             <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#header">HOME <span class="sr-only">(current)</span></a>
+                        <a class="nav-link page-scroll" href="#header">BERANDA <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#registration">TRIAL</a>
+                        <a class="nav-link page-scroll" href="#tentangkami">TENTANG KAMI</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUK HUKUM</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item page-scroll" href="#">UNDANG-UNDANG</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item page-scroll" href="#">PERATURAN PEMERINTAH</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item page-scroll" href="#">PERATURAN MENTERI</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item page-scroll" href="#">PERATURAN DAERAH</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item page-scroll" href="#">PERATURAN ANRI</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item page-scroll" href="#">PERATURAN KEPUTUSAN GUBERNUR JAKARTA</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">KABAR BERITA</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item page-scroll" href="#">SEMINAR</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item page-scroll" href="#">PERTEMUAN</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item page-scroll" href="#">PENGUMUMAN</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item page-scroll" href="#">TENTANG ARSIP</a>
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#features">FEATURES</a>
+                        <a class="nav-link page-scroll" href="#testimonials">CORETAN</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#details">DETAILS</a>
+                        <a class="nav-link page-scroll" href="#registration">KONSUL</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#kontak">KONTAK KAMI</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LOGIN</a>
