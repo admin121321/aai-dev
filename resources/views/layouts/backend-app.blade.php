@@ -2,12 +2,12 @@
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-       @extends('layouts.beranda-sidebar-menu')
+       @extends('layouts.backend-sidebar-menu')
         <!-- Content Start -->
         <div class="content">
-        @include('layouts.beranda-navigation')
+        @include('layouts.backend-navigation')
         @include('berandas.index')
-        @include('layouts.beranda-footer')
+        @include('layouts.backend-footer')
         </div>
         <!-- Content End -->
 

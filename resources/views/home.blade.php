@@ -1,4 +1,4 @@
-@extends('layouts.beranda-app')
+@extends('layouts.backend-app')
 
 @section('content')
 <!DOCTYPE html>
