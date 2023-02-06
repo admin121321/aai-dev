@@ -8,19 +8,21 @@
                         <div class="slider-container">
                             <div class="swiper-container text-slider">
                                 <div class="swiper-wrapper">
-                                    
+                                @foreach(App\Models\Posting::all() as $posting) 
                                     <!-- Slide -->
                                     <div class="swiper-slide">
                                         <div class="row">
                                             <div class="col-lg-6 col-xl-7">
                                                 <div class="image-container">
-                                                    <img class="img-fluid" src="{{ asset('themes-frontend/images/pembekalan-a.jpg') }}" alt="alternative" style="width: 609px; height: 406px;">
+                                                    <img class="img-fluid" src="{{ url('/images/'.$posting->gambar) }}" alt="alternative" style="width: 609px; height: 406px;">
                                                 </div> <!-- end of image-container -->
                                             </div> <!-- end of col -->
                                             <div class="col-lg-6 col-xl-5">
                                                 <div class="text-container">
-                                                    <h1 class="h1-small">Desktop App Landing Page</h1>
-                                                    <p class="p-large">The first desktop app for web designers. Create beautiful websites with minimum HTML/CSS</p>
+                                                    <h1 class="h1-small">
+                                                        <?php echo strip_tags("$posting->judul");?></h1>
+                                                    <p class="p-large"> 
+                                                        <?php echo strip_tags("$posting->deskripsi");?></p>
                                                     <a class="btn-solid-lg page-scroll" href="#registration">Detail</a>
                                                     <!-- <a class="btn-outline-lg page-scroll" href="#features">DISCOVER</a> -->
                                                 </div> <!-- end of text-container -->
@@ -28,46 +30,9 @@
                                         </div> <!-- end of row -->
                                     </div> <!-- end of swiper-slide -->
                                     <!-- end of slide -->
-
+                                    @endforeach
                                     <!-- Slide -->
-                                    <div class="swiper-slide">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-xl-7">
-                                                <div class="image-container">
-                                                    <img class="img-fluid" src="{{ asset('themes-frontend/images/pembekalan-b.jpg') }}" alt="alternative" style="width: 609px; height: 406px;">
-                                                </div> <!-- end of image-container -->
-                                            </div> <!-- end of col -->
-                                            <div class="col-lg-6 col-xl-5">
-                                                <div class="text-container">
-                                                    <h1 class="h1-small">Web Design Desktop App</h1>
-                                                    <p class="p-large">Sketch your layout, mockup the prototye and create the actual design using Revo web design app</p>
-                                                    <a class="btn-solid-lg page-scroll" href="#registration">Detail</a>
-                                                    <!-- <a class="btn-outline-lg page-scroll" href="#features">DISCOVER</a> -->
-                                                </div> <!-- end of text-container -->
-                                            </div> <!-- end of col -->
-                                        </div> <!-- end of row -->
-                                    </div> <!-- end of swiper-slide -->
-                                    <!-- end of slide -->
-
-                                    <!-- Slide -->
-                                    <div class="swiper-slide">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-xl-7">
-                                                <div class="image-container">
-                                                    <img class="img-fluid" src="{{ asset('themes-frontend/images/pembekalan-c.jpg') }}" alt="alternative" style="width: 609px; height: 406px;">
-                                                </div> <!-- end of image-container -->
-                                            </div> <!-- end of col -->
-                                            <div class="col-lg-6 col-xl-5">
-                                                <div class="text-container">
-                                                    <h1 class="h1-small">Prototype And Create Designs</h1>
-                                                    <p class="p-large">With Revo it's a breeze to turn your designs intro code. Use the visual builder and export as HTML</p>
-                                                    <a class="btn-solid-lg page-scroll" href="#registration">Detail</a>
-                                                    <!-- <a class="btn-outline-lg page-scroll" href="#features">DISCOVER</a> -->
-                                                </div> <!-- end of text-container -->
-                                            </div> <!-- end of col -->
-                                        </div> <!-- end of row -->
-                                    </div> <!-- end of swiper-slide -->
-                                    <!-- end of slide -->
+                                  
 
                                 </div> <!-- end of swiper-wrapper -->
                                 

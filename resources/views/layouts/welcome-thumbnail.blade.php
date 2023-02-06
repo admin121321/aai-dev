@@ -3,44 +3,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-
                     <!-- Card Slider -->
                     <div class="slider-container">
                         <div class="swiper-container card-slider">
                             <div class="swiper-wrapper">
-                                
+                            @foreach(App\Models\Posting::all() as $posting)
                                 <!-- Slide -->
-                                <div class="swiper-slide" style="width: 100px; height: 100px;">
-                                    <div class="card">
-                                        <img class="card-image" src="{{ asset('themes-frontend/images/pembekalan-a.jpg') }}" alt="alternative">
+                                <div class="swiper-slide">
+                                    <div class="cards-1">
+                                        <img class="card-image" src="{{ url('/images/'.$posting->gambar) }}" alt="alternative">
                                         <div class="card-body">
-                                            <p>I just finished my trial period and was</p>
+                                            <p><?php echo strip_tags("$posting->deskripsi");?></p>
                                         </div>
                                     </div>
                                 </div> <!-- end of swiper-slide -->
                                 <!-- end of slide -->
-        
-                                <!-- Slide -->
-                                <div class="swiper-slide">
-                                    <div class="card">
-                                        <img class="card-image" src="{{ asset('themes-frontend/images/pembekalan-a.jpg') }}" alt="alternative">
-                                        <div class="card-body">
-                                            <p>I don't know how I managed to get work done</p>
-                                        </div>
-                                    </div>        
-                                </div> <!-- end of swiper-slide -->
-                                <!-- end of slide -->
-        
-                                <!-- Slide -->
-                                <div class="swiper-slide">
-                                    <div class="card">
-                                        <img class="card-image" src="{{ asset('themes-frontend/images/pembekalan-a.jpg') }}" alt="alternative">
-                                        <div class="card-body">
-                                            <p>This app has the potential of becoming</p>
-                                        </div>
-                                    </div>        
-                                </div> <!-- end of swiper-slide -->
-                                <!-- end of slide -->
+                            @endforeach
                             </div> <!-- end of swiper-wrapper -->
         
                             <!-- Add Arrows -->
