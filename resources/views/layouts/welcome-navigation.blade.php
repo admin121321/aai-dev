@@ -20,7 +20,7 @@
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="#tentangkami">TENTANG KAMI</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUK HUKUM</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
                             <a class="dropdown-item page-scroll" href="#">UNDANG-UNDANG</a>
@@ -35,17 +35,15 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item page-scroll" href="#">PERATURAN KEPUTUSAN GUBERNUR JAKARTA</a>
                         </div>
-                    </li>
+                    </li> -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">KABAR BERITA</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <a class="dropdown-item page-scroll" href="#">SEMINAR</a>
+                            <a class="dropdown-item page-scroll" href="#">Divisi A</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item page-scroll" href="#">PERTEMUAN</a>
+                            <a class="dropdown-item page-scroll" href="#">Divisi B</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item page-scroll" href="#">PENGUMUMAN</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item page-scroll" href="#">TENTANG ARSIP</a>
+                            <a class="dropdown-item page-scroll" href="#">Divisi C</a>
                         </div>
                     </li>
                     <li class="nav-item">

@@ -24,6 +24,7 @@
         <!-- Content Start -->
         <div class="content">
         @include('layouts.welcome-navigation')
+        @include('layouts.welcome-thumbnail')
         @include('layouts.welcome-slider')
         @include('layouts.welcome-table-view')
         @include('layouts.welcome-footer')

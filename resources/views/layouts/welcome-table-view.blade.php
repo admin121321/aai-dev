@@ -24,20 +24,20 @@
         
                             <!-- Tab -->
                             <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab-1">
-                                <h4>Prototype Easier With Revo</h4>
-                                <p>It's now easier than ever to get your ideas into completed designs with Revo desktop app. Our <a class="turquoise page-scroll" href="#features">features</a> section shows how we are able to achieve all this.</p>
+                                <h4>Sekilas Tentang Kami</h4>
+                                <p>AAI (Asosiasi Arsiparis Indonesia) adalah Forum untuk ajang kumpul para Arsiparis seluruh Indonesia untuk berbagi informasi terkait</p>
                                 <ul class="list-unstyled li-space-lg">
                                     <li class="media">
                                         <i class="fas fa-square"></i>
-                                        <div class="media-body"><strong>Experienced teams</strong> of top designers and developers</div>
+                                        <div class="media-body"><strong>KEARSIPAN</strong> Pendataan arsip</div>
                                     </li>
                                     <li class="media">
                                         <i class="fas fa-square"></i>
-                                        <div class="media-body"><strong>Enthusiastic passion</strong> for all things web design related</div>
+                                        <div class="media-body"><strong>MANAGEMENT ARSIP</strong> Pengelolaan tentang Arsip</div>
                                     </li>
                                     <li class="media">
                                         <i class="fas fa-square"></i>
-                                        <div class="media-body"><strong>Focus on simplicity</strong> when it comes to the user interface</div>
+                                        <div class="media-body"><strong>ARSIP TANGGUH</strong> Menjadi Arsip Aris Yang Berkompeten</div>
                                     </li>
                                 </ul>
                             </div> <!-- end of tab-pane --> 
@@ -47,20 +47,17 @@
                             <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab-2">
                                 <ul class="list-unstyled li-space-lg">
                                     <li class="media">
-                                        <div class="media-bullet">1.</div>
-                                        <div class="media-body"><strong>Speed</strong> is important for our users so we invest a lot of time and resources to make everything work faster</div>
+                                        <div class="media-bullet">VISI</div>
+                                        <div class="media-body"><p>Menjadikan Arsip Sebagai Simpul Pemersatu Bangsa Dalam Kerangka Negara Kesatuan Republik Indonesia Yang akan Dicapai Pada Tahun 2025</p></div>
                                     </li>
                                     <li class="media">
-                                        <div class="media-bullet">2.</div>
-                                        <div class="media-body"><strong>Reliability</strong> is what we're focused on achieving besides speed because we want our app to work all the time</div>
-                                    </li>
-                                    <li class="media">
-                                        <div class="media-bullet">3.</div>
-                                        <div class="media-body"><strong>Standards</strong> are another factor that we take into consideration when developing our tools</div>
-                                    </li>
-                                    <li class="media">
-                                        <div class="media-bullet">4.</div>
-                                        <div class="media-body"><strong>Performance</strong> is a key factor for our desktop apps</div>
+                                        <div class="media-bullet">MISI</div>
+                                        <div class="media-body"><p>Memberdayakan arsip sebagai tulang punggung manajemen pemerintahan dan pembangunan.
+                                                Memberdayakan arsip sebagai bukti akuntabilitas kinerja organisasi.
+                                                Memberdayaan arsip sebagai alat bukti yang sah
+                                                Melestarikan arsip sebagai memori kolektif dan jati diri bangsa dalam kerangka Negara Kesatuan Republik Indonesia
+                                                Memberikan akses arsip kepada publik untuk kepentingan pemerintahan, pembangunan, penelitian, dan ilmu pengetahuan untuk kesejahteraan rakyat sesuai perauran perundang-undangan dan kaidah-kaidah kearsipan demi kemaslahatan bangsa.</p>
+                                        </div>
                                     </li>
                                 </ul>
                             </div> <!-- end of tab-pane -->
@@ -412,17 +409,14 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="text-container">
-                        <h2>Register For The Free Trial</h2>
-                        <p>You are just a few clicks away from using the first desktop app dedicated to web designers and developers. Fill out the form to get the 30-day trial and you will receive the download link</p>
+                        <h2>Kontak Kami</h2>
+                        <p>Silahkan Hubungi kami untuk informasi lebih lanjut didalam Forum AAI ( Asosiasi Arsiparis Indonesia ) DKI Jakarta</p>
                         <ul class="list-unstyled li-space-lg">
                             <li class="media">
-                                <i class="fas fa-square"></i><div class="media-body"><strong>Prototype easier</strong> using intuitive features and design tools</div>
+                                <i class="fas fa-square"></i><div class="media-body"><strong>Email : </strong> admin@aaijakarta.or.id / aai.dkijakarta@gmail.com</div>
                             </li>
                             <li class="media">
-                                <i class="fas fa-square"></i><div class="media-body"><strong>Design layouts</strong> with faster with efficient components</div>
-                            </li>
-                            <li class="media">
-                                <i class="fas fa-square"></i><div class="media-body"><strong>Export to code</strong> and effortlessly upload your projects online</div>
+                                <i class="fas fa-square"></i><div class="media-body"><strong>Phone : </strong> with faster with efficient components</div>
                             </li>
                         </ul>
                     </div> <!-- end of text-container -->
