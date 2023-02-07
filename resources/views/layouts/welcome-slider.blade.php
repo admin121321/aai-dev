@@ -8,9 +8,9 @@
                         <div class="slider-container">
                             <div class="swiper-container text-slider">
                                 <div class="swiper-wrapper">
-                                @foreach(App\Models\Posting::all() as $posting) 
+                                @foreach(App\Models\Posting::latest()->paginate(1) as $posting) 
                                     <!-- Slide -->
-                                    <div class="swiper-slide">
+                                    <div class="">
                                         <div class="row">
                                             <div class="col-lg-6 col-xl-7">
                                                 <div class="image-container">
@@ -37,8 +37,8 @@
                                 </div> <!-- end of swiper-wrapper -->
                                 
                                 <!-- Add Arrows -->
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
+                                <!-- <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div> -->
                                 <!-- end of add arrows -->
                             </div> <!-- end of swiper-container -->
                         </div> <!-- end of slider-container -->
