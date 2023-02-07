@@ -4,15 +4,15 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer-col first">
-                        <h6>About Revo</h6>
-                        <p class="p-small">Revo is a desktop app website Bootstrap HTML template created for desktop applications, to present their features and control panel options</p>
+                        <h6>Tentang AAI Jakarta</h6>
+                        <p class="p-small">Forum Terpadu Untuk Arsiparis Wilayah DKI Jakarta</p>
                     </div> <!-- end of footer-col -->
                     <div class="footer-col second">
-                        <h6>Links</h6>
+                        <h6>Kontak</h6>
                         <ul class="list-unstyled li-space-lg p-small">
-                            <li>Important: <a href="terms.html">Terms & Conditions</a>, <a href="privacy.html">Privacy Policy</a></li>
-                            <li>Useful: <a href="#">Colorpicker</a>, <a href="#">Icon Library</a>, <a href="#">Illustrations</a></li>
-                            <li>Menu: <a class="page-scroll" href="#header">Home</a>, <a class="page-scroll" href="#registration">Trial</a>, <a class="page-scroll" href="#features">Features</a>, <a class="page-scroll" href="#details">Details</a></li>
+                            <li>Email 1 : admin@aaijakarta.or.id </li>
+                            <li>Email 2 : aai.dkijakarta@gmail.com</li>
+                            <li>Phone   : </li>
                         </ul>
                     </div> <!-- end of footer-col -->
                     <div class="footer-col third">

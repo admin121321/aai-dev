@@ -93,106 +93,6 @@
             </div> <!-- end of row -->
         </div> <!-- end of container -->
     </div> 
-<!-- Registration -->
-<div id="registration" class="form-1 bg-dark-blue">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="text-container">
-                        <h2>Register For The Free Trial</h2>
-                        <p>You are just a few clicks away from using the first desktop app dedicated to web designers and developers. Fill out the form to get the 30-day trial and you will receive the download link</p>
-                        <ul class="list-unstyled li-space-lg">
-                            <li class="media">
-                                <i class="fas fa-square"></i><div class="media-body"><strong>Prototype easier</strong> using intuitive features and design tools</div>
-                            </li>
-                            <li class="media">
-                                <i class="fas fa-square"></i><div class="media-body"><strong>Design layouts</strong> with faster with efficient components</div>
-                            </li>
-                            <li class="media">
-                                <i class="fas fa-square"></i><div class="media-body"><strong>Export to code</strong> and effortlessly upload your projects online</div>
-                            </li>
-                        </ul>
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-                <div class="col-lg-6">
-
-                    <!-- Registration Form -->
-                    <form id="registrationForm">
-                        <div class="form-group">
-                            <input type="text" class="form-control-input" id="rname" required>
-                            <label class="label-control" for="rname">Name</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control-input" id="roccupation" required>
-                            <label class="label-control" for="roccupation">Occupation</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control-input" id="remail" required>
-                            <label class="label-control" for="remail">Email</label>
-                        </div>
-                        <div class="form-group checkbox">
-                            <input type="checkbox" id="rterms" value="Agreed-to-Terms" required>I agree with the website's <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms & Conditions</a>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="form-control-submit-button">SIGN UP</button>
-                        </div>
-                    </form>
-                    <!-- end of registration form -->
-
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of form-1 -->
-    <!-- end of registration -->
-
-<!-- Kontak -->
-<div id="kontak" class="form-1 bg-dark-blue">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="text-container">
-                        <h2>Kontak Kami</h2>
-                        <p>Silahkan Hubungi kami untuk informasi lebih lanjut didalam Forum AAI ( Asosiasi Arsiparis Indonesia ) DKI Jakarta</p>
-                        <ul class="list-unstyled li-space-lg">
-                            <li class="media">
-                                <i class="fas fa-square"></i><div class="media-body"><strong>Email : </strong> admin@aaijakarta.or.id / aai.dkijakarta@gmail.com</div>
-                            </li>
-                            <li class="media">
-                                <i class="fas fa-square"></i><div class="media-body"><strong>Phone : </strong> with faster with efficient components</div>
-                            </li>
-                        </ul>
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-                <div class="col-lg-6">
-
-                    <!-- Registration Form -->
-                    <form id="registrationForm">
-                        <div class="form-group">
-                            <input type="text" class="form-control-input" id="rname" required>
-                            <label class="label-control" for="rname">Name</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control-input" id="roccupation" required>
-                            <label class="label-control" for="roccupation">Occupation</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control-input" id="remail" required>
-                            <label class="label-control" for="remail">Email</label>
-                        </div>
-                        <div class="form-group checkbox">
-                            <input type="checkbox" id="rterms" value="Agreed-to-Terms" required>I agree with the website's <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms & Conditions</a>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="form-control-submit-button">SIGN UP</button>
-                        </div>
-                    </form>
-                    <!-- end of registration form -->
-
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of form-1 -->
-    <!-- end of registration -->
 
     <!-- Testimonials -->
     <div class="slider-1" id="testimonials">
@@ -204,81 +104,21 @@
                     <div class="slider-container">
                         <div class="swiper-container card-slider">
                             <div class="swiper-wrapper">
-                                
+                            @foreach(App\Models\Posting::all() as $posting)
                                 <!-- Slide -->
                                 <div class="swiper-slide">
-                                    <div class="card">
-                                        <img class="card-image" src="{{ asset('themes-frontend/images/testimonial-1.jpg') }}" alt="alternative">
+                                    <div class="cards-1">
+                                        <img class="card-image" src="{{ url('/images/'.$posting->gambar) }}" alt="alternative">
                                         <div class="card-body">
-                                            <p class="testimonial-text">I just finished my trial period and was so amazed with the support and results that I quickly purchased the app</p>
-                                            <p class="testimonial-author">Jude Thorn - Designer</p>
+                                            <span><?php echo substr("$posting->deskripsi", 0, 70);?></span>
                                         </div>
                                     </div>
-                                </div> <!-- end of swiper-slide -->
+                                </div> 
+                                <!-- end of swiper-slide -->
                                 <!-- end of slide -->
-        
-                                <!-- Slide -->
-                                <div class="swiper-slide">
-                                    <div class="card">
-                                        <img class="card-image" src="{{ asset('themes-frontend/images/testimonial-2.jpg') }}" alt="alternative">
-                                        <div class="card-body">
-                                            <p class="testimonial-text">I don't know how I managed to get work done without Revo. The speed of this application is amazing!</p>
-                                            <p class="testimonial-author">Roy Smith - Developer</p>
-                                        </div>
-                                    </div>        
-                                </div> <!-- end of swiper-slide -->
-                                <!-- end of slide -->
-        
-                                <!-- Slide -->
-                                <div class="swiper-slide">
-                                    <div class="card">
-                                        <img class="card-image" src="{{ asset('themes-frontend/images/testimonial-3.jpg') }}" alt="alternative">
-                                        <div class="card-body">
-                                            <p class="testimonial-text">This app has the potential of becoming a mandatory tool in every developer's day to day regular operations</p>
-                                            <p class="testimonial-author">Marsha Singer - Marketer</p>
-                                        </div>
-                                    </div>        
-                                </div> <!-- end of swiper-slide -->
-                                <!-- end of slide -->
-        
-                                <!-- Slide -->
-                                <div class="swiper-slide">
-                                    <div class="card">
-                                        <img class="card-image" src="{{ asset('themes-frontend/images/testimonial-4.jpg') }}" alt="alternative">
-                                        <div class="card-body">
-                                            <p class="testimonial-text">Searching for a great prototyping and layout design app was difficult but thankfully I found Revo suite</p>
-                                            <p class="testimonial-author">Tim Shaw - Designer</p>
-                                        </div>
-                                    </div>
-                                </div> <!-- end of swiper-slide -->
-                                <!-- end of slide -->
-        
-                                <!-- Slide -->
-                                <div class="swiper-slide">
-                                    <div class="card">
-                                        <img class="card-image" src="{{ asset('themes-frontend/images/testimonial-5.jpg') }}" alt="alternative">
-                                        <div class="card-body">
-                                            <p class="testimonial-text">Revo's support team is amazing. They've helped me with some issues and I am so grateful to the entire team</p>
-                                            <p class="testimonial-author">Lindsay Spice - Designer</p>
-                                        </div>
-                                    </div>        
-                                </div> <!-- end of swiper-slide -->
-                                <!-- end of slide -->
-        
-                                <!-- Slide -->
-                                <div class="swiper-slide">
-                                    <div class="card">
-                                        <img class="card-image" src="images/testimonial-6.jpg') }}" alt="alternative">
-                                        <div class="card-body">
-                                            <p class="testimonial-text">Who would have thought that Revo can provide such amazing results in just a few weeks of normal basic use</p>
-                                            <p class="testimonial-author">Ann Black - Developer</p>
-                                        </div>
-                                    </div>        
-                                </div> <!-- end of swiper-slide -->
-                                <!-- end of slide -->
+                            @endforeach
                             
                             </div> <!-- end of swiper-wrapper -->
-        
                             <!-- Add Arrows -->
                             <div class="swiper-button-next"></div>
                             <div class="swiper-button-prev"></div>
@@ -293,3 +133,83 @@
         </div> <!-- end of container -->
     </div> <!-- end of slider-1 -->
     <!-- end of testimonials -->
+
+     <!-- Details 1 -->
+     <div id="konsul" class="basic-1 bg-dark-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-xl-7">
+                    <div class="image-container">
+                        <img class="img-fluid" src="{{ asset('themes-frontend/images/konsul.png') }}" alt="alternative">
+                    </div> <!-- end of image-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-6 col-xl-5">
+                    <div class="text-container">
+                        <h2>KONSUL</h2>
+                        <p>Menu ini adalah fasilitas untuk anggota dapat berkonsultasi terkait arsiparis</p>
+                        <ul class="list-unstyled li-space-lg">
+                            <li class="media">
+                                <i class="fas fa-square"></i>
+                                <div class="media-body"><strong>Klik Login</strong> sesuai akun anda</div>
+                            </li>
+                            <li class="media">
+                                <i class="fas fa-square"></i>
+                                <div class="media-body"><strong>Kirim Pesan</strong> anda akan dijawab langsung oleh admin</div>
+                            </li>
+                        </ul>
+                        <a class="btn-solid-reg popup-with-move-anim" href="#">Klik</a>
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of details 1 -->
+
+    <!-- Kontak -->
+    <div id="kontak" class="form-1 bg-dark-blue">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="text-container">
+                            <h2>Kontak Kami</h2>
+                            <p>Silahkan Hubungi kami untuk informasi lebih lanjut didalam Forum AAI ( Asosiasi Arsiparis Indonesia ) DKI Jakarta</p>
+                            <ul class="list-unstyled li-space-lg">
+                                <li class="media">
+                                    <i class="fas fa-square"></i><div class="media-body"><strong>Email : </strong> admin@aaijakarta.or.id / aai.dkijakarta@gmail.com</div>
+                                </li>
+                                <li class="media">
+                                    <i class="fas fa-square"></i><div class="media-body"><strong>Phone : </strong> with faster with efficient components</div>
+                                </li>
+                            </ul>
+                        </div> <!-- end of text-container -->
+                    </div> <!-- end of col -->
+                    <div class="col-lg-6">
+
+                        <!-- Registration Form -->
+                        <form id="registrationForm">
+                            <div class="form-group">
+                                <input type="text" class="form-control-input" id="rname" required>
+                                <label class="label-control" for="rname">Name</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control-input" id="roccupation" required>
+                                <label class="label-control" for="roccupation">Occupation</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control-input" id="remail" required>
+                                <label class="label-control" for="remail">Email</label>
+                            </div>
+                            <div class="form-group checkbox">
+                                <input type="checkbox" id="rterms" value="Agreed-to-Terms" required>I agree with the website's <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms & Conditions</a>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control-submit-button">SIGN UP</button>
+                            </div>
+                        </form>
+                        <!-- end of registration form -->
+
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of form-1 -->
+        <!-- end of registration -->

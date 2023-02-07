@@ -1,13 +1,14 @@
  <!-- Navigation -->
  <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
-        <div class="container bg-dark-blue">
+        <!-- <div class="container bg-dark-blue"> -->
+        <div class="container">
             
             <!-- Text Logo - Use this if you don't have a graphic logo -->
             <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Revo</a> -->
 
             <!-- Image Logo -->
-            <a class="navbar-brand logo-image" href="#"><img src="{{ asset('themes-frontend/images/logo-aai.png') }}" alt="alternative" style="width: 30px; height: 30px;"></a> 
-            <b>{{ config('app.subname', 'AAI Jakarta') }}</b>
+            <a class="navbar-brand logo-image" href="#"><img src="{{ asset('themes-frontend/images/logo-aainew.png') }}" alt="alternative" style="width: 204px; height: 53px;"></a> 
+            <!-- <b>{{ config('app.subname', 'AAI Jakarta') }}</b> -->
             <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -50,7 +51,7 @@
                         <a class="nav-link page-scroll" href="#testimonials">CORETAN</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#registration">KONSUL</a>
+                        <a class="nav-link page-scroll" href="#konsul">KONSUL</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="#kontak">KONTAK KAMI</a>

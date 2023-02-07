@@ -13,10 +13,11 @@
                                     <div class="cards-1">
                                         <img class="card-image" src="{{ url('/images/'.$posting->gambar) }}" alt="alternative">
                                         <div class="card-body">
-                                            <p><?php echo strip_tags("$posting->deskripsi");?></p>
+                                            <span class="span-small"><?php echo substr("$posting->deskripsi", 0, 70);?></span>
                                         </div>
                                     </div>
-                                </div> <!-- end of swiper-slide -->
+                                </div> 
+                                <!-- end of swiper-slide -->
                                 <!-- end of slide -->
                             @endforeach
                             </div> <!-- end of swiper-wrapper -->
