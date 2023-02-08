@@ -11,7 +11,7 @@
             <li class="dropdown active">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                 <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{ url('/') }}">General Dashboard</a></li>
+                <li><a class="nav-link" href="{{ url('/home') }}">General Dashboard</a></li>
                 </ul>
             </li>
             @if (Auth::user()->level=="SUPERADMIN")
@@ -38,6 +38,13 @@
                 <li><a href="{{ url('/halaman') }}" class="nav-link" href="layout-default.html">Halaman</a></li>
                 </ul>
             </li>
+            <li class="menu-header">Konsul</li>
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
+                <ul class="dropdown-menu">
+                <li><a href="#" class="nav-link" >List Konsul</a></li>
+                </ul>
+            </li>
             @endif
             @if (Auth::User()->level=="USERS")
             <li class="menu-header">Posting</li>
@@ -52,7 +59,7 @@
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
                 <ul class="dropdown-menu">
-                <li><a href="{{ url('/posting') }}" class="nav-link" >Buat Konsul</a></li>
+                <li><a href="{{ url('#') }}" class="nav-link" >Buat Konsul</a></li>
                 </ul>
             </li>
             @endif

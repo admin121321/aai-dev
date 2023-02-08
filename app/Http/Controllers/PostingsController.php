@@ -99,14 +99,14 @@ class PostingsController extends Controller
         
         $form_data = Posting::find($request->hidden_id);
         $fileName  = public_path('images/').$form_data->gambar;
-        // $currentImage = $posting->gambar;
+        $currentImage = $posting->gambar;
         // $fileName = '';
-        if (File::exists($fileName)) {
+        if ($request->gambar != $currentImage) {
             $file = $request->file('gambar');
             $fileName_new = date('YmdHis') . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('images/'), $fileName_new);
             // Posting::make($file)->resize(250, 205)->save( public_path('images/' . $filename_new ) );
-
+            $postingImage = public_path('images/').$currentImage;
             $form_data = [
                 'id_user'     =>  $request->id_user,
                 'id_kategori' =>  strtoupper($request->id_kategori),
@@ -114,11 +114,17 @@ class PostingsController extends Controller
                 'deskripsi'   =>  $request->deskripsi, 
                 'gambar'      =>  $fileName_new
             ];
-
             File::delete($fileName);
 
+            if(file_exists($postingImage)){
+                
+                // File::delete($fileName);
+                @unlink($postingImage);
+                
+            }
+
         } else {
-            $fileName = $request->gambar;
+            // $fileName = $request->gambar;
             $form_data = [
             'id_user'     =>  $request->id_user,
             'id_kategori' =>  strtoupper($request->id_kategori),

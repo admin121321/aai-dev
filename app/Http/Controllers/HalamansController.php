@@ -92,7 +92,14 @@ class HalamansController extends Controller
  
         Halamans::whereId($request->hidden_id)->update($form_data);
  
-        return response()->json(['success' => 'Data is successfully updated']);
+        return response()->json([
+            'success' => 'Data is successfully updated',
+            
+        ]);
+        return response()
+            ->json(['success' => 'Data is successfully updated',])
+            ->back()->withInput();
+        // return Redirect::back()->with('message','Operation Successful !');
     }
  
     public function destroy($id)
