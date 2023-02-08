@@ -18,11 +18,11 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>ID User</th>
+                                <th>Nama Pembuat</th>
                                 <th>Kategori</th>
                                 <th>Judul</th>
                                 <th>Gambar</th>
-                                <th>Deskripsi</th>
+                                <!-- <th>Deskripsi</th> -->
                                 <th width="180px">Action</th>
                             </tr>
                         </thead>
@@ -143,11 +143,18 @@
             {data: 'id_user', name: 'id_user'},
             {data: 'id_kategori', name: 'id_kategori'},
             {data: 'judul', name: 'judul'},
-            {data: 'gambar', name: 'gambar'},
-            {data: 'deskripsi', name: 'deskripsi'},
+            {data: 'gambar', name: 'gambar', "render": function (data, type, row, meta) {
+                    return '<img src="/images/' + data + '" alt="' + data + '"height="100px" width="100px"/>';
+                } },
+            // {data: 'deskripsi', name: 'deskripsi'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
+    
+    // function getImg(data, type, full, meta) {
+    //    //
+    //    return '<img src="/images/' + gambar + '" width="100" class="img-fluid img-thumbnail" />';
+    // }
  
     $('#create_record').click(function(){
         $('.modal-title').text('Add New Record');

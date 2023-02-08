@@ -57,26 +57,24 @@
                         <a class="nav-link page-scroll" href="#kontak">KONTAK KAMI</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LOGIN</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown01">
                             @guest
                                 @if (Route::has('login'))
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LOGIN</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown01">
                                     <!-- Start Sign -->
                                         <form method="POST" action="{{ route('login') }}">
                                         @csrf
                                             <div class="form-group">
-                                                <input type="email" id="floatingInput" class="form-control-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                                <input type="email" id="floatingInput" class="form-control-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="ID Anda" autofocus>
                                                 @error('email')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
-                                                <label for="floatingInput" class="label-control">Email Anda</label>
                                             </div>
                                             
                                             <div class="form-group">
-                                                <input type="password" class="form-control-input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                                                <label for="floatingPassword" class="label-control">Password Anda</label>
+                                                <input type="password" class="form-control-input @error('password') is-invalid @enderror" placeholder="Password Anda" name="password" required autocomplete="current-password">
                                                 @error('password')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -96,6 +94,7 @@
                                                 </a> -->
                                             @endif
                                         </form>
+                                    </div>
                                 @endif
 
                                 @if (Route::has('register'))
@@ -104,28 +103,26 @@
                                     </li> -->
                                 @endif
                             @else
-                                <div class="navbar-nav w-100">
-                                    <br>
-                                    <div class="ms-3">
-                                        <h6 class="mb-0 center"> {{ Auth::user()->name }}</h6>
-                                        <!-- <span>Admin</span> -->
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                    <div class="form-group">
+                                        <a class="nav-item nav-link" href="{{ route('home') }}">
+                                            <i class="fa fa-laptop me-2"></i>&nbsp;{{ __('Dashboard') }}
+                                        </a>
                                     </div>
-                                    <a class="nav-item nav-link" href="{{ route('home') }}">
-                                    <i class="fa fa-laptop me-2"></i>{{ __('Beranda') }}
-                                    </a>
-                                    <a class="nav-item nav-link" href="{{ route('logout') }}"
+                                    <div class="form-group">
+                                        <a class="nav-item nav-link" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
-                                            <i class="fa fa-sign-out me-2"></i>{{ __('Logout') }}
+                                            <i class="fa fa-sign-out-alt me-2"></i>&nbsp;{{ __('Logout') }}
                                         </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
                                 </div>
                             @endguest
                             <div class="dropdown-divider"></div>
-                        </div>
                     </li>
                 </ul>
                 <span class="nav-item social-icons">
