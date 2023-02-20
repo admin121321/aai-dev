@@ -7,12 +7,10 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-    <link href="{{ asset('themes-frontend/images/logo-aai.png') }}" rel="icon">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
- 
     <!-- Favicon -->
-    <link href="{{ asset('themes/img/favicon.ico') }}" rel="icon">
+    <link href="{{ asset('themes-frontend/images/aai-icon.png') }}" rel="icon">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link href="{{ asset('themes-frontend/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('themes-frontend/css/fontawesome-all.css') }}" rel="stylesheet">

@@ -9,13 +9,10 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-    <link href="{{ asset('themes-frontend/images/logo-aai.png') }}" rel="icon">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
- 
     <!-- Favicon -->
-    <link href="{{ asset('themes/img/favicon.ico') }}" rel="icon">
-
+    <link href="{{ asset('themes-frontend/images/logo-aai.png') }}" rel="icon">
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/fontawesome/css/all.min.css') }}">

@@ -6,12 +6,11 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-    <link href="{{ asset('themes/img/aai.jpg') }}" rel="icon">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
  
     <!-- Favicon -->
-    <link href="{{ asset('themes/img/favicon.ico') }}" rel="icon">
+    <link href="{{ asset('themes-frontend/images/aai-icon.png') }}" rel="icon">
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/bootstrap/css/bootstrap.min.css') }}">
@@ -28,10 +27,12 @@
     <link rel="stylesheet" href="{{ asset('themes-backend/assets/css/components.css') }}">
     
     <!-- JQuery Datatable-->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('themes-backend/assets/datatables/datatables.min.css') }}"/>
+    <script type="text/javascript" src="{{ asset('themes-backend/assets/datatables/datatables.min.js') }}"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"> -->
     
     <!-- TextArea -->
     @include('layouts.textarea-js')

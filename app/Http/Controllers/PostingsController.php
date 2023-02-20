@@ -41,7 +41,7 @@ class PostingsController extends Controller
              dd($data);
 
         }
-        return view('Postings.index');
+        return view('postings.index');
     }
  
     public function store(Request $request)
