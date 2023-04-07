@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('title', $ticket->title)
+@extends('layouts.backend-menu')
 
 @section('content')
 

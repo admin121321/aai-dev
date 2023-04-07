@@ -1,21 +1,22 @@
-@extends('layouts.app')
+@extends('layouts.backend-menu')
 
 @section('title', 'All Tickets')
-
 @section('content')
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-ticket"> Tickets</i>
-                </div>
-
-                <div class="panel-body">
-                    @if ($tickets->isEmpty())
+<div class="main-content">
+    <section class="#">
+        <div class="section-header">
+            <br />
+        </div>
+        <div class="section-body">
+            <!-- card-body -->
+            <div class="row">
+                <div class="col-12 table-responsive">
+                <br />
+                  @if ($tickets->isEmpty())
                         <p>There are currently no tickets.</p>
                     @else
-                        <table class="table">
-                            <thead>
+                    <table class="table text-start align-middle table-bordered table-hover mb-0 posting_datatable"> 
+                    <thead>
                             <tr>
                                 <th>Category</th>
                                 <th>Title</th>
@@ -62,12 +63,12 @@
                                 </tr>
                             @endforeach
                             </tbody>
-                        </table>
-
-                        {{ $tickets->render() }}
+                    </table>
+                    {{ $tickets->render() }}
                     @endif
                 </div>
             </div>
-        </div>
-    </div>
+            <!-- card-body -->      
+    </section>
+</div>
 @endsection

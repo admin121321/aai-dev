@@ -1,10 +1,21 @@
 
-@extends('layouts.app')
-
-@section('title', 'Open Ticket')
+@extends('layouts.backend-menu')
 
 @section('content')
 
+<div class="main-content">
+    <section class="#">
+        <div class="section-header">
+            <br />
+        </div>
+            <div class="row">
+            <div class="col-lg-8">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Balas Tiket</h4>
+                </div>
+                <div class="card-body">
+                    <!-- card-body -->
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
@@ -100,6 +111,13 @@
             </div>
         </div>
     </div>
-
+    </div>
+                    <!-- card-body -->
+                </div>
+              </div>
+            </div>
+          </div>      
+    </section>
+</div>
 
 @endsection
