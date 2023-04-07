@@ -39,12 +39,22 @@
                 </ul>
             </li>
             <li class="menu-header">Konsul</li>
+            @if(Auth::user()->is_admin)
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
                 <ul class="dropdown-menu">
-                <li><a href="#" class="nav-link" >List Konsul</a></li>
+                <li><a href="{{ url('admin/tickets') }}" class="nav-link" >List Konsul</a></li>
                 </ul>
             </li>
+            @else
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
+                <ul class="dropdown-menu">
+                <li><a href="{{ url('my_tickets') }}" class="nav-link" >List Konsul</a></li>
+                </ul>
+            </li>
+            @endif
+            
             @endif
             @if (Auth::User()->level=="USERS")
             <li class="menu-header">Posting</li>
@@ -55,13 +65,21 @@
                 <li><a href="{{ url('/posting') }}" class="nav-link" >Posting</a></li>
                 </ul>
             </li>
-            <li class="menu-header">Konsul</li>
+            @if(Auth::user()->is_admin)
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
                 <ul class="dropdown-menu">
-                <li><a href="{{ url('#') }}" class="nav-link" >Buat Konsul</a></li>
+                <li><a href="{{ url('admin/tickets') }}" class="nav-link" >List Konsul</a></li>
                 </ul>
             </li>
+            @else
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
+                <ul class="dropdown-menu">
+                <li><a href="{{ url('my_tickets') }}" class="nav-link" >List Konsul</a></li>
+                </ul>
+            </li>
+            @endif
             @endif
             <li>
                 <a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a>

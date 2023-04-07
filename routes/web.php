@@ -60,3 +60,13 @@ Route::post('/halaman/store/', [App\Http\Controllers\HalamansController::class, 
 Route::get('/halaman/edit/{id}', [App\Http\Controllers\HalamansController::class, 'edit'])->name('halamans.edit');
 Route::post('/halaman/update', [App\Http\Controllers\HalamansController::class, 'update'])->name('halamans.update');
 Route::get('/halaman/destroy/{id}', [App\Http\Controllers\HalamansController::class, 'destroy'])->name('halamans.destroy');
+// Ticket
+Route::get('new-ticket', [App\Http\Controllers\TicketsController::class, 'create']);
+Route::post('new-ticket', [App\Http\Controllers\TicketsController::class, 'store']);
+Route::get('my_tickets', [App\Http\Controllers\TicketsController::class, 'userTickets']);
+Route::get('tickets/{ticket_id}', [App\Http\Controllers\TicketsController::class, 'show']);
+Route::post('comment', [App\Http\Controllers\CommentsController::class, 'postComment']);
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function (){
+    Route::get('tickets', [App\Http\Controllers\TicketsController::class, 'index'])->name('tickets');
+    Route::post('close_ticket/{ticket_id}', [App\Http\Controllers\TicketsController::class, 'close']);
+});
