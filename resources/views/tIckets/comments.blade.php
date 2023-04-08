@@ -17,17 +17,12 @@
 </div> -->
 
       <!-- Main Content -->
-      <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Activities</h1>
-            <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-              <div class="breadcrumb-item">Activities</div>
-            </div>
+            <h1>Komentar</h1>
           </div>
           @foreach($ticket->comments as $comment)
-          <div class="section-body-@if($ticket->user->id === $comment->user_id){{"default"}}@else{{"success"}}@endif">
+          <div class="section-body-@if($ticket->user->id === $comment->user_id){{'default'}}@else{{'success'}}@endif">
             <h2 class="section-title">{{ $comment->created_at->format('Y-m-d') }}</h2>
             <div class="row">
               <div class="col-12">
@@ -61,4 +56,3 @@
           </div>
           @endforeach
         </section>
-    

@@ -16,37 +16,31 @@
                         <p>There are currently no tickets.</p>
                     @else
                     <table class="table text-start align-middle table-bordered table-hover mb-0 posting_datatable"> 
-                    <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Title</th>
-                                <th>ID User</th>
-                                <th>Status</th>
-                                <th>Last Updated</th>
-                                <th style="text-align:center" colspan="2">Actions</th>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th>No Ticket</th>
+                                    <th>Kategori</th>
+                                    <th>Judul</th>
+                                    <th>Status</th>
+                                    <th>Update Terakhir</th>
+                                    <th>Tindakan</th>
+                                </tr>
                             </thead>
                             <tbody>
                             @foreach ($tickets as $ticket)
                                 <tr>
+                                    <td>{{ $ticket->ticket_id }}</td>
                                     <td>
                                         {{ $ticket->category->name }}
                                     </td>
                                     <td>
-                                        <a href="{{ url('tickets/'. $ticket->ticket_id) }}">
-                                            #{{ $ticket->ticket_id }} - {{ $ticket->title }}
-                                        </a>
+                                            {{ $ticket->title }}
                                     </td>
                                     <td>
-                                        <a href="{{ url('tickets/'. $ticket->ticket_id) }}">
-                                            {{ $ticket->user_id }}
-                                        </a>
-                                    </td>
-                                    <td>
-                                        @if ($ticket->status === 'Open')
-                                            <span class="label label-success">{{ $ticket->status }}</span>
+                                        @if($ticket->status == "Open")
+                                            <button class="btn btn-danger">{{ $ticket->status }}</button>
                                         @else
-                                            <span class="label label-danger">{{ $ticket->status }}</span>
+                                            <button class="btn btn-success">{{ $ticket->status }}</button>
                                         @endif
                                     </td>
                                     <td>{{ $ticket->updated_at }}</td>

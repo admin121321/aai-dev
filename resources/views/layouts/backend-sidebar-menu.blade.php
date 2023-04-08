@@ -77,7 +77,6 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
                 <ul class="dropdown-menu">
                 <li><a href="{{ url('my_tickets') }}" class="nav-link" >List Tiket</a></li>
-                </ul>
                 <li><a href="{{ url('new-ticket') }}" class="nav-link" >Create Tiket</a></li>
                 </ul>
             </li>
