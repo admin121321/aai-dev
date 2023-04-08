@@ -1,56 +1,65 @@
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <title>{{ config('app.subname', 'AAI Jakarta') }}</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-    <link href="{{ asset('themes-frontend/images/logo-aai.png') }}" rel="icon">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Favicon -->
-    <link href="{{ asset('themes/img/favicon.ico') }}" rel="icon">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <link href="{{ asset('themes-frontend/css/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('themes-frontend/css/fontawesome-all.css') }}" rel="stylesheet">
-    <link href="{{ asset('themes-frontend/css/swiper.css') }}" rel="stylesheet">
-	<link href="{{ asset('themes-frontend/css/magnific-popup.css') }}" rel="stylesheet">
-	<link href="{{ asset('themes-frontend/css/styles.css') }}" rel="stylesheet">
-</head>
-<body data-spy="scroll" data-target=".fixed-top">
-    <div class="" id="app">    
-        
-        <!-- Content Start -->
-        <div class="content">
-        @include('layouts.welcome-navigation')
-        @include('layouts.welcome-thumbnail')
-        @include('layouts.welcome-slider')
-        @include('layouts.welcome-table-view')
-        @include('layouts.welcome-footer')
-        </div>
-        <!-- Content End -->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="description" content="Magz is a HTML5 & CSS3 magazine template is based on Bootstrap 3.">
+		<meta name="author" content="Kodinger">
+		<meta name="keyword" content="magz, html5, css3, template, magazine template">
+		<!-- Shareable -->
+		<meta property="og:title" content="HTML5 & CSS3 magazine template is based on Bootstrap 3" />
+		<meta property="og:type" content="article" />
+        <title>{{ config('app.subname', 'AAI Jakarta') }}</title>
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="{{ asset('themes-frontend/scripts/bootstrap/bootstrap.min.css') }}">
+		<!-- IonIcons -->
+		<link rel="stylesheet" href="{{ asset('themes-frontend/scripts/ionicons/css/ionicons.min.css') }}">
+		<!-- Toast -->
+		<link rel="stylesheet" href="{{ asset('themes-frontend/scripts/toast/jquery.toast.min.css') }}">
+		<!-- OwlCarousel -->
+		<link rel="stylesheet" href="{{ asset('themes-frontend/scripts/owlcarousel/dist/assets/owl.carousel.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('themes-frontend/scripts/owlcarousel/dist/assets/owl.theme.default.min.css') }}">
+		<!-- Magnific Popup -->
+		<link rel="stylesheet" href="{{ asset('themes-frontend/scripts/magnific-popup/dist/magnific-popup.css') }}">
+		<link rel="stylesheet" href="{{ asset('themes-frontend/scripts/sweetalert/dist/sweetalert.css') }}">
+		<!-- Custom style -->
+		<link rel="stylesheet" href="{{ asset('themes-frontend/css/style.css') }}">
+		<link rel="stylesheet" href="{{ asset('themes-frontend/css/skins/all.css') }}">
+		<link rel="stylesheet" href="{{ asset('themes-frontend/css/demo.css') }}">
+	</head>
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    </div>
+	<body class="skin-orange">
+        <div class="" id="app">    
+        
+            <!-- Content Start -->
+            <div class="content">
+            @include('layouts.welcome-header')
+            @include('layouts.welcome-view-slider')
+            @include('layouts.welcome-view-berita')
+            @include('layouts.welcome-footer')
+            </div>
+            <!-- Content End -->
+
+            <!-- Back to Top -->
+            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        </div>
     <main class="py-4">
             @yield('content')
     </main>
-    <style>
-        .center {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 50%;
-            }
-    </style>
     <!-- Scripts -->
-    <script src="{{ asset('themes-frontend/js/jquery.min.js') }}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
-    <script src="{{ asset('themes-frontend/js/bootstrap.min.js') }}"></script> <!-- Bootstrap framework -->
-    <script src="{{ asset('themes-frontend/js/jquery.easing.min.js') }}"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
-    <script src="{{ asset('themes-frontend/js/swiper.min.js') }}"></script> <!-- Swiper for image and text sliders -->
-    <script src="{{ asset('themes-frontend/js/jquery.magnific-popup.js') }}"></script> <!-- Magnific Popup for lightboxes -->
-    <script src="{{ asset('themes-frontend/js/scripts.js') }}"></script> <!-- Custom scripts -->
+    <script src="{{ asset('themes-frontend/js/jquery.js') }}"></script>
+    <script src="{{ asset('themes-frontend/js/jquery.migrate.js') }}"></script>
+    <script src="{{ asset('themes-frontend/scripts/bootstrap/bootstrap.min.js') }}"></script>
+    <script>var $target_end=$(".best-of-the-week");</script>
+    <script src="{{ asset('themes-frontend/scripts/jquery-number/jquery.number.min.js') }}"></script>
+    <script src="{{ asset('themes-frontend/scripts/owlcarousel/dist/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('themes-frontend/scripts/magnific-popup/dist/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('themes-frontend/scripts/easescroll/jquery.easeScroll.js') }}"></script>
+    <script src="{{ asset('themes-frontend/scripts/sweetalert/dist/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('themes-frontend/scripts/toast/jquery.toast.min.js') }}"></script>
+    <script src="{{ asset('themes-frontend/js/demo.js') }}"></script>
+    <script src="{{ asset('themes-frontend/js/e-magz.js') }}"></script>
 </body>
 </html>

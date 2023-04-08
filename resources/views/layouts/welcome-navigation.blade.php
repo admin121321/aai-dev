@@ -1,145 +1,230 @@
- <!-- Navigation -->
- <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
-        <!-- <div class="container bg-dark-blue"> -->
-        <div class="container">
-            
-            <!-- Text Logo - Use this if you don't have a graphic logo -->
-            <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Revo</a> -->
-
-            <!-- Image Logo -->
-            <a class="navbar-brand logo-image" href="#"><img src="{{ asset('themes-frontend/images/logo-aainew.png') }}" alt="alternative" style="width: 204px; height: 53px;"></a> 
-            <!-- <b>{{ config('app.subname', 'AAI Jakarta') }}</b> -->
-            <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#header">BERANDA <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#tentangkami">TENTANG KAMI</a>
-                    </li>
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUK HUKUM</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <a class="dropdown-item page-scroll" href="#">UNDANG-UNDANG</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item page-scroll" href="#">PERATURAN PEMERINTAH</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item page-scroll" href="#">PERATURAN MENTERI</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item page-scroll" href="#">PERATURAN DAERAH</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item page-scroll" href="#">PERATURAN ANRI</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item page-scroll" href="#">PERATURAN KEPUTUSAN GUBERNUR JAKARTA</a>
-                        </div>
-                    </li> -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">KABAR BERITA</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <a class="dropdown-item page-scroll" href="#">Divisi A</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item page-scroll" href="#">Divisi B</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item page-scroll" href="#">Divisi C</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#testimonials">CORETAN</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#konsul">KONSUL</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#kontak">KONTAK KAMI</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                            @guest
-                                @if (Route::has('login'))
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LOGIN</a>
-                                <div class="dropdown-menu" aria-labelledby="dropdown01">
-                                    <!-- Start Sign -->
-                                        <form method="POST" action="{{ route('login') }}">
-                                        @csrf
-                                            <div class="form-group">
-                                                <input type="email" id="floatingInput" class="form-control-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="ID Anda" autofocus>
-                                                @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <input type="password" class="form-control-input @error('password') is-invalid @enderror" placeholder="Password Anda" name="password" required autocomplete="current-password">
-                                                @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <button type="submit"  class="form-control-submit-button">
-                                                    {{ __('Masuk') }}
-                                                </button>
-                                            </div>
-
-                                            @if (Route::has('password.request'))
-                                                <!-- <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                    {{ __('Forgot Your Password?') }}
-                                                </a> -->
-                                            @endif
-                                        </form>
-                                    </div>
-                                @endif
-
-                                @if (Route::has('register'))
-                                    <!-- <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                    </li> -->
-                                @endif
-                            @else
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
-                                <div class="dropdown-menu" aria-labelledby="dropdown01">
-                                    <div class="form-group">
-                                        <a class="nav-item nav-link" href="{{ route('home') }}">
-                                            <i class="fa fa-laptop me-2"></i>&nbsp;{{ __('Dashboard') }}
-                                        </a>
-                                    </div>
-                                    <div class="form-group">
-                                        <a class="nav-item nav-link" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
-                                            <i class="fa fa-sign-out-alt me-2"></i>&nbsp;{{ __('Logout') }}
-                                        </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                </div>
-                            @endguest
-                            <div class="dropdown-divider"></div>
-                    </li>
-                </ul>
-                <span class="nav-item social-icons">
-                    <span class="fa-stack">
-                        <a href="#your-link">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-facebook-f fa-stack-1x"></i>
-                        </a>
-                    </span>
-                    <span class="fa-stack">
-                        <a href="#your-link">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-twitter fa-stack-1x"></i>
-                        </a>
-                    </span>
-                </span>
-            </div> <!-- end of navbar-collapse -->
-        </div> <!-- end of container -->
-    </nav> <!-- end of navbar -->
-    <!-- end of navigation -->
+<!-- Start nav -->
+			<nav class="menu">
+				<div class="container">
+					<div class="brand">
+						<a href="#">
+							<img src="images/logo.png" alt="Magz Logo">
+						</a>
+					</div>
+					<div class="mobile-toggle">
+						<a href="#" data-toggle="menu" data-target="#menu-list"><i class="ion-navicon-round"></i></a>
+					</div>
+					<div class="mobile-toggle">
+						<a href="#" data-toggle="sidebar" data-target="#sidebar"><i class="ion-ios-arrow-left"></i></a>
+					</div>
+					<div id="menu-list">
+						<ul class="nav-list">
+							<li class="for-tablet nav-title"><a>Menu</a></li>
+							<li class="for-tablet"><a href="login.html">Login</a></li>
+							<li class="for-tablet"><a href="register.html">Register</a></li>
+							<li><a href="category.html">Standard</a></li>
+							<li class="dropdown magz-dropdown">
+								<a href="category.html">Pages <i class="ion-ios-arrow-right"></i></a>
+								<ul class="dropdown-menu">
+									<li><a href="index.html">Home</a></li>
+									<li class="dropdown magz-dropdown">
+										<a href="#">Authentication <i class="ion-ios-arrow-right"></i></a>
+										<ul class="dropdown-menu">
+											<li><a href="login.html">Login</a></li>
+											<li><a href="register.html">Register</a></li>
+											<li><a href="forgot.html">Forgot Password</a></li>
+											<li><a href="reset.html">Reset Password</a></li>
+										</ul>
+									</li>
+									<li><a href="category.html">Category</a></li>
+									<li><a href="single.html">Single</a></li>
+									<li><a href="page.html">Page</a></li>
+									<li><a href="search.html">Search</a></li>
+									<li><a href="contact.html">Contact</a></li>
+									<li class="dropdown magz-dropdown">
+										<a href="#">Error <i class="ion-ios-arrow-right"></i></a>
+										<ul class="dropdown-menu">
+											<li><a href="403.html">403</a></li>
+											<li><a href="404.html">404</a></li>
+											<li><a href="500.html">500</a></li>
+											<li><a href="503.html">503</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown magz-dropdown"><a href="#">Dropdown <i class="ion-ios-arrow-right"></i></a>
+								<ul class="dropdown-menu">
+									<li><a href="category.html">Internet</a></li>
+									<li class="dropdown magz-dropdown"><a href="category.html">Troubleshoot <i class="ion-ios-arrow-right"></i></a>
+										<ul class="dropdown-menu">
+											<li><a href="category.html">Software</a></li>
+											<li class="dropdown magz-dropdown"><a href="category.html">Hardware <i class="ion-ios-arrow-right"></i></a>
+												<ul class="dropdown-menu">
+													<li><a href="category.html">Main Board</a></li>
+													<li><a href="category.html">RAM</a></li>
+													<li><a href="category.html">Power Supply</a></li>
+												</ul>
+											</li>
+											<li><a href="category.html">Brainware</a>
+										</ul>
+									</li>
+									<li><a href="category.html">Office</a></li>
+									<li class="dropdown magz-dropdown"><a href="#">Programming <i class="ion-ios-arrow-right"></i></a>
+										<ul class="dropdown-menu">
+											<li><a href="category.html">Web</a></li>
+											<li class="dropdown magz-dropdown"><a href="category.html">Mobile <i class="ion-ios-arrow-right"></i></a>
+												<ul class="dropdown-menu">
+													<li class="dropdown magz-dropdown"><a href="category.html">Hybrid <i class="ion-ios-arrow-right"></i></a>
+														<ul class="dropdown-menu">
+															<li><a href="#">Ionic Framework 1</a></li>
+															<li><a href="#">Ionic Framework 2</a></li>
+															<li><a href="#">Ionic Framework 3</a></li>
+															<li><a href="#">Framework 7</a></li>
+														</ul>
+													</li>
+													<li><a href="category.html">Native</a></li>
+												</ul>
+											</li>
+											<li><a href="category.html">Desktop</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">Mega Menu <i class="ion-ios-arrow-right"></i> <div class="badge">Hot</div></a>
+								<div class="dropdown-menu megamenu">
+									<div class="megamenu-inner">
+										<div class="row">
+											<div class="col-md-3">
+												<div class="row">
+													<div class="col-md-12">
+														<h2 class="megamenu-title">Trending</h2>
+													</div>
+												</div>
+												<ul class="vertical-menu">
+													<li><a href="#"><i class="ion-ios-circle-outline"></i> Mega menu is a new feature</a></li>
+													<li><a href="#"><i class="ion-ios-circle-outline"></i> This is an example</a></li>
+													<li><a href="#"><i class="ion-ios-circle-outline"></i> For a submenu item</a></li>
+													<li><a href="#"><i class="ion-ios-circle-outline"></i> You can add</a></li>
+													<li><a href="#"><i class="ion-ios-circle-outline"></i> Your own items</a></li>
+												</ul>
+											</div>
+											<div class="col-md-9">
+												<div class="row">
+													<div class="col-md-12">
+														<h2 class="megamenu-title">Featured Posts</h2>
+													</div>
+												</div>
+												<div class="row">
+													<article class="article col-md-4 mini">
+														<div class="inner">
+															<figure>
+																<a href="single.html">
+																	<img src="images/news/img10.jpg" alt="Sample Article">
+																</a>
+															</figure>
+															<div class="padding">
+																<div class="detail">
+																	<div class="time">December 10, 2016</div>
+																	<div class="category"><a href="category.html">Healthy</a></div>
+																</div>
+																<h2><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
+															</div>
+														</div>
+													</article>
+													<article class="article col-md-4 mini">
+														<div class="inner">
+															<figure>
+																<a href="single.html">
+																	<img src="images/news/img11.jpg" alt="Sample Article">
+																</a>
+															</figure>
+															<div class="padding">
+																<div class="detail">
+																	<div class="time">December 13, 2016</div>
+																	<div class="category"><a href="category.html">Lifestyle</a></div>
+																</div>
+																<h2><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
+															</div>
+														</div>
+													</article>
+													<article class="article col-md-4 mini">
+														<div class="inner">
+															<figure>
+																<a href="single.html">
+																	<img src="images/news/img14.jpg" alt="Sample Article">
+																</a>
+															</figure>
+															<div class="padding">
+																<div class="detail">
+																	<div class="time">December 14, 2016</div>
+																	<div class="category"><a href="category.html">Travel</a></div>
+																</div>
+																<h2><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
+															</div>
+														</div>
+													</article>
+												</div>
+											</div>
+										</div>								
+									</div>
+								</div>
+							</li>
+							<li class="dropdown magz-dropdown magz-dropdown-megamenu"><a href="#">Column <i class="ion-ios-arrow-right"></i></a>
+								<div class="dropdown-menu megamenu">
+									<div class="megamenu-inner">
+										<div class="row">
+											<div class="col-md-3">
+												<h2 class="megamenu-title">Column 1</h2>
+												<ul class="vertical-menu">
+													<li><a href="#">Example 1</a></li>
+													<li><a href="#">Example 2</a></li>
+													<li><a href="#">Example 3</a></li>
+													<li><a href="#">Example 4</a></li>
+													<li><a href="#">Example 5</a></li>
+												</ul>
+											</div>
+											<div class="col-md-3">
+												<h2 class="megamenu-title">Column 2</h2>
+												<ul class="vertical-menu">
+													<li><a href="#">Example 6</a></li>
+													<li><a href="#">Example 7</a></li>
+													<li><a href="#">Example 8</a></li>
+													<li><a href="#">Example 9</a></li>
+													<li><a href="#">Example 10</a></li>
+												</ul>
+											</div>
+											<div class="col-md-3">
+												<h2 class="megamenu-title">Column 3</h2>
+												<ul class="vertical-menu">
+													<li><a href="#">Example 11</a></li>
+													<li><a href="#">Example 12</a></li>
+													<li><a href="#">Example 13</a></li>
+													<li><a href="#">Example 14</a></li>
+													<li><a href="#">Example 15</a></li>
+												</ul>
+											</div>
+											<div class="col-md-3">
+												<h2 class="megamenu-title">Column 4</h2>
+												<ul class="vertical-menu">
+													<li><a href="#">Example 16</a></li>
+													<li><a href="#">Example 17</a></li>
+													<li><a href="#">Example 18</a></li>
+													<li><a href="#">Example 19</a></li>
+													<li><a href="#">Example 20</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="dropdown magz-dropdown"><a href="#">Dropdown Icons <i class="ion-ios-arrow-right"></i></a>
+								<ul class="dropdown-menu">
+									<li><a href="#"><i class="icon ion-person"></i> My Account</a></li>
+									<li><a href="#"><i class="icon ion-heart"></i> Favorite</a></li>
+									<li><a href="#"><i class="icon ion-chatbox"></i> Comments</a></li>
+									<li><a href="#"><i class="icon ion-key"></i> Change Password</a></li>
+									<li><a href="#"><i class="icon ion-settings"></i> Settings</a></li>
+									<li class="divider"></li>
+									<li><a href="#"><i class="icon ion-log-out"></i> Logout</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<!-- End nav -->
