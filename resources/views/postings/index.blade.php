@@ -222,7 +222,7 @@
     $(document).on('click', '.edit', function(event){
         event.preventDefault();
         // var formData = new FormData($(this)[0]); 
-        var SITEURL = '{{URL::to('')}}';
+        // var SITEURL = '{{ URL::to('') }}';
         var id = $(this).attr('id'); alert(id);
         $('#form_result').html('');
  

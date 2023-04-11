@@ -32,16 +32,14 @@
 
 	<body class="skin-orange">
         <div class="" id="app">    
-        
             <!-- Content Start -->
             <div class="content">
             @include('layouts.welcome-header')
             @include('layouts.welcome-view-slider')
-            @include('layouts.welcome-view-berita')
+            @include('layouts.welcome-side-berita')
             @include('layouts.welcome-footer')
             </div>
             <!-- Content End -->
-
             <!-- Back to Top -->
             <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
         </div>

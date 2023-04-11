@@ -4,8 +4,8 @@
             <div class="row">
                 <div class="col-md-3 col-sm-12">
                     <div class="brand">
-                        <a href="index.html">
-                            <img src="images/logo.png" alt="Magz Logo">
+                        <a href="#">
+                            <img src="{{ asset('themes-frontend/images/logo-aai.png') }}" alt="Aai Jakarta Logo">
                         </a>
                     </div>						
                 </div>
@@ -20,21 +20,19 @@
                             </div>
                         </div>
                         <div class="help-block">
-                            <div>Popular:</div>
+                            <div>---------------</div>
                             <ul>
-                                <li><a href="#">HTML5</a></li>
-                                <li><a href="#">CSS3</a></li>
-                                <li><a href="#">Bootstrap 3</a></li>
-                                <li><a href="#">jQuery</a></li>
-                                <li><a href="#">AnguarJS</a></li>
+                                <li><a href="#"></a></li>
                             </ul>
                         </div>
                     </form>								
                 </div>
-                <div class="col-md-3 col-sm-12 text-right">
-                    <ul class="nav-icons">
-                        <li><a href="register.html"><i class="ion-person-add"></i><div>Register</div></a></li>
-                        <li><a href="login.html"><i class="ion-person"></i><div>Login</div></a></li>
+                <div class="col-md-3 col-sm-12 text-right">	
+                        <div class="nav-icons brand">
+                            <a href="#">
+                               <img src="{{ asset('themes-frontend/images/sponsor/logo-jakarta.png') }}" alt="Aai Jakarta Logo" style="width: 50px; height: 60px;">
+                            </a>
+                        </div>	
                     </ul>
                 </div>
             </div>
