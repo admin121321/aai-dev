@@ -33,7 +33,7 @@
 
                         <div class="ticket-info">
                             <p>Isi Pesan   : {{ $ticket->message }}</p>
-                            <p>Kategori    : {{ $ticket->category->name }}</p>
+                            <p>Kategori    : {{ $ticket->category->nama }}</p>
                             <p>
                                 @if ($ticket->status === 'Open')
                                     Status: <span class="label label-success">{{ $ticket->status }}</span>

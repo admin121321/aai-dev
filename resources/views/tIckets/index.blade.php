@@ -31,7 +31,7 @@
                                 <tr>
                                     <td>{{ $ticket->ticket_id }}</td>
                                     <td>
-                                        {{ $ticket->category->name }}
+                                        {{ $ticket->category->nama }}
                                     </td>
                                     <td>
                                             {{ $ticket->title }}

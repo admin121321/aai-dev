@@ -70,3 +70,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function (){
     Route::get('tickets', [App\Http\Controllers\TicketsController::class, 'index'])->name('tickets');
     Route::post('close_ticket/{ticket_id}', [App\Http\Controllers\TicketsController::class, 'close']);
 });
+//kategori-ticket
+Route::get('/kategori-ticket', [App\Http\Controllers\CategoriesController::class, 'index'])->name('kategoritickets.index');
+Route::post('/kategori-ticket/store/', [App\Http\Controllers\CategoriesController::class, 'store'])->name('kategoritickets.store');
+Route::get('/kategori-ticket/edit/{id}', [App\Http\Controllers\CategoriesController::class, 'edit'])->name('kategoritickets.edit');
+Route::post('/kategori-ticket/update', [App\Http\Controllers\CategoriesController::class, 'update'])->name('kategoritickets.update');
+Route::get('/kategori-ticket/destroy/{id}', [App\Http\Controllers\CategoriesController::class, 'destroy'])->name('kategoritickets.destroy');
