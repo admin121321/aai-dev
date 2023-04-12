@@ -135,8 +135,16 @@ class HalamansController extends Controller
  
     public function destroy($id)
     {
-        $data = Halamans::findOrFail($id);
-        $data->delete();
-        return response()->json(['success' => 'Data is successfully Delete']);
+        // hapus file
+		$data = Halamans::where('id',$id)->first();
+		File::delete('images/'.$data->gambar);
+
+        Halamans::where('id',$id)->delete();
+		return redirect()->back();
+
+        // $data = Halamans::findOrFail($id);
+        // $data->delete();
+        // return response()->json(['success' => 'Data is successfully Delete']);
+        
     }
 }
