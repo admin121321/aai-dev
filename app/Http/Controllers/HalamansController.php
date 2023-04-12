@@ -73,12 +73,12 @@ class HalamansController extends Controller
         }
     }
  
-    public function update(Request $request)
+    public function update(Request $request, Halamans $halamans)
     {
         $rules = array(
             'id_user'             =>  'required',
             'judul'               =>  'required',
-            'gambar'              =>  'required',
+            // 'gambar'              =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'deskripsi'           =>  'required'
         );
  
@@ -88,13 +88,38 @@ class HalamansController extends Controller
         {
             return response()->json(['errors' => $error->errors()->all()]);
         }
- 
-        $form_data = array(
-            'id_user'             =>  $request->id_user,
-            'judul'               =>  $request->judul,
-            'gambar'              =>  $request->gambar,
-            'deskripsi'           =>  $request->deskripsi,
-        );
+        $form_data = Halamans::find($request->hidden_id);
+        $fileName  = public_path('images/').$form_data->gambar;
+        $currentImage = $halamans->gambar;
+        
+        if ($request->gambar != $currentImage) {
+            $file = $request->file('gambar');
+            $fileName_new = date('YmdHis') . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/'), $fileName_new);
+            $halamanImage = public_path('images/').$currentImage;
+            $form_data = [
+                'id_user'             =>  $request->id_user,
+                'judul'               =>  $request->judul,
+                'deskripsi'           =>  $request->deskripsi, 
+                'gambar'              =>  $fileName_new
+            ];
+            File::delete($fileName);
+
+            if(file_exists($halamanImage)){
+                
+                // File::delete($fileName);
+                @unlink($halamanImage);
+                
+            }
+
+        } else {
+            // $fileName = $request->gambar;
+            $form_data = [
+                'id_user'             =>  $request->id_user,
+                'judul'               =>  $request->judul,
+                'deskripsi'           =>  $request->deskripsi,
+            ];
+        }
  
         Halamans::whereId($request->hidden_id)->update($form_data);
  
@@ -102,9 +127,9 @@ class HalamansController extends Controller
             'success' => 'Data is successfully updated',
             
         ]);
-        return response()
-            ->json(['success' => 'Data is successfully updated',])
-            ->back()->withInput();
+        // return response()
+        //     ->json(['success' => 'Data is successfully updated',])
+        //     ->back()->withInput();
         // return Redirect::back()->with('message','Operation Successful !');
     }
  

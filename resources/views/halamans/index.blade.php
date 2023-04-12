@@ -201,6 +201,7 @@ $(document).ready(function() {
             success:function(data)
             {
                 console.log('success: '+data);
+                tinyMCE.activeEditor.setContent(data.result.deskripsi);
                 $('#id_user').val(data.result.id_user);
                 $('#judul').val(data.result.judul);
                 // $('#gambar').val(data.result.gambar);
