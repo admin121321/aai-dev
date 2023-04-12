@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 use App\Models\Halamans; 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use DataTables;
 use Validator;
+use Auth;
+use File;
 use DB;
 
 class HalamansController extends Controller
@@ -14,8 +18,14 @@ class HalamansController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Halamans::select('id','id_user', 'judul', 'gambar', 'deskripsi')->get();
+            $data = Halamans::join('users', 'users.id', '=' ,'halamans.id_user')
+            ->select('halamans.*', 'users.name') 
+            ->get();
+            // $data = Halamans::select('id','id_user', 'judul', 'gambar', 'deskripsi')->get();
             return Datatables::of($data)->addIndexColumn()
+                ->addColumn('id_user', function($data){
+                    return $data->name;
+                })
                 ->addColumn('action', function($data){
                     $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"> <i class="bi bi-pencil-square"></i>Edit</button>';
                     $button .= '   <button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm"> <i class="bi bi-backspace-reverse-fill"></i> Delete</button>';
@@ -34,7 +44,7 @@ class HalamansController extends Controller
         $rules = array(
             'id_user'             =>  'required',
             'judul'               =>  'required',
-            'gambar'              =>  'required',
+            'gambar'              =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'deskripsi'           =>  'required'
         );
  
@@ -43,19 +53,15 @@ class HalamansController extends Controller
         if($error->fails())
         {
             return response()->json(['errors' => $error->errors()->all()]);
+        }else {
+            $form_data = $request->all();
+            $form_data['gambar'] = date('YmdHis').'.'.$request->gambar->getClientOriginalExtension();
+            $request->gambar->move(public_path('images'), $form_data['gambar']);
+            
+            Halamans::create($form_data);
+ 
+            return response()->json(['success' => 'Data Added successfully.']);
         }
- 
-        $form_data = array(
-            // 'id_user'  =>  $request-> Auth::user()->id,
-            'id_user'             =>  $request->id_user,
-            'judul'               =>  $request->judul,
-            'gambar'              =>  $request->gambar,
-            'deskripsi'           =>  $request->deskripsi,
-        );
- 
-        Halamans::create($form_data);
- 
-        return response()->json(['success' => 'Data Added successfully.']);
     }
  
     public function edit($id)

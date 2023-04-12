@@ -18,10 +18,10 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>ID User</th>
+                                <th>Nama Pembuat</th>
                                 <th>Nama Halaman</th>
-                                <th>Gambar</th>
-                                <th>Deskripsi</th>
+                                <!-- <th>Gambar</th>
+                                <th>Deskripsi</th> -->
                                 <th width="180px">Action</th>
                             </tr>
                         </thead>
@@ -34,28 +34,33 @@
               <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                        <form method="post" id="sample_form" class="form-horizontal">
+                        <form method="post" id="sample_form" enctype="multipart/form-data" class="form-horizontal">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="ModalLabel">Tambah Halaman</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                             </div>
                             <div class="modal-body">
                                 <span id="form_result"></span>
-                                <div class="form-group">
-                                    <label>ID user: </label>
-                                    <input type="text" name="id_user" id="id_user" class="form-control" />
+                                <div class="form-floating mb-3" hidden>
+                                    <input type="text" name="id_user" id="id_user" value="{{ Auth::user()->id }}" class="form-control"/>
+                                    <label for="floatingInput">ID User </label>
                                 </div>
                                 <div class="form-group">
-                                    <label>Nama Halaman: </label>
+                                    <label>Judul Halaman: </label>
                                     <input type="text" name="judul" id="judul" class="form-control" />
                                 </div>
-                                <div class="form-group">
-                                    <label>Gambar: </label>
-                                    <input type="text" name="gambar" id="gambar" class="form-control" />
+                                <div class="form-floating mb-3">
+                                    <input type="file" name="gambar" id="gambar" class="form-control form-control-sm" accept="images/*" onchange="readURL(this);" />
+                                    <!-- <input type="text" name="gambar" id="gambar" class="form-control" /> -->
+                                    <input type="hidden" name="hidden_image" id="hidden_image">
+                                    <label for="floatingInput">Gambar </label>
                                 </div>
-                                <div class="form-group">
-                                    <label>Deskripsi: </label>
-                                    <input type="text" name="deskripsi" id="deskripsi" class="form-control" />
+                                <div class="form-floating mb-3" name="tampilgambar" id="tampilgambar">
+                                    <img name="tampilgambar" id="tampilgambar">
+                                </div>
+                                <div class="form-floating">
+                                    <textarea type="text" class="form-control" name="deskripsi" id="deskripsi"/></textarea>
+                                    <label for="floatingInput">Deskripsi </label>
                                 </div>
                                 <input type="hidden" name="action" id="action" value="Add" />
                                 <input type="hidden" name="hidden_id" id="hidden_id" />
@@ -91,7 +96,14 @@
         </div>
     </section>
 </div>
-
+<script>
+    tinymce.init({
+      selector: '#deskripsi',
+      menubar: true,
+      toolbar: true,
+      inline: false,
+    });
+  </script>
 <script type="text/javascript">
 $(document).ready(function() {
     var table = $('.hal_datatable').DataTable({
@@ -102,8 +114,10 @@ $(document).ready(function() {
             {data: 'id', name: 'id'},
             {data: 'id_user', name: 'id_user'},
             {data: 'judul', name: 'judul'},
-            {data: 'gambar', name: 'gambar'},
-            {data: 'deskripsi', name: 'deskripsi'},
+            // {data: 'gambar', name: 'gambar', "render": function (data, type, row, meta) {
+            //         return '<img src="/images/' + data + '" alt="' + data + '"height="100px" width="100px"/>';
+            //     } },
+            // {data: 'deskripsi', name: 'deskripsi'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
@@ -118,7 +132,8 @@ $(document).ready(function() {
     });
  
     $('#sample_form').on('submit', function(event){
-        event.preventDefault(); 
+        event.preventDefault();
+        var formData = new FormData($(this)[0]); 
         var action_url = '';
  
         if($('#action').val() == 'Add')
@@ -137,6 +152,10 @@ $(document).ready(function() {
             url: action_url,
             data:$(this).serialize(),
             dataType: 'json',
+            processData: false,  // Important!
+            contentType: false,
+            cache: false,
+            data: formData,
             success: function(data) {
                 console.log('success: '+data);
                 var html = '';
@@ -176,12 +195,17 @@ $(document).ready(function() {
             url :"/halaman/edit/"+id+"/",
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             dataType:"json",
+            processData: false,  
+            contentType: false,
+            cache: false,
             success:function(data)
             {
                 console.log('success: '+data);
                 $('#id_user').val(data.result.id_user);
                 $('#judul').val(data.result.judul);
-                $('#gambar').val(data.result.gambar);
+                // $('#gambar').val(data.result.gambar);
+                $('#tampilgambar').html(
+                `<img src="/images/${data.result.gambar}" width="100" class="img-fluid img-thumbnail">`);
                 $('#deskripsi').val(data.result.deskripsi);
                 $('#hidden_id').val(id);
                 $('.modal-title').text('Edit Record');
