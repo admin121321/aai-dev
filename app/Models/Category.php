@@ -9,7 +9,7 @@ class Category extends Model
 {
     // use HasFactory;
     protected $table = 'categories';
-    protected $fillable = ['nama'];
+    protected $fillable = ['id_useri','nama'];
     public function tickets()
     {
         return $this->hasMany(Ticket::class);
