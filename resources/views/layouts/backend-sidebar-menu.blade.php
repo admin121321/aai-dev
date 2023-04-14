@@ -14,6 +14,7 @@
                 <li><a class="nav-link" href="{{ url('/home') }}">General Dashboard</a></li>
                 </ul>
             </li>
+            <!-- LEVEL SUPER ADMIN -->
             @if (Auth::user()->level=="SUPERADMIN")
             <li class="menu-header">Akun</li>
             <li class="dropdown">
@@ -39,24 +40,25 @@
                 </ul>
             </li>
             <li class="menu-header">Konsul</li>
-            @if(Auth::user()->is_admin)
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
-                <ul class="dropdown-menu">
-                <li><a href="{{ url('admin/tickets') }}" class="nav-link" >List Konsul</a></li>
-                </ul>
-            </li>
-            @else
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
-                <ul class="dropdown-menu">
-                <li><a href="{{ url('my_tickets') }}" class="nav-link" >List Konsul</a></li>
-                </ul>
-            </li>
+                @if(Auth::user()->is_admin)
+                <li class="dropdown">
+                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{{ url('admin/tickets') }}" class="nav-link" >List Konsul</a></li>
+                    </ul>
+                </li>
+                @else
+                <li class="dropdown">
+                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{{ url('my_tickets') }}" class="nav-link" >List Konsul</a></li>
+                    </ul>
+                </li>
+                @endif
             @endif
-            
-            @endif
-            @if (Auth::User()->level=="USERS")
+
+            <!-- LEVEL ADMIN -->
+            @if (Auth::User()->level=="ADMIN")
             <li class="menu-header">Posting</li>
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-file-alt"></i><span>Posting</span></a>
@@ -65,22 +67,60 @@
                 <li><a href="{{ url('/posting') }}" class="nav-link" >Posting</a></li>
                 </ul>
             </li>
-            @if(Auth::user()->is_admin)
             <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i><span>Halaman</span></a>
                 <ul class="dropdown-menu">
-                <li><a href="{{ url('admin/tickets') }}" class="nav-link" >List Konsul</a></li>
+                <li><a href="{{ url('/halaman') }}" class="nav-link" href="layout-default.html">Halaman</a></li>
                 </ul>
             </li>
-            @else
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
-                <ul class="dropdown-menu">
-                <li><a href="{{ url('my_tickets') }}" class="nav-link" >List Tiket</a></li>
-                <li><a href="{{ url('new-ticket') }}" class="nav-link" >Create Tiket</a></li>
-                </ul>
-            </li>
+            <li class="menu-header">Konsul</li>
+              @foreach(App\Models\Category::all() as $categories)
+                @if(Auth::user()->id==$categories->id_useri)
+                    @if(Auth::user()->is_admin)
+                    <li class="dropdown">
+                        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
+                        <ul class="dropdown-menu">
+                        <li><a href="{{ url('admin/tickets') }}" class="nav-link" >List Konsul</a></li>
+                        </ul>
+                    </li>
+                    @else
+                    <li class="dropdown">
+                        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
+                        <ul class="dropdown-menu">
+                        <li><a href="{{ url('my_tickets') }}" class="nav-link" >List Konsul</a></li>
+                        </ul>
+                    </li>
+                    @endif
+                @endif
+                @endforeach
             @endif
+
+            <!-- Level USERS -->
+            @if (Auth::User()->level=="USERS")
+                <li class="menu-header">Posting</li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-file-alt"></i><span>Posting</span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{{ url('/kategori-posting') }}" class="nav-link" href="layout-default.html">kategori Posting</a></li>
+                    <li><a href="{{ url('/posting') }}" class="nav-link" >Posting</a></li>
+                    </ul>
+                </li>
+                @if(Auth::user()->is_admin)
+                <li class="dropdown">
+                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{{ url('admin/tickets') }}" class="nav-link" >List Konsul</a></li>
+                    </ul>
+                </li>
+                @else
+                <li class="dropdown">
+                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{{ url('my_tickets') }}" class="nav-link" >List Tiket</a></li>
+                    <li><a href="{{ url('new-ticket') }}" class="nav-link" >Create Tiket</a></li>
+                    </ul>
+                </li>
+                @endif
             @endif
             <li>
                 <a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a>
