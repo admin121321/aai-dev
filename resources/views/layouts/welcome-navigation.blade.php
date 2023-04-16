@@ -17,25 +17,25 @@
 							<li class="for-tablet nav-title"><a>Menu</a></li>
 							<li class="for-tablet"><a href="login.html">Login</a></li>
 							<li class="for-tablet"><a href="register.html">Register</a></li>
-							<li><a href="category.html">Beranda</a></li>
+							<li><a href="{{ url('/') }}">Beranda</a></li>
 							<li class="dropdown magz-dropdown">
-								<a href="category.html">Tentang Kami <i class="ion-ios-arrow-right"></i></a>
+								<a href="{{ url('/tentang-kami') }}">Tentang Kami <i class="ion-ios-arrow-right"></i></a>
 								<ul class="dropdown-menu">
-									<li><a href="index.html">AD / ART</a></li>
-									<li><a href="category.html">Keanggotaan</a></li>
+									<li><a href="{{ url('/ad-art') }}">AD / ART</a></li>
+									<li><a href="{{ url('/anggota') }}">Keanggotaan</a></li>
 								</ul>
 							</li>
 							<li class="dropdown magz-dropdown"><a href="#">Berita<i class="ion-ios-arrow-right"></i></a>
 								<ul class="dropdown-menu">
-									<li><a href="index.html">Pengumuman</a></li>
-									<li><a href="category.html">Seminar</a></li>
+									<li><a href="{{ url('/pengumunan') }}">Pengumuman</a></li>
+									<li><a href="{{ url('/seminar') }}">Seminar</a></li>
 								</ul>
 							</li>
-							<li class="dropdown magz-dropdown"><a href="#">Coretan</a>
+							<li class="dropdown magz-dropdown"><a href="{{ url('/coretan') }}">Coretan</a>
 							</li>
-							<li class="dropdown magz-dropdown"><a href="#">Konsul</a>
+							<li class="dropdown magz-dropdown"><a href="{{ url('/konsul') }}">Konsul</a>
 							</li>
-							<li class="dropdown magz-dropdown"><a href="#">Kontak Kami</a>
+							<li class="dropdown magz-dropdown"><a href="{{ url('/kontak-kami') }}">Kontak Kami</a>
 							</li>
 							<li class="dropdown magz-dropdown"><a href="#">Akses<i class="ion-ios-arrow-right"></i></a>
 								<ul class="dropdown-menu">

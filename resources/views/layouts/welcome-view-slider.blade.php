@@ -30,13 +30,13 @@
 										<img src="{{ url('/images/'.$posting->gambar) }}" alt="Sample Article">
 									</figure>
 									<div class="details">
-										<div class="category"><a href="category.html"><?php echo strip_tags("$posting->judul");?></a></div>
-										<h1><a href="single.html"><?php echo strip_tags("$posting->deskripsi");?></a></h1>
+										<div class="category"><a href="{{ url('/berita/' . $posting->id) }}"><?php echo strip_tags("$posting->judul");?></a></div>
+										<h1><a href="{{ url('/berita/' . $posting->id) }}"><?php echo strip_tags("$posting->deskripsi");?></a></h1>
 										<div class="time"><?php echo strip_tags("$posting->created_at");?></div>
 									</div>
 								</article>
 							</div>
-							@endforeach
+						@endforeach
 						</div>
 					</div>
 					<div class="col-xs-6 col-md-4 sidebar" id="sidebar">

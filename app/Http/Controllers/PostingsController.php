@@ -71,6 +71,15 @@ class PostingsController extends Controller
 
     }
 
+    public function berita($id)
+    {
+        if(request()->ajax())
+        {
+            $postings = Posting::findOrFail($id);
+            return view('layouts.welcome-index-berita', compact('postings'));
+        }
+    }
+
     public function edit($id)
     {
         if(request()->ajax())
