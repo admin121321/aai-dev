@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="form-floating mb-3">
                                 <label for="floatingTextarea">Kategori </label>
-                                    <select class="form-select" id="id_kategori" name="id_kategori" aria-label="Floating label select example">
+                                    <select class="form-control" id="id_kategori" name="id_kategori" aria-label="Floating label select example">
                                         <option>--Pilih Unit Kerja--</option>
                                         @foreach(App\Models\KategoriPosting::all() as $kategori)
                                         <option value="{{ $kategori->id}}" id="id_kategori">{{ $kategori->nama_kategori }}</option>

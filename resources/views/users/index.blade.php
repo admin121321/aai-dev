@@ -17,8 +17,8 @@
                             <table class="table table-striped table-bordered user_datatable"> 
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
+                                        <th>ID Anggota</th>
+                                        <th>Nama</th>
                                         <th>Email</th>
                                         <th width="180px">Action</th>
                                     </tr>
@@ -43,12 +43,41 @@
                                         <input type="text" name="name" id="name" class="form-control" />
                                     </div>
                                     <div class="form-group">
+                                        <label>ID Anggota : </label>
+                                        <input type="email" name="id_anggota" id="id_anggota" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
                                         <label>Email : </label>
                                         <input type="email" name="email" id="email" class="form-control" />
                                     </div>
                                     <div class="form-group editpass">
                                         <label>Password : </label>
                                         <input type="password" name="password" id="password" class="form-control" />
+                                    </div>
+                                    <div class="form-group editpass">
+                                        <label  for="floatingTextarea">Level Akses: </label>
+                                        <select class="form-control" aria-label=".form-select-lg example" id="level" name="level">
+                                            <option selected>Pilih Salah Satu</option>
+                                            <option value="USERS">User</option>
+                                            <option value="ADMIN">Admin</option>
+                                            <option value="SUPER ADMIN">Super Admin</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group editpass">
+                                        <label for="floatingTextarea">Level Konsul: </label>
+                                        <select class="form-control" aria-label=".form-select-lg example" id="is_admin" name="is_admin">
+                                            <option selected>Pilih Salah Satu</option>
+                                            <option value="0">User</option>
+                                            <option value="1">Admin</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group editpass">
+                                        <label for="floatingTextarea">Verifikasi Anggota: </label>
+                                        <select class="form-control" aria-label=".form-select-lg example" id="is_admin" name="is_admin">
+                                            <option selected>Pilih Salah Satu</option>
+                                            <option value="0">Aktif</option>
+                                            <option value="1">Tidak Aktif</option>
+                                        </select>
                                     </div>
                                     <input type="hidden" name="action" id="action" value="Add" />
                                     <input type="hidden" name="hidden_id" id="hidden_id" />
@@ -93,7 +122,7 @@ $(document).ready(function() {
         serverSide: true,
         ajax: "{{ route('users.index') }}",
         columns: [
-            {data: 'id', name: 'id'},
+            {data: 'id_anggota', name: 'id_anggota'},
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
@@ -170,8 +199,12 @@ $(document).ready(function() {
             success:function(data)
             {
                 console.log('success: '+data);
+                $('#no_anggota').val(data.result.no_anggota);
                 $('#name').val(data.result.name);
                 $('#email').val(data.result.email);
+                $('#level').val(data.result.level);
+                $('#is_admin').val(data.result.is_admin);
+                $('#verifikasi').val(data.result.verifikasi);
                 $('#hidden_id').val(id);
                 $('.modal-title').text('Edit Record');
                 $('#action_button').val('Update');

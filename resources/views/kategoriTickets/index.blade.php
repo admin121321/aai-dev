@@ -18,7 +18,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nama Pembuat</th>
+                                <th>Penanggung Jawab</th>
                                 <th>Kategori</th>
                                 <th width="180px">Action</th>
                             </tr>

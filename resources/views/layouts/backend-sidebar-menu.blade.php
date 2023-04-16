@@ -21,8 +21,6 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-users"></i><span>Pengguna</span></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ url('/users') }}" class="nav-link">Users</a></li>
-                    <li><a class="nav-link" href="#">Level Akses</a></li>
-                    <li><a href="{{ url('/kategori-ticket') }}" class="nav-link">Level Tiket</a></li>
                 </ul>
             </li>
             <li class="menu-header">Posting</li>
@@ -44,6 +42,7 @@
                 <li class="dropdown">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
                     <ul class="dropdown-menu">
+                    <li><a href="{{ url('/kategori-ticket') }}" class="nav-link">PIC Konsul</a></li>
                     <li><a href="{{ url('admin/tickets') }}" class="nav-link" >List Konsul</a></li>
                     </ul>
                 </li>
