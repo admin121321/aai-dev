@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/berita/{id}/', [App\Http\Controllers\PostingsController::class, 'berita'])->name('layouts.welcome-page');
-
 Route::get('/berita/{id}/', function () {
     return view('layouts.welcome-menu');
 });
+
+// Route::get('/berita/{id}/', [App\Http\Controllers\PostingsController::class, 'berita'])->name('berita');
 Route::get('/home', function () {
     return view('home');
 })->middleware(['auth'])->name('home');

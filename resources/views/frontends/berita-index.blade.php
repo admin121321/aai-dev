@@ -1,3 +1,4 @@
+
 <section class="single">
 			<div class="container">
 				<div class="row">
@@ -374,4 +375,4 @@
 					@endforeach
 				</div>
 			</div>
-		</section>
+</section>

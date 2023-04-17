@@ -76,7 +76,11 @@ class PostingsController extends Controller
         if(request()->ajax())
         {
             $postings = Posting::findOrFail($id);
-            return view('frontends.berita-index', compact('postings'));
+            $data = Posting::join('users', 'users.id', '=' ,'postings.id_user')
+                     ->join('kategori_postings', 'kategori_postings.id', '=', 'postings.id_kategori')
+                     ->select('postings.*', 'users.name', 'kategori_postings.nama_kategori') 
+                     ->get();
+            return view('frontends.berita-index', compact('data', 'postings'));
         }
     }
 
