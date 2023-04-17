@@ -40,6 +40,6 @@
     </div>
 
     <!-- Start nav -->  
-    @include('layouts.welcome-navigation')
+    @include('frontends.welcome-navigation')
     <!-- End nav -->
 </header>

@@ -34,10 +34,10 @@
         <div class="" id="app">    
             <!-- Content Start -->
             <div class="content">
-            @include('layouts.welcome-header')
-            @include('layouts.welcome-view-slider')
-            @include('layouts.welcome-side-berita')
-            @include('layouts.welcome-footer')
+            @include('frontends.welcome-header')
+            @include('frontends.welcome-view-slider')
+            @include('frontends.welcome-side-berita')
+            @include('frontends.welcome-footer')
             </div>
             <!-- Content End -->
             <!-- Back to Top -->

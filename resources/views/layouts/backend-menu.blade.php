@@ -42,14 +42,14 @@
 <div id="app">
     <div class="main-wrapper main-wrapper-1">
         <div class="navbar-bg"></div>
-       @extends('layouts.backend-sidebar-menu')
+       @extends('backends.backend-sidebar-menu')
         <!-- Content Start -->
         <div class="content">
-        @include('layouts.backend-navigation')   
+        @include('backends.backend-navigation')   
         <main class="py-4">
                 @yield('content')
         </main>
-        @include('layouts.backend-footer')
+        @include('backends.backend-footer')
         </div>
         <!-- Content End -->
         <!-- Back to Top -->

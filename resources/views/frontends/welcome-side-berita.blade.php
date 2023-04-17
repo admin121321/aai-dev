@@ -23,9 +23,9 @@
 							<div class="padding">
 								<div class="detail">
 										<div class="time"><?php echo strip_tags("$posting->created_at");?></div>
-										<div class="category"><a href="#">detail</a></div>
+										<div class="category"><a href="{{ url('/berita/' . $posting->judul) }}">detail</a></div>
 								</div>
-								<h2><a href="#"><?php echo strip_tags("$posting->judul");?></a></h2>
+								<h2><a href="{{ url('/berita/' . $posting->judul) }}"><?php echo strip_tags("$posting->judul");?></a></h2>
 								<p><?php echo substr("$posting->deskripsi", 0, 70);?>.</p>
 							</div>
 						</div>

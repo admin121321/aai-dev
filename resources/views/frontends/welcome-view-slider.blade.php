@@ -16,7 +16,7 @@
 							<div class="owl-carousel owl-theme" id="headline">
 								@foreach(App\Models\Posting::all() as $posting)							
 								<div class="item">
-									<a href="#"><div class="badge"><?php echo strip_tags("$posting->judul");?></div><?php echo strip_tags("$posting->deskripsi");?></a>
+									<a href="{{ url('/berita/' . $posting->judul) }}"><div class="badge"><?php echo strip_tags("$posting->judul");?></div><?php echo strip_tags("$posting->deskripsi");?></a>
 								</div>
 								@endforeach
 							</div>
@@ -30,8 +30,8 @@
 										<img src="{{ url('/images/'.$posting->gambar) }}" alt="Sample Article">
 									</figure>
 									<div class="details">
-										<div class="category"><a href="{{ url('/berita/' . $posting->id) }}"><?php echo strip_tags("$posting->judul");?></a></div>
-										<h1><a href="{{ url('/berita/' . $posting->id) }}"><?php echo strip_tags("$posting->deskripsi");?></a></h1>
+										<div class="category"><a href="{{ url('/berita/' . $posting->judul) }}"><?php echo strip_tags("$posting->judul");?></a></div>
+										<h1><a href="{{ url('/berita/' . $posting->judul) }}"><?php echo strip_tags("$posting->deskripsi");?></a></h1>
 										<div class="time"><?php echo strip_tags("$posting->created_at");?></div>
 									</div>
 								</article>
@@ -50,20 +50,20 @@
 										<a href="#">
 											<img src="{{ asset('themes-frontend/images/sponsor/logo-anri.jpg') }}" alt="Sponsored">
 										</a>
-									</li> 
-									<li>
-										<a href="#">
-											<img src="{{ asset('themes-frontend/images/sponsor/logo-jakarta.png') }}" alt="Sponsored">
-										</a>
-									</li> 
+									</li>
 									<li>
 										<a href="#">
 											<img src="{{ asset('themes-frontend/images/sponsor/logo-jdih.png') }}" alt="Sponsored">
 										</a>
-									</li> 
+									</li>  
 									<li>
 										<a href="#">
 											<img src="{{ asset('themes-frontend/images/sponsor/logo-dispusip.jpg') }}" alt="Sponsored">
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<img src="{{ asset('themes-frontend/images/sponsor/logo-jakarta.png') }}" alt="Sponsored">
 										</a>
 									</li> 
 									<li>

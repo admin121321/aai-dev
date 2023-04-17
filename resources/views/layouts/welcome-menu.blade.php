@@ -34,9 +34,9 @@
         <div class="" id="app">    
             <!-- Content Start -->
             <div class="content">
-            @include('layouts.welcome-header')
-            @include('layouts.welcome-index-berita')
-            @include('layouts.welcome-footer')
+            @include('frontends.welcome-header')
+            @include('frontends.berita-index')
+            @include('frontends.welcome-footer')
             </div>
             <!-- Content End -->
             <!-- Back to Top -->
