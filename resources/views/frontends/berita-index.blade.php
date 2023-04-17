@@ -102,6 +102,7 @@
 							</div>
 						</aside>
 					</div>
+					@foreach(App\Models\Posting::all() as $posting)	
 					<div class="col-md-8">
 						<ol class="breadcrumb">
 						  <li><a href="#">Home</a></li>
@@ -109,11 +110,11 @@
 						</ol>
 						<article class="article main-article">
 							<header>
-								<h1>Pellentesque elementum tellus id mauris faucibus</h1>
+								<h1><?php echo strip_tags("$posting->judul");?></h1>
 								<ul class="details">
-									<li>Posted on 31 December, 2016</li>
-									<li><a>Film</a></li>
-									<li>By <a href="#">John Doe</a></li>
+									<li>Posted on <?php echo strip_tags("$posting->created_at");?></li>
+									<li><a><?php echo strip_tags("$posting->kategori_postings.nama_kategori");?></a></li>
+									<li>By <a href="#"><?php echo strip_tags("$posting->users.name");?></a></li>
 								</ul>
 							</header>
 							<div class="main">
@@ -370,6 +371,7 @@
 							</form>
 						</div>
 					</div>
+					@endforeach
 				</div>
 			</div>
 		</section>
