@@ -71,16 +71,22 @@ class PostingsController extends Controller
 
     }
 
-    public function berita($id)
+    public function awal(Request $request)
+    {       
+        $data = Posting::join('users', 'users.id', '=' ,'postings.id_user')
+                ->join('kategori_postings', 'kategori_postings.id', '=', 'postings.id_kategori')
+                ->select('postings.*', 'users.name', 'kategori_postings.nama_kategori') 
+                ->get();
+
+        return view('frontends.welcome-view-slider', compact('data'));
+    }
+
+    public function show($id)
     {
         if(request()->ajax())
         {
-            $postings = Posting::findOrFail($id);
-            $data = Posting::join('users', 'users.id', '=' ,'postings.id_user')
-                     ->join('kategori_postings', 'kategori_postings.id', '=', 'postings.id_kategori')
-                     ->select('postings.*', 'users.name', 'kategori_postings.nama_kategori') 
-                     ->get();
-            return view('frontends.berita-index', compact('data', 'postings'));
+            $posting = Posting::findOrFail($id);
+            return view('frontends.berita-show', compact('posting'));
         }
     }
 

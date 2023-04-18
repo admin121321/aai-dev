@@ -20,7 +20,7 @@ Route::get('/berita/{id}/', function () {
     return view('layouts.welcome-menu');
 });
 
-// Route::get('/berita/{id}/', [App\Http\Controllers\PostingsController::class, 'berita'])->name('berita');
+// Route::get('/berita/{id}/', [App\Http\Controllers\PostingsController::class, 'show'])->name('berita.show');
 Route::get('/home', function () {
     return view('home');
 })->middleware(['auth'])->name('home');
