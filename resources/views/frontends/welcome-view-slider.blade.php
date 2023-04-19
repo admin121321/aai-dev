@@ -31,7 +31,7 @@
 									</figure>
 									<div class="details">
 										<div class="category"><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><?php echo strip_tags("$posting->judul");?></a></div>
-										<h1><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><?php echo strip_tags("$posting->deskripsi");?></a></h1>
+										<h1><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><?php echo substr("$posting->deskripsi", 0, 33);?></a></h1>
 										<div class="time"><?php echo strip_tags("$posting->created_at");?></div>
 									</div>
 								</article>
