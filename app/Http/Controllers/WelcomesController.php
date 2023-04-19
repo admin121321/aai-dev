@@ -28,6 +28,16 @@ class WelcomesController extends Controller
         return view('welcome', compact('data'));
     }
 
+    public function all(Request $request)
+    {       
+        $data = Posting::join('users', 'users.id', '=' ,'postings.id_user')
+                ->join('kategori_postings', 'kategori_postings.id', '=', 'postings.id_kategori')
+                ->select('postings.*', 'users.name', 'kategori_postings.nama_kategori') 
+                ->get();
+
+        return view('layouts.welcome-menu-berita', compact('data'));
+    }
+
     // public function show($judul)
     // {
     //     $postings = Posting::findOrFail($judul);
@@ -59,7 +69,8 @@ class WelcomesController extends Controller
     public function showKeanggotaan()
     {
 
-        return view('layouts.welcome-menu-keanggotaan');
+        $data = User::select('users.*')->get();
+        return view('layouts.welcome-menu-keanggotaan',compact('data'));
     }
 
     public function showKontak()
@@ -71,7 +82,10 @@ class WelcomesController extends Controller
     public function showKonsul()
     {
 
-        return view('layouts.welcome-menu-konsul');
+        $data = Halamans::join('users', 'users.id', '=' ,'halamans.id_user')
+            ->select('halamans.*', 'users.name') 
+            ->get();
+        return view('layouts.welcome-menu-konsul',compact('data'));
     }
 
     public function showTentang()

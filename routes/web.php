@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('layouts.welcome-menu');
 // });
 Route::get('/', [App\Http\Controllers\WelcomesController::class, 'index'])->name('berita.index');
+Route::get('/berita', [App\Http\Controllers\WelcomesController::class, 'all'])->name('berita.all');
 Route::get('/berita/{slug}/', [App\Http\Controllers\WelcomesController::class, 'show'])->name('berita.show');
 Route::get('/ad-art', [App\Http\Controllers\WelcomesController::class, 'showAdart'])->name('adart.show');
 Route::get('/keanggotaan', [App\Http\Controllers\WelcomesController::class, 'showKeanggotaan'])->name('keanggotaan.show');

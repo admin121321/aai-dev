@@ -25,12 +25,13 @@
 									<li><a href="{{ url('/keanggotaan') }}">Keanggotaan</a></li>
 								</ul>
 							</li>
-							<li class="dropdown magz-dropdown"><a href="#">Berita<i class="ion-ios-arrow-right"></i></a>
+							<!-- <li class="dropdown magz-dropdown"><a href="#">Berita<i class="ion-ios-arrow-right"></i></a>
 								<ul class="dropdown-menu">
 									<li><a href="{{ url('/pengumunan') }}">Pengumuman</a></li>
 									<li><a href="{{ url('/seminar') }}">Seminar</a></li>
 								</ul>
-							</li>
+							</li> -->
+							<li><a href="{{ url('/berita') }}">Berita</a>
 							</li>
 							<li><a href="{{ url('/konsul') }}">Konsul</a>
 							</li>

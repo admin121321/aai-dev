@@ -40,11 +40,9 @@
 						</div>
 					</div>
 					<div class="col-xs-6 col-md-4 sidebar" id="sidebar">
-						<div class="sidebar-title for-tablet">Sidebar</div>
+						<div class="sidebar-title for-tablet">Sidebar</div>	
 						<aside id="sponsored">
-						<div class="badge-item"><i class="ion-star"></i> Featured</div>
-							<!-- <h1 class="aside-title">Sponsored</h1> -->
-							<div class="aside-body">
+							<div class="aside-body">			
 								<ul class="sponsored">
 								   <li>
 										<a href="#">
@@ -74,6 +72,7 @@
 								</ul>
 							</div>
 						</aside>
+						<h3 class="page-title" style="text-align: center;">Kolaborasi</h3>
 					</div>
 				</div>
 			</div>

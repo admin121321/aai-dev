@@ -10,18 +10,14 @@
 						<li class="active">{{ $halaman->judul }}</li>
 					</ol>
 						<h1 class="page-title">{{ $halaman->judul }}</h1>
-								<p class="page-subtitle">We will tell you who we are</p>
+								<p class="page-subtitle">AAI Jakarta</p>
 								<div class="line thin"></div>
-								<div class="page-description" id="editor1">
-									
+								<div class="page-description">
 								    {!! $halaman->deskripsi !!}
-								    <!-- <h4>Ullamco Laboris</h4>
-									<p>
-									</p> -->
 								</div>
 								
 								<div class="question">
-										Have a question? <a href="#" class="btn btn-primary">Contact Us</a>
+										Ingin Bertanya? <a href="{{ url('/kontak-kami') }}" class="btn btn-primary">Kontak Kami</a>
 									</div>
 						@endif
 								
@@ -30,20 +26,3 @@
 				</div>
 			</div>
 		</section>
-
-<script>
-	tinymce.init({
-	selector: 'textarea#editor',  //Change this value according to your HTML
-	auto_focus: 'element1',
-	width: "700",
-	height: "200"
-	});
-
-	var content =  tinyMCE.getContent('editor1');
-	var inst, contents = new Object();
-	for (inst in tinyMCE.editors) {
-		if (tinyMCE.editors[inst].getContent)
-			contents[inst] = tinyMCE.editors[inst].getContent();
-	}  
- 
-</script>

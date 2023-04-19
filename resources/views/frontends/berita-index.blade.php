@@ -62,7 +62,7 @@
 							</header>
 							<div class="main">
 							   <div class="description">
-								<p><?php echo strip_tags("$postings->deskripsi");?></p>
+								<p>{!! $postings->deskripsi !!}</p>
 								</div>
 							</div>
 							<footer>
