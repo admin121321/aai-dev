@@ -22,7 +22,7 @@
 								<a href="{{ url('/tentang-kami') }}">Tentang Kami <i class="ion-ios-arrow-right"></i></a>
 								<ul class="dropdown-menu">
 									<li><a href="{{ url('/ad-art') }}">AD / ART</a></li>
-									<li><a href="{{ url('/anggota') }}">Keanggotaan</a></li>
+									<li><a href="{{ url('/keanggotaan') }}">Keanggotaan</a></li>
 								</ul>
 							</li>
 							<li class="dropdown magz-dropdown"><a href="#">Berita<i class="ion-ios-arrow-right"></i></a>
@@ -31,11 +31,10 @@
 									<li><a href="{{ url('/seminar') }}">Seminar</a></li>
 								</ul>
 							</li>
-							<li class="dropdown magz-dropdown"><a href="{{ url('/coretan') }}">Coretan</a>
 							</li>
-							<li class="dropdown magz-dropdown"><a href="{{ url('/konsul') }}">Konsul</a>
+							<li><a href="{{ url('/konsul') }}">Konsul</a>
 							</li>
-							<li class="dropdown magz-dropdown"><a href="{{ url('/kontak-kami') }}">Kontak Kami</a>
+							<li><a href="{{ url('/kontak-kami') }}">Kontak Kami</a>
 							</li>
 							<li class="dropdown magz-dropdown"><a href="#">Akses<i class="ion-ios-arrow-right"></i></a>
 								<ul class="dropdown-menu">

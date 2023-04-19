@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Posting;
 use App\Models\User;
+use App\Models\Posting;
+use App\Models\Halamans; 
 use App\Models\KategoriPosting;  
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -44,5 +45,38 @@ class WelcomesController extends Controller
         ->where('judul', $slug)->first();
 
         return view('layouts.welcome-menu')->with('postings', $postings);
+    }
+
+    public function showAdart()
+    {
+
+        $data = Halamans::join('users', 'users.id', '=' ,'halamans.id_user')
+            ->select('halamans.*', 'users.name') 
+            ->get();
+        return view('layouts.welcome-menu-adart',compact('data'));
+    }
+
+    public function showKeanggotaan()
+    {
+
+        return view('layouts.welcome-menu-keanggotaan');
+    }
+
+    public function showKontak()
+    {
+
+        return view('layouts.welcome-menu-kontak');
+    }
+
+    public function showKonsul()
+    {
+
+        return view('layouts.welcome-menu-konsul');
+    }
+
+    public function showTentang()
+    {
+
+        return view('layouts.welcome-menu-tentang');
     }
 }

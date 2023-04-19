@@ -21,6 +21,13 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/', [App\Http\Controllers\WelcomesController::class, 'index'])->name('berita.index');
 Route::get('/berita/{slug}/', [App\Http\Controllers\WelcomesController::class, 'show'])->name('berita.show');
+Route::get('/ad-art', [App\Http\Controllers\WelcomesController::class, 'showAdart'])->name('adart.show');
+Route::get('/keanggotaan', [App\Http\Controllers\WelcomesController::class, 'showKeanggotaan'])->name('keanggotaan.show');
+Route::get('/kontak-kami', [App\Http\Controllers\WelcomesController::class, 'showKontak'])->name('kontak.show');
+Route::get('/konsul', [App\Http\Controllers\WelcomesController::class, 'showKonsul'])->name('konsul.show');
+Route::get('/tentang-kami', [App\Http\Controllers\WelcomesController::class, 'showTentang'])->name('tentang.show');
+
+
 Route::get('/home', function () {
     return view('home');
 })->middleware(['auth'])->name('home');
