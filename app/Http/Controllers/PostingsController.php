@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Posting;
 use App\Models\User;
-use App\Models\KategoriPosting;  
+use App\Models\KategoriPosting;
+use Illuminate\Support\Str;  
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -43,7 +44,7 @@ class PostingsController extends Controller
         }
         return view('postings.index');
     }
- 
+    
     public function store(Request $request)
     {
         $rules = array(
@@ -61,7 +62,13 @@ class PostingsController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }else{
 
-            $form_data = $request->all();
+            // $form_data = $request->all();
+            $form_data = [
+                'id_user'     =>  $request->id_user,
+                'id_kategori' =>  strtoupper($request->id_kategori),
+                'judul'       =>  Str::slug($request->judul),
+                'deskripsi'   =>  $request->deskripsi,
+                ];
             $form_data['gambar'] = date('YmdHis').'.'.$request->gambar->getClientOriginalExtension();
             $request->gambar->move(public_path('images'), $form_data['gambar']);
 
@@ -69,25 +76,6 @@ class PostingsController extends Controller
             return response()->json(['success' => 'Data Added successfully.']);
         }
 
-    }
-
-    public function awal(Request $request)
-    {       
-        $data = Posting::join('users', 'users.id', '=' ,'postings.id_user')
-                ->join('kategori_postings', 'kategori_postings.id', '=', 'postings.id_kategori')
-                ->select('postings.*', 'users.name', 'kategori_postings.nama_kategori') 
-                ->get();
-
-        return view('frontends.welcome-view-slider', compact('data'));
-    }
-
-    public function show($id)
-    {
-        if(request()->ajax())
-        {
-            $posting = Posting::findOrFail($id);
-            return view('frontends.berita-show', compact('posting'));
-        }
     }
 
     public function edit($id)
@@ -129,7 +117,7 @@ class PostingsController extends Controller
             $form_data = [
                 'id_user'     =>  $request->id_user,
                 'id_kategori' =>  strtoupper($request->id_kategori),
-                'judul'       =>  $request->judul,
+                'judul'       =>  Str::slug($request->judul),
                 'deskripsi'   =>  $request->deskripsi, 
                 'gambar'      =>  $fileName_new
             ];
@@ -147,7 +135,7 @@ class PostingsController extends Controller
             $form_data = [
             'id_user'     =>  $request->id_user,
             'id_kategori' =>  strtoupper($request->id_kategori),
-            'judul'       =>  $request->judul,
+            'judul'       =>  Str::slug($request->judul),
             'deskripsi'   =>  $request->deskripsi,
             ];
         }

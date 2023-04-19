@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/berita/{id}/', function () {
-    return view('layouts.welcome-menu');
-});
-
-// Route::get('/berita/{id}/', [App\Http\Controllers\PostingsController::class, 'show'])->name('berita.show');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('/berita/{id}/', function () {
+//     return view('layouts.welcome-menu');
+// });
+Route::get('/', [App\Http\Controllers\WelcomesController::class, 'index'])->name('berita.index');
+Route::get('/berita/{slug}/', [App\Http\Controllers\WelcomesController::class, 'show'])->name('berita.show');
 Route::get('/home', function () {
     return view('home');
 })->middleware(['auth'])->name('home');

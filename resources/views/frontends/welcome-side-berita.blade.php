@@ -12,20 +12,20 @@
 					</div>
 				</h1>
 				<div class="owl-carousel owl-theme carousel-1">
-				@foreach(App\Models\Posting::all() as $posting)
+				@foreach(App\Models\Posting::latest()->paginate(4) as $posting)
 					<article class="article">
 						<div class="inner">
 							<figure>
-								<a href="{{ url('/berita/' . str_replace(' ', '-', $posting->judul) ) }}">
+								<a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}">
 									<img src="{{ url('/images/'.$posting->gambar) }}" alt="Sample Article">
 								</a>
 							</figure>
 							<div class="padding">
 								<div class="detail">
 										<div class="time"><?php echo strip_tags("$posting->created_at");?></div>
-										<div class="category"><a href="{{ url('/berita/' . str_replace(' ', '-', $posting->judul) ) }}">detail</a></div>
+										<div class="category"><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}">detail</a></div>
 								</div>
-								<h2><a href="{{ url('/berita/' . str_replace(' ', '-', $posting->judul) ) }}"><?php echo strip_tags("$posting->judul");?></a></h2>
+								<h2><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><?php echo str_replace('-', ' ', $posting->judul);?></a></h2>
 								<p><?php echo substr("$posting->deskripsi", 0, 70);?>.</p>
 							</div>
 						</div>
@@ -33,4 +33,4 @@
 				@endforeach
 				</div>
 			</div>
-		</section>
+</section>

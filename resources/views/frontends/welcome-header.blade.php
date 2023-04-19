@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-12">
                     <div class="brand">
-                        <a href="#">
+                        <a href="{{ url('/') }}">
                             <img src="{{ asset('themes-frontend/images/logo-aai.png') }}" alt="Aai Jakarta Logo">
                         </a>
                     </div>						
@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-md-3 col-sm-12 text-right">	
                         <div class="nav-icons brand">
-                            <a href="#">
+                            <a href="{{ url('/') }}">
                                <img src="{{ asset('themes-frontend/images/sponsor/logo-jakarta.png') }}" alt="Aai Jakarta Logo" style="width: 50px; height: 60px;">
                             </a>
                         </div>	

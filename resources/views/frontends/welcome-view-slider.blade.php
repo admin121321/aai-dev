@@ -16,7 +16,7 @@
 							<div class="owl-carousel owl-theme" id="headline">
 								@foreach(App\Models\Posting::all() as $posting)							
 								<div class="item">
-									<a href="{{ url('/berita/' . str_replace(' ', '-', $posting->judul) ) }}"><div class="badge"><?php echo strip_tags("$posting->judul");?></div><?php echo strip_tags("$posting->deskripsi");?></a>
+									<a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><div class="badge"><?php echo strip_tags("$posting->judul");?></div><?php echo strip_tags("$posting->deskripsi");?></a>
 								</div>
 								@endforeach
 							</div>
@@ -30,8 +30,8 @@
 										<img src="{{ url('/images/'.$posting->gambar) }}" alt="Sample Article">
 									</figure>
 									<div class="details">
-										<div class="category"><a href="{{ url('/berita/' . str_replace(' ', '-', $posting->judul) ) }}"><?php echo strip_tags("$posting->judul");?></a></div>
-										<h1><a href="{{ url('/berita/' . str_replace(' ', '-', $posting->judul) ) }}"><?php echo strip_tags("$posting->deskripsi");?></a></h1>
+										<div class="category"><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><?php echo strip_tags("$posting->judul");?></a></div>
+										<h1><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><?php echo strip_tags("$posting->deskripsi");?></a></h1>
 										<div class="time"><?php echo strip_tags("$posting->created_at");?></div>
 									</div>
 								</article>
