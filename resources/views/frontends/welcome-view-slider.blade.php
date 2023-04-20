@@ -27,7 +27,7 @@
 								<article class="featured">
 									<div class="overlay"></div>
 									<figure>
-										<img src="{{ url('/images/'.$posting->gambar) }}" alt="Sample Article">
+										<img src="{{ url('/images/'.$posting->gambar) }}" alt="Sample Article" style=" display: block; margin-left: auto; margin-right: auto; width: 50%;">
 									</figure>
 									<div class="details">
 										<div class="category"><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><?php echo strip_tags("$posting->judul");?></a></div>

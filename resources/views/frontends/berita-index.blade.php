@@ -10,12 +10,12 @@
 								<article class="article-fw">
 									<div class="inner">
 										<figure>
-											<a href="single.html">												
+											<a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}">												
 												<img src="{{ url('/images/'.$posting->gambar) }}">
 											</a>
 										</figure>
 										<div class="details">
-											<h1><a href="single.html"><?php echo strip_tags("$posting->judul");?></a></h1>
+											<h1><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><?php echo strip_tags("$posting->judul");?></a></h1>
 											<p><?php echo substr("$postings->deskripsi", 0, 70);?></p>
 											<div class="detail">
 												<div class="time"><?php echo strip_tags("$posting->created_at");?></div>
@@ -61,6 +61,12 @@
 								</ul>
 							</header>
 							<div class="main">
+								<div class="featured">
+									<figure>
+										<img src="{{ url('/images/'.$postings->gambar) }}" style=" display: block; margin-left: auto; margin-right: auto; width: 50%;">
+										<figcaption>gambar <?php echo str_replace('-', ' ', $postings->judul);?></figcaption>
+									</figure>
+								</div>
 							   <div class="description">
 								<p>{!! $postings->deskripsi !!}</p>
 								</div>
@@ -160,12 +166,12 @@
 							<article class="article related col-md-6 col-sm-6 col-xs-12">
 								<div class="inner">
 									<figure>
-										<a href="#">
+										<a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}">
 											<img src="{{ url('/images/'.$posting->gambar) }}">
 										</a>
 									</figure>
 									<div class="padding">
-										<h2><a href="#"><?php echo str_replace('-', ' ', $posting->judul);?></a></h2>
+										<h2><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><?php echo str_replace('-', ' ', $posting->judul);?></a></h2>
 										<div class="detail">
 											<div class="category"><a href="category.html">Lifestyle</a></div>
 											<div class="time"><?php echo str_replace('-', ' ', $posting->created_at);?></div>
