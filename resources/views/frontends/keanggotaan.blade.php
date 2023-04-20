@@ -19,14 +19,23 @@
 										</tr>
 									</thead>
 									<tbody>
-									@foreach($data as $index => $user)
+									@foreach($data as $key => $user)
 										<tr>
-											<td>{{$index +1}}</td>
-											<td>{{$user->name}}</td>
+											<td>{{ ($data->currentpage()-1) * $data->perpage() + $key + 1 }}</td>
+											<td>{!!$user->name!!}</td>
 										</tr>
 										@endforeach
 									</tbody>
 								</table>
+							</div>
+						</div>
+						<div class="col-md-12 text-center">
+							<ul class="pagination">
+							{{ $data->links() }}
+							</ul>
+							<div class="pagination-help-text">
+							Halaman : {{ $data->currentPage() }} &mdash; 
+							Data Per Halaman : {{ $data->perPage() }}
 							</div>
 						</div>
 						<div class="question">

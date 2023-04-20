@@ -70,7 +70,7 @@ class WelcomesController extends Controller
     public function showKeanggotaan()
     {
 
-        $data = User::select('users.*')->get();
+        $data = User::select('users.*')->paginate(10);
         return view('layouts.welcome-menu-keanggotaan',compact('data'));
     }
 

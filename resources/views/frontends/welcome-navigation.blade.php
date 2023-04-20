@@ -87,25 +87,15 @@
                                     </li> -->
                                         @endif
                                     @else
-                                    <div class="navbar-nav w-100">
-                                        <br>
-                                        <div class="ms-3">
-                                            <h6 class="mb-0 center"> {{ Auth::user()->name }}</h6>
-                                            <!-- <span>Admin</span> -->
-                                        </div>
-                                        <a class="nav-item nav-link" href="{{ route('home') }}">
-                                        <i class="fa fa-laptop me-2"></i>{{ __('Beranda') }}
-                                        </a>
-                                        <a class="nav-item nav-link" href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                                document.getElementById('logout-form').submit();">
-                                                <i class="fa fa-sign-out me-2"></i>{{ __('Logout') }}
-                                            </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>
-                                    </div>
+                                            <li><a><i class="icon ion-person"></i>  {{ Auth::user()->name }}</a></li>
+                                            <li><a href="{{ route('home') }}"><i class="icon ion-key"></i>  {{ __('Dashboard') }} </a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                <i class="icon ion-log-out"></i> Logout</a>
+                                            </li>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
                                     @endguest
 								</ul>
 						    </li>
