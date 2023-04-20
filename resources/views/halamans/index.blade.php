@@ -32,7 +32,7 @@
             <!-- card-body -->
               <!-- Modal -->
               <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                         <form method="post" id="sample_form" enctype="multipart/form-data" class="form-horizontal">
                             <div class="modal-header">

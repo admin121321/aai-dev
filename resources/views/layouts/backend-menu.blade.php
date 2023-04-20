@@ -14,6 +14,7 @@
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/fontawesome/css/all.min.css') }}">
 
     <!-- CSS Libraries -->
@@ -36,6 +37,9 @@
     
     <!-- TextArea -->
     @include('layouts.textarea-js')
+
+    <!-- Modal -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> -->
     
 </head>
 <body>
@@ -68,7 +72,7 @@
 
     <!-- JavaScript Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- <script src="{{ asset('themes-backend/assets/modules/jquery.min.js') }}"></script> -->
     <script src="{{ asset('themes-backend/assets/modules/popper.js') }}"></script>
@@ -87,6 +91,7 @@
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('themes-backend/assets/js/page/index.js') }}"></script>
+    <script src="{{ asset('themes-backend/assets/js/page/bootstrap-modal.js') }}"></script>
     
     <!-- JS Libraies -->
     <script src="{{ asset('themes-backend/assets/modules/prism/prism.js') }}"></script>

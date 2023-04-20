@@ -40,39 +40,40 @@
 						</div>
 					</div>
 					<div class="col-xs-6 col-md-4 sidebar" id="sidebar">
-						<div class="sidebar-title for-tablet">Sidebar</div>	
+						<div class="sidebar-title for-tablet">Sidebar</div>
+						
+						<h3 class="page-title" style="text-align: center;">Kolaborasi</h3>	
 						<aside id="sponsored">
 							<div class="aside-body">			
 								<ul class="sponsored">
 								   <li>
 										<a href="#">
-											<img src="{{ asset('themes-frontend/images/sponsor/logo-anri.jpg') }}" alt="Sponsored">
+											<img src="{{ asset('themes-frontend/images/sponsor/logo-anri.jpg') }}" alt="Sponsored" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
 										</a>
 									</li>
 									<li>
 										<a href="#">
-											<img src="{{ asset('themes-frontend/images/sponsor/logo-jdih.png') }}" alt="Sponsored">
+											<img src="{{ asset('themes-frontend/images/sponsor/logo-jdih.png') }}" alt="Sponsored" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
 										</a>
 									</li>  
 									<li>
 										<a href="#">
-											<img src="{{ asset('themes-frontend/images/sponsor/logo-dispusip.jpg') }}" alt="Sponsored">
+											<img src="{{ asset('themes-frontend/images/sponsor/logo-dispusip.jpg') }}" alt="Sponsored" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
 										</a>
 									</li>
 									<li>
 										<a href="#">
-											<img src="{{ asset('themes-frontend/images/sponsor/logo-jakarta.png') }}" alt="Sponsored">
+											<img src="{{ asset('themes-frontend/images/sponsor/logo-jakarta.png') }}" alt="Sponsored" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
 										</a>
 									</li> 
 									<li>
 										<a href="#">
-											<img src="{{ asset('themes-frontend/images/sponsor/logo-ptsp-jakarta.png') }}" alt="Sponsored">
+											<img src="{{ asset('themes-frontend/images/sponsor/logo-ptsp-jakarta.png') }}" alt="Sponsored" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
 										</a>
 									</li> 
 								</ul>
 							</div>
 						</aside>
-						<h3 class="page-title" style="text-align: center;">Kolaborasi</h3>
 					</div>
 				</div>
 			</div>

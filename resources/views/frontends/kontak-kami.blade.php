@@ -4,25 +4,20 @@
 					<div class="col-md-12">
 	          <ol class="breadcrumb">
 	          	<li><a href="#">Home</a></li>
-	            <li class="active">Contact Us</li>
+	            <li class="active">Kontak Kami</li>
 	          </ol>
-						<h1 class="page-title">Contact Us</h1>
-						<p class="page-subtitle">We hear you</p>
+						<h1 class="page-title">Kontak Kami</h1>
+						<p class="page-subtitle">silahkan hubungi</p>
 						<div class="line thin"></div>
 						<div class="page-description">
 							<div class="row">
 								<div class="col-md-6 col-sm-6">
-									<h3>Contact</h3>
+									<h3>Kontak</h3>
 									<p>
-										Aliquam in maximus massa. In magna dolor, efficitur vitae faucibus sagittis, elementum quis lacus. Aliquam pretium sem lectus, vitae gravida ex efficitur vitae.
-									</p>
+										Silahkan hubungi kami untuk menanyakan sekitar kearsipan atau ingin menjadi anggota kami
 									<p>
-										Phone: <span class="bold">+123 45 678 9</span> <br>
-										Email: <span class="bold">hi@yourcompany.com</span>
-										<br>
-										<br>
-										Syarifuddin Street<br>
-										Indonesia, Bogor Barat 16115
+										Email : <span class="bold">admin@aaijakarta.or.id</span> atau <span class="bold">aai.dkijakarta@gmail.com</span>
+										
 									</p>
 								</div>
 								<div class="col-md-6 col-sm-6">
@@ -63,6 +58,6 @@
 			</div>
 		</section>
 
-		<section class="maps">
+		<!-- <section class="maps">
 			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7927.32512614206!2d106.75366058323345!3d-6.564206896052583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1377e9bdc02eea68!2zNsKwMzMnNDkuOCJTIDEwNsKwNDUnMjAuNiJF!5e0!3m2!1sen!2sid!4v1495165466482" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-		</section>
+		</section> -->

@@ -44,18 +44,19 @@
 		            </div>
 		          </article>
 				  @endforeach
+				  <!-- <br>
+				 	 Halaman : {{ $data->currentPage() }}
+					Jumlah Data : {{ $data->total() }}
+					Data Per Halaman : {{ $data->perPage() }}
+					{{ $data->links() }}
+				 </br> -->
 		          <div class="col-md-12 text-center">
 		            <ul class="pagination">
-		              <li class="prev"><a href="#"><i class="ion-ios-arrow-left"></i></a></li>
-		              <li class="active"><a href="#">1</a></li>
-		              <li><a href="#">2</a></li>
-		              <li><a href="#">3</a></li>
-		              <li><a href="#">...</a></li>
-		              <li><a href="#">97</a></li>
-		              <li class="next"><a href="#"><i class="ion-ios-arrow-right"></i></a></li>
+					  {{ $data->links() }}
 		            </ul>
 		            <div class="pagination-help-text">
-		            	Showing 8 results of 776 &mdash; Page 1
+					Halaman : {{ $data->currentPage() }} &mdash; 
+					Data Per Halaman : {{ $data->perPage() }}
 		            </div>
 		          </div>
 		        </div>
