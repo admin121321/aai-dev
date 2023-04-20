@@ -30,9 +30,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'name'    =>  'required',
-            'email'     =>  'required',
-            'password'     =>  'required'
+            'name'       =>  'required',
+            'email'      =>  'required',
+            'password'   =>  'required'
         );
  
         $error = Validator::make($request->all(), $rules);
@@ -46,9 +46,27 @@ class UserController extends Controller
         $postpass = Hash::make($pass);
  
         $form_data = array(
-            'name'        =>  $request->name,
-            'email'         =>  $request->email,
-            'password'         =>  $postpass
+                'nrk'          => '0',
+                'nip'          => '0',
+                'no_ser_kar'   => '0',
+                't_lahir'      => '0',
+                'tgl_lahir'    => '0',
+                'j_k'          => '0',
+                'pang'         => '0',
+                'gol'          => '0',
+                'tmt_pang'     => '0',
+                'ting'         => '0',
+                'tmt_ting'     => '0',
+                'u_k'          => '0',
+                'inst'         => '0',
+                'name'         => $request->name,
+                'email'        => $request->email,
+                'password'     => $postpass,
+                'level'        => $request->level,
+                'foto'         => '0',
+                'id_anggota'   => '0',
+                'verifikasi'   => '0',
+                'is_admin'     => '0'
         );
  
         User::create($form_data);
@@ -80,8 +98,27 @@ class UserController extends Controller
         }
  
         $form_data = array(
-            'name'    =>  $request->name,
-            'email'     =>  $request->email
+                'nrk'          => $request->nrk,
+                'nip'          => $request->nip,
+                'no_ser_kar'   => $request->no_ser_kar,
+                't_lahir'      => strtoupper($request->t_lahir),
+                'tgl_lahir'    => $request->tgl_lahir,
+                'j_k'          => strtoupper($request->j_k),
+                'pang'         => strtoupper($request->pang),
+                'gol'          => $request->gol,
+                'tmt_pang'     => $request->tmt_pang,
+                'ting'         => strtoupper($request->ting),
+                'tmt_ting'     => $request->tmt_ting,
+                'u_k'          => strtoupper($request->u_k),
+                'inst'         => strtoupper($request->inst),
+                'name'         => $request->name,
+                'email'        => $request->email,
+                // 'password'     => $postpass,
+                'level'        => strtoupper($request->level),
+                // 'foto'         => $request->foto,
+                'id_anggota'   => $request->id_anggota,
+                'verifikasi'   => $request->verifikasi,
+                'is_admin'     => $request->is_admin
         );
  
         User::whereId($request->hidden_id)->update($form_data);

@@ -10,7 +10,6 @@
         </div>
 
           <div class="section-body">
-            <div class="container">
                     <div class="row">
                         <div class="col-12 table-responsive">
                         <br />
@@ -43,8 +42,60 @@
                                         <input type="text" name="name" id="name" class="form-control" />
                                     </div>
                                     <div class="form-group">
+                                        <label>Tempat Lahir : </label>
+                                        <input id="t_lahir" type="text" name="t_lahir" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tgl Lahir : </label>
+                                        <input id="tgl_lahir" type="text" name="tgl_lahir" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Jenis Kelamin : </label>
+                                        <input id="j_k" type="text" name="j_k" class="form-control">
+                                    </div>
+                                    <div class="form-group">
                                         <label>ID Anggota : </label>
-                                        <input type="email" name="id_anggota" id="id_anggota" class="form-control" />
+                                        <input type="text" name="id_anggota" id="id_anggota" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>NRK : </label>
+                                        <input id="nrk" type="text" name="nrk" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>NIP : </label>
+                                        <input id="nip" type="text" name="nip" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>No Seri Karpeg : </label>
+                                        <input id="no_ser_kar" type="text" name="no_ser_kar" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Pangkat : </label>
+                                        <input id="pang" type="text" name="pang" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Golongan : </label>
+                                        <input id="gol" type="text" name="gol" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>TMT Pangkat : </label>
+                                        <input id="tmt_pang" type="text" name="tmt_pang" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tingkat : </label>
+                                        <input id="ting" type="text" name="ting" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>TMT Tingkat : </label>
+                                        <input id="tmt_ting" type="text" name="tmt_ting" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Unit Kerja : </label>
+                                        <input id="u_k" type="text" name="u_k" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Instansi : </label>
+                                        <input id="inst" type="text" name="inst" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label>Email : </label>
@@ -54,29 +105,38 @@
                                         <label>Password : </label>
                                         <input type="password" name="password" id="password" class="form-control" />
                                     </div>
-                                    <div class="form-group editpass">
+                                    <div class="form-group">
                                         <label  for="floatingTextarea">Level Akses: </label>
                                         <select class="form-control" aria-label=".form-select-lg example" id="level" name="level">
-                                            <option selected>Pilih Salah Satu</option>
-                                            <option value="USERS">User</option>
-                                            <option value="ADMIN">Admin</option>
-                                            <option value="SUPER ADMIN">Super Admin</option>
+                                            <option>--Pilih Level--</option>
+                                            @foreach (App\Models\User::all() as $users)
+                                            <option value="{{ $users->level }}" id="level">{{ $users->level }}</option>
+                                            @endforeach
+                                            <option value="USERS">USERS</option>
+                                            <option value="ADMIN">ADMIN</option>
+                                            <option value="SUPER ADMIN">SUPER ADMIN</option>
                                         </select>
                                     </div>
-                                    <div class="form-group editpass">
+                                    <div class="form-group">
                                         <label for="floatingTextarea">Level Konsul: </label>
                                         <select class="form-control" aria-label=".form-select-lg example" id="is_admin" name="is_admin">
                                             <option selected>Pilih Salah Satu</option>
+                                            @foreach (App\Models\User::all() as $users)
+                                            <option value="{{ $users->is_admin }}" id="is_admin">{{ $users->is_admin }}</option>
+                                            @endforeach
                                             <option value="0">User</option>
                                             <option value="1">Admin</option>
                                         </select>
                                     </div>
-                                    <div class="form-group editpass">
+                                    <div class="form-group">
                                         <label for="floatingTextarea">Verifikasi Anggota: </label>
-                                        <select class="form-control" aria-label=".form-select-lg example" id="is_admin" name="is_admin">
+                                        <select class="form-control" aria-label=".form-select-lg example" id="verifikasi" name="verifikasi">
                                             <option selected>Pilih Salah Satu</option>
-                                            <option value="0">Aktif</option>
-                                            <option value="1">Tidak Aktif</option>
+                                            @foreach (App\Models\User::all() as $users)
+                                            <option value="{{ $users->verifikasi }}" id="verifikasi">{{ $users->verifikasi }}</option>
+                                            @endforeach
+                                            <option value="0">Tidak Aktif</option>
+                                            <option value="1">Aktif</option>
                                         </select>
                                     </div>
                                     <input type="hidden" name="action" id="action" value="Add" />
@@ -199,12 +259,25 @@ $(document).ready(function() {
             success:function(data)
             {
                 console.log('success: '+data);
-                $('#no_anggota').val(data.result.no_anggota);
                 $('#name').val(data.result.name);
+                $('#nrk').val(data.result.nrk);
+                $('#nip').val(data.result.nip);
+                $('#no_ser_kar').val(data.result.no_ser_kar);
+                $('#t_lahir').val(data.result.t_lahir);
+                $('#tgl_lahir').val(data.result.tgl_lahir);
+                $('#j_k').val(data.result.j_k);
+                $('#pang').val(data.result.pang);
+                $('#gol').val(data.result.gol);
+                $('#tmt_pang').val(data.result.tmt_pang);
+                $('#ting').val(data.result.ting);
+                $('#tmt_ting').val(data.result.tmt_ting);
+                $('#u_k').val(data.result.u_k);
+                $('#inst').val(data.result.inst);
                 $('#email').val(data.result.email);
                 $('#level').val(data.result.level);
                 $('#is_admin').val(data.result.is_admin);
                 $('#verifikasi').val(data.result.verifikasi);
+                $('#id_anggota').val(data.result.id_anggota);
                 $('#hidden_id').val(id);
                 $('.modal-title').text('Edit Record');
                 $('#action_button').val('Update');
