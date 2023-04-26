@@ -48,7 +48,8 @@
                                             <form method="POST" action="{{ route('login') }}">
                                             @csrf
                                                 <div class="form-floating mb-3">
-                                                    <input type="email" id="floatingInput" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="name@example.com">
+                                                    <!-- <input type="email" id="floatingInput" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="name@example.com"> -->
+                                                    <input id="id_anggota" type="text" class="form-control @error('id_anggota') is-invalid @enderror" name="id_anggota" value="{{ old('id_anggota') }}" required autocomplete="id_anggota" autofocus placeholder="ID anggota / Email">
                                                     @error('email')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
