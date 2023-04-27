@@ -6,7 +6,7 @@
 						<div class="copyright">
 							COPYRIGHT &copy; 2023. ALL RIGHT RESERVED.
 							<div>
-								Made with <i class="ion-heart"></i> by <a href="#">AAI Regional Jakarta</a>
+								Made with <i class="ion-heart"></i> by <a href="#">Asosiasi Arsiparis Indonesia Jakarta</a>
 							</div>
 						</div>
 					</div>

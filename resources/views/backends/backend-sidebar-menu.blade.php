@@ -1,3 +1,5 @@
+@if (Auth::user()->verifikasi=="0")
+@elseif (Auth::user()->verifikasi=="1")
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
@@ -130,3 +132,4 @@
         </div>
     </aside>
 </div>
+@endif

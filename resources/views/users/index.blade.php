@@ -18,6 +18,7 @@
                                     <tr>
                                         <th>ID Anggota</th>
                                         <th>Nama</th>
+                                        <th>Verifikasi</th>
                                         <th>Email</th>
                                         <th width="180px">Action</th>
                                     </tr>
@@ -184,6 +185,23 @@ $(document).ready(function() {
         columns: [
             {data: 'id_anggota', name: 'id_anggota'},
             {data: 'name', name: 'name'},
+            {data: 'verifikasi', name: 'verifikasi', orderable:true,
+                render: function(data, type, row, meta){
+                    if(row.verifikasi==0){
+                    return `
+                            <div class='btn-group mr-2'>
+                              <button type='button' class='btn btn-danger btn-sm' style="width:50px;">Belum</button>
+                            </div>
+                    `
+                    }
+                    else{
+                        return `
+                            <div class='btn-group mr-2'>
+                              <button type='button' class='unpublish btn btn-success btn-sm' style="width:50px;">Sudah</button>
+                            </div>
+                        `
+                    }
+                }},
             {data: 'email', name: 'email'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
