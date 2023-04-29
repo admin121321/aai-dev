@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/summernote/summernote-bs4.css') }}">
     <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/weather-icon/css/weather-icons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/weather-icon/css/weather-icons-wind.min.css') }}">
+
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('themes-backend/assets/css/style.css') }}">
@@ -42,6 +45,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <!-- General JS Scripts -->
     <script src="{{ asset('themes-backend/assets/modules/jquery.min.js') }}"></script>
     <script src="{{ asset('themes-backend/assets/modules/popper.js') }}"></script>
@@ -57,9 +61,12 @@
     <script src="{{ asset('themes-backend/assets/modules/owlcarousel2/dist/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('themes-backend/assets/modules/summernote/summernote-bs4.js') }}"></script>
     <script src="{{ asset('themes-backend/assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
-
+    <script src="{{ asset('themes-backend/assets/modules/jqvmap/dist/jquery.vmap.min.js') }}"></script>
+    <script src="{{ asset('themes-backend/assets/modules/jqvmap/dist/maps/jquery.vmap.world.js') }}"></script>
+    <script src="{{ asset('themes-backend/assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
     <!-- Page Specific JS File -->
-    <script src="{{ asset('themes-backend/assets/js/page/index.js') }}"></script>
+    <!-- <script src="{{ asset('themes-backend/assets/js/page/index.js') }}"></script> -->
+    <!-- <script src="{{ asset('themes-backend/assets/js/page/index-0.js') }}"></script> -->
     
     <!-- Template JS File -->
     <script src="{{ asset('themes-backend/assets/js/scripts.js') }}"></script>
