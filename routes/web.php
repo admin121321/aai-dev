@@ -80,8 +80,11 @@ Route::get('tickets/{ticket_id}', [App\Http\Controllers\TicketsController::class
 Route::post('comment', [App\Http\Controllers\CommentsController::class, 'postComment']);
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function (){
     Route::get('tickets', [App\Http\Controllers\TicketsController::class, 'index'])->name('tickets');
+    Route::get('tickets/export-pdf', [App\Http\Controllers\TicketsController::class, 'export_pdf'])->name('export-pdf');
+    Route::get('tickets/export-excel', [App\Http\Controllers\TicketsController::class, 'export_excel'])->name('export-excel');
     Route::post('close_ticket/{ticket_id}', [App\Http\Controllers\TicketsController::class, 'close']);
 });
+
 //kategori-ticket
 Route::get('/kategori-ticket', [App\Http\Controllers\CategoriesController::class, 'index'])->name('kategoritickets.index');
 Route::post('/kategori-ticket/store/', [App\Http\Controllers\CategoriesController::class, 'store'])->name('kategoritickets.store');

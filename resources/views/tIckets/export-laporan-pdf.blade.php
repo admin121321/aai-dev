@@ -1,14 +1,8 @@
-@extends('layouts.backend-menu')
-
-@section('title', 'All Tickets')
-@section('content')
 <div class="main-content">
     <section class="#">
         <div class="section-header">
             <br />
         </div>
-        <a href="{{ route('export-pdf') }}" class="btn btn-success mb-4">Export PDF</a>
-        <a href="{{ route('export-excel') }}" class="btn btn-success mb-4">Export Excel</a>
         <div class="section-body">
             <!-- card-body -->
             <div class="row">
@@ -67,4 +61,3 @@
             <!-- card-body -->      
     </section>
 </div>
-@endsection

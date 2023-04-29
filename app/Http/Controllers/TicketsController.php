@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Ticket;
+use App\Models\User;
+use App\Exports\TicketExport;
 use Illuminate\Http\Request;
+// use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use PDF;
+use Excel;
 // use App\Mailers\AppMailer;
 
 class TicketsController extends Controller
@@ -24,6 +29,24 @@ class TicketsController extends Controller
     {
         $tickets = Ticket::paginate(10);
         return view('tickets.index', compact('tickets'));
+    }
+
+    // Report PDF
+    public function export_pdf(){
+        $users  = User::all();
+        $tickets = Ticket::join('users', 'users.id', '=' ,'tickets.user_id')
+                     ->select('tickets.*', 'users.name') 
+                     ->orderBy('created_at', 'DESC')
+                     ->paginate(10);
+
+        $pdf = PDF::loadview('tickets.export-laporan-pdf',['tickets'=>$tickets], ['users'=>$users]);
+        
+    	return $pdf->download('laporan_tiket.pdf');
+    }
+
+     // Report PDF
+     public function export_excel(){
+        return Excel::download(new TicketExport, 'tiket_'.date('Y-m-d_h-m-s').'.xlsx');
     }
     /**
      * Show the form for creating a new resource.
