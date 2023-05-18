@@ -42,16 +42,16 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    public function nonPns(Request $request)
+    public function nonPns()
     {
  
-        return view('auth.register-nonpns');
+        return view('frontends.register-nonpns');
     }
 
-    public function pns(Request $request)
+    public function pns()
     {
  
-        return view('auth.register-pns');
+        return view('frontends.register-pns');
     }
 
     /**

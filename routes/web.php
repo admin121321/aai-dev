@@ -27,8 +27,8 @@ Route::get('/ad-art', [App\Http\Controllers\WelcomesController::class, 'showAdar
 Route::get('/kontak-kami', [App\Http\Controllers\WelcomesController::class, 'showKontak'])->name('kontak.show');
 Route::get('/konsul', [App\Http\Controllers\WelcomesController::class, 'showKonsul'])->name('konsul.show');
 Route::get('/tentang-kami', [App\Http\Controllers\WelcomesController::class, 'showTentang'])->name('tentang.show');
-Route::get('/register-non-pns', [App\Http\Controllers\Auth\RegisterController::class, 'nonPns'])->name('auth.register-nonpns');
-Route::get('/register-pns', [App\Http\Controllers\Auth\RegisterController::class, 'pns'])->name('auth.register-pns');
+Route::get('/register/register-non-pns', [App\Http\Controllers\Auth\RegisterController::class, 'nonPns'])->name('frontends.register-nonpns');
+Route::get('/register/register-pns', [App\Http\Controllers\Auth\RegisterController::class, 'pns'])->name('frontends.register-pns');
 
 
 Route::get('/home', function () {

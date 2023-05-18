@@ -42,38 +42,25 @@
 					<div class="col-xs-6 col-md-4 sidebar" id="sidebar">
 						<div class="sidebar-title for-tablet">Sidebar</div>
 						
-						<h3 class="page-title" style="text-align: center;">Kolaborasi</h3>	
-						<aside id="sponsored">
-							<div class="aside-body">			
-								<ul class="sponsored">
-								   <li>
-										<a href="#">
-											<img src="{{ asset('themes-frontend/images/sponsor/logo-anri.jpg') }}" alt="Sponsored" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="{{ asset('themes-frontend/images/sponsor/logo-jdih.png') }}" alt="Sponsored" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
-										</a>
-									</li>  
-									<li>
-										<a href="#">
-											<img src="{{ asset('themes-frontend/images/sponsor/logo-dispusip.jpg') }}" alt="Sponsored" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="{{ asset('themes-frontend/images/sponsor/logo-jakarta.png') }}" alt="Sponsored" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
-										</a>
-									</li> 
-									<li>
-										<a href="#">
-											<img src="{{ asset('themes-frontend/images/sponsor/logo-ptsp-jakarta.png') }}" alt="Sponsored" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
-										</a>
-									</li> 
-								</ul>
-							</div>
-						</aside>
+						<h5 class="page-title" style="text-align: center;">Iklan</h5>	
+							<aside id="sponsored">
+								<div class="aside-body">
+									<ul class="sponsored">
+										<li>
+											<a href="#">
+												<img src="{{ asset('themes-frontend/images/iklan/iklan-1.png') }}" alt="Sponsored" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<img src="{{ asset('themes-frontend/images/iklan/iklan-1.png') }}" alt="Sponsored" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
+											</a>
+										</li>
+									</ul>
+								</div>
+							</aside>
+							<h6 class="page-title" style="text-align: center;">Info Social Media Kami</h6>
+							<iframe width="350" height="350" src="https://www.instagram.com/aai.jakarta/" title="instagram AAI DKI Jakarta" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>	
 					</div>
 				</div>
 			</div>

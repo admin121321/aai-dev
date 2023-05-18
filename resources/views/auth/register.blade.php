@@ -19,7 +19,7 @@
 											<p class="card-text">
 											Jika Anda PNS
 											</p>
-											<a href="{{ route('auth.register-pns') }}" class="btn btn-primary">Daftar</a>
+											<a href="{{ route('frontends.register-pns') }}" class="btn btn-primary">Daftar</a>
 										</div>
 									</div>
 								</div>
@@ -35,7 +35,7 @@
 											<p class="card-text">
 											JIka Anda NON PNS / Swasta
 											</p>
-											<a href="{{ route('auth.register-nonpns') }}" class="btn btn-primary">Daftar</a>
+											<a href="{{ route('frontends.register-nonpns') }}" class="btn btn-primary">Daftar</a>
 										</div>
 										</div>
 									</div>

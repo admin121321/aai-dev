@@ -29,7 +29,7 @@
 		                  </div>
 		                  <div class="time">{{ $posting->created_at}}</div>
 		                </div>
-		                <h1><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}">{{ $posting->judul}}</a></h1>
+		                <h1><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><?php echo str_replace('-', ' ', $posting->judul);?></a></h1>
 		                <p>
 						<?php echo substr("$posting->deskripsi", 0, 220);?>
 		                </p>

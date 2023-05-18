@@ -49,7 +49,7 @@
 					<div class="col-md-8">
 						<ol class="breadcrumb">
 						  <li><a href="#">Home</a></li>
-						  <li class="active">Film</li>
+						  <li class="active"><?php echo str_replace('-', ' ', $postings->judul);?></li>
 						</ol>
 						<article class="article main-article">
 							<header>
