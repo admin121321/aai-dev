@@ -22,7 +22,6 @@
 								<a href="{{ url('/tentang-kami') }}">Tentang Kami <i class="ion-ios-arrow-right"></i></a>
 								<ul class="dropdown-menu">
 									<li><a href="{{ url('/ad-art') }}">AD / ART</a></li>
-									<li><a href="{{ url('/keanggotaan') }}">Keanggotaan</a></li>
 								</ul>
 							</li>
 							<!-- <li class="dropdown magz-dropdown"><a href="#">Berita<i class="ion-ios-arrow-right"></i></a>
@@ -75,18 +74,19 @@
                                                         {{ __('Forgot Your Password?') }}
                                                     </a> -->
                                                 @endif
+
+                                                @if (Route::has('register'))
+                                                    <a class="btn btn-link" href="{{ route('register') }}">
+                                                            {{ __('Ingin Jadi Anggota?') }}
+                                                    </a>
+                                                @endif
                                                 </div>   
                                             </form>
+                                            
                                         </div>
-                                      </div>
                                     </div>
+                                </div>
                                     @endif
-
-                                        @if (Route::has('register'))
-                                    <!-- <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                    </li> -->
-                                        @endif
                                     @else
                                             <li><a><i class="icon ion-person"></i>  {{ Auth::user()->name }}</a></li>
                                             <li><a href="{{ route('home') }}"><i class="icon ion-key"></i>  {{ __('Dashboard') }} </a></li>

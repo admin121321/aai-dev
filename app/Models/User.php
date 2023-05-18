@@ -38,7 +38,9 @@ class User extends Authenticatable
         'level',
         'is_admin',
         'id_anggota',
-        'verifikasi'
+        'verifikasi',
+        'no_telpn',
+        'kategori',
     ];
 
     /**

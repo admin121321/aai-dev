@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Auth\Request;
 
 class RegisterController extends Controller
 {
@@ -39,6 +40,18 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function nonPns(Request $request)
+    {
+ 
+        return view('auth.register-nonpns');
+    }
+
+    public function pns(Request $request)
+    {
+ 
+        return view('auth.register-pns');
     }
 
     /**
@@ -76,6 +89,8 @@ class RegisterController extends Controller
             'gol'          => $data['gol'],
             'ting'         => $data['ting'],
             'u_k'          => $data['u_k'],
+            'kategori'     => $data['kategori'],
+            'no_telpn'     => $data['no_telpn'],
             'nrk'          => '0',
             'no_ser_kar'   => '0',
             'tmt_pang'     => '0',
@@ -85,7 +100,7 @@ class RegisterController extends Controller
             'foto'         => '0',
             'id_anggota'   => '0',
             'verifikasi'   => '0',
-            'is_admin'     => '0'
+            'is_admin'     => '0',
         ]);
     }
 }

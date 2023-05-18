@@ -23,10 +23,12 @@ Route::get('/', [App\Http\Controllers\WelcomesController::class, 'index'])->name
 Route::get('/berita', [App\Http\Controllers\WelcomesController::class, 'all'])->name('berita.all');
 Route::get('/berita/{slug}/', [App\Http\Controllers\WelcomesController::class, 'show'])->name('berita.show');
 Route::get('/ad-art', [App\Http\Controllers\WelcomesController::class, 'showAdart'])->name('adart.show');
-Route::get('/keanggotaan', [App\Http\Controllers\WelcomesController::class, 'showKeanggotaan'])->name('keanggotaan.show');
+// Route::get('/keanggotaan', [App\Http\Controllers\WelcomesController::class, 'showKeanggotaan'])->name('keanggotaan.show');
 Route::get('/kontak-kami', [App\Http\Controllers\WelcomesController::class, 'showKontak'])->name('kontak.show');
 Route::get('/konsul', [App\Http\Controllers\WelcomesController::class, 'showKonsul'])->name('konsul.show');
 Route::get('/tentang-kami', [App\Http\Controllers\WelcomesController::class, 'showTentang'])->name('tentang.show');
+Route::get('/register-non-pns', [App\Http\Controllers\Auth\RegisterController::class, 'nonPns'])->name('auth.register-nonpns');
+Route::get('/register-pns', [App\Http\Controllers\Auth\RegisterController::class, 'pns'])->name('auth.register-pns');
 
 
 Route::get('/home', function () {
