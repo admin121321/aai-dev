@@ -60,7 +60,8 @@
 								</div>
 							</aside>
 							<h6 class="page-title" style="text-align: center;">Info Social Media Kami</h6>
-							<iframe width="350" height="350" src="https://www.instagram.com/aai.jakarta/" title="instagram AAI DKI Jakarta" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>	
+							<iframe width="350" height="320" src="https://www.instagram.com/aai.jakarta/embed" frameborder="0"></iframe>
+							<!-- <iframe width="350" height="350" src="https://www.instagram.com/aai.jakarta/" title="instagram AAI DKI Jakarta" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>	 -->
 					</div>
 				</div>
 			</div>
