@@ -7,8 +7,7 @@
 						<!-- Large modal -->
 							<h3>Pengelolaan Arsip Statis</h3>
 							<div>
-								<p>Pendaftaran hanya dilakukan untuk pegawai non ASN/ Swasta/ BUMN</p>
-								<p>Untuk ASN DKI Jakarta akan didaftarkan oleh Admin</p>
+								<p>Peraturan Terkait Arsip Statis</p>
 							</div>
 							<!-- Trigger the modal with a button -->
 							<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Lanjut Daftar</button>				
