@@ -14,7 +14,8 @@ class Iklans extends Model
         'judul', 
         'mulai_pemasangan',
         'akhir_pemasangan',
-        'gambar', 
+        'gambar',
+        'link_media', 
         'deskripsi'
     ];
 }

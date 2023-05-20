@@ -59,6 +59,10 @@
                                     <label>Akhir Pemasangan: </label>
                                     <input type="date" name="akhir_pemasangan" id="akhir_pemasangan" class="form-control" />
                                 </div>
+                                <div class="form-group">
+                                    <label>Link Media: </label>
+                                    <input type="text" name="link_media" id="link_media" class="form-control" />
+                                </div>
                                 <div class="form-floating mb-3">
                                     <input type="file" name="gambar" id="gambar" class="form-control form-control-sm" accept="images/*" onchange="readURL(this);" />
                                     <!-- <input type="text" name="gambar" id="gambar" class="form-control" /> -->
@@ -218,6 +222,7 @@ $(document).ready(function() {
                 $('#judul').val(data.result.judul);
                 $('#mulai_pemasangan').val(data.result.mulai_pemasangan);
                 $('#akhir_pemasangan').val(data.result.akhir_pemasangan);
+                $('#link_media').val(data.result.link_media);
                 $('#tampilgambar').html(
                 `<img src="/images-iklan/${data.result.gambar}" width="100" class="img-fluid img-thumbnail">`);
                 $('#deskripsi').val(data.result.deskripsi);

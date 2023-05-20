@@ -106,7 +106,8 @@ class IklansController extends Controller
                 'judul'               =>  $request->judul,
                 'mulai_pemasangan'    =>  $request->mulai_pemasangan,
                 'akhir_pemasangan'    =>  $request->akhir_pemasangan,
-                'deskripsi'           =>  $request->deskripsi, 
+                'deskripsi'           =>  $request->deskripsi,
+                'link_media'          =>  $request->link_media, 
                 'gambar'              =>  $fileName_new
             ];
             File::delete($fileName);
@@ -126,6 +127,7 @@ class IklansController extends Controller
                 'mulai_pemasangan'    =>  $request->mulai_pemasangan,
                 'akhir_pemasangan'    =>  $request->akhir_pemasangan,
                 'deskripsi'           =>  $request->deskripsi,
+                'link_media'           =>  $request->link_media,
             ];
         }
  

@@ -1,3 +1,15 @@
+<style>
+	img {
+		border-radius: 8px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	figure.image {
+		border-radius: 8px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+</style>
 <section class="home">
 			<div class="container">
 				<div class="row">
@@ -27,7 +39,7 @@
 								<article class="featured">
 									<div class="overlay"></div>
 									<figure>
-										<img src="{{ url('/images/'.$posting->gambar) }}" alt="Sample Article" style=" display: block; margin-left: auto; margin-right: auto; width: 50%;">
+										<img src="{{ url('/images/'.$posting->gambar) }}" alt="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}">
 									</figure>
 									<div class="details">
 										<div class="category"><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><?php echo strip_tags("$posting->judul");?></a></div>
@@ -40,28 +52,25 @@
 						</div>
 					</div>
 					<div class="col-xs-6 col-md-4 sidebar" id="sidebar">
-						<div class="sidebar-title for-tablet">Sidebar</div>
-						
-						<h5 class="page-title" style="text-align: center;">Iklan</h5>	
+						<div class="sidebar-title for-tablet">Sidebar</div>	
 							<aside id="sponsored">
+								<h6 class="page-title" style="text-align: center;">Iklan</h6>
 								<div class="aside-body">
+								@foreach(App\Models\Iklans::latest()->paginate(2) as $iklan)
 									<ul class="sponsored">
 										<li>
-											<a href="#">
-												<img src="{{ asset('themes-frontend/images/iklan/iklan-1.png') }}" alt="Sponsored" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<img src="{{ asset('themes-frontend/images/iklan/iklan-1.png') }}" alt="Sponsored" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
+											<a href="{{ url($iklan->link_media) }}">
+												<img src="{{ url('/images-iklan/'.$iklan->gambar) }}" alt="Sponsored" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
 											</a>
 										</li>
 									</ul>
+								@endforeach
 								</div>
 							</aside>
-							<h6 class="page-title" style="text-align: center;">Info Social Media Kami</h6>
-							<iframe width="350" height="320" src="https://www.instagram.com/aai.jakarta/embed" frameborder="0"></iframe>
-							<!-- <iframe width="350" height="350" src="https://www.instagram.com/aai.jakarta/" title="instagram AAI DKI Jakarta" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>	 -->
+							<aside id="sponsored">
+								<h6 class="page-title" style="text-align: center;">Info Social Media Kami</h6>
+								<iframe width="350" height="320" src="https://www.instagram.com/aai.jakarta/embed" frameborder="0"></iframe>
+							</aside>
 					</div>
 				</div>
 			</div>
