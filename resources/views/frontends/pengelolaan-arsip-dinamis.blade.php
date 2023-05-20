@@ -5,7 +5,7 @@
             <div class="card-body">
                 <section class="best-of-the-week text-center">
 						<!-- Large modal -->
-							<h2>Pengelolaan Arsip Dinamis</h2>
+							<h3>Pengelolaan Arsip Dinamis</h3>
 							<div>
 								<p>Pendaftaran hanya dilakukan untuk pegawai non ASN/ Swasta/ BUMN</p>
 								<p>Untuk ASN DKI Jakarta akan didaftarkan oleh Admin</p>
