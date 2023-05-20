@@ -99,6 +99,14 @@
                                         <input id="inst" type="text" name="inst" class="form-control">
                                     </div>
                                     <div class="form-group">
+                                        <label>No Handphone : </label>
+                                        <input id="no_telpn" type="no_telpn" name="no_telpn" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Kategori Kerja : </label>
+                                        <input id="kategori" type="kategori" name="kategori" class="form-control">
+                                    </div>
+                                    <div class="form-group">
                                         <label>Email : </label>
                                         <input type="email" name="email" id="email" class="form-control" />
                                     </div>
@@ -296,6 +304,8 @@ $(document).ready(function() {
                 $('#is_admin').val(data.result.is_admin);
                 $('#verifikasi').val(data.result.verifikasi);
                 $('#id_anggota').val(data.result.id_anggota);
+                $('#no_telpn').val(data.result.no_telpn);
+                $('#kategori').val(data.result.kategori);
                 $('#hidden_id').val(id);
                 $('.modal-title').text('Edit Record');
                 $('#action_button').val('Update');

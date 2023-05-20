@@ -136,7 +136,7 @@
 
 												<div class="card-body">
 													<div class="form-group row">
-													<label for="no_telpn" class="col-md-4 col-form-label text-md-right">{{__('No Telpn') }}</label>
+													<label for="no_telpn" class="col-md-4 col-form-label text-md-right">{{__('No Handphone') }}</label>
 													<div class="col-md-6">
 														<input id="no_telpn" type="number" class="form-control @error('no_telpn') is-invalid @enderror" name="no_telpn" value="{{ old('no_telpn') }}" onkeyup="this.value = this.value.toUpperCase()" required autocomplete="no_telpn" autofocus>
 														@error('no_telpn')

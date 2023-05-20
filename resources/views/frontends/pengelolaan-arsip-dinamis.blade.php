@@ -15,7 +15,12 @@
 										Pergub 79/2018
 									</button>
 								</p>
-								<div class="collapse" id="collapseExample">
+								<div class="collapse b" id="collapseExample">
+									<p>Jenis	: Peraturan Gubernur (Pergub)</p>
+									<p>Entitas	: Pemerintah Daerah Khusus Ibukota Jakarta</p>
+									<p>Nomor	: 79</p>
+									<p>Tahun	: 2018</p>
+									<p>Judul	: Peraturan Gubernur (PERGUB) tentang Pengelolaan Arsip Dinamis</p>
 									<div class="card card-body">
 										<embed type="application/pdf" src="{{ asset('themes-frontend/pdf/pergub-dki-79-2018.pdf') }}" width="300" height="500"></embed>
 									</div>
@@ -27,7 +32,12 @@
 										Pergub 99/2021
 									</button>
 								</p>
-								<div class="collapse" id="collapseEx">
+								<div class="collapse b" id="collapseEx">
+									<p>Jenis	: Peraturan Gubernur (Pergub)</p>
+									<p>Entitas	: Pemerintah Daerah Khusus Ibukota Jakarta</p>
+									<p>Nomor	: 99</p>
+									<p>Tahun	: 2021</p>
+									<p>Judul	: Peraturan Gubernur (PERGUB) tentang Tata Naskah Dinas</p>
 									<div class="card card-body">
 										<embed type="application/pdf" src="{{ asset('themes-frontend/pdf/pergub-dki-99-2021.pdf') }}" width="300" height="500"></embed>
 									</div>
@@ -39,7 +49,12 @@
 										Kepgub 737/2022
 									</button>
 								</p>
-								<div class="collapse" id="collapseExi">
+								<div class="collapse b" id="collapseExi">
+									<p>Jenis	: Keputusan Gubernur (Kepgub)</p>
+									<p>Entitas	: Pemerintah Daerah Khusus Ibukota Jakarta</p>
+									<p>Nomor	: 737</p>
+									<p>Tahun	: 2022</p>
+									<p>Judul	: Sistem Klasifikasi Keamanan dan Akses Arsip Dinamis</p>
 									<div class="card card-body">
 										<embed type="application/pdf" src="{{ asset('themes-frontend/pdf/kepgub-dki-737-2022.pdf') }}" width="300" height="500"></embed>
 									</div>
@@ -51,7 +66,12 @@
 									Kepgub 1598/2021
 									</button>
 								</p>
-								<div class="collapse" id="collapseExid">
+								<div class="collapse b" id="collapseExid">
+									<p>Jenis	: Keputusan Gubernur (Kepgub)</p>
+									<p>Entitas	: Pemerintah Daerah Khusus Ibukota Jakarta</p>
+									<p>Nomor	: 1598</p>
+									<p>Tahun	: 2021</p>
+									<p>Judul	: Keputusan Gubernur Nomor 1598 Tahun 2021 Tentang Klasifikasi Arsip</p>
 									<div class="card card-body">
 										<embed type="application/pdf" src="{{ asset('themes-frontend/pdf/kepgub-dki-11598-2021.pdf') }}" width="300" height="500"></embed>
 									</div>
@@ -63,7 +83,12 @@
 									Kepgub 1599/2021
 									</button>
 								</p>
-								<div class="collapse" id="collapseExid">
+								<div class="collapse b" id="collapseExid">
+									<p>Jenis	: Keputusan Gubernur (Kepgub)</p>
+									<p>Entitas	: Pemerintah Daerah Khusus Ibukota Jakarta</p>
+									<p>Nomor	: 1599</p>
+									<p>Tahun	: 2021</p>
+									<p>Judul	: Keputusan Gubernur Nomor 1599 Tahun 2021 Tentang Jadwal Retensi Arsip</p>
 									<div class="card card-body">
 										<embed type="application/pdf" src="{{ asset('themes-frontend/pdf/kepgub-dki-11599-2021.pdf') }}" width="300" height="500"></embed>
 									</div>
@@ -75,3 +100,12 @@
     </div>
 </div>
 </section>
+<style>
+embed {
+	width : 100%;
+	position: center;
+}
+div.b {
+  text-align: left;
+}
+</style>

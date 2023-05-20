@@ -31,6 +31,7 @@ Route::get('/ad-art', [App\Http\Controllers\WelcomesController::class, 'showAdar
     Route::get('/pengelolaan-arsip-dinamis', [App\Http\Controllers\WelcomesController::class, 'showPengelolaanArsipDinamis'])->name('pengelolaan-arsip-statis.show');
     Route::get('/penyelengaraan-kearsipan', [App\Http\Controllers\WelcomesController::class, 'showPenyelenggaraanKearsipan'])->name('penyelengaraaan-kearsipan.show');
 Route::get('/kontak-kami', [App\Http\Controllers\WelcomesController::class, 'showKontak'])->name('kontak.show');
+Route::post('/kontak-kami', [App\Http\Controllers\WelcomesController::class, 'kirimKontak'])->name('kirim.show');
 Route::get('/konsul', [App\Http\Controllers\WelcomesController::class, 'showKonsul'])->name('konsul.show');
 Route::get('/tentang-kami', [App\Http\Controllers\WelcomesController::class, 'showTentang'])->name('tentang.show');
 // Menu Non Aktif
