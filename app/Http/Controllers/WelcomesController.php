@@ -80,6 +80,30 @@ class WelcomesController extends Controller
         return view('layouts.welcome-menu-kontak');
     }
 
+    public function showPembinaanKearsipan()
+    {
+
+        return view('layouts.welcome-menu-pembinaan');
+    }
+
+    public function showPengelolaanArsipStatis()
+    {
+
+        return view('layouts.welcome-menu-arsip-statis');
+    }
+
+    public function showPengelolaanArsipDinamis()
+    {
+
+        return view('layouts.welcome-menu-arsip-dinamis');
+    }
+
+    public function showPenyelenggaraanKearsipan()
+    {
+
+        return view('layouts.welcome-menu-penyelengaraan');
+    }
+
     public function showKonsul()
     {
 

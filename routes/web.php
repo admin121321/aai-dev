@@ -19,14 +19,22 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/berita/{id}/', function () {
 //     return view('layouts.welcome-menu');
 // });
+
+// Menu FrontEnd
 Route::get('/', [App\Http\Controllers\WelcomesController::class, 'index'])->name('berita.index');
 Route::get('/berita', [App\Http\Controllers\WelcomesController::class, 'all'])->name('berita.all');
 Route::get('/berita/{slug}/', [App\Http\Controllers\WelcomesController::class, 'show'])->name('berita.show');
 Route::get('/ad-art', [App\Http\Controllers\WelcomesController::class, 'showAdart'])->name('adart.show');
-// Route::get('/keanggotaan', [App\Http\Controllers\WelcomesController::class, 'showKeanggotaan'])->name('keanggotaan.show');
+// SubMenu Regulasi
+    Route::get('/pembinaan-kearsipan', [App\Http\Controllers\WelcomesController::class, 'showPembinaanKearsipan'])->name('pembinaan-kearsipan.show');
+    Route::get('/pengelolaan-arsip-statis', [App\Http\Controllers\WelcomesController::class, 'showPengelolaanArsipStatis'])->name('pengelolaan-arsip-statis.show');
+    Route::get('/pengelolaan-arsip-dinamis', [App\Http\Controllers\WelcomesController::class, 'showPengelolaanArsipDinamis'])->name('pengelolaan-arsip-statis.show');
+    Route::get('/penyelengaraan-kearsipan', [App\Http\Controllers\WelcomesController::class, 'showPenyelenggaraanKearsipan'])->name('penyelengaraaan-kearsipan.show');
 Route::get('/kontak-kami', [App\Http\Controllers\WelcomesController::class, 'showKontak'])->name('kontak.show');
 Route::get('/konsul', [App\Http\Controllers\WelcomesController::class, 'showKonsul'])->name('konsul.show');
 Route::get('/tentang-kami', [App\Http\Controllers\WelcomesController::class, 'showTentang'])->name('tentang.show');
+// Menu Non Aktif
+// Route::get('/keanggotaan', [App\Http\Controllers\WelcomesController::class, 'showKeanggotaan'])->name('keanggotaan.show');
 // Route::get('/register/register-non-pns', [App\Http\Controllers\Auth\RegisterController::class, 'nonPns'])->name('frontends.register-nonpns');
 // Route::get('/register/register-pns', [App\Http\Controllers\Auth\RegisterController::class, 'pns'])->name('frontends.register-pns');
 
