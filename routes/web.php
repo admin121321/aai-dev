@@ -93,3 +93,10 @@ Route::post('/kategori-ticket/store/', [App\Http\Controllers\CategoriesControlle
 Route::get('/kategori-ticket/edit/{id}', [App\Http\Controllers\CategoriesController::class, 'edit'])->name('kategoritickets.edit');
 Route::post('/kategori-ticket/update', [App\Http\Controllers\CategoriesController::class, 'update'])->name('kategoritickets.update');
 Route::get('/kategori-ticket/destroy/{id}', [App\Http\Controllers\CategoriesController::class, 'destroy'])->name('kategoritickets.destroy');
+
+//iklan
+Route::get('/iklan', [App\Http\Controllers\IklansController::class, 'index'])->name('iklans.index');
+Route::post('/iklan/store/', [App\Http\Controllers\IklansController::class, 'store'])->name('iklans.store');
+Route::get('/iklan/edit/{id}', [App\Http\Controllers\IklansController::class, 'edit'])->name('iklans.edit');
+Route::post('/iklan/update', [App\Http\Controllers\IklansController::class, 'update'])->name('iklans.update');
+Route::get('/iklan/destroy/{id}', [App\Http\Controllers\IklansController::class, 'destroy'])->name('iklans.destroy');

@@ -39,6 +39,12 @@
                 <li><a href="{{ url('/halaman') }}" class="nav-link" href="layout-default.html">Halaman</a></li>
                 </ul>
             </li>
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i><span>Iklan</span></a>
+                <ul class="dropdown-menu">
+                <li><a href="{{ url('/iklan') }}" class="nav-link" href="layout-default.html">Iklan</a></li>
+                </ul>
+            </li>
             <li class="menu-header">Konsul</li>
                 @if(Auth::user()->is_admin)
                 <li class="dropdown">
@@ -72,6 +78,12 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i><span>Halaman</span></a>
                 <ul class="dropdown-menu">
                 <li><a href="{{ url('/halaman') }}" class="nav-link" href="layout-default.html">Halaman</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i><span>Iklan</span></a>
+                <ul class="dropdown-menu">
+                <li><a href="{{ url('/iklan') }}" class="nav-link" href="layout-default.html">Iklan</a></li>
                 </ul>
             </li>
             <li class="menu-header">Konsul</li>
