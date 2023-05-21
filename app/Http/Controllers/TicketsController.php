@@ -84,7 +84,7 @@ class TicketsController extends Controller
         ]);
         $ticket->save();
         // $mailer->sendTicketInformation(Auth::user(), $ticket);
-        return redirect()->back()->with("status", "A ticket with ID: #$ticket->ticket_id has been opened.");
+        return redirect()->back()->with("status", "Ticket untuk Konsultasi dengan ID: #$ticket->ticket_id berhasil dibuat, Silahkan Lihat di Menu List Tiket");
     }
     public function userTickets()
     {
