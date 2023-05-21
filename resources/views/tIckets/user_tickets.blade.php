@@ -1,27 +1,30 @@
 @extends('layouts.backend-menu')
 
 @section('content')
+<!-- Main Content -->
 <div class="main-content">
-    <section class="#">
+    <section class="section">
         <div class="section-header">
-            <br />
+            <h1>List Tiket</h1>
+            <div class="section-header-breadcrumb">
+                <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+                <div class="breadcrumb-item"><a href="#">Konsul</a></div>
+                <div class="breadcrumb-item">List Tiket</div>
+            </div>
         </div>
         <div class="section-body">
         <!-- card-body -->
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-12 table-responsive">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="fa fa-ticket"> My Tickets</i>
-                    </div>
-
                     <div class="panel-body">
                         @if($tickets->isEmpty())
                             <p>You have not created any tickets.</p>
                         @else
-                            <table class="table">
+                            <table class="table text-start align-middle table-bordered table-hover mb-0">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>No Ticket</th>
                                         <th>Kategori</th>
                                         <th>Judul</th>
@@ -31,8 +34,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($tickets as $ticket)
+                                    @foreach($tickets as $key =>$ticket)
                                         <tr>
+                                            <td>{{ ($tickets->currentpage()-1) * $tickets->perpage() + $key + 1 }}</td>
                                             <td>{{ $ticket->ticket_id }}</td>
                                             <td>
                                                 {{ $ticket->category->nama }}
@@ -55,9 +59,17 @@
                                     @endforeach
                                 </tbody>
                             </table>
-
                             {{ $tickets->render() }}
                         @endif
+                        <div class="col-md-12 text-center">
+							<ul class="pagination">
+							{{ $tickets->links() }}
+							</ul>
+							<div class="pagination-help-text">
+							Halaman : {{ $tickets->currentPage() }} &mdash; 
+							Data Per Halaman : {{ $tickets->perPage() }}
+							</div>
+						</div>
                     </div>
                 </div>
             </div>
