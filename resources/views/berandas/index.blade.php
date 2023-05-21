@@ -75,7 +75,7 @@
                   <h4>Konsul Open</h4>
                 </div>
                 <div class="card-body">
-                {{ DB::table('tickets')->where('status','=','')->count() }}
+                {{ DB::table('tickets')->where('status','=','Open')->count() }}
                 </div>
               </div>
             </div>
