@@ -15,7 +15,7 @@
 											</a>
 										</figure>
 										<div class="details">
-											<h1><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><?php echo strip_tags("$posting->judul");?></a></h1>
+											<h1><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><?php echo str_replace('-', ' ', $postings->judul);?></a></h1>
 											<p><?php echo substr("$postings->deskripsi", 0, 70);?></p>
 											<div class="detail">
 												<div class="time"><?php echo strip_tags("$posting->created_at");?></div>
@@ -28,23 +28,6 @@
 							</div>
 					    @endforeach
 						</aside>
-						<!-- <aside>
-							<div class="aside-body">
-								<form class="newsletter">
-									<div class="icon">
-										<i class="ion-ios-email-outline"></i>
-										<h1>Newsletter</h1>
-									</div>
-									<div class="input-group">
-										<input type="email" class="form-control email" placeholder="Your mail">
-										<div class="input-group-btn">
-											<button class="btn btn-primary"><i class="ion-paper-airplane"></i></button>
-										</div>
-									</div>
-									<p>By subscribing you will receive new articles in your email.</p>
-								</form>
-							</div>
-						</aside> -->
 					</div>
 					<div class="col-md-8">
 						<ol class="breadcrumb">
@@ -74,21 +57,21 @@
 							<footer>
 								<div class="col">
 									<ul class="tags">
-										<li><a href="#">Free Themes</a></li>
+										<!-- <li><a href="#">Free Themes</a></li>
 										<li><a href="#">Bootstrap 3</a></li>
 										<li><a href="#">Responsive Web Design</a></li>
 										<li><a href="#">HTML5</a></li>
 										<li><a href="#">CSS3</a></li>
-										<li><a href="#">Web Design</a></li>
+										<li><a href="#">Web Design</a></li> -->
 									</ul>
 								</div>
 								<div class="col">
-									<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1220</div></a>
+									<!-- <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1220</div></a> -->
 								</div>
 							</footer>
 						</article>
 						<div class="sharing">
-						<div class="title"><i class="ion-android-share-alt"></i> Sharing is caring</div>
+						<div class="title"><i class="ion-android-share-alt"></i> Berbagi Info</div>
 							<ul class="social">
 								<li>
 									<a href="#" class="facebook">
@@ -115,10 +98,10 @@
 										<i class="ion-ios-email-outline"></i> Email
 									</a>
 								</li>
-								<li class="count">
+								<!-- <li class="count">
 									20
 									<div>Shares</div>
-								</li>
+								</li> -->
 							</ul>
 						</div>
 						<div class="line">
@@ -126,13 +109,13 @@
 						</div>
 						<div class="author">
 							<figure>
-								<img src="images/img01.jpg">
+								<img src="{{asset('themes-frontend/images/user.png')}}">
 							</figure>
 							<div class="details">
-								<div class="job">Web Developer</div>
+								<div class="job">Editor</div>
 								<h3 class="name">{{ $postings->name }}</h3>
-								<p>Nulla sagittis rhoncus nisi, vel gravida ante. Nunc lobortis condimentum elit, quis porta ipsum rhoncus vitae. Curabitur magna leo, porta vel fringilla gravida, consectetur in libero. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
-								<ul class="social trp sm">
+								<p>Sang Pembuat Berita</p>
+								<!-- <ul class="social trp sm">
 									<li>
 										<a href="#" class="facebook">
 											<svg><rect/></svg>
@@ -157,12 +140,12 @@
 											<i class="ion-social-googleplus"></i>
 										</a>
 									</li>
-								</ul>
+								</ul> -->
 							</div>
 						</div>
-						<div class="line"><div>You May Also Like</div></div>
+						<div class="line"><div>Berita Lain</div></div>
 						<div class="row">
-						@foreach(App\Models\Posting::latest()->paginate(4) as $posting)
+						@foreach(App\Models\Posting::latest()->paginate(2) as $posting)
 							<article class="article related col-md-6 col-sm-6 col-xs-12">
 								<div class="inner">
 									<figure>
@@ -181,7 +164,7 @@
 							</article>
 							@endforeach
 						</div>
-						<div class="line thin"></div>
+						<!-- <div class="line thin"></div> -->
 						<!-- <div class="comments">
 							<h2 class="title">3 Responses <a href="#">Write a Response</a></h2>
 							<div class="comment-list">
