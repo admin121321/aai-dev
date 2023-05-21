@@ -19,8 +19,9 @@ class IklansController extends Controller
     {
         if ($request->ajax()) {
             $data = Iklans::join('users', 'users.id', '=' ,'iklans.id_user')
-            ->select('iklans.*', 'users.name') 
-            ->get();
+                            ->select('iklans.*', 'users.name') 
+                            ->latest()
+                            ->get();
             // $data = Halamans::select('id','id_user', 'judul', 'gambar', 'deskripsi')->get();
             return Datatables::of($data)->addIndexColumn()
                 ->addColumn('id_user', function($data){

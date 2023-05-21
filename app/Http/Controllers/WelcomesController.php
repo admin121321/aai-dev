@@ -34,7 +34,7 @@ class WelcomesController extends Controller
         $data = Posting::join('users', 'users.id', '=' ,'postings.id_user')
                 ->join('kategori_postings', 'kategori_postings.id', '=', 'postings.id_kategori')
                 ->select('postings.*', 'users.name', 'kategori_postings.nama_kategori') 
-                ->paginate(3);
+                ->latest()->paginate(3);
                 // ->get();
 
         return view('layouts.welcome-menu-berita', compact('data'));

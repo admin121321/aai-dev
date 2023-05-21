@@ -26,10 +26,10 @@
 							</li>
 							<li class="dropdown magz-dropdown"><a href="#">Regulasi<i class="ion-ios-arrow-right"></i></a>
 								<ul class="dropdown-menu">
-                                    <li><a href="{{ url('/pembinaan-kearsipan') }}">Pembinaan Kearsipan</a></li>
-                                    <li><a href="{{ url('/pengelolaan-arsip-statis') }}">Pengelolaan Arsip Statis</a></li>
-									<li><a href="{{ url('/pengelolaan-arsip-dinamis') }}">Pengelolaan Arsip Dinamis</a></li>
 									<li><a href="{{ url('/penyelengaraan-kearsipan') }}">Penyelengaraan Kearsipan</a></li>
+                                    <li><a href="{{ url('/pengelolaan-arsip-dinamis') }}">Pengelolaan Arsip Dinamis</a></li>
+                                    <li><a href="{{ url('/pengelolaan-arsip-statis') }}">Pengelolaan Arsip Statis</a></li>
+                                    <li><a href="{{ url('/pembinaan-kearsipan') }}">Pembinaan Kearsipan</a></li>
 								</ul>
 							</li>
 							<li><a href="{{ url('/berita') }}">Berita</a>

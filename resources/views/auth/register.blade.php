@@ -150,7 +150,7 @@
 
 												<div class="card-body">
 													<div class="form-group row">
-													<label for="u_k" class="col-md-4 col-form-label text-md-right">{{ __('Nama Tempat bekerja') }}</label>
+													<label for="u_k" class="col-md-4 col-form-label text-md-right">{{ __('Perusahaan/Instansi/Perguruan Tinggi') }}</label>
 														<div class="col-md-6">
 															<input id="u_k" type="text" class="form-control @error('u_k') is-invalid @enderror" name="u_k" value="{{ old('u_k') }}" required autocomplete="u_k" autofocus>
 
@@ -168,9 +168,8 @@
 													<label for="ketegori" class="col-md-4 col-form-label text-md-right">{{__('Kategori') }}</label>
 														<div class="col-md-6">
 														<select name="kategori" class="form-control" required>
-															<option value="KARYAWAN BUMN">KARYAWAN BUMN</option>
-															<option value="KARYAWAN SWASTA">KARYAWAN SWASTA</option>
-															<option value="KARYAWAN NON PNS">KARYAWAN NON PNS</option>
+															<option value="KARYAWAN BUMN/BUMD/SWASTA">KARYAWAN BUMN/BUMD/SWASTA</option>
+															<option value="MASYARAKAT PEMERHATI ARSIP ">MASYARAKAT PEMERHATI ARSIP *Termasuk Mahasiswa</option>
 														</select>
 															@error('kategori')
 																<span class="invalid-feedback" role="alert">
@@ -181,11 +180,11 @@
 													</div>
 												</div>
 
-												<div class="card-body">
+												<div class="card-body" hidden>
 													<div class="form-group row">
 													<label for="pang" class="col-md-4 col-form-label text-md-right">{{__('Pangkat / Jabatan') }}</label>
 														<div class="col-md-6">
-															<input id="pang" type="text" class="form-control @error('pang') is-invalid @enderror" name="pang" value="{{ old('pang') }}" onkeyup="this.value = this.value.toUpperCase()" required autocomplete="pang" autofocus>
+															<input id="pang" type="text" class="form-control @error('pang') is-invalid @enderror" name="pang" value="0" onkeyup="this.value = this.value.toUpperCase()" required autocomplete="pang" autofocus>
 															@error('pang')
 																<span class="invalid-feedback" role="alert">
 																	<strong>{{ $message }}</strong>

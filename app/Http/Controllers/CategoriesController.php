@@ -21,6 +21,7 @@ class CategoriesController extends Controller
         if ($request->ajax()) {
             $data = Category::join('users', 'users.id', '=' ,'categories.id_useri')
                     ->select('categories.*', 'users.name') 
+                    ->latest()
                     ->get();
 
             return Datatables::of($data)->addIndexColumn()

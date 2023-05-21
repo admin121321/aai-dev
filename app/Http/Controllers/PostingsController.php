@@ -23,7 +23,7 @@ class PostingsController extends Controller
             $data = Posting::join('users', 'users.id', '=' ,'postings.id_user')
                      ->join('kategori_postings', 'kategori_postings.id', '=', 'postings.id_kategori')
                      ->select('postings.*', 'users.name', 'kategori_postings.nama_kategori') 
-                     ->get();
+                     ->latest()->get();
             // $data = Posting::with('User','KategoriPosting')->latest()->get();
             return Datatables::of($data)->addIndexColumn()
                 ->addColumn('id_user', function($data){
@@ -39,7 +39,7 @@ class PostingsController extends Controller
                 })
                 ->make(true);
                 
-             dd($data);
+            //  dd($data);
 
         }
         return view('postings.index');

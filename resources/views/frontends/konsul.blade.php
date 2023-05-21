@@ -22,11 +22,11 @@
 											<i class="btn btn-primary icon ion-person"></i> 
 										</div>
 										<div class="card-body">
-											<h5 class="card-title">ADVOKASI KESEHATAN</h5>
-											<p class="card-text">
+											<h5 class="card-title">KONSUL MASALAH KESEHATAN</h5>
+											<!-- <p class="card-text">
 											Some quick example text to build on the card title and make up the bulk of the
 											card's content.
-											</p>
+											</p> -->
 											<!-- <a href="#!" class="btn btn-primary">Read</a> -->
 										</div>
 									</div>
@@ -39,11 +39,7 @@
 											<i class="btn btn-primary icon ion-person"></i> 
 										</div>
 										<div class="card-body">
-											<h5 class="card-title">ADVOKASI HUKUM</h5>
-											<p class="card-text">
-											Some quick example text to build on the card title and make up the bulk of the
-											card's content.
-											</p>
+											<h5 class="card-title">KONSUL MASALAH HUKUM</h5>
 											<!-- <a href="#!" class="btn btn-primary">Read</a> -->
 										</div>
 									</div>
@@ -56,11 +52,7 @@
 											<i class="btn btn-primary icon ion-person"></i> 
 										</div>
 										<div class="card-body">
-											<h5 class="card-title">ADVOKASI KEARSIPAN</h5>
-											<p class="card-text">
-											Some quick example text to build on the card title and make up the bulk of the
-											card's content.
-											</p>
+											<h5 class="card-title">KONSUL MASALAH KEARSIPAN</h5>
 											<!-- <a href="#!" class="btn btn-primary">Read</a> -->
 										</div>
 										</div>

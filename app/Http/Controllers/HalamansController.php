@@ -19,8 +19,9 @@ class HalamansController extends Controller
     {
         if ($request->ajax()) {
             $data = Halamans::join('users', 'users.id', '=' ,'halamans.id_user')
-            ->select('halamans.*', 'users.name') 
-            ->get();
+                            ->select('halamans.*', 'users.name') 
+                            ->latest()
+                            ->get();
             // $data = Halamans::select('id','id_user', 'judul', 'gambar', 'deskripsi')->get();
             return Datatables::of($data)->addIndexColumn()
                 ->addColumn('id_user', function($data){
