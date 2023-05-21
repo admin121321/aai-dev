@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\models\Comment;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Mailers\AppMailer;
 use Illuminate\Support\Facades\Auth;
