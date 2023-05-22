@@ -12,7 +12,7 @@
 							<div class="col-md-8 col-md-offset-2">
 								<p>
 									<button class="btn btn-primary text-center" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-										Pergub 79/2018
+									Peraturan Gubernur Nomor 79 Tahun 2018
 									</button>
 								</p>
 								<div class="collapse b" id="collapseExample">
@@ -29,7 +29,7 @@
 							<div class="col-md-8 col-md-offset-2">
 								<p>
 									<button class="btn btn-primary text-center" type="button" data-toggle="collapse" data-target="#collapseEx" aria-expanded="false" aria-controls="collapseExample">
-										Pergub 99/2021
+									Peraturan Gubernur Nomor 99 Tahun 2021
 									</button>
 								</p>
 								<div class="collapse b" id="collapseEx">
@@ -46,7 +46,7 @@
 							<div class="col-md-8 col-md-offset-2">
 								<p>
 									<button class="btn btn-primary text-center" type="button" data-toggle="collapse" data-target="#collapseExi" aria-expanded="false" aria-controls="collapseExample">
-										Kepgub 737/2022
+									Keputusan Gubernur Nomor 737 Tahun 2022
 									</button>
 								</p>
 								<div class="collapse b" id="collapseExi">
@@ -63,7 +63,7 @@
 							<div class="col-md-8 col-md-offset-2">
 								<p>
 									<button class="btn btn-primary text-center" type="button" data-toggle="collapse" data-target="#collapseExid" aria-expanded="false" aria-controls="collapseExample">
-									Kepgub 1598/2021
+									Keputusan Gubernur Nomor 1598 Tahun 2021
 									</button>
 								</p>
 								<div class="collapse b" id="collapseExid">
@@ -80,7 +80,7 @@
 							<div class="col-md-8 col-md-offset-2">
 								<p>
 									<button class="btn btn-primary text-center" type="button" data-toggle="collapse" data-target="#collapseExid" aria-expanded="false" aria-controls="collapseExample">
-									Kepgub 1599/2021
+									Keputusan Gubernur Nomor 1599 Tahun 2021
 									</button>
 								</p>
 								<div class="collapse b" id="collapseExid">

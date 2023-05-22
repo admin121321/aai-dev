@@ -168,8 +168,8 @@
 													<label for="ketegori" class="col-md-4 col-form-label text-md-right">{{__('Kategori') }}</label>
 														<div class="col-md-6">
 														<select name="kategori" class="form-control" required>
-															<option value="KARYAWAN BUMN/BUMD/SWASTA">KARYAWAN BUMN/BUMD/SWASTA</option>
-															<option value="MASYARAKAT PEMERHATI ARSIP ">MASYARAKAT PEMERHATI ARSIP *Termasuk Mahasiswa</option>
+															<option value="Pegawai BUMN/BUMD/Swasta">Pegawai BUMN/BUMD/Swasta</option>
+															<option value="Masyarakat Pemerhati Arsip (*termasuk mahasiswa) ">Masyarakat Pemerhati Arsip (*termasuk mahasiswa)</option>
 														</select>
 															@error('kategori')
 																<span class="invalid-feedback" role="alert">

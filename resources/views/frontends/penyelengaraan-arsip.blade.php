@@ -12,7 +12,7 @@
 							<div class="col-md-8 col-md-offset-2">
 								<p>
 									<button class="btn btn-primary text-center" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-										UU 8/97
+									Undang-Undang Nomor 8 Tahun 1997
 									</button>
 								</p>
 								<div class="collapse b" id="collapseExample">
@@ -29,7 +29,7 @@
 							<div class="col-md-8 col-md-offset-2">
 								<p>
 									<button class="btn btn-primary text-center" type="button" data-toggle="collapse" data-target="#collapseEx" aria-expanded="false" aria-controls="collapseExample">
-										UU 43/2009
+									Undang-Undang Nomor 43 Tahun 2009
 									</button>
 								</p>
 								<div class="collapse b" id="collapseEx">
@@ -46,7 +46,7 @@
 							<div class="col-md-8 col-md-offset-2">
 								<p>
 									<button class="btn btn-primary text-center" type="button" data-toggle="collapse" data-target="#collapseExi" aria-expanded="false" aria-controls="collapseExample">
-										PP 28/2012
+									Peraturan Pemerintah Nomor 28 Tahun 2012
 									</button>
 								</p>
 								<div class="collapse b" id="collapseExi">
@@ -63,7 +63,7 @@
 							<div class="col-md-8 col-md-offset-2">
 								<p>
 									<button class="btn btn-primary text-center" type="button" data-toggle="collapse" data-target="#collapseExy" aria-expanded="false" aria-controls="collapseExample">
-										PERDA 12/2013
+									Peraturan Daerah Nomor 12 Tahun 2013
 									</button>
 								</p>
 								<div class="collapse b" id="collapseExy">
