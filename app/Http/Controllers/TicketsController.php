@@ -27,8 +27,18 @@ class TicketsController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::paginate(10);
-        return view('tickets.index', compact('tickets'));
+        // $tickets = Ticket::paginate(10);
+        $user = User::all();
+        $category = Category::all();
+        // $id_useri = Auth::user()->id_useri;
+        // $rowPengajuan = Pengajuan::where('nip',$nip)->paginate(5);
+        $tickets = Ticket::join('users', 'users.id', '=' ,'tickets.user_id')
+                            ->join('categories', 'categories.id', '=' ,'tickets.category_id')
+                            ->select('tickets.*', 'users.name', 'categories.nama','categories.id_useri')
+                            ->orderBy('created_at', 'DESC') 
+                            ->latest()
+                            ->paginate(10);
+        return view('tickets.index', compact('tickets', 'category'));
     }
 
     // Report PDF
