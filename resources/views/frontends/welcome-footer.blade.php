@@ -20,7 +20,7 @@
 					</div>
 					<div class="col-md-3 col-sm-6 col-xs-12">
 						<div class="block">
-							<h1 class="block-title">Kolaboarsi</h1>
+							<h1 class="block-title">Kolaborasi</h1>
 							<div class="block-body">
 								<p>Kolaborasi Dinas DKI Jakarta</p>
 								<ul class="social trp">
