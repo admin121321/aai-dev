@@ -15,8 +15,8 @@
 					<div id="menu-list">
 						<ul class="nav-list">
 							<li class="for-tablet nav-title"><a>Menu</a></li>
-							<li class="for-tablet"><a href="login.html">Login</a></li>
-							<li class="for-tablet"><a href="register.html">Register</a></li>
+							<li class="for-tablet"><a href="#">Login</a></li>
+							<li class="for-tablet"><a href="#">Register</a></li>
 							<li><a href="{{ url('/') }}">Beranda</a></li>
 							<li class="dropdown magz-dropdown">
 								<a href="{{ url('/tentang-kami') }}">Tentang Kami <i class="ion-ios-arrow-right"></i></a>
@@ -38,6 +38,10 @@
 							</li>
 							<li><a href="{{ url('/kontak-kami') }}">Kontak Kami</a>
 							</li>
+                            @if (Route::has('register'))
+                            <li><a href="{{ route('register') }}">Daftar</a>
+							</li>
+                            @endif
 							<li class="dropdown magz-dropdown"><a href="#">Akses<i class="ion-ios-arrow-right"></i></a>
 								<ul class="dropdown-menu">
 								@guest
@@ -77,11 +81,11 @@
                                                     </a> -->
                                                 @endif
 
-                                                @if (Route::has('register'))
+                                                <!-- @if (Route::has('register'))
                                                     <a class="btn btn-link" href="{{ route('register') }}">
                                                             {{ __('Ingin Jadi Anggota?') }}
                                                     </a>
-                                                @endif
+                                                @endif -->
                                                 </div>   
                                             </form>
                                             
