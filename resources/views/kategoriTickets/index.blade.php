@@ -18,7 +18,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Penanggung Jawab</th>
+                                <th>Advokat</th>
                                 <th>Kategori</th>
                                 <th width="180px">Action</th>
                             </tr>
@@ -40,9 +40,8 @@
                             <div class="modal-body">
                                 <span id="form_result"></span>
                                 <div class="form-floating mb-3">
-                                <label for="floatingTextarea">Users </label>
-                                    <select class="form-select" id="id_useri" name="id_useri" aria-label="Floating label select example">
-                                        <option>--Pilih Users--</option>
+                                <label for="floatingTextarea">Advokat</label>
+                                    <select class="form-control select2"id="id_useri" name="id_useri" aria-label="Floating label select example">
                                         @foreach(App\Models\User::all() as $users)
                                         <option value="{{ $users->id}}" id="id_useri" name="id_useri">{{ $users->name }}</option>
                                         @endforeach

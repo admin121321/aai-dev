@@ -135,7 +135,8 @@ $(document).ready(function() {
                 {
                     html = '<div class="alert alert-success">' + data.success + '</div>';
                     $('#sample_form')[0].reset();
-                    $('#kategori_table').DataTable().ajax.reload();
+                    $('#kategori_datatable').DataTable().ajax.reload();
+                    window.location.reload();
                 }
                 $('#form_result').html(html);
             },

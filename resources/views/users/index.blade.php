@@ -121,9 +121,9 @@
                                             @foreach (App\Models\User::all() as $users)
                                             <option value="{{ $users->level }}" id="level">{{ $users->level }}</option>
                                             @endforeach
-                                            <option value="USERS">USERS</option>
+                                            <!-- <option value="USERS">USERS</option>
                                             <option value="ADMIN">ADMIN</option>
-                                            <option value="SUPER ADMIN">SUPER ADMIN</option>
+                                            <option value="SUPER ADMIN">SUPER ADMIN</option> -->
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -133,8 +133,8 @@
                                             @foreach (App\Models\User::all() as $users)
                                             <option value="{{ $users->is_admin }}" id="is_admin">{{ $users->is_admin }}</option>
                                             @endforeach
-                                            <option value="0">User</option>
-                                            <option value="1">Admin</option>
+                                            <!-- <option value="0">User</option>
+                                            <option value="1">Admin</option> -->
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -144,8 +144,8 @@
                                             @foreach (App\Models\User::all() as $users)
                                             <option value="{{ $users->verifikasi }}" id="verifikasi">{{ $users->verifikasi }}</option>
                                             @endforeach
-                                            <option value="0">Tidak Aktif</option>
-                                            <option value="1">Aktif</option>
+                                            <!-- <option value="0">Tidak Aktif</option>
+                                            <option value="1">Aktif</option> -->
                                         </select>
                                     </div>
                                     <input type="hidden" name="action" id="action" value="Add" />
@@ -261,6 +261,7 @@ $(document).ready(function() {
                     html = '<div class="alert alert-success">' + data.success + '</div>';
                     $('#sample_form')[0].reset();
                     $('#user_table').DataTable().ajax.reload();
+                    window.location.reload();
                 }
                 $('#form_result').html(html);
             },
@@ -340,6 +341,7 @@ $(document).ready(function() {
                 $('#user_table').DataTable().ajax.reload();
                 alert('Data Deleted');
                 }, 2000);
+                window.location.reload();
             }
         })
     });
