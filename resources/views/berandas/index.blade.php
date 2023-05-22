@@ -303,10 +303,17 @@
           <h1>Dashboard</h1>
         </div>
         <div class="row">
+        <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+            <div class="card">
+              <div class="card-header">
+                <h4>Selamat Datang, {{ Auth::user()->name }}</h4>
+              </div>
+            </div>
+          </div>
           <div class="col-lg-8 col-md-12 col-12 col-sm-12">
             <div class="card">
               <div class="card-header">
-                <h4>Logo</h4>
+                <h4></h4>
               </div>
               <div class="card-body">
               <img src="{{ asset('themes-frontend/images/logo-aai.png') }}" alt="Aai Jakarta Logo" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
@@ -315,5 +322,5 @@
           </div>
         </div>
       </section>
-  </div>
+</div>
 @endif
