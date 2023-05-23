@@ -69,7 +69,7 @@ class LoginController extends Controller
         return redirect()->route('home');
     }
     //JIKA SALAH, MAKA KEMBALI KE LOGIN DAN TAMPILKAN NOTIFIKASI
-    return redirect()->back()->with('status', 'Email / Password Anda Salah');
+    return redirect()->back()->with('status', 'Email / ID Anggota / Password Anda Salah');
     // return redirect()->route('login')->with(['error' => 'Email/Password salah!']);
     // return redirect()->back()->json(['success' => 'Data Added successfully.']);
     // return response()->json(['error' => 'Email / Password Salah']);
