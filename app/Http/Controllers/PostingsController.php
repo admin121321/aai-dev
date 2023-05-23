@@ -20,10 +20,13 @@ class PostingsController extends Controller
     public function index(Request $request)
     {       
         if ($request->ajax()) {
+            // $id_useri = Auth::user()->id;
             $data = Posting::join('users', 'users.id', '=' ,'postings.id_user')
                      ->join('kategori_postings', 'kategori_postings.id', '=', 'postings.id_kategori')
                      ->select('postings.*', 'users.name', 'kategori_postings.nama_kategori') 
-                     ->latest()->get();
+                    //  ->where('users.id',$id_useri)
+                     ->latest()
+                     ->get();
             // $data = Posting::with('User','KategoriPosting')->latest()->get();
             return Datatables::of($data)->addIndexColumn()
                 ->addColumn('id_user', function($data){
@@ -43,6 +46,36 @@ class PostingsController extends Controller
 
         }
         return view('postings.index');
+    }
+
+    // Index View Level User
+    public function indexuser(Request $request)
+    {       
+        if ($request->ajax()) {
+            $id_useri = Auth::user()->id;
+            $data = Posting::join('users', 'users.id', '=' ,'postings.id_user')
+                     ->join('kategori_postings', 'kategori_postings.id', '=', 'postings.id_kategori')
+                     ->select('postings.*', 'users.name', 'kategori_postings.nama_kategori') 
+                     ->where('users.id',$id_useri)->latest()->get();
+            // $data = Posting::with('User','KategoriPosting')->latest()->get();
+            return Datatables::of($data)->addIndexColumn()
+                ->addColumn('id_user', function($data){
+                    return $data->name;
+                })
+                ->addColumn('id_kategori', function($data){
+                    return $data->nama_kategori;
+                })
+                ->addColumn('action', function($data){
+                    $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"> <i class="bi bi-pencil-square"></i>Edit</button>';
+                    $button .= '   <button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm"> <i class="bi bi-backspace-reverse-fill"></i> Delete</button>';
+                    return $button;
+                })
+                ->make(true);
+                
+            //  dd($data);
+
+        }
+        return view('postings.index-user');
     }
     
     public function store(Request $request)

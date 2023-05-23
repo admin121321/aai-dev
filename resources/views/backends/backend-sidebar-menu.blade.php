@@ -119,14 +119,15 @@
 
             <!-- Level USERS -->
             @if (Auth::User()->level=="USERS")
+
                 <li class="menu-header">Posting</li>
                 <li class="dropdown">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-file-alt"></i><span>Posting</span></a>
                     <ul class="dropdown-menu">
-                    <li><a href="{{ url('/kategori-posting') }}" class="nav-link" href="layout-default.html">kategori Posting</a></li>
-                    <li><a href="{{ url('/posting') }}" class="nav-link" >Posting</a></li>
+                        <li><a href="{{ url('/postings') }}" class="nav-link" >Posting</a></li>
                     </ul>
                 </li>
+
                 @if(Auth::user()->is_admin)
                 <li class="dropdown">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
@@ -146,7 +147,7 @@
                 <li class="dropdown">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-gear"></i><span>Pengaturan Akun</span></a>
                     <ul class="dropdown-menu">
-                    <li><a href="{{ url('/profile/edit/'.Auth::user()->id) }}" class="nav-link" href="layout-default.html">Profile</a></li>
+                        <li><a href="{{ url('/profile/edit/'.Auth::user()->id) }}" class="nav-link" href="layout-default.html">Profile</a></li>
                         <li><a href="{{ url('/password/edit/'.Auth::user()->id) }}" class="nav-link" href="layout-default.html">Password</a></li>
                     </ul>
                 </li>
