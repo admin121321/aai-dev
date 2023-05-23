@@ -60,6 +60,13 @@ Route::get('/users/detail/{id}/', [App\Http\Controllers\UserController::class, '
 Route::get('/users/edit/{id}/', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
 Route::post('/users/update', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
 Route::get('/users/destroy/{id}/', [App\Http\Controllers\UserController::class, 'destroy']);
+// Profile
+Route::get('/profile/edit/{id}', [App\Http\Controllers\UserController::class, 'edit_profile'])->name('users.edit_profile');
+Route::put('/profile/update/{id}', [App\Http\Controllers\UserController::class, 'update_profile'])->name('users.update_profile');
+// password
+Route::get('/password/edit/{id}',[App\Http\Controllers\UserController::class, 'edit_password'])->name('users.edit_password');
+Route::put('/password/update/{id}', [App\Http\Controllers\UserController::class, 'update_password'])->name('users.update_password');
+
 // Kategori Posting
 Route::get('/kategori-posting', [App\Http\Controllers\KategoriPostingsController::class, 'index'])->name('kategoriPostings.index');
 Route::post('/kategori-posting/store/', [App\Http\Controllers\KategoriPostingsController::class, 'store'])->name('kategoriPostings.store');

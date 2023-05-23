@@ -220,4 +220,131 @@ class UserController extends Controller
             return response()->json($data);
         }
     }
+
+
+    // Profile
+    //edit Profile
+    public function edit_profile($id)
+	{
+   		$users = User::find($id);
+   		return view('users.profile', ['users' => $users]);
+	}
+	//update users
+	public function update_profile($id, Request $request)
+	{
+        $nama_file = $request->hidden_image;
+        $foto = $request->file('foto');
+        if($foto != '')
+        {
+            $request->validate([
+            'nrk' => 'required',
+            'nip' => 'required',
+            'no_ser_kar' => 'required',
+            'name' => 'required', 'string', 'max:255',
+            't_lahir' => 'required',
+            'tgl_lahir' => 'required',
+            'j_k' => 'required',
+            'pang' => 'required',
+            'gol' => 'required',
+            'tmt_pang' => 'required',
+            'ting' => 'required',
+            'tmt_ting' => 'required',
+            'u_k' => 'required',
+            'inst' => 'required',
+            'foto' => 'required|image|mimes:jpg,jpeg,png,ico',
+            'level' => 'required'
+            ]);
+            $foto = $request->file('foto');
+ 
+            $nama_file = time()."_".$foto->getClientOriginalName();
+ 
+                // isi dengan nama folder tempat kemana file diupload
+            $tujuan_upload = 'foto';
+            $foto->move($tujuan_upload,$nama_file); 
+        }
+        else
+        {
+            $request->validate([
+            'nrk' => 'required',
+            'nip' => 'required',
+            'no_ser_kar' => 'required',
+            'name' => 'required', 'string', 'max:255',
+            't_lahir' => 'required',
+            'tgl_lahir' => 'required',
+            'j_k' => 'required',
+            'pang' => 'required',
+            'gol' => 'required',
+            'tmt_pang' => 'required',
+            'ting' => 'required',
+            'tmt_ting' => 'required',
+            'u_k' => 'required',
+            'inst' => 'required',
+            'level' => 'required'
+            ]);
+        }
+
+        $users = array(
+            'nrk' => $request->nrk,
+            'nip' => $request->nip,
+            'no_ser_kar' => $request->no_ser_kar,
+            'name' => $request->name,
+            't_lahir' => $request->t_lahir,
+            'tgl_lahir' => $request->tgl_lahir,
+            'j_k' => $request->j_k,
+            'pang' => $request->pang,
+            'gol' => $request->gol,
+            'tmt_pang' => $request->tmt_pang,
+            'ting' => $request->ting,
+            'tmt_ting' => $request->tmt_ting,
+            'u_k' => $request->u_k,
+            'inst' => $request->inst,
+            'foto' => $nama_file,
+            'level' => $request->level
+        );
+
+        User::whereId($id)->update($users);
+        return redirect()->back()->with('success', 'Profile Berhasil Di Ubah');
+        // return redirect('/home')->with('success', 'Data is successfully updated');
+	}
+    // Password
+     public function edit_password($id)
+     {
+         $users = User::find($id);
+         return view('users.password', ['users' => $users]);
+     }
+     //update Password
+     public function update_password($id, Request $request)
+     {
+         $nama_file = $request->hidden_image;
+         $foto = $request->file('foto');
+         if($foto != '')
+         {
+             $request->validate([
+            //   'nip' => 'required',
+             ]);
+             $foto = $request->file('foto');
+  
+             $nama_file = time()."_".$foto->getClientOriginalName();
+  
+                 // isi dengan nama folder tempat kemana file diupload
+             $tujuan_upload = 'foto';
+             $foto->move($tujuan_upload,$nama_file); 
+         }
+         else
+         {
+             $request->validate([
+             'email' => 'required', 'string', 'email', 'max:255', 'unique:users',
+             'password' => 'required', 'string', 'min:8', 'confirmed'
+             ]);
+         }
+ 
+         $users = array(
+             'email' => $request->email,
+             'password' => Hash::make($request->password),
+         );
+ 
+         User::whereId($id)->update($users);
+         // return redirect('/users')->with('success', 'Data is successfully updated');
+         return redirect()->back()->with('success', 'Password Berhasil Di Ubah');
+     }
 }
