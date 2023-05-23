@@ -12,7 +12,7 @@
             <br />
         </div>
             <div class="section-body">
-            <form method="POST" action="./password/update/{{ $users->id }}" enctype="multipart/form-data">
+            <form method="POST" action="./update/{{ $users->id }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                     <div class="card-header"><b>Ubah Password</b></div>
@@ -61,6 +61,8 @@
                             </div>
                         </div>
                     </form>
+
+                    <div><a href="/home" class="btn btn-primary">Kembali</a></div>
             </div>        
     </section>
 </div>

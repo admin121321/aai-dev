@@ -13,7 +13,7 @@
             <h3> Profile </h3>
         </div>
             <div class="section-body">
-            <form method="POST" action="/prifile/update/{{ $users->id }}" enctype="multipart/form-data">
+            <form method="POST" action="./update/{{ $users->id }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                     <div class="card-header"><b>Data Diri</b></div>
@@ -106,6 +106,30 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="no_telpn" class="col-md-4 col-form-label text-md-right">{{ __('No Handphone') }}</label>
+                        <div class="col-md-6">
+                            <input id="no_telpn" type="text" class="form-control" name="no_telpn" placeholder="{{ $users->no_telpn }}" value="{{ $users->no_telpn }}">
+                            @error('no_telpn')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="id_anggota" class="col-md-4 col-form-label text-md-right">{{ __('ID Anggota') }}</label>
+                        <div class="col-md-6">
+                            <input id="id_anggota" type="text" class="form-control" name="id_anggota" placeholder="{{ $users->id_anggota }}" value="{{ $users->id_anggota }}">
+                            @error('id_anggota')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
 
@@ -275,7 +299,7 @@
                             </div>
                         </div>
 
-                        <div><a href="/sipka/home" class="btn btn-primary">Kembali</a></div>
+                        <div><a href="/home" class="btn btn-primary">Kembali</a></div>
                     </div>
                     </form>
             </div>        
