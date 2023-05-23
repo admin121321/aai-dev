@@ -1,6 +1,5 @@
 @extends('layouts.backend-menu')
 @section('content')
-
 <div class="main-content">
     <section class="#">
         <div class="section-header">
@@ -9,35 +8,34 @@
                 <button type="button" name="create_record" id="create_record" class="btn btn-success"> <i class="bi bi-plus-square"></i> Add</button>
             </div>
         </div>
-        <div class="section-body">
-            <!-- card-body -->
-            <div class="row">
-                <div class="col-12 table-responsive">
-                <br />
-                    <table class="table text-start align-middle table-bordered table-hover mb-0 posting_datatable"> 
-                        <thead>
-                            <tr>
-                                <th>ID Anggota</th>
-                                <th>Nama</th>
-                                <th>Email</th>
-                                <th>No Handphone</th>
-                                <th>Foto</th>
-                                <th>Verifikasi</th>
-                                <th width="180px">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </div>
-            <!-- card-body -->
-            <!-- Modal -->
-            <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl">
-                        <div class="modal-content bg-light rounded h-100 p-4">
-                        <form method="post" id="sample_form" enctype="multipart/form-data" class="form-horizontal">
-                        <div class="modal-header">
-                                    <h5 class="modal-title" id="ModalLabel">Add User</h5>
+
+          <div class="section-body">
+                    <div class="row">
+                        <div class="col-12 table-responsive">
+                        <br />
+                            <table class="table table-striped table-bordered user_datatable"> 
+                                <thead>
+                                    <tr>
+                                        <th>ID Anggota</th>
+                                        <th>Nama</th>
+                                        <th>Email</th>
+                                        <th>No Handphone</th>
+                                        <th>Foto</th>
+                                        <th>Verifikasi</th>
+                                        <th width="180px">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                
+                    <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <form method="post" id="sample_form" class="form-horizontal" enctype="multipart/form-data">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="ModalLabel">Add New Record</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                                 </div>
                                 <div class="modal-body">
@@ -190,53 +188,57 @@
                                             <option value="1">Aktif</option> -->
                                         </select>
                                     </div>
-                                <div class="form-floating mb-3">
-                                    <input type="file" name="foto" id="foto" class="form-control form-control-sm" accept="images-foto/*" onchange="readURL(this);" />
-                                    <input type="hidden" name="hidden_image" id="hidden_image">
-                                    <label for="floatingInput">Foto </label>
+                                    <!-- <div class="form-group editpass">
+                                        <label>Foto : </label>
+                                        <input type="text" name="foto" id="foto" class="form-control" />
+                                    </div> -->
+                                    <div class="form-floating mb-3">
+                                        <input type="file" name="foto" id="foto" class="form-control form-control-sm" accept="images-foto/*" onchange="readURL(this);" />
+                                        <input type="hidden" name="hidden_image" id="hidden_image">
+                                        <label for="floatingInput">Foto </label>
+                                    </div>
+                                    <div class="form-floating mb-3" name="tampilgambar" id="tampilgambar">
+                                        <img name="tampilgambar" id="tampilgambar">
+                                    </div>
+                                    <input type="hidden" name="action" id="action" value="Add" />
+                                    <input type="hidden" name="hidden_id" id="hidden_id" />
                                 </div>
-                                <div class="form-floating mb-3" name="tampilgambar" id="tampilgambar">
-                                    <img name="tampilgambar" id="tampilgambar">
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <input type="submit" name="action_button" id="action_button" value="Add" class="btn btn-info" />
                                 </div>
-                                <input type="hidden" name="action" id="action" value="Add" />
-                                <input type="hidden" name="hidden_id" id="hidden_id" />
+                            </form>  
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <input type="submit" name="action_button" id="action_button" value="Add" class="btn btn-info" />
-                            </div>
-                        </form>  
                         </div>
                     </div>
-                </div>
- 
-                <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                    <form method="post" id="sample_form" class="form-horizontal">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="ModalLabel">Confirmation</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <h4 align="center" style="margin:0;">Are you sure you want to remove this data?</h4>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" name="ok_button" id="ok_button" class="btn btn-danger">OK</button>
-                        </div>
-                    </form>  
+                
+                    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                           <div class="modal-content">
+                            <form method="post" id="sample_form" class="form-horizontal">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="ModalLabel">Confirmation</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h4 align="center" style="margin:0;">Are you sure you want to remove this data?</h4>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" name="ok_button" id="ok_button" class="btn btn-danger">OK</button>
+                                </div>
+                            </form>  
+                          </div>
+                       </div>
                     </div>
-                    </div>
-                </div>
-
-        </div>        
+            
+            </div>
+          </div>
     </section>
 </div>
- <script type="text/javascript">
-
-    $(document).ready(function() {
-    var table = $('.posting_datatable').DataTable({
+<script type="text/javascript">
+$(document).ready(function() {
+    var table = $('.user_datatable').DataTable({
         processing: true,
         serverSide: true,
         ajax: "{{ route('users.index') }}",
@@ -279,8 +281,7 @@
     });
  
     $('#sample_form').on('submit', function(event){
-        event.preventDefault();
-        var formData = new FormData($(this)[0]);
+        event.preventDefault(); 
         var action_url = '';
  
         if($('#action').val() == 'Add')
@@ -294,15 +295,10 @@
         }
  
         $.ajax({
-            type: 'POST',
-            enctype: 'multipart/form-data',
+            type: 'post',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             url: action_url,
-            processData: false,  // Important!
-            contentType: false,
-            cache: false,
-            // data:$(this).serialize(),
-            data: formData,
+            data:$(this).serialize(),
             dataType: 'json',
             success: function(data) {
                 console.log('success: '+data);
@@ -320,7 +316,7 @@
                 {
                     html = '<div class="alert alert-success">' + data.success + '</div>';
                     $('#sample_form')[0].reset();
-                    $('#posting_table').DataTable().ajax.reload();
+                    $('#user_table').DataTable().ajax.reload();
                     window.location.reload();
                 }
                 $('#form_result').html(html);
@@ -333,9 +329,7 @@
     });
  
     $(document).on('click', '.edit', function(event){
-        event.preventDefault();
-        // var formData = new FormData($(this)[0]); 
-        // var SITEURL = '{{ URL::to('') }}';
+        event.preventDefault(); 
         var id = $(this).attr('id'); alert(id);
         $('#form_result').html('');
  
@@ -343,15 +337,8 @@
  
         $.ajax({
             url :"/users/edit/"+id+"/",
-            enctype: 'multipart/form-data',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             dataType:"json",
-            // Important!
-            processData: false,  
-            contentType: false,
-            cache: false,
-            // data: formData,
-
             success:function(data)
             {
                 console.log('success: '+data);
@@ -392,16 +379,16 @@
         })
     });
  
-    var id;
+    var user_id;
  
     $(document).on('click', '.delete', function(){
-        id = $(this).attr('id');
+        user_id = $(this).attr('id');
         $('#confirmModal').modal('show');
     });
  
     $('#ok_button').click(function(){
         $.ajax({
-            url:"users/destroy/"+id,
+            url:"users/destroy/"+user_id,
             beforeSend:function(){
                 $('#ok_button').text('Deleting...');
             },
@@ -409,13 +396,13 @@
             {
                 setTimeout(function(){
                 $('#confirmModal').modal('hide');
-                $('#posting_table').DataTable().ajax.reload();
+                $('#user_table').DataTable().ajax.reload();
                 alert('Data Deleted');
                 }, 2000);
+                window.location.reload();
             }
         })
     });
-    
 });
 </script>
 @endsection

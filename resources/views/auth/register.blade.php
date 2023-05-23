@@ -8,10 +8,10 @@
             <div class="card-body">
                 <section class="best-of-the-week text-center">
 						<!-- Large modal -->
-							<h2>Informasi</h2>
+							<!-- <h2>Informasi</h2> -->
 							<div>
-								<p>Pendaftaran hanya dilakukan untuk pegawai non ASN/ Swasta/ BUMN</p>
-								<p>Untuk ASN DKI Jakarta akan didaftarkan oleh Admin</p>
+								<p>Pendaftaran bagi Pegawai Swasta/BUMN/BUMD dan Masyarakat Pemerhati Arsip (termasuk mahasiswa)</p>
+								<p>Bagi Arsiparis (PNS) DKI Jakarta akan didaftarkan oleh Admin.</p>
 							</div>
 							<!-- Trigger the modal with a button -->
 							<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Lanjut Daftar</button>				
