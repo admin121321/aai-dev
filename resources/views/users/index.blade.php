@@ -229,9 +229,38 @@
                     </div>
                     </div>
                 </div>
-
         </div>        
     </section>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="fModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <span id="detail_result"></span>
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Detail Lisensi Pengguna</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <h6><b>Data Pribadi</b></h6>
+            <p><strong>Nama:</strong><span id="name-detail"></span></p>
+            <p><strong>Tempat / Tanggal Lahir:</strong> <span id="lt_lahir-detail"></span> / <span id="tgl_lahir"></span></p>
+            <p><strong>Jenis Kelamin:</strong> <span id="j_k-detail"></span></p>
+            <p><strong>NIP / NIK:</strong> <span id="nip-detail"></span></p>
+            <p><strong>No Handphone:</strong> <span id="no_telpn-detail"></span></p>
+            <p><strong>Email:</strong> <span id="email-detail"></span></p>
+            <p><strong>ID Anggota:</strong> <span id="id_anggota-detail"></span></p>
+            <p><strong>Verifikasi Akun:</strong> <span id="verifikasi-detail"></span></p>
+            <p><strong>Foto:</strong> <span id="tampil-gambar"></span></p>
+            <h6><b>Pekerjaan</b></h6>
+            <p><strong>Kategori Pekerjaan:</strong> <span id="kategori-detail"></span></p>
+            <p><strong>NRK:</strong> <span id="nrk-detail"></span></p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
 </div>
  <script type="text/javascript">
 
@@ -412,7 +441,61 @@
                 $('#posting_table').DataTable().ajax.reload();
                 alert('Data Deleted');
                 }, 2000);
+                window.location.reload();
             }
+        })
+    });
+
+     // detail
+     $(document).on('click', '.detailButton', function(event){
+        event.preventDefault(); 
+        var id = $(this).attr('id'); alert(id);
+        $('#detail_result').html('');
+
+        $.ajax({
+            url :"/users/detail/"+id+"/",
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            dataType:"json",
+            processData: false,  
+            contentType: false,
+            cache: false,
+            success:function(data)
+            {
+                
+                $('#name-detail').text(data.name);
+                $('#nrk-detail').text(data.nrk);
+                $('#nip-detail').text(data.nip);
+                $('#no_ser_kar-detail').text(data.no_ser_kar);
+                $('#t_lahir-detail').text(data.t_lahir);
+                $('#tgl_lahir-detail').text(data.tgl_lahir);
+                $('#j_k-detail').text(data.j_k);
+                $('#pang-detail').text(data.pang);
+                $('#gol-detail').text(data.gol);
+                $('#tmt_pang-detail').text(data.tmt_pang);
+                $('#ting-detail').text(data.ting);
+                $('#tmt_ting-detail').text(data.tmt_ting);
+                $('#u_k-detail').text(data.u_k);
+                $('#inst-detail').text(data.inst);
+                $('#email-detail').text(data.email);
+                $('#level-detail').text(data.level);
+                $('#is_admin-detail').text(data.is_admin);
+                $('#verifikasi-detail').text(data.verifikasi);
+                $('#id_anggota-detail').text(data.id_anggota);
+                $('#no_telpn-detail').text(data.no_telpn);
+                $('#kategori-detail').text(data.kategori);
+                $('#tampil-gambar').html(
+                `<img src="/images-foto/${data.foto}" width="100" class="img-fluid img-thumbnail">`);
+                $('.modal-title').text('Detail');
+                $('#fModal').modal('show');
+
+                // console.log(
+                //     'desktop-id: '+data.desktop_id,
+                //     'lisensi-id:'+ data.lisensi_id,
+                //     'qtY:'+ data.qty,
+                //      $('#user-id')
+                //     );
+                
+            },
         })
     });
     
