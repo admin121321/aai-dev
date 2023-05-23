@@ -111,8 +111,8 @@
                 <li class="dropdown">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-gear"></i><span>Pengaturan Akun</span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ url('/profile/edit/{id}') }}" class="nav-link" href="layout-default.html">Profile</a></li>
-                        <li><a href="{{ url('/password/edit/{id}') }}" class="nav-link" href="layout-default.html">Password</a></li>
+                    <li><a href="{{ url('/profile/edit/'.Auth::user()->id) }}" class="nav-link" href="layout-default.html">Profile</a></li>
+                        <li><a href="{{ url('/password/edit/'.Auth::user()->id) }}" class="nav-link" href="layout-default.html">Password</a></li>
                     </ul>
                 </li>
             @endif
@@ -146,8 +146,8 @@
                 <li class="dropdown">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-gear"></i><span>Pengaturan Akun</span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ url('/profile/edit/{id}') }}" class="nav-link" href="layout-default.html">Profile</a></li>
-                        <li><a href="{{ url('/password/edit/{id}') }}" class="nav-link" href="layout-default.html">Password</a></li>
+                    <li><a href="{{ url('/profile/edit/'.Auth::user()->id) }}" class="nav-link" href="layout-default.html">Profile</a></li>
+                        <li><a href="{{ url('/password/edit/'.Auth::user()->id) }}" class="nav-link" href="layout-default.html">Password</a></li>
                     </ul>
                 </li>
             @endif
