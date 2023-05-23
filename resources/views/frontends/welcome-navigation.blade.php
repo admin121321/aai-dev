@@ -53,6 +53,7 @@
                                             <form method="POST" action="{{ route('login') }}">
                                             @csrf
                                                 <div class="form-floating mb-3">
+                                                    <label for="floatingInput">ID / Email</label>
                                                     <!-- <input type="email" id="floatingInput" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="name@example.com"> -->
                                                     <input id="id_anggota" type="text" class="form-control @error('id_anggota') is-invalid @enderror" name="id_anggota" value="{{ old('id_anggota') }}" required autocomplete="id_anggota" autofocus placeholder="ID anggota / Email">
                                                     @error('email')
@@ -60,11 +61,10 @@
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                     @enderror
-                                                    <label for="floatingInput">Email Anda</label>
                                                 </div>
                                                 <div class="form-floating mb-4">
-                                                    <input type="password"class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
                                                     <label for="floatingPassword">Password Anda</label>
+                                                    <input type="password"class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
                                                     @error('password')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>

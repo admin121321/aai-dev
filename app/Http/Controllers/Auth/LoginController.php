@@ -50,8 +50,7 @@ class LoginController extends Controller
     public function login(Request $request)
 {
     $this->validate($request, [
-        'id_anggota' => 'required|string', //VALIDASI KOLOM USERNAME
-        //TAPI KOLOM INI BISA BERISI EMAIL ATAU USERNAME
+        'id_anggota' => 'required|string',
         'password' => 'required|string|min:6',
     ]);
 
@@ -69,7 +68,8 @@ class LoginController extends Controller
         //JIKA BERHASIL, MAKA REDIRECT KE HALAMAN HOME
         return redirect()->route('home');
     }
-    //JIKA SALAH, MAKA KEMBALI KE LOGIN DAN TAMPILKAN NOTIFIKASI 
+    //JIKA SALAH, MAKA KEMBALI KE LOGIN DAN TAMPILKAN NOTIFIKASI
+    // return redirect()->back()->with(['error' => 'Email/Password salah!']); 
     return redirect()->route('login')->with(['error' => 'Email/Password salah!']);
 }
 

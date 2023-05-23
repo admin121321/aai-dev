@@ -168,6 +168,9 @@
 													<label for="ketegori" class="col-md-4 col-form-label text-md-right">{{__('Kategori') }}</label>
 														<div class="col-md-6">
 														<select name="kategori" class="form-control" required>
+														<option value="PPK">PPPK</option>
+														    <option value="PNS (non Arsipari)">PNS (non Arsiparis)</option>
+															<option value="Pegawai BUMN/BUMD/Swasta">Pegawai BUMN/BUMD/Swasta</option>
 															<option value="Pegawai BUMN/BUMD/Swasta">Pegawai BUMN/BUMD/Swasta</option>
 															<option value="Masyarakat Pemerhati Arsip (*termasuk mahasiswa) ">Masyarakat Pemerhati Arsip (*termasuk mahasiswa)</option>
 														</select>
