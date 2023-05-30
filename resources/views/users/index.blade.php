@@ -181,7 +181,7 @@
                                         <select class="form-control" id="level" name="level" required>
                                             <option value="USERS">USERS</option>
                                             <option value="ADMIN">ADMIN</option>
-                                            <option value="SUPER ADMIN">SUPER ADMIN</option>
+                                            <option value="SUPERADMIN">SUPER ADMIN</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -242,19 +242,37 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <h6><b>Data Pribadi</b></h6>
-            <p><strong>Nama:</strong><span id="name-detail"></span></p>
-            <p><strong>Tempat / Tanggal Lahir:</strong> <span id="lt_lahir-detail"></span> / <span id="tgl_lahir"></span></p>
-            <p><strong>Jenis Kelamin:</strong> <span id="j_k-detail"></span></p>
-            <p><strong>NIP / NIK:</strong> <span id="nip-detail"></span></p>
-            <p><strong>No Handphone:</strong> <span id="no_telpn-detail"></span></p>
-            <p><strong>Email:</strong> <span id="email-detail"></span></p>
-            <p><strong>ID Anggota:</strong> <span id="id_anggota-detail"></span></p>
-            <p><strong>Verifikasi Akun:</strong> <span id="verifikasi-detail"></span></p>
-            <p><strong>Foto:</strong> <span id="tampil-gambar"></span></p>
-            <h6><b>Pekerjaan</b></h6>
-            <p><strong>Kategori Pekerjaan:</strong> <span id="kategori-detail"></span></p>
-            <p><strong>NRK:</strong> <span id="nrk-detail"></span></p>
+            <!-- Data Akses -->
+            <div class="card-header">
+                <h6> Data Profile </h6>
+            </div>
+            <div class="card">
+                <p><strong>Nama                  :</strong><span id="name-detail"></span></p>
+                <p><strong>Tempat / Tanggal Lahir:</strong> <span id="t_lahir-detail"></span> / <span id="tgl_lahir-detail"></span></p>
+                <p><strong>Jenis Kelamin         :</strong> <span id="j_k-detail"></span></p>
+                <p><strong>NIP / NIK             :</strong> <span id="nip-detail"></span></p>
+                <p><strong>No Handphone          :</strong> <span id="no_telpn-detail"></span></p>
+                <p><strong>ID Anggota            :</strong> <span id="id_anggota-detail"></span></p>
+                <p><strong>Foto                  :</strong> <span id="tampil-gambar"></span></p>
+            </div>
+            <div class="card-header">
+                <h6> Pekerjaan </h6>
+            </div>
+            <div class="card">
+                <p><strong>Kategori Pekerjaan:</strong> <span id="kategori-detail"></span></p>
+                <p><strong>NRK               :</strong> <span id="nrk-detail"></span></p>
+                <p><strong>Golongan          :</strong> <span id="gol-detail"></span></p>
+                <p><strong>Pangkat           :</strong> <span id="pang-detail"></span></p>
+            </div>
+            <div class="card-header">
+                <h6> Akses User </h6>
+            </div>
+            <div class="card">
+                <p><strong>Email             :</strong> <span id="email-detail"></span></p>
+                <p><strong>Verifikasi Akun   :</strong> <span id="verifikasi-detail"></span></p>
+                <p><strong>Level Akun        :</strong> <span id="level-detail"></span></p>
+                <p><strong>Level Konsul      :</strong> <span id="is_admin-detail"></span></p>
+            </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
