@@ -2,15 +2,18 @@
 @section('content')
 
 <div class="main-content">
-    <section class="#">
-        <div class="section-header">
-            <br />
-            <div align="right">
-                <button type="button" name="create_record" id="create_record" class="btn btn-success"> <i class="bi bi-plus-square"></i> Add</button>
+    <section class="">
+        <div class="card">    
+            <div class="card-header">
+                <h3>List Anggota</h3>
             </div>
         </div>
+         <!-- Tombol Tambah -->
+         <div align="right">
+                <button type="button" name="create_record" id="create_record" class="btn btn-success"> <i class="bi bi-plus-square"></i> Add</button>
+        </div>
         <div class="section-body">
-            <!-- card-body -->
+            <!-- card-body Table-->
             <div class="row">
                 <div class="col-12 table-responsive">
                 <br />
@@ -19,8 +22,7 @@
                             <tr>
                                 <th>ID Anggota</th>
                                 <th>Nama</th>
-                                <th>Email</th>
-                                <th>No Handphone</th>
+                                <th>Kategori Pekerjaan</th>
                                 <th>Foto</th>
                                 <th>Verifikasi</th>
                                 <th width="180px">Action</th>
@@ -30,8 +32,7 @@
                     </table>
                 </div>
             </div>
-            <!-- card-body -->
-            <!-- Modal -->
+            <!-- Modal Form Tambah dan Edit-->
             <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content bg-light rounded h-100 p-4">
@@ -41,45 +42,71 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                                 </div>
                                 <div class="modal-body">
+                                    <!-- Data Profile -->
+                                    <div class="card-header">
+                                        <h6> Data Profile </h6>
+                                    </div>
                                     <span id="form_result"></span>
                                     <div class="form-group">
-                                        <label>Name : </label>
-                                        <input type="text" name="name" id="name" class="form-control" />
+                                        <label>Name<a style="color:red;">*</a> : </label>
+                                        <input type="text" name="name" id="name" class="form-control" required/>
                                     </div>
                                     <div class="form-group">
-                                        <label>Tempat Lahir : </label>
-                                        <input type="text" id="t_lahir" name="t_lahir" class="form-control">
+                                        <label>Tempat Lahir<a style="color:red;">*</a> : </label>
+                                        <input type="text" id="t_lahir" name="t_lahir" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Tgl Lahir : </label>
-                                        <input type="date" id="tgl_lahir" name="tgl_lahir" class="form-control">
+                                        <label>Tgl Lahir<a style="color:red;">*</a> : </label>
+                                        <input type="date" id="tgl_lahir" name="tgl_lahir" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Jenis Kelamin : </label>
-                                        <select name="j_k" class="form-control" required>
+                                        <label>Jenis Kelamin<a style="color:red;">*</a> : </label>
+                                        <select class="form-control" id="j_k" name="j_k" required>
                                             <option value="LAKI-LAKI">LAKI-LAKI</option>
                                             <option value="PEREMPUAN">PEREMPUAN</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>ID Anggota : </label>
-                                        <input type="number" name="id_anggota" id="id_anggota" class="form-control" />
+                                        <label>No Handphone<a style="color:red;">*</a> : </label>
+                                        <input type="number" id="no_telpn" name="no_telpn" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Kategori : </label>
-                                        <select name="kategori" class="form-control" required>
-                                            <option value="Pegawai Negeri Sipil">Pegawai Negeri Sipil</option>
+                                        <label>NIP / NIK<a style="color:red;">*</a> : </label>
+                                        <input type="number" id="nip" name="nip" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>ID Angggota<a style="color:red;">*</a> : </label>
+                                        <input type="number" id="id_anggota" name="id_anggota" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Foto<a style="color:red;">*</a></label>
+                                        <input type="file" name="foto" id="foto" class="form-control" accept="images-foto/*" onchange="readURL(this);"/>
+                                        <input type="hidden" name="hidden_image" id="hidden_image">
+                                    </div>
+                                    <div class="form-floating mb-3" name="tampilgambar" id="tampilgambar">
+                                        <img name="tampilgambar" id="tampilgambar">
+                                    </div>
+                                    <!-- Data Pekerjaan -->
+                                    <div class="card-header">
+                                        <h6> Data Pekerjaan </h6>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Kategori Pekerjaan<a style="color:red;">*</a> : </label>
+                                        <select class="form-control" id="kategori" name="kategori">
+                                            <option value="PNS">PNS</option>
+                                            <option value="PNS (non Arsipari)">PNS (non Arsiparis)</option>
+                                            <option value="PPPK">PPPK</option>
                                             <option value="Pegawai BUMN/BUMD/Swasta">Pegawai BUMN/BUMD/Swasta</option>
-											<option value="Masyarakat Pemerhati Arsip (*termasuk mahasiswa) ">Masyarakat Pemerhati Arsip (*termasuk mahasiswa)</option>
+                                            <option value="Masyarakat Pemerhati Arsip (*termasuk mahasiswa) ">Masyarakat Pemerhati Arsip (*termasuk mahasiswa)</option>
                                         </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Institusi/Perusahaan/Perguruan Tinggi<a style="color:red;">*</a> : </label>
+                                        <input id="inst" type="text" name="inst" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label>NRK : </label>
                                         <input type="text" id="nrk" name="nrk" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>NIP : </label>
-                                        <input type="number" id="nip" name="nip" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label>No Seri Karpeg : </label>
@@ -87,7 +114,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Pangkat : </label>
-                                        <select name="pang" class="form-control">
+                                        <select class="form-control" id="pang" name="pang">
+                                            <option value="TIDAK ADA">TIDAK ADA</option>
                                             <option value="PENGATUR">PENGATUR</option>
                                             <option value="PENGATUR Tk.1">PENGATUR Tk.1</option>
                                             <option value="PENGATUR Tk.2">PENGATUR Tk.2</option>
@@ -97,19 +125,18 @@
                                             <option value="PENATA MUDA">PENATA MUDA</option>
                                             <option value="PENATA MUDA Tk.1">PENATA MUDA Tk.1</option>
                                             <option value="Penata Muda Tk.2">PENATA MUDA Tk.2</option>
-                                            <option value="TIDAK ADA">TIDAK ADA</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Golongan : </label>
-                                        <select name="gol" class="form-control">
+                                        <select class="form-control" id="gol" name="gol">
+                                            <option value="TIDAK ADA">TIDAK ADA</option>
                                             <option value="II-c">II-c</option>
                                             <option value="II-d">II-d</option>
                                             <option value="III-a">III-a</option>
                                             <option value="III-b">III-b</option>
                                             <option value="III-c">III-c</option>
                                             <option value="III-d">III-d</option>
-                                            <option value="TIDAK ADA">TIDAK ADA</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -118,14 +145,14 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Tingkat : </label>
-                                        <select name="ting" class="form-control">
+                                        <select class="form-control" id="ting" name="ting">
+                                            <option value="TIDAK ADA">TIDAK ADA</option>
                                             <option value="AHLI MUDA">AHLI MUDA</option>
                                             <option value="AHLI PERTAMA">AHLI PERTAMA</option>
                                             <option value="TERAMPIL">TERAMPIL</option>
                                             <option value="MAHIR">MAHIR</option>
                                             <option value="PENYELIA">PENYELIA</option>
                                             <option value="TINGKATAN">TINGKATAN</option>
-                                            <option value="TIDAK ADA">TIDAK ADA</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -136,68 +163,41 @@
                                         <label>Unit Kerja : </label>
                                         <input id="u_k" type="text" name="u_k" class="form-control">
                                     </div>
-                                    <div class="form-group">
-                                        <label>Instansi : </label>
-                                        <input id="inst" type="text" name="inst" class="form-control">
+                                   
+                                    <!-- Data Akses -->
+                                    <div class="card-header">
+                                        <h6> Data Akses </h6>
                                     </div>
                                     <div class="form-group">
-                                        <label>No Handphone : </label>
-                                        <input type="number" id="no_telpn" name="no_telpn" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Kategori Kerja : </label>
-                                        <input id="kategori" type="kategori" name="kategori" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email : </label>
-                                        <input type="email" name="email" id="email" class="form-control" />
+                                        <label>Email<a style="color:red;">*</a> : </label>
+                                        <input type="email" name="email" id="email" class="form-control" required />
                                     </div>
                                     <div class="form-group editpass">
-                                        <label>Password : </label>
-                                        <input type="password" name="password" id="password" class="form-control" />
+                                        <label>Password<a style="color:red;">*</a> : </label>
+                                        <input type="password" name="password" id="password" class="form-control"/>
                                     </div>
                                     <div class="form-group">
-                                        <label  for="floatingTextarea">Level Akses: </label>
-                                        <select class="form-control" aria-label=".form-select-lg example" id="level" name="level">
-                                            <option>--Pilih Level--</option>
-                                            @foreach (App\Models\User::all() as $users)
-                                            <option value="{{ $users->level }}" id="level">{{ $users->level }}</option>
-                                            @endforeach
-                                            <!-- <option value="USERS">USERS</option>
+                                        <label>Level Akses<a style="color:red;">*</a> : </label>
+                                        <select class="form-control" id="level" name="level" required>
+                                            <option value="USERS">USERS</option>
                                             <option value="ADMIN">ADMIN</option>
-                                            <option value="SUPER ADMIN">SUPER ADMIN</option> -->
+                                            <option value="SUPER ADMIN">SUPER ADMIN</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="floatingTextarea">Level Konsul: </label>
-                                        <select class="form-control" aria-label=".form-select-lg example" id="is_admin" name="is_admin">
-                                            <option selected>Pilih Salah Satu</option>
-                                            @foreach (App\Models\User::all() as $users)
-                                            <option value="{{ $users->is_admin }}" id="is_admin">{{ $users->is_admin }}</option>
-                                            @endforeach
-                                            <!-- <option value="0">User</option>
-                                            <option value="1">Admin</option> -->
+                                        <label>Level Konsul<a style="color:red;">*</a> : </label>
+                                        <select class="form-control" id="is_admin" name="is_admin" required>
+                                            <option value="0">User</option>
+                                            <option value="1">Admin</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="floatingTextarea">Verifikasi Anggota: </label>
-                                        <select class="form-control" aria-label=".form-select-lg example" id="verifikasi" name="verifikasi">
-                                            <option selected>Pilih Salah Satu</option>
-                                            @foreach (App\Models\User::all() as $users)
-                                            <option value="{{ $users->verifikasi }}" id="verifikasi">{{ $users->verifikasi }}</option>
-                                            @endforeach
-                                            <!-- <option value="0">Tidak Aktif</option>
-                                            <option value="1">Aktif</option> -->
+                                        <label>Verifikasi Anggota<a style="color:red;">*</a> : </label>
+                                        <select class="form-control" id="verifikasi" name="verifikasi" required>
+                                            <option value="0">Tidak Aktif</option>
+                                            <option value="1">Aktif</option>
                                         </select>
                                     </div>
-                                <div class="form-floating mb-3">
-                                    <input type="file" name="foto" id="foto" class="form-control form-control-sm" accept="images-foto/*" onchange="readURL(this);" />
-                                    <input type="hidden" name="hidden_image" id="hidden_image">
-                                    <label for="floatingInput">Foto </label>
-                                </div>
-                                <div class="form-floating mb-3" name="tampilgambar" id="tampilgambar">
-                                    <img name="tampilgambar" id="tampilgambar">
-                                </div>
                                 <input type="hidden" name="action" id="action" value="Add" />
                                 <input type="hidden" name="hidden_id" id="hidden_id" />
                             </div>
@@ -238,7 +238,7 @@
         <div class="modal-content">
         <span id="detail_result"></span>
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Detail Lisensi Pengguna</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Detail User</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -270,12 +270,21 @@
         serverSide: true,
         ajax: "{{ route('users.index') }}",
         columns: [
-            {data: 'id_anggota', name: 'id_anggota'},
+            {data: 'id_anggota', name: 'id_anggota', orderable:true, "render": function (data, type, row, meta) {
+                if(row.id_anggota==0){
+                    return '<div class="btn-group mr-2"><button class="btn btn-danger btn-sm">Belum Dapat ID</button></div>'
+                }else{
+                    return data;
+                }
+                } },
             {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},
-            {data: 'no_telpn', name: 'no_telpn'},
-            {data: 'foto', name: 'foto', "render": function (data, type, row, meta) {
+            {data: 'kategori', name: 'kategori'},
+            {data: 'foto', name: 'foto', orderable:true, "render": function (data, type, row, meta) {
+                if(row.foto==0){
+                    return '<div class="btn-group mr-2"><button class="btn btn-danger btn-sm">Belum Upload Foto</button></div>'
+                }else{
                     return '<img src="/images-foto/' + data + '" alt="' + data + '"height="100px" width="100px"/>';
+                }
                 } },
             {data: 'verifikasi', name: 'verifikasi', orderable:true,
                 render: function(data, type, row, meta){
@@ -299,11 +308,12 @@
     });
  
     $('#create_record').click(function(){
-        $('.modal-title').text('Add New Record');
+        $('#sample_form').get(0).reset();
+        $('#tampilgambar').html('');
+        $('.modal-title').text('Tambah Anggota');
         $('#action_button').val('Add');
         $('#action').val('Add');
         $('#form_result').html('');
- 
         $('#formModal').modal('show');
     });
  
@@ -390,25 +400,25 @@
                 $('#no_ser_kar').val(data.result.no_ser_kar);
                 $('#t_lahir').val(data.result.t_lahir);
                 $('#tgl_lahir').val(data.result.tgl_lahir);
-                $('#j_k').val(data.result.j_k);
-                $('#pang').val(data.result.pang);
-                $('#gol').val(data.result.gol);
+                $('#j_k').val(data.result.j_k).change();
+                $('#pang').val(data.result.pang).change();
+                $('#gol').val(data.result.gol).change();
                 $('#tmt_pang').val(data.result.tmt_pang);
-                $('#ting').val(data.result.ting);
+                $('#ting').val(data.result.ting).change();
                 $('#tmt_ting').val(data.result.tmt_ting);
-                $('#u_k').val(data.result.u_k);
-                $('#inst').val(data.result.inst);
+                $('#u_k').val(data.result.u_k).change();
+                $('#inst').val(data.result.inst).change();
                 $('#email').val(data.result.email);
                 $('#level').val(data.result.level);
-                $('#is_admin').val(data.result.is_admin);
-                $('#verifikasi').val(data.result.verifikasi);
+                $('#is_admin').val(data.result.is_admin).change();
+                $('#verifikasi').val(data.result.verifikasi).change();
                 $('#id_anggota').val(data.result.id_anggota);
                 $('#no_telpn').val(data.result.no_telpn);
-                $('#kategori').val(data.result.kategori);
+                $('#kategori').val(data.result.kategori).change();
                 $('#tampilgambar').html(
                 `<img src="/images-foto/${data.result.foto}" width="100" class="img-fluid img-thumbnail">`);
                 $('#hidden_id').val(id);
-                $('.modal-title').text('Edit Record');
+                $('.modal-title').text('Ubah Data Anggota');
                 $('#action_button').val('Update');
                 $('#action').val('Edit'); 
                 $('.editpass').hide(); 

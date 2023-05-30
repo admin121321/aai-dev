@@ -44,7 +44,7 @@
 							<li><a href="{{ url('/kontak-kami') }}">Kontak Kami</a>
 							</li>
                             @if (Route::has('register'))
-                            <li><a href="{{ route('register') }}">Daftar</a>
+                            <li><a href="{{ route('register') }}">Pendaftaran</a>
 							</li>
                             @endif
 							<li class="dropdown magz-dropdown"><a href="#">Akses<i class="ion-ios-arrow-right"></i></a>

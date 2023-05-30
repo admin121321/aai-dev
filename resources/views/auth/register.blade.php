@@ -150,11 +150,11 @@
 
 												<div class="card-body">
 													<div class="form-group row">
-													<label for="u_k" class="col-md-4 col-form-label text-md-right">{{ __('Perusahaan/Instansi/Perguruan Tinggi') }}</label>
+													<label for="inst" class="col-md-4 col-form-label text-md-right">{{ __('Perusahaan/Instansi/Perguruan Tinggi') }}</label>
 														<div class="col-md-6">
-															<input id="u_k" type="text" class="form-control @error('u_k') is-invalid @enderror" name="u_k" value="{{ old('u_k') }}" required autocomplete="u_k" autofocus>
+															<input id="inst" type="text" class="form-control @error('inst') is-invalid @enderror" name="inst" value="{{ old('inst') }}" required autocomplete="inst" autofocus>
 
-															@error('u_k')
+															@error('inst')
 																<span class="invalid-feedback" role="alert">
 																	<strong>{{ $message }}</strong>
 																</span>
@@ -168,55 +168,12 @@
 													<label for="ketegori" class="col-md-4 col-form-label text-md-right">{{__('Kategori') }}</label>
 														<div class="col-md-6">
 														<select name="kategori" class="form-control" required>
-														<option value="PPK">PPPK</option>
+															<option value="PPK">PPPK</option>
 														    <option value="PNS (non Arsipari)">PNS (non Arsiparis)</option>
-															<option value="Pegawai BUMN/BUMD/Swasta">Pegawai BUMN/BUMD/Swasta</option>
 															<option value="Pegawai BUMN/BUMD/Swasta">Pegawai BUMN/BUMD/Swasta</option>
 															<option value="Masyarakat Pemerhati Arsip (*termasuk mahasiswa) ">Masyarakat Pemerhati Arsip (*termasuk mahasiswa)</option>
 														</select>
 															@error('kategori')
-																<span class="invalid-feedback" role="alert">
-																	<strong>{{ $message }}</strong>
-																</span>
-															@enderror
-														</div>
-													</div>
-												</div>
-
-												<div class="card-body" hidden>
-													<div class="form-group row">
-													<label for="pang" class="col-md-4 col-form-label text-md-right">{{__('Pangkat / Jabatan') }}</label>
-														<div class="col-md-6">
-															<input id="pang" type="text" class="form-control @error('pang') is-invalid @enderror" name="pang" value="0" onkeyup="this.value = this.value.toUpperCase()" required autocomplete="pang" autofocus>
-															@error('pang')
-																<span class="invalid-feedback" role="alert">
-																	<strong>{{ $message }}</strong>
-																</span>
-															@enderror
-														</div>
-													</div>
-												</div>
-
-												<div class="card-body" hidden>
-													<div class="form-group row">
-													<label for="ting" class="col-md-4 col-form-label text-md-right">{{__('Tingkatan') }}</label>
-														<div class="col-md-6">
-															<input id="ting" type="text" class="form-control @error('ting') is-invalid @enderror" name="ting" value="0" onkeyup="this.value = this.value.toUpperCase()" required autocomplete="ting" autofocus>
-															@error('ting')
-																<span class="invalid-feedback" role="alert">
-																	<strong>{{ $message }}</strong>
-																</span>
-															@enderror
-														</div>
-													</div>
-												</div>
-
-												<div class="card-body" hidden>
-													<div class="form-group row">
-													<label for="gol" class="col-md-4 col-form-label text-md-right">{{__('Tingkatan') }}</label>
-														<div class="col-md-6">
-															<input id="gol" type="text" class="form-control @error('gol') is-invalid @enderror" name="gol" value="0" onkeyup="this.value = this.value.toUpperCase()" required autocomplete="gol" autofocus>
-															@error('gol')
 																<span class="invalid-feedback" role="alert">
 																	<strong>{{ $message }}</strong>
 																</span>
