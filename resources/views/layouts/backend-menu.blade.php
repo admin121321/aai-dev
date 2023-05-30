@@ -6,17 +6,14 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    <!-- Favicon -->
+    <link href="{{ asset('themes-frontend/images/icon-aai-jakarta.png') }}" rel="icon">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
- 
-    <!-- Favicon -->
-    <link href="{{ asset('themes-frontend/images/aai-icon.png') }}" rel="icon">
-
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/fontawesome/css/all.min.css') }}">
-
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/jqvmap/dist/jqvmap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('themes-backend/assets/modules/summernote/summernote-bs4.css') }}">
@@ -26,7 +23,6 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('themes-backend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('themes-backend/assets/css/components.css') }}">
-    
     <!-- JQuery Datatable-->
     <link rel="stylesheet" type="text/css" href="{{ asset('themes-backend/assets/datatables/datatables.min.css') }}"/>
     <script type="text/javascript" src="{{ asset('themes-backend/assets/datatables/datatables.min.js') }}"></script>

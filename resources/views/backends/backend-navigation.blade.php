@@ -67,15 +67,12 @@
         <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div></a>
         <div class="dropdown-menu dropdown-menu-right">
           <div class="dropdown-title">Online</div>
-          <!-- <a href="#" class="dropdown-item has-icon">
+          <a href="{{ url('/profile/edit/'.Auth::user()->id) }}" class="dropdown-item has-icon">
             <i class="far fa-user"></i> Profile
           </a>
-          <a href="#" class="dropdown-item has-icon">
-            <i class="fas fa-bolt"></i> Activities
+          <a href="{{ url('/password/edit/'.Auth::user()->id) }}" class="dropdown-item has-icon">
+            <i class="fas fa-cog"></i> Setting Password
           </a>
-          <a href="#" class="dropdown-item has-icon">
-            <i class="fas fa-cog"></i> Settings
-          </a> -->
           <div class="dropdown-divider"></div>
           <a class="dropdown-item has-icon text-danger" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
