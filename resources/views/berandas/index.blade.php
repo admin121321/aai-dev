@@ -100,7 +100,7 @@
           <div class="col-lg-8 col-md-12 col-12 col-sm-12">
             <div class="card">
               <div class="card-header">
-                <h4>Logo</h4>
+                <h4></h4>
               </div>
               <div class="card-body">
               <img src="{{ asset('themes-frontend/images/logo-aai.png') }}" alt="Aai Jakarta Logo" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
@@ -133,7 +133,7 @@
           <div class="col-lg-4 col-md-12 col-12 col-sm-12">
             <div class="card">
               <div class="card-header">
-                <h4>Recent Activities</h4>
+                <h4>Tiket Konsul</h4>
               </div>
               <div class="card-body">
               @foreach($data as $ticket)             
