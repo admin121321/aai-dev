@@ -165,13 +165,15 @@
 
 												<div class="card-body">
 													<div class="form-group row">
-													<label for="ketegori" class="col-md-4 col-form-label text-md-right">{{__('Kategori') }}</label>
+													<label for="ketegori" class="col-md-4 col-form-label text-md-right">{{__('Kategori Pekerjaan') }}</label>
 														<div class="col-md-6">
 														<select name="kategori" class="form-control" required>
-															<option value="PPK">PPPK</option>
-														    <option value="PNS (non Arsipari)">PNS (non Arsiparis)</option>
+															<option>-----Pilih Kategori Pekerjaan-----</option>
+															<option value="PNS (Non Arsiparis DKI Jakarta)">PNS (Non Arsiparis DKI Jakarta)</option>
+															<option value="PPPK (Non PNS DKI Jakarta)">PPPK (Non PNS DKI Jakarta)</option>
 															<option value="Pegawai BUMN/BUMD/Swasta">Pegawai BUMN/BUMD/Swasta</option>
-															<option value="Masyarakat Pemerhati Arsip (*termasuk mahasiswa) ">Masyarakat Pemerhati Arsip (*termasuk mahasiswa)</option>
+															<option value="Masyarakat Pemerhati Arsip">Masyarakat Pemerhati Arsip</option>
+															<option value="Mahasiswa">Mahasiswa</option>
 														</select>
 															@error('kategori')
 																<span class="invalid-feedback" role="alert">
@@ -224,15 +226,79 @@
 												</div>
 												</div>
 
+												<div class="card-body">
+													<div class="form-group row">
+														<input type="checkbox"
+															class="form-check-input @error('persetujuan') is-invalid @enderror"
+															value="setuju"
+															name="persetujuan"
+															id="persertujuan"
+															{{ !old('persetujuan') ?: 'checked' }}
+														>
+														<label class="form-check-label fs-sm">
+															{{ __('Saya menyetujui ') }}
+															<a class="nav-link-style fs-ms text-black-50 text-primary text-decoration-none" data-toggle="modal" data-target="#mySyarat">
+																{{ __('Syarat & Ketentuan') }}
+															</a>
+														</label>
+													</div>
+												</div>
+
 												<div class="row mb-0">
 													<div class="col-md-6 offset-md-4">
 														<button type="submit" class="btn btn-primary">
-															{{ __('Register') }}
+															{{ __('Daftar') }}
 														</button>
 													</div>
 												</div>
 											</form>
 										</div>
+										</div>
+										<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>	
+<section class="page">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="card-body">
+					<section class="best-of-the-week text-center">
+							<!-- Modal -->
+							<div class="modal fade" id="mySyarat" role="dialog">
+								<div class="modal-dialog">
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title">Syarat Dan Ketentuan</h4>
+										</div>
+										<div class="modal-body">
+											<div class="card-body">
+											
+											</div>
 										</div>
 										<div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

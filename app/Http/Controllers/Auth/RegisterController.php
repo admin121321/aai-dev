@@ -88,6 +88,7 @@ class RegisterController extends Controller
             'inst'         => $data['inst'],
             'kategori'     => $data['kategori'],
             'no_telpn'     => $data['no_telpn'],
+            'persetujuan'  => $data['persetujuan'],
             'pang'         => '0',
             'gol'          => '0',
             'ting'         => '0',

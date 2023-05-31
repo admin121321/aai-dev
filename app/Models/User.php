@@ -42,6 +42,7 @@ class User extends Authenticatable
         'verifikasi',
         'no_telpn',
         'kategori',
+        'persetujuan',
     ];
 
     /**

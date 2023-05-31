@@ -93,11 +93,12 @@
                                     <div class="form-group">
                                         <label>Kategori Pekerjaan<a style="color:red;">*</a> : </label>
                                         <select class="form-control" id="kategori" name="kategori">
-                                            <option value="PNS">PNS</option>
-                                            <option value="PNS (non Arsipari)">PNS (non Arsiparis)</option>
-                                            <option value="PPPK">PPPK</option>
+                                            <option value="PNS Arsiparis">PNS Arsiparis</option>
+                                            <option value="PNS (Non Arsiparis DKI Jakarta)">PNS (Non Arsiparis DKI Jakarta)</option>
+                                            <option value="PPPK (Non PNS DKI Jakarta)">PPPK (Non PNS DKI Jakarta)</option>
                                             <option value="Pegawai BUMN/BUMD/Swasta">Pegawai BUMN/BUMD/Swasta</option>
-                                            <option value="Masyarakat Pemerhati Arsip (*termasuk mahasiswa) ">Masyarakat Pemerhati Arsip (*termasuk mahasiswa)</option>
+                                            <option value="Masyarakat Pemerhati Arsip">Masyarakat Pemerhati Arsip</option>
+                                            <option value="Mahasiswa">Mahasiswa</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -196,6 +197,12 @@
                                         <select class="form-control" id="verifikasi" name="verifikasi" required>
                                             <option value="0">Tidak Aktif</option>
                                             <option value="1">Aktif</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Persetujuan Syarat dan Ketentuan<a style="color:red;">*</a> : </label>
+                                        <select class="form-control" id="persetujuan" name="persetujuan" required>
+                                            <option value="setuju">Setuju</option>
                                         </select>
                                     </div>
                                 <input type="hidden" name="action" id="action" value="Add" />
@@ -433,6 +440,7 @@
                 $('#id_anggota').val(data.result.id_anggota);
                 $('#no_telpn').val(data.result.no_telpn);
                 $('#kategori').val(data.result.kategori).change();
+                $('#persetujuan').val(data.result.persetujuan).change();
                 $('#tampilgambar').html(
                 `<img src="/images-foto/${data.result.foto}" width="100" class="img-fluid img-thumbnail">`);
                 $('#hidden_id').val(id);

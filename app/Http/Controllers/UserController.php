@@ -64,6 +64,7 @@ class UserController extends Controller
                     'is_admin'   => $request->is_admin,
                     'kategori'   => $request->kategori,
                     'no_telpn'   => $request->no_telpn,
+                    'persetujuan'=> $request->persetujuan,
             );
 
         } else {
@@ -155,7 +156,8 @@ class UserController extends Controller
                 'verifikasi' => $request->verifikasi,
                 'is_admin'   => $request->is_admin,
                 'kategori'   => $request->kategori,
-                'no_telpn'   => $request->no_telpn, 
+                'no_telpn'   => $request->no_telpn,
+                'persetujuan'=> $request->persetujuan, 
                 'foto'       =>  $fileName_new
             ];
             File::delete($fileName);
@@ -192,6 +194,7 @@ class UserController extends Controller
                 'is_admin'   => $request->is_admin,
                 'kategori'   => $request->kategori,
                 'no_telpn'   => $request->no_telpn,
+                'persetujuan'=> $request->persetujuan,
             ];
         }
  
