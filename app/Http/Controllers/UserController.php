@@ -1,15 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
+use App\Exports\UserExport;
+
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+
 use DataTables;
 use Validator;
-use Auth;
 use File;
 use DB;
+use PDF;
+use Excel;
 
 class UserController extends Controller
 {
@@ -353,5 +360,18 @@ class UserController extends Controller
          User::whereId($id)->update($users);
          // return redirect('/users')->with('success', 'Data is successfully updated');
          return redirect()->back()->with('success', 'Password Berhasil Di Ubah');
+     }
+
+    //  export pdf
+     public function export_pdf(){
+        $users  = User::all();
+        $pdf = PDF::loadview('users.export-user-pdf', ['users'=>$users])->setPaper('F4', 'landscape');
+        // ->setPaper([0, 0, 685.98, 396.85], 'landscape')
+    	return $pdf->download('list_anggota_aai_jakarta.pdf');
+     }
+
+    //  export excel
+     public function export_excel(){
+        return Excel::download(new UserExport, 'anggota_aai_'.date('Y-m-d_h-m-s').'.xlsx');
      }
 }

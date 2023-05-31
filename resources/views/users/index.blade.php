@@ -8,9 +8,12 @@
                 <h3>List Anggota</h3>
             </div>
         </div>
+        <!-- Export File -->
+        <a href="{{ route('users.export_pdf') }}" class="btn btn-primary mb-4">Export PDF</a>
+        <a href="{{ route('users.export_excel') }}" class="btn btn-success mb-4">Export Excel</a>
          <!-- Tombol Tambah -->
          <div align="right">
-                <button type="button" name="create_record" id="create_record" class="btn btn-success"> <i class="bi bi-plus-square"></i> Add</button>
+                <button type="button" name="create_record" id="create_record" class="btn btn-info"> <i class="bi bi-plus-square"></i> Add</button>
         </div>
         <div class="section-body">
             <!-- card-body Table-->

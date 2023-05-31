@@ -60,6 +60,8 @@ Route::get('/users/detail/{id}/', [App\Http\Controllers\UserController::class, '
 Route::get('/users/edit/{id}/', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
 Route::post('/users/update', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
 Route::get('/users/destroy/{id}/', [App\Http\Controllers\UserController::class, 'destroy']);
+Route::get('/users/export-user-pdf', [App\Http\Controllers\UserController::class, 'export_pdf'])->name('users.export_pdf');
+Route::get('/users/export-user-excel', [App\Http\Controllers\UserController::class, 'export_excel'])->name('users.export_excel');
 // Profile
 Route::get('/profile/edit/{id}', [App\Http\Controllers\UserController::class, 'edit_profile'])->name('users.edit_profile');
 Route::put('/profile/edit/update/{id}', [App\Http\Controllers\UserController::class, 'update_profile'])->name('users.update_profile');
