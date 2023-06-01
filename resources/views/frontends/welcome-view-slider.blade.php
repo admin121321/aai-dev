@@ -25,19 +25,29 @@
 									<span class="sr-only">Next</span>
 								</a>
 							</div>
-							<div class="owl-carousel owl-theme" id="headline">
-								@foreach(App\Models\Posting::all() as $posting)							
+							
+							<div class="owl-carousel owl-theme" id="headline">							
+								
+							@foreach(App\Models\Posting::all() as $posting)
+								@if ($posting->verifikasi_posting == "0")
+									
+								@elseif ($posting->verifikasi_posting == "1")
 								<div class="item">
-									<a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><div class="badge"><?php echo str_replace('-', ' ', $posting->judul);?></div><?php echo strip_tags("$posting->deskripsi");?></a>
-								</div>
-								@endforeach
+									<a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><div class="badge"><?php echo str_replace('-', ' ', $posting->judul);?></div><?php echo strip_tags("$posting->deskripsi");?></a>		
+								</div>								
+								@endif
+							@endforeach
 							</div>
+
 						</div>
 						<div class="owl-carousel owl-theme slide" id="featured">
-						@foreach(App\Models\Posting::latest()->paginate(1) as $posting)
+						@foreach(App\Models\Posting::paginate(1) as $posting)
 							<div class="item">
 								<article class="featured">
 									<div class="overlay"></div>
+							@if ($posting->verifikasi_posting == "0")
+									
+							@elseif ($posting->verifikasi_posting == "1")
 									<figure>
 										<img src="{{ url('/images/'.$posting->gambar) }}" alt="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}">
 									</figure>
@@ -46,6 +56,7 @@
 										<h1><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><?php echo substr("$posting->deskripsi", 0, 33);?></a></h1>
 										<div class="time"><?php echo strip_tags("$posting->created_at");?></div>
 									</div>
+							@endif
 								</article>
 							</div>
 						@endforeach
