@@ -1,4 +1,15 @@
 
+@foreach(App\Models\Posting::all() as $posting)
+@if ($posting->verifikasi_posting == '0')
+<section class="single">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 sidebar" id="sidebar">
+			</div>
+		</div>
+	</div>
+</section>
+@else
 <section class="single">
 			<div class="container">
 				<div class="row">
@@ -278,3 +289,5 @@
 				</div>
 			</div>
 </section>
+@endif
+@endforeach

@@ -78,6 +78,7 @@ Route::get('/kategori-posting/destroy/{id}', [App\Http\Controllers\KategoriPosti
 // Posting
 Route::get('/posting', [App\Http\Controllers\PostingsController::class, 'index'])->name('postings.index');
 Route::get('/postings', [App\Http\Controllers\PostingsController::class, 'indexuser'])->name('postings.index-user');
+Route::get('/posting-redaksi', [App\Http\Controllers\PostingsController::class, 'indexredaksi'])->name('postings.index-redaksi');
 Route::post('/posting/store/', [App\Http\Controllers\PostingsController::class, 'store'])->name('postings.store');
 Route::get('/posting/edit/{id}', [App\Http\Controllers\PostingsController::class, 'edit'])->name('postings.edit');
 Route::post('/posting/update', [App\Http\Controllers\PostingsController::class, 'update'])->name('postings.update');

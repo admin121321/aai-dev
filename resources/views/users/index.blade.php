@@ -184,6 +184,7 @@
                                         <label>Level Akses<a style="color:red;">*</a> : </label>
                                         <select class="form-control" id="level" name="level" required>
                                             <option value="USERS">USERS</option>
+                                            <option value="REDAKSI">REDAKSI</option>
                                             <option value="ADMIN">ADMIN</option>
                                             <option value="SUPERADMIN">SUPER ADMIN</option>
                                         </select>

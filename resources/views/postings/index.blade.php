@@ -3,11 +3,13 @@
 
 <div class="main-content">
     <section class="#">
-        <div class="section-header">
-            <br />
-            <div align="right">
-                <button type="button" name="create_record" id="create_record" class="btn btn-success"> <i class="bi bi-plus-square"></i> Add</button>
+        <div class="card">    
+            <div class="card-header">
+                <h3>List Posting</h3>
             </div>
+        </div>
+        <div align="right">
+            <button type="button" name="create_record" id="create_record" class="btn btn-success"> <i class="bi bi-plus-square"></i> Add</button>
         </div>
         <div class="section-body">
             <!-- card-body -->
@@ -22,7 +24,7 @@
                                 <th>Kategori</th>
                                 <th>Judul</th>
                                 <th>Gambar</th>
-                                <!-- <th>Deskripsi</th> -->
+                                <th>Verifikasi</th>
                                 <th width="180px">Action</th>
                             </tr>
                         </thead>
@@ -72,6 +74,13 @@
                                     <textarea type="text" class="form-control" name="deskripsi" id="deskripsi"/></textarea>
                                     <label for="floatingInput">Deskripsi </label>
                                 </div>
+                                <div class="form-group">
+                                    <label>Verifikasi Posting<a style="color:red;">*</a> : </label>
+                                    <select class="form-control" id="verifikasi_posting" name="verifikasi_posting" required>
+                                        <option value="0">Tidak Aktif</option>
+                                        <option value="1">Aktif</option>
+                                    </select>
+                                </div>
                                 <input type="hidden" name="action" id="action" value="Add" />
                                 <input type="hidden" name="hidden_id" id="hidden_id" />
                             </div>
@@ -103,7 +112,6 @@
                     </div>
                     </div>
                 </div>
-
         </div>        
     </section>
 </div>
@@ -146,6 +154,23 @@
             {data: 'gambar', name: 'gambar', "render": function (data, type, row, meta) {
                     return '<img src="/images/' + data + '" alt="' + data + '"height="100px" width="100px"/>';
                 } },
+            {data: 'verifikasi_posting', name: 'verifikasi_posting', orderable:true,
+                render: function(data, type, row, meta){
+                    if(row.verifikasi_posting==0){
+                    return `
+                            <div class='btn-group mr-2'>
+                            <button type='button' class='btn btn-danger btn-sm' style="width:50px;">Belum</button>
+                            </div>
+                    `
+                    }
+                    else{
+                        return `
+                            <div class='btn-group mr-2'>
+                            <button type='button' class='unpublish btn btn-success btn-sm' style="width:50px;">Sudah</button>
+                            </div>
+                        `
+                    }
+                }},
             // {data: 'deskripsi', name: 'deskripsi'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
@@ -248,6 +273,7 @@
                 $('#judul').val(data.result.judul);
                 // $('#gambar').val(data.result.gambar);
                 $('#deskripsi').val(data.result.deskripsi);
+                $('#verifikasi_posting').val(data.result.verifikasi_posting);
                 $('#hidden_id').val(id);
                 $('.modal-title').text('Edit Record');
                 $('#action_button').val('Update');
@@ -287,6 +313,7 @@
                 $('#posting_table').DataTable().ajax.reload();
                 alert('Data Deleted');
                 }, 2000);
+                window.location.reload();
             }
         })
     });

@@ -3,11 +3,13 @@
 
 <div class="main-content">
     <section class="#">
-        <div class="section-header">
-            <br />
-            <div align="right">
-                <button type="button" name="create_record" id="create_record" class="btn btn-success"> <i class="bi bi-plus-square"></i> Add</button>
+        <div class="card">    
+            <div class="card-header">
+                <h3>List Posting</h3>
             </div>
+        </div>
+        <div align="right">
+            <button type="button" name="create_record" id="create_record" class="btn btn-success"> <i class="bi bi-plus-square"></i> Add</button>
         </div>
         <div class="section-body">
             <!-- card-body -->
@@ -22,7 +24,7 @@
                                 <th>Kategori</th>
                                 <th>Judul</th>
                                 <th>Gambar</th>
-                                <!-- <th>Deskripsi</th> -->
+                                <th>Verifikasi</th>
                                 <th width="180px">Action</th>
                             </tr>
                         </thead>
@@ -109,27 +111,13 @@
 </div>
 
 <script>
-//    $('#deskripsi').summernote({
-//     height: 300,                 // set editor height
-//     minHeight: null,             // set minimum height of editor
-//     maxHeight: null,             // set maximum height of editor
-//     focus: true                  // set focus to editable area after initializing summernote
-//     });
     tinymce.init({
       selector: '#deskripsi',
       menubar: true,
       toolbar: true,
       inline: false,
-    //   plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
-    //   toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-    //   tinycomments_mode: 'embedded',
-    //   tinycomments_author: 'Author name',
-    //   mergetags_list: [
-    //     { value: 'First.Name', title: 'First Name' },
-    //     { value: 'Email', title: 'Email' },
-    //   ]
     });
-  </script>
+</script>
 
  <script type="text/javascript">
 
@@ -146,22 +134,34 @@
             {data: 'gambar', name: 'gambar', "render": function (data, type, row, meta) {
                     return '<img src="/images/' + data + '" alt="' + data + '"height="100px" width="100px"/>';
                 } },
-            // {data: 'deskripsi', name: 'deskripsi'},
+            {data: 'verifikasi_posting', name: 'verifikasi_posting', orderable:true,
+                render: function(data, type, row, meta){
+                    if(row.verifikasi_posting==0){
+                    return `
+                            <div class='btn-group mr-2'>
+                            <button type='button' class='btn btn-danger btn-sm' style="width:50px;">Belum</button>
+                            </div>
+                    `
+                    }
+                    else{
+                        return `
+                            <div class='btn-group mr-2'>
+                            <button type='button' class='unpublish btn btn-success btn-sm' style="width:50px;">Sudah</button>
+                            </div>
+                        `
+                    }
+                }},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
-    
-    // function getImg(data, type, full, meta) {
-    //    //
-    //    return '<img src="/images/' + gambar + '" width="100" class="img-fluid img-thumbnail" />';
-    // }
- 
+
     $('#create_record').click(function(){
-        $('.modal-title').text('Add New Record');
+        $('#sample_form').get(0).reset();
+        $('#tampilgambar').html('');
+        $('.modal-title').text('Buat Berita');
         $('#action_button').val('Add');
         $('#action').val('Add');
         $('#form_result').html('');
- 
         $('#formModal').modal('show');
     });
  
@@ -225,9 +225,7 @@
         // var SITEURL = '{{ URL::to('') }}';
         var id = $(this).attr('id'); alert(id);
         $('#form_result').html('');
- 
-         
- 
+
         $.ajax({
             url :"/posting/edit/"+id+"/",
             enctype: 'multipart/form-data',
@@ -246,7 +244,6 @@
                 $('#id_user').val(data.result.id_user);
                 $('#id_kategori').val(data.result.id_kategori);
                 $('#judul').val(data.result.judul);
-                // $('#gambar').val(data.result.gambar);
                 $('#deskripsi').val(data.result.deskripsi);
                 $('#hidden_id').val(id);
                 $('.modal-title').text('Edit Record');
@@ -257,8 +254,6 @@
                 // Image
                 $('#tampilgambar').html(
                 `<img src="/images/${data.result.gambar}" width="100" class="img-fluid img-thumbnail">`);
-                // $('#emp_id').val(data.result.id);
-                // $('#gambar').val(data.result.gambar);
             },
             error: function(data) {
                 var errors = data.responseJSON;
@@ -287,6 +282,7 @@
                 $('#posting_table').DataTable().ajax.reload();
                 alert('Data Deleted');
                 }, 2000);
+                window.location.reload();
             }
         })
     });

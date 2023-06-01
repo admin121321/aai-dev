@@ -3,11 +3,13 @@
 
 <div class="main-content">
     <section class="#">
-        <div class="section-header">
-            <br />
-            <div align="right">
-                <button type="button" name="create_record" id="create_record" class="btn btn-success"> <i class="bi bi-plus-square"></i> Add</button>
+        <div class="card">    
+            <div class="card-header">
+                <h3>List Kategori Ticket Konsul</h3>
             </div>
+        </div>
+        <div align="right">
+            <button type="button" name="create_record" id="create_record" class="btn btn-success"> <i class="bi bi-plus-square"></i> Add</button>
         </div>
         <div class="section-body">
             <!-- card-body -->

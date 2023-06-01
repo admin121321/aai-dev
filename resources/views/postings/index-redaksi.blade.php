@@ -5,7 +5,7 @@
     <section class="#">
         <div class="card">    
             <div class="card-header">
-                <h3>List Iklan</h3>
+                <h3>List Posting</h3>
             </div>
         </div>
         <div align="right">
@@ -16,16 +16,15 @@
             <div class="row">
                 <div class="col-12 table-responsive">
                 <br />
-                    <table class="table text-start align-middle table-bordered table-hover mb-0 hal_datatable"> 
+                    <table class="table text-start align-middle table-bordered table-hover mb-0 posting_datatable"> 
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Nama Pembuat</th>
-                                <th>Nama Iklan</th>
-                                <th>Waktu Pemasangan</th>
-                                <th>Waktu Selesai</th>
+                                <th>Kategori</th>
+                                <th>Judul</th>
                                 <th>Gambar</th>
-                                <!-- <th>Deskripsi</th> -->
+                                <th>Verifikasi</th>
                                 <th width="180px">Action</th>
                             </tr>
                         </thead>
@@ -34,13 +33,13 @@
                 </div>
             </div>
             <!-- card-body -->
-              <!-- Modal -->
-              <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+            <!-- Modal -->
+            <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl">
-                        <div class="modal-content">
+                        <div class="modal-content bg-light rounded h-100 p-4">
                         <form method="post" id="sample_form" enctype="multipart/form-data" class="form-horizontal">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="ModalLabel">Tambah Halaman</h5>
+                                <h5 class="modal-title" id="ModalLabel">Tambah Posting</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                             </div>
                             <div class="modal-body">
@@ -49,27 +48,24 @@
                                     <input type="text" name="id_user" id="id_user" value="{{ Auth::user()->id }}" class="form-control"/>
                                     <label for="floatingInput">ID User </label>
                                 </div>
-                                <div class="form-group">
-                                    <label>Judul Iklan: </label>
+                                <div class="form-floating mb-3">
+                                <label for="floatingTextarea">Kategori </label>
+                                    <select class="form-control" id="id_kategori" name="id_kategori" aria-label="Floating label select example">
+                                        <option>--Pilih Unit Kerja--</option>
+                                        @foreach(App\Models\KategoriPosting::all() as $kategori)
+                                        <option value="{{ $kategori->id}}" id="id_kategori">{{ $kategori->nama_kategori }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-floating mb-3">
                                     <input type="text" name="judul" id="judul" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Mulai Pemasangan: </label>
-                                    <input type="date" name="mulai_pemasangan" id="mulai_pemasangan" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Akhir Pemasangan: </label>
-                                    <input type="date" name="akhir_pemasangan" id="akhir_pemasangan" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Link Media: </label>
-                                    <input type="text" name="link_media" id="link_media" class="form-control" />
+                                    <label for="floatingInput">Judul </label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="file" name="gambar" id="gambar" class="form-control form-control-sm" accept="images/*" onchange="readURL(this);" />
                                     <!-- <input type="text" name="gambar" id="gambar" class="form-control" /> -->
                                     <input type="hidden" name="hidden_image" id="hidden_image">
-                                    <label for="floatingInput">Gambar Iklan</label>
+                                    <label for="floatingInput">Gambar </label>
                                 </div>
                                 <div class="form-floating mb-3" name="tampilgambar" id="tampilgambar">
                                     <img name="tampilgambar" id="tampilgambar">
@@ -77,6 +73,13 @@
                                 <div class="form-floating">
                                     <textarea type="text" class="form-control" name="deskripsi" id="deskripsi"/></textarea>
                                     <label for="floatingInput">Deskripsi </label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Verifikasi Posting<a style="color:red;">*</a> : </label>
+                                    <select class="form-control" id="verifikasi_posting" name="verifikasi_posting" required>
+                                        <option value="0">Tidak Aktif</option>
+                                        <option value="1">Aktif</option>
+                                    </select>
                                 </div>
                                 <input type="hidden" name="action" id="action" value="Add" />
                                 <input type="hidden" name="hidden_id" id="hidden_id" />
@@ -92,26 +95,28 @@
  
                 <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form method="post" id="sample_form" class="form-horizontal">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="ModalLabel">Confirmation</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
-                                </div>
-                                <div class="modal-body">
-                                    <h4 align="center" style="margin:0;">Are you sure you want to remove this data?</h4>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" name="ok_button" id="ok_button" class="btn btn-danger">OK</button>
-                                </div>
-                            </form>  
+                    <div class="modal-content">
+                    <form method="post" id="sample_form" class="form-horizontal">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalLabel">Confirmation</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+                        <div class="modal-body">
+                            <h4 align="center" style="margin:0;">Are you sure you want to remove this data?</h4>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" name="ok_button" id="ok_button" class="btn btn-danger">OK</button>
+                        </div>
+                    </form>  
+                    </div>
                     </div>
                 </div>
-        </div>
+
+        </div>        
     </section>
 </div>
+<!-- Scirpt Text Editor -->
 <script>
     tinymce.init({
       selector: '#deskripsi',
@@ -119,61 +124,80 @@
       toolbar: true,
       inline: false,
     });
-  </script>
+</script>
+<!-- Script Tampil Data -->
 <script type="text/javascript">
-$(document).ready(function() {
-    var table = $('.hal_datatable').DataTable({
+
+    $(document).ready(function() {
+    var table = $('.posting_datatable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('iklans.index') }}",
+        ajax: "{{ route('postings.index-redaksi') }}",
         columns: [
             {data: 'id', name: 'id'},
             {data: 'id_user', name: 'id_user'},
+            {data: 'id_kategori', name: 'id_kategori'},
             {data: 'judul', name: 'judul'},
-            {data: 'mulai_pemasangan', name: 'mulai_pemasangan'},
-            {data: 'akhir_pemasangan', name: 'akhir_pemasangan'},
             {data: 'gambar', name: 'gambar', "render": function (data, type, row, meta) {
-                    return '<img src="/images-iklan/' + data + '" alt="' + data + '"height="100px" width="100px"/>';
+                    return '<img src="/images/' + data + '" alt="' + data + '"height="100px" width="100px"/>';
                 } },
-            // {data: 'deskripsi', name: 'deskripsi'},
+            {data: 'verifikasi_posting', name: 'verifikasi_posting', orderable:true,
+                render: function(data, type, row, meta){
+                    if(row.verifikasi_posting==0){
+                    return `
+                            <div class='btn-group mr-2'>
+                            <button type='button' class='btn btn-danger btn-sm' style="width:50px;">Belum</button>
+                            </div>
+                    `
+                    }
+                    else{
+                        return `
+                            <div class='btn-group mr-2'>
+                            <button type='button' class='unpublish btn btn-success btn-sm' style="width:50px;">Sudah</button>
+                            </div>
+                        `
+                    }
+                }},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
- 
+    
     $('#create_record').click(function(){
+        $('#sample_form').get(0).reset();
+        $('#tampilgambar').html('');
         $('.modal-title').text('Add New Record');
         $('#action_button').val('Add');
         $('#action').val('Add');
         $('#form_result').html('');
- 
         $('#formModal').modal('show');
     });
- 
+
     $('#sample_form').on('submit', function(event){
         event.preventDefault();
-        var formData = new FormData($(this)[0]); 
+        var formData = new FormData($(this)[0]);
         var action_url = '';
- 
+
         if($('#action').val() == 'Add')
         {
-            action_url = "{{ route('iklans.store') }}";
+            action_url = "{{ route('postings.store') }}";
         }
- 
+
         if($('#action').val() == 'Edit')
         {
-            action_url = "{{ route('iklans.update') }}";
+            action_url = "{{ route('postings.update') }}";
         }
- 
+
         $.ajax({
-            type: 'post',
+            type: 'POST',
+            enctype: 'multipart/form-data',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             url: action_url,
-            data:$(this).serialize(),
-            dataType: 'json',
             processData: false,  // Important!
             contentType: false,
             cache: false,
+            // data:$(this).serialize(),
             data: formData,
+            dataType: 'json',
             success: function(data) {
                 console.log('success: '+data);
                 var html = '';
@@ -190,7 +214,7 @@ $(document).ready(function() {
                 {
                     html = '<div class="alert alert-success">' + data.success + '</div>';
                     $('#sample_form')[0].reset();
-                    $('#hal_datatable').DataTable().ajax.reload();
+                    $('#posting_table').DataTable().ajax.reload();
                     window.location.reload();
                 }
                 $('#form_result').html(html);
@@ -201,39 +225,45 @@ $(document).ready(function() {
             }
         });
     });
- 
+
     $(document).on('click', '.edit', function(event){
-        event.preventDefault(); 
+        event.preventDefault();
+        // var formData = new FormData($(this)[0]); 
+        // var SITEURL = '{{ URL::to('') }}';
         var id = $(this).attr('id'); alert(id);
         $('#form_result').html('');
- 
-         
- 
+
+        
+
         $.ajax({
-            url :"/iklan/edit/"+id+"/",
+            url :"/posting/edit/"+id+"/",
+            enctype: 'multipart/form-data',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             dataType:"json",
+            // Important!
             processData: false,  
             contentType: false,
             cache: false,
+            // data: formData,
+
             success:function(data)
             {
                 console.log('success: '+data);
                 tinyMCE.activeEditor.setContent(data.result.deskripsi);
                 $('#id_user').val(data.result.id_user);
+                $('#id_kategori').val(data.result.id_kategori);
                 $('#judul').val(data.result.judul);
-                $('#mulai_pemasangan').val(data.result.mulai_pemasangan);
-                $('#akhir_pemasangan').val(data.result.akhir_pemasangan);
-                $('#link_media').val(data.result.link_media);
-                $('#tampilgambar').html(
-                `<img src="/images-iklan/${data.result.gambar}" width="100" class="img-fluid img-thumbnail">`);
                 $('#deskripsi').val(data.result.deskripsi);
+                $('#verifikasi_posting').val(data.result.verifikasi_posting);
                 $('#hidden_id').val(id);
                 $('.modal-title').text('Edit Record');
                 $('#action_button').val('Update');
                 $('#action').val('Edit'); 
                 $('.editpass').hide(); 
                 $('#formModal').modal('show');
+                // Image
+                $('#tampilgambar').html(
+                `<img src="/images/${data.result.gambar}" width="100" class="img-fluid img-thumbnail">`);
             },
             error: function(data) {
                 var errors = data.responseJSON;
@@ -241,17 +271,17 @@ $(document).ready(function() {
             }
         })
     });
- 
+
     var id;
- 
+
     $(document).on('click', '.delete', function(){
         id = $(this).attr('id');
         $('#confirmModal').modal('show');
     });
- 
+
     $('#ok_button').click(function(){
         $.ajax({
-            url:"iklan/destroy/"+id,
+            url:"posting/destroy/"+id,
             beforeSend:function(){
                 $('#ok_button').text('Deleting...');
             },
@@ -265,6 +295,7 @@ $(document).ready(function() {
             }
         })
     });
+    
 });
 </script>
 @endsection

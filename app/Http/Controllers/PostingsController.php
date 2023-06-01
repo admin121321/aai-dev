@@ -48,6 +48,38 @@ class PostingsController extends Controller
         return view('postings.index');
     }
 
+    // Index View Level Redaksi
+    public function indexredaksi(Request $request)
+    {       
+        if ($request->ajax()) {
+            // $id_useri = Auth::user()->id;
+            $data = Posting::join('users', 'users.id', '=' ,'postings.id_user')
+                     ->join('kategori_postings', 'kategori_postings.id', '=', 'postings.id_kategori')
+                     ->select('postings.*', 'users.name', 'kategori_postings.nama_kategori') 
+                    //  ->where('users.id',$id_useri)
+                     ->latest()
+                     ->get();
+            // $data = Posting::with('User','KategoriPosting')->latest()->get();
+            return Datatables::of($data)->addIndexColumn()
+                ->addColumn('id_user', function($data){
+                    return $data->name;
+                })
+                ->addColumn('id_kategori', function($data){
+                    return $data->nama_kategori;
+                })
+                ->addColumn('action', function($data){
+                    $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"> <i class="bi bi-pencil-square"></i>Edit</button>';
+                    $button .= '   <button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm"> <i class="bi bi-backspace-reverse-fill"></i> Delete</button>';
+                    return $button;
+                })
+                ->make(true);
+                
+            //  dd($data);
+
+        }
+        return view('postings.index-redaksi');
+    }
+
     // Index View Level User
     public function indexuser(Request $request)
     {       
@@ -101,6 +133,7 @@ class PostingsController extends Controller
                 'id_kategori' =>  strtoupper($request->id_kategori),
                 'judul'       =>  Str::slug($request->judul),
                 'deskripsi'   =>  $request->deskripsi,
+                'verifikasi_posting'   =>  '0',
                 ];
             $form_data['gambar'] = date('YmdHis').'.'.$request->gambar->getClientOriginalExtension();
             $request->gambar->move(public_path('images'), $form_data['gambar']);
@@ -148,11 +181,12 @@ class PostingsController extends Controller
             // Posting::make($file)->resize(250, 205)->save( public_path('images/' . $filename_new ) );
             $postingImage = public_path('images/').$currentImage;
             $form_data = [
-                'id_user'     =>  $request->id_user,
-                'id_kategori' =>  strtoupper($request->id_kategori),
-                'judul'       =>  Str::slug($request->judul),
-                'deskripsi'   =>  $request->deskripsi, 
-                'gambar'      =>  $fileName_new
+                'id_user'              =>  $request->id_user,
+                'id_kategori'          =>  strtoupper($request->id_kategori),
+                'judul'                =>  Str::slug($request->judul),
+                'deskripsi'            =>  $request->deskripsi,
+                'verifikasi_posting'   =>  $request->verifikasi_posting, 
+                'gambar'               =>  $fileName_new
             ];
             File::delete($fileName);
 
@@ -169,6 +203,7 @@ class PostingsController extends Controller
             'id_user'     =>  $request->id_user,
             'id_kategori' =>  strtoupper($request->id_kategori),
             'judul'       =>  Str::slug($request->judul),
+            'verifikasi_posting'   =>  $request->verifikasi_posting,
             'deskripsi'   =>  $request->deskripsi,
             ];
         }

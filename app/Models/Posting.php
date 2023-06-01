@@ -10,7 +10,7 @@ class Posting extends Model
     // use HasFactory;
     protected $table = 'postings';
     protected $fillable = [
-        'id_user', 'id_kategori', 'gambar', 'judul', 'deskripsi'
+        'id_user', 'id_kategori', 'gambar', 'judul', 'deskripsi', 'verifikasi_posting'
     ];
     public function KategoriPosting()
     {

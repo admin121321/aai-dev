@@ -296,6 +296,43 @@
         </div>
       </section>
   </div>
+@elseif (Auth::user()->level=="REDAKSI")
+  <div class="main-content">
+      <section class="section">
+        <div class="section-header">
+          <h1>Dashboard</h1>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            <div class="card card-statistic-1">
+              <div class="card-icon bg-danger">
+                <i class="far fa-newspaper"></i>
+              </div>
+              <div class="card-wrap">
+                <div class="card-header">
+                  <h4>Postings</h4>
+                </div>
+                <div class="card-body">
+                {{ DB::table('postings')->count() }}
+                </div>
+              </div>
+            </div>
+          </div>                  
+        </div>
+        <div class="row">
+          <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+            <div class="card">
+              <div class="card-header">
+                <h4>Logo</h4>
+              </div>
+              <div class="card-body">
+              <img src="{{ asset('themes-frontend/images/logo-aai.png') }}" alt="Aai Jakarta Logo" style=" display: block; margin-left: auto; margin-right: auto; width: 100%;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  </div>
 @elseif (Auth::user()->level=="USERS")
 <div class="main-content">
       <section class="section">
