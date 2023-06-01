@@ -29,7 +29,7 @@
 								<div class="category"><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}">detail</a></div>
 						</div>
 						<h2><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><?php echo str_replace('-', ' ', $posting->judul);?></a></h2>
-						<p><?php echo substr("$posting->deskripsi", 0, 50);?>.</p>
+						<p><?php echo substr($posting->deskripsi, 0, 50);?>.</p>
 					</div>
 				@endif
 				</div>
