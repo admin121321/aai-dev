@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\Auth\Request;
+use App\Providers\RouteServiceProvider;
+
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -77,6 +81,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $id_generate = IdGenerator::generate(['table' => 'users', 'length' => 9, 'prefix' =>date('Y')]);
+            //output: 191000001
         return User::create([
             'name'         => $data['name'],
             'email'        => $data['email'],
@@ -99,7 +105,7 @@ class RegisterController extends Controller
             'u_k'          => '0',
             'level'        => 'USERS',
             'foto'         => '0',
-            'id_anggota'   => '0',
+            'id_anggota'   => $id_generate,
             'verifikasi'   => '0',
             'is_admin'     => '0',
         ]);

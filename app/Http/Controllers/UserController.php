@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 use DataTables;
 use Validator;
@@ -47,7 +48,8 @@ class UserController extends Controller
         $foto = $request->file('foto');
 
         if ($foto == NULL){
-        
+            $id_generate = IdGenerator::generate(['table' => 'users', 'length' => 9, 'prefix' =>date('Y')]);
+            //output: 191000001
             $form_data = array(
                     'nrk'        => $request->nrk,
                     'nip'        => $request->nip,
@@ -66,6 +68,8 @@ class UserController extends Controller
                     'email'      => $request->email,
                     'password'   => Hash::make($request->password),
                     'level'      => strtoupper($request->level),
+                    'id_anggota' => $id_generate,
+                    // 'id_anggota' => $request->id_anggota,
                     'id_anggota' => $request->id_anggota,
                     'verifikasi' => $request->verifikasi,
                     'is_admin'   => $request->is_admin,
@@ -78,7 +82,8 @@ class UserController extends Controller
             $nama_file = date('YmdHis').'.'.$foto->getClientOriginalName();
             $tujuan_upload = 'images-foto';
             $foto->move($tujuan_upload,$nama_file);  
-            
+            $id_generate = IdGenerator::generate(['table' => 'users', 'length' => 9, 'prefix' =>date('Y')]);
+            //output: 191000001
             $form_data = array(
                     'nrk'        => $request->nrk,
                     'nip'        => $request->nip,
@@ -98,7 +103,8 @@ class UserController extends Controller
                     'email'      => $request->email,
                     'password'   => Hash::make($request->password),
                     'level'      => strtoupper($request->level),
-                    'id_anggota' => $request->id_anggota,
+                    'id_anggota' => $id_generate,
+                    // 'id_anggota' => $request->id_anggota,
                     'verifikasi' => $request->verifikasi,
                     'is_admin'   => $request->is_admin,
                     'kategori'   =>  $request->kategori,
