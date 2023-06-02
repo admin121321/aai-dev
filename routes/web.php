@@ -103,6 +103,7 @@ Route::get('tickets/{ticket_id}', [App\Http\Controllers\TicketsController::class
 Route::post('comment', [App\Http\Controllers\CommentsController::class, 'postComment']);
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function (){
     Route::get('tickets', [App\Http\Controllers\TicketsController::class, 'index'])->name('tickets');
+    Route::get('ticket-advokat', [App\Http\Controllers\TicketsController::class, 'indexadvokat'])->name('tickets.advokat');
     Route::get('tickets/export-pdf', [App\Http\Controllers\TicketsController::class, 'export_pdf'])->name('export-pdf');
     Route::get('tickets/export-excel', [App\Http\Controllers\TicketsController::class, 'export_excel'])->name('export-excel');
     Route::post('close_ticket/{ticket_id}', [App\Http\Controllers\TicketsController::class, 'close']);

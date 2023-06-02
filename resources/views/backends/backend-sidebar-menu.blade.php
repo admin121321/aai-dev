@@ -74,13 +74,13 @@
             <!-- LEVEL ADMIN -->
             @if (Auth::User()->level=="ADMIN")
             <li class="menu-header">Posting</li>
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-file-alt"></i><span>Posting</span></a>
                 <ul class="dropdown-menu">
-                <li><a href="{{ url('/kategori-posting') }}" class="nav-link" href="layout-default.html">kategori Posting</a></li>
-                <li><a href="{{ url('/posting') }}" class="nav-link" >Posting</a></li>
+                    <li><a href="{{ url('/kategori-posting') }}" class="nav-link" href="layout-default.html">kategori Posting</a></li>
+                    <li><a href="{{ url('/posting') }}" class="nav-link" >Posting</a></li>
                 </ul>
-            </li>
+            </li> -->
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i><span>Iklan</span></a>
                 <ul class="dropdown-menu">
@@ -95,7 +95,7 @@
                     <li class="dropdown">
                         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
                         <ul class="dropdown-menu">
-                        <li><a href="{{ url('admin/tickets') }}" class="nav-link" >List Konsul</a></li>
+                        <li><a href="{{ url('admin/ticket-advokat') }}" class="nav-link" >List Konsul</a></li>
                         </ul>
                     </li>
                     @else
