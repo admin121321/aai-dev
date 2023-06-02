@@ -1,274 +1,87 @@
 @extends('layouts.backend-menu')
-@section('content')
 
+@section('title', 'All Tickets')
+@section('content')
 <div class="main-content">
     <section class="#">
         <div class="card">    
             <div class="card-header">
-                <h3>List Posting</h3>
+                <h3>List Ticket Konsul</h3>
             </div>
         </div>
-        <div align="right">
-            <button type="button" name="create_record" id="create_record" class="btn btn-success"> <i class="bi bi-plus-square"></i> Add</button>
-        </div>
+        <a href="{{ route('export-pdf') }}" class="btn btn-success mb-4">Export PDF</a>
+        <a href="{{ route('export-excel') }}" class="btn btn-success mb-4">Export Excel</a>
         <div class="section-body">
             <!-- card-body -->
             <div class="row">
                 <div class="col-12 table-responsive">
                 <br />
-                    <table class="table text-start align-middle table-bordered table-hover mb-0 posting_datatable"> 
-                        <thead>
-                            <tr>
-                                <th>Nomor Tiket</th>
-                                <th>Judul</th>
-                                <th>Nama Pembuat</th>
-                                <th>Kategori</th>
-                                <th>Advokasi</th>
-                                <th>Tgl Pembuatan</th>
-                                <th width="180px">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
+                  @if ($tickets->isEmpty())
+                        <p>There are currently no tickets.</p>
+                    @else
+                    <table class="table table-striped"  id="table-note"> 
+                            <thead>
+                                <tr>
+                                    <th>No Ticket</th>
+                                    <th>Kategori</th>
+                                    <th>Advokat</th>
+                                    <th>Pemohon</th>
+                                    <th>Judul</th>
+                                    <th>Status</th>
+                                    <th>Update Terakhir</th>
+                                    <th>Tindakan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        
+                                @foreach ($tickets as $ticket)
+                                        @if( Auth::user()->id === $ticket->category->id_useri)
+                                        <tr>
+                                            <td>{{ $ticket->ticket_id }}</td>
+                                            <td>{{ $ticket->category->nama }}</td>
+                                            <td>{{ $ticket->category->id_useri }}</td>
+                                            <td>{{ $ticket->user->name }}</td>
+                                            <td>{{ $ticket->title }}</td>
+                                            <td>
+                                                @if($ticket->status == "Open")
+                                                    <button class="btn btn-danger">{{ $ticket->status }}</button>
+                                                @else
+                                                    <button class="btn btn-success">{{ $ticket->status }}</button>
+                                                @endif
+                                            </td>
+                                            <td>{{ $ticket->updated_at }}</td>
+                                            <td>
+                                                @if($ticket->status === 'Open')
+                                                    <a href="{{ url('tickets/' . $ticket->ticket_id) }}" class="btn btn-primary">Comment</a>
+
+                                                    <form action="{{ url('admin/close_ticket/' . $ticket->ticket_id) }}" method="POST">
+                                                        {!! csrf_field() !!}
+                                                        <button type="submit" class="btn btn-danger">Close</button>
+                                                    </form>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        @endif
+                            @endforeach
+                            </tbody>
                     </table>
+                    {{ $tickets->render() }}
+                    @endif
                 </div>
             </div>
-            <!-- card-body -->
-            <!-- Modal -->
-            <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl">
-                        <div class="modal-content bg-light rounded h-100 p-4">
-                        <form method="post" id="sample_form" enctype="multipart/form-data" class="form-horizontal">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="ModalLabel">Tambah Posting</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
-                            </div>
-                            <div class="modal-body">
-                                <span id="form_result"></span>
-                                <div class="form-floating mb-3" hidden>
-                                    <input type="text" name="id_user" id="id_user" value="{{ Auth::user()->id }}" class="form-control"/>
-                                    <label for="floatingInput">ID User </label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                <label for="floatingTextarea">Kategori </label>
-                                    <select class="form-control" id="id_kategori" name="id_kategori" aria-label="Floating label select example">
-                                        <option>--Pilih Unit Kerja--</option>
-                                        @foreach(App\Models\KategoriPosting::all() as $kategori)
-                                        <option value="{{ $kategori->id}}" id="id_kategori">{{ $kategori->nama_kategori }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="text" name="judul" id="judul" class="form-control" />
-                                    <label for="floatingInput">Judul </label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="file" name="gambar" id="gambar" class="form-control form-control-sm" accept="images/*" onchange="readURL(this);" />
-                                    <!-- <input type="text" name="gambar" id="gambar" class="form-control" /> -->
-                                    <input type="hidden" name="hidden_image" id="hidden_image">
-                                    <label for="floatingInput">Gambar </label>
-                                </div>
-                                <div class="form-floating mb-3" name="tampilgambar" id="tampilgambar">
-                                    <img name="tampilgambar" id="tampilgambar">
-                                </div>
-                                <div class="form-floating">
-                                    <textarea type="text" class="form-control" name="deskripsi" id="deskripsi"/></textarea>
-                                    <label for="floatingInput">Deskripsi </label>
-                                </div>
-                                <input type="hidden" name="action" id="action" value="Add" />
-                                <input type="hidden" name="hidden_id" id="hidden_id" />
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <input type="submit" name="action_button" id="action_button" value="Add" class="btn btn-info" />
-                            </div>
-                        </form>  
-                        </div>
-                    </div>
-                </div>
- 
-                <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                    <form method="post" id="sample_form" class="form-horizontal">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="ModalLabel">Confirmation</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <h4 align="center" style="margin:0;">Are you sure you want to remove this data?</h4>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" name="ok_button" id="ok_button" class="btn btn-danger">OK</button>
-                        </div>
-                    </form>  
-                    </div>
-                    </div>
-                </div>
-
-        </div>        
+            <!-- card-body -->      
     </section>
 </div>
-
 <script>
-    tinymce.init({
-      selector: '#deskripsi',
-      menubar: true,
-      toolbar: true,
-      inline: false,
-    });
-</script>
-
- <script type="text/javascript">
-
-    $(document).ready(function() {
-    var table = $('.posting_datatable').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('tickets.advokat') }}",
-        columns: [
-            {data: 'ticket_id ', name: 'ticket_id '},
-            {data: 'title ', name: 'title '},
-            {data: 'user_id', name: 'user_id'},
-            {data: 'category_id', name: 'category_id'},
-            {data: 'id_user', name: 'id_user'},
-            {data: 'created_at', name: 'created_at'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
-        ]
-    });
-
-    $('#create_record').click(function(){
-        $('#sample_form').get(0).reset();
-        $('#tampilgambar').html('');
-        $('.modal-title').text('Buat Berita');
-        $('#action_button').val('Add');
-        $('#action').val('Add');
-        $('#form_result').html('');
-        $('#formModal').modal('show');
-    });
- 
-    $('#sample_form').on('submit', function(event){
-        event.preventDefault();
-        var formData = new FormData($(this)[0]);
-        var action_url = '';
- 
-        if($('#action').val() == 'Add')
-        {
-            action_url = "{{ route('postings.store') }}";
-        }
- 
-        if($('#action').val() == 'Edit')
-        {
-            action_url = "{{ route('postings.update') }}";
-        }
- 
-        $.ajax({
-            type: 'POST',
-            enctype: 'multipart/form-data',
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            url: action_url,
-            processData: false,  // Important!
-            contentType: false,
-            cache: false,
-            // data:$(this).serialize(),
-            data: formData,
-            dataType: 'json',
-            success: function(data) {
-                console.log('success: '+data);
-                var html = '';
-                if(data.errors)
-                {
-                    html = '<div class="alert alert-danger">';
-                    for(var count = 0; count < data.errors.length; count++)
-                    {
-                        html += '<p>' + data.errors[count] + '</p>';
-                    }
-                    html += '</div>';
-                }
-                if(data.success)
-                {
-                    html = '<div class="alert alert-success">' + data.success + '</div>';
-                    $('#sample_form')[0].reset();
-                    $('#posting_table').DataTable().ajax.reload();
-                    window.location.reload();
-                }
-                $('#form_result').html(html);
-            },
-            error: function(data) {
-                var errors = data.responseJSON;
-                console.log(errors);
-            }
-        });
-    });
- 
-    $(document).on('click', '.edit', function(event){
-        event.preventDefault();
-        // var formData = new FormData($(this)[0]); 
-        // var SITEURL = '{{ URL::to('') }}';
-        var id = $(this).attr('id'); alert(id);
-        $('#form_result').html('');
-
-        $.ajax({
-            url :"/posting/edit/"+id+"/",
-            enctype: 'multipart/form-data',
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            dataType:"json",
-            // Important!
-            processData: false,  
-            contentType: false,
-            cache: false,
-            // data: formData,
-
-            success:function(data)
-            {
-                console.log('success: '+data);
-                tinyMCE.activeEditor.setContent(data.result.deskripsi);
-                $('#id_user').val(data.result.id_user);
-                $('#id_kategori').val(data.result.id_kategori);
-                $('#judul').val(data.result.judul);
-                $('#deskripsi').val(data.result.deskripsi);
-                $('#hidden_id').val(id);
-                $('.modal-title').text('Edit Record');
-                $('#action_button').val('Update');
-                $('#action').val('Edit'); 
-                $('.editpass').hide(); 
-                $('#formModal').modal('show');
-                // Image
-                $('#tampilgambar').html(
-                `<img src="/images/${data.result.gambar}" width="100" class="img-fluid img-thumbnail">`);
-            },
-            error: function(data) {
-                var errors = data.responseJSON;
-                console.log(errors);
-            }
-        })
-    });
- 
-    var id;
- 
-    $(document).on('click', '.delete', function(){
-        id = $(this).attr('id');
-        $('#confirmModal').modal('show');
-    });
- 
-    $('#ok_button').click(function(){
-        $.ajax({
-            url:"posting/destroy/"+id,
-            beforeSend:function(){
-                $('#ok_button').text('Deleting...');
-            },
-            success:function(data)
-            {
-                setTimeout(function(){
-                $('#confirmModal').modal('hide');
-                $('#posting_table').DataTable().ajax.reload();
-                alert('Data Deleted');
-                }, 2000);
-                window.location.reload();
-            }
-        })
-    });
-    
-});
+  $("#table-note").dataTable({
+    "columnDefs": [
+      { "sortable": true, "targets": [0] },
+      { "width": "15%", "targets": 0 },
+      { "width": "70%", "targets": 1 },
+      // { "width": "15%", "targets": 2 },
+      // { "width": "20%", "targets": 3 },
+      { "width": "15%", "targets": 2 },
+    ]
+  });
 </script>
 @endsection

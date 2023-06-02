@@ -46,54 +46,54 @@ class TicketsController extends Controller
     }
 
     // Index Advokat
-    // public function indexadvokat()
-    // {
-    //     // $tickets = Ticket::paginate(10);
-    //     $user = User::all();
-    //     $category = Category::all();
-    //     // $id_useri = Auth::user()->id_useri;
-    //     // $rowPengajuan = Pengajuan::where('nip',$nip)->paginate(5);
-    //     $tickets = Ticket::join('users', 'users.id', '=' ,'tickets.user_id')
-    //                         ->join('categories', 'categories.id', '=' ,'tickets.category_id')
-    //                         ->select('tickets.*', 'users.name', 'categories.nama','categories.id_useri')
-    //                         ->orderBy('created_at', 'DESC') 
-    //                         ->latest()
-    //                         ->paginate(10);
-    //     return view('tickets.index-advokat', compact('tickets', 'category'));
-    // }
-
-    public function indexadvokat(Request $request)
+    public function indexadvokat()
     {
-        if ($request->ajax()) {
-            $id_useri = Auth::user()->id;
-            $data = Ticket::join('users', 'users.id', '=' ,'tickets.user_id')
-                                ->join('categories', 'categories.id', '=' ,'tickets.category_id')
-                                ->select('tickets.*', 'users.name', 'categories.nama','categories.id_useri')
-                                ->where('categories.id_user',$id_useri)->latest()->get();
-
-                        return Datatables::of($data)->addIndexColumn()
-                                ->addColumn('categories.id_user', function($data){
-                                    return $data->name;
-                                })
-                                ->addColumn('tickets.user_id', function($data){
-                                    return $data->name;
-                                })
-                                ->addColumn('category_id', function($data){
-                                    return $data->nama;
-                                })
-                                ->addColumn('action', function($data){
-                                    $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"> <i class="bi bi-pencil-square"></i>Edit</button>';
-                                    $button .= '   <button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm"> <i class="bi bi-backspace-reverse-fill"></i> Delete</button>';
-                                    return $button;
-                                })
-                                ->make(true);
-        }
-
-        // $data = Ticket::get();
-        //     dd($data);
-
-        return view('tickets.index-advokat');
+        // $tickets = Ticket::paginate(10);
+        $user = User::all();
+        $category = Category::all();
+        // $id_useri = Auth::user()->id_useri;
+        // $rowPengajuan = Pengajuan::where('nip',$nip)->paginate(5);
+        $tickets = Ticket::join('users', 'users.id', '=' ,'tickets.user_id')
+                            ->join('categories', 'categories.id', '=' ,'tickets.category_id')
+                            ->select('tickets.*', 'users.name', 'categories.nama','categories.id_useri')
+                            ->orderBy('created_at', 'DESC') 
+                            ->latest()
+                            ->paginate(10);
+        return view('tickets.index-advokat', compact('tickets', 'category'));
     }
+
+    // public function indexadvokat(Request $request)
+    // {
+    //     if ($request->ajax()) {
+    //         $id_userw = Auth::user()->id;
+    //         $data = Ticket::join('users', 'users.id', '=' ,'tickets.user_id')
+    //                     ->join('categories', 'categories.id', '=' ,'tickets.category_id')
+    //                     ->select('tickets.*', 'users.name', 'categories.nama','categories.id_useri')
+    //                     ->where('categories.id_user',$id_userw)->latest()->get();
+
+    //                     return Datatables::of($data)->addIndexColumn()
+    //                             ->addColumn('categories.id_useri', function($data){
+    //                                 return $data->$users->name;
+    //                             })
+    //                             ->addColumn('tickets.user_id', function($data){
+    //                                 return $data->name;
+    //                             })
+    //                             ->addColumn('category_id', function($data){
+    //                                 return $data->nama;
+    //                             })
+    //                             ->addColumn('action', function($data){
+    //                                 $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"> <i class="bi bi-pencil-square"></i>Edit</button>';
+    //                                 $button .= '   <button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm"> <i class="bi bi-backspace-reverse-fill"></i> Delete</button>';
+    //                                 return $button;
+    //                             })
+    //                             ->make(true);
+    //     }
+
+    //     // $data = Ticket::get();
+    //     //     dd($data);
+
+    //     return view('tickets.index-advokat');
+    // }
 
     // Report PDF
     public function export_pdf(){

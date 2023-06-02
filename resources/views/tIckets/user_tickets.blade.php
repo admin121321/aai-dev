@@ -3,13 +3,10 @@
 @section('content')
 <!-- Main Content -->
 <div class="main-content">
-    <section class="section">
-        <div class="section-header">
-            <h1>List Tiket</h1>
-            <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                <div class="breadcrumb-item"><a href="#">Konsul</a></div>
-                <div class="breadcrumb-item">List Tiket</div>
+    <section class="#">
+        <div class="card">    
+            <div class="card-header">
+                <h3>List Ticket Konsul</h3>
             </div>
         </div>
         <div class="section-body">

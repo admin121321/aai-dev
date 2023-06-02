@@ -6,7 +6,7 @@
     <section class="#">
         <div class="card">    
             <div class="card-header">
-                <h3>List Posting</h3>
+                <h3>List Ticket Konsul</h3>
             </div>
         </div>
         <a href="{{ route('export-pdf') }}" class="btn btn-success mb-4">Export PDF</a>
