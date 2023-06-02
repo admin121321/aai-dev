@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Helpers\Helper;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Auth\Request;
@@ -83,6 +84,7 @@ class RegisterController extends Controller
     {
         $id_generate = IdGenerator::generate(['table' => 'users', 'length' => 9, 'prefix' =>date('Y')]);
             //output: 191000001
+        // $id_generate = Helper::IDGenerator(new User, 'id_anggota', 2, 'y');
         return User::create([
             'name'         => $data['name'],
             'email'        => $data['email'],
