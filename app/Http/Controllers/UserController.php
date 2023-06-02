@@ -103,6 +103,7 @@ class UserController extends Controller
                     'is_admin'   => $request->is_admin,
                     'kategori'   =>  $request->kategori,
                     'no_telpn'   =>  $request->no_telpn,
+                    'persetujuan'=> $request->persetujuan,
             );
         }
 
