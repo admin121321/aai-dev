@@ -68,7 +68,8 @@ Route::put('/profile/edit/update/{id}', [App\Http\Controllers\UserController::cl
 // password
 Route::get('/password/edit/{id}',[App\Http\Controllers\UserController::class, 'edit_password'])->name('users.edit_password');
 Route::put('/password/edit/update/{id}', [App\Http\Controllers\UserController::class, 'update_password'])->name('users.update_password');
-
+// Buku Petunjuk
+Route::get('/buku-petunjuk', [App\Http\Controllers\UserController::class, 'buku_petunjuk'])->name('users.buku-pentujuk');
 // Kategori Posting
 Route::get('/kategori-posting', [App\Http\Controllers\KategoriPostingsController::class, 'index'])->name('kategoriPostings.index');
 Route::post('/kategori-posting/store/', [App\Http\Controllers\KategoriPostingsController::class, 'store'])->name('kategoriPostings.store');

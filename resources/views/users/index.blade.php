@@ -82,7 +82,7 @@
                                         <input type="number" id="id_anggota" name="id_anggota" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Foto<a style="color:red;">*</a></label>
+                                        <label>Foto</label>
                                         <input type="file" name="foto" id="foto" class="form-control" accept="images-foto/*" onchange="readURL(this);"/>
                                         <input type="hidden" name="hidden_image" id="hidden_image">
                                     </div>

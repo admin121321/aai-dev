@@ -47,7 +47,7 @@
 
                                 <div class="col-md-6">
                                     <select id="category" type="category" class="form-control" name="category">
-                                        <option value="">Select Category</option>
+                                        <option value="">Pilih Kategori Konsultasi</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->nama }}</option>
                                         @endforeach

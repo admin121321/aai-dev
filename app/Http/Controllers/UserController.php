@@ -42,7 +42,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-
+            'foto' => '|image|mimes:jpg,jpeg,png,ico',
         ]);
 
         $foto = $request->file('foto');
@@ -250,7 +250,7 @@ class UserController extends Controller
 	public function update_profile($id, Request $request,  User $user)
 	{
         $rules = array(
-            // 'foto' => 'required|image|mimes:jpg,jpeg,png,ico',
+            'foto' => '|image|mimes:jpg,jpeg,png,ico',
         );
  
         $error = Validator::make($request->all(), $rules);
@@ -380,5 +380,11 @@ class UserController extends Controller
     //  export excel
      public function export_excel(){
         return Excel::download(new UserExport, 'anggota_aai_'.date('Y-m-d_h-m-s').'.xlsx');
+     }
+
+     public function buku_petunjuk()
+     {
+        
+         return view('users.buku-petunjuk');
      }
 }

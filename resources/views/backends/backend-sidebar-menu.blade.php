@@ -73,7 +73,14 @@
 
             <!-- LEVEL ADMIN -->
             @if (Auth::User()->level=="ADMIN")
-            <li class="menu-header">Posting</li>
+            <li class="menu-header">Akun</li>
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-users"></i><span>Pengguna</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url('/users') }}" class="nav-link">Anggota</a></li>
+                </ul>
+            </li>
+            <!-- <li class="menu-header">Posting</li> -->
             <!-- <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-file-alt"></i><span>Posting</span></a>
                 <ul class="dropdown-menu">
@@ -81,12 +88,12 @@
                     <li><a href="{{ url('/posting') }}" class="nav-link" >Posting</a></li>
                 </ul>
             </li> -->
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i><span>Iklan</span></a>
                 <ul class="dropdown-menu">
                 <li><a href="{{ url('/iklan') }}" class="nav-link" href="layout-default.html">Iklan</a></li>
                 </ul>
-            </li>
+            </li> -->
             <li class="menu-header">Konsul</li>
             <!-- FIlter Data Konsul Sesuai Kategori -->
               @foreach(App\Models\Category::all() as $categories)
@@ -158,7 +165,7 @@
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
                     <ul class="dropdown-menu">
                     <li><a href="{{ url('my_tickets') }}" class="nav-link" >List Tiket</a></li>
-                    <li><a href="{{ url('new-ticket') }}" class="nav-link" >Create Tiket</a></li>
+                    <li><a href="{{ url('new-ticket') }}" class="nav-link" >Buat Tiket</a></li>
                     </ul>
                 </li>
                 @endif
@@ -173,8 +180,8 @@
         </ul>
 
         <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-        <a href="#" class="btn btn-primary btn-lg btn-block btn-icon-split">
-            <i class="fas fa-rocket"></i> Documentation
+        <a href="{ url('/buku-petunjuk') }}" class="btn btn-primary btn-lg btn-block btn-icon-split">
+            <i class="fas fa-rocket"></i> Buku Petunjuk
         </a>
         </div>
     </aside>
