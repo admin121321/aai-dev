@@ -41,7 +41,7 @@
 
 						</div>
 						<div class="owl-carousel owl-theme slide" id="featured">
-						@foreach(App\Models\Posting::paginate(1) as $posting)
+						@foreach(App\Models\Posting::latest()->paginate(1) as $posting)
 							<div class="item">
 								<article class="featured">
 									<div class="overlay"></div>
