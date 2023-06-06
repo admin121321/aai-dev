@@ -300,11 +300,16 @@
         ajax: "{{ route('users.index') }}",
         columns: [
             {data: 'id_anggota', name: 'id_anggota', orderable:true, "render": function (data, type, row, meta) {
-                if(row.id_anggota==0){
-                    return '<div class="btn-group mr-2"><button class="btn btn-danger btn-sm">Belum Dapat ID</button></div>'
-                }else{
-                    return data;
-                }
+                if(row.verifikasi==0){
+                    return `
+                            <div class='btn-group mr-2'>
+                              <button type='button' class='btn btn-danger btn-sm' style="width:50px;">Belum</button>
+                            </div>
+                    `
+                    }
+                    else{
+                        return data;
+                    }
                 } },
             {data: 'name', name: 'name'},
             {data: 'kategori', name: 'kategori'},
