@@ -119,7 +119,7 @@
                                     <div class="form-group">
                                         <label>Pangkat : </label>
                                         <select class="form-control" id="pang" name="pang">
-                                            <option value="TIDAK ADA">TIDAK ADA</option>
+                                            <option value="0">TIDAK ADA</option>
                                             <option value="PENGATUR">PENGATUR</option>
                                             <option value="PENGATUR Tk.1">PENGATUR Tk.1</option>
                                             <option value="PENGATUR Tk.2">PENGATUR Tk.2</option>
@@ -134,7 +134,7 @@
                                     <div class="form-group">
                                         <label>Golongan : </label>
                                         <select class="form-control" id="gol" name="gol">
-                                            <option value="TIDAK ADA">TIDAK ADA</option>
+                                            <option value="0">TIDAK ADA</option>
                                             <option value="II-c">II-c</option>
                                             <option value="II-d">II-d</option>
                                             <option value="III-a">III-a</option>
@@ -150,7 +150,7 @@
                                     <div class="form-group">
                                         <label>Tingkat : </label>
                                         <select class="form-control" id="ting" name="ting">
-                                            <option value="TIDAK ADA">TIDAK ADA</option>
+                                            <option value="0">TIDAK ADA</option>
                                             <option value="AHLI MUDA">AHLI MUDA</option>
                                             <option value="AHLI PERTAMA">AHLI PERTAMA</option>
                                             <option value="TERAMPIL">TERAMPIL</option>

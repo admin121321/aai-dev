@@ -51,14 +51,11 @@
 									<br>
 									<!-- Modal content-->
 									<div class="modal-content">
-										<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h4 class="modal-title">Pendaftaran Anggota</h4>
-										</div>
+										
 										<div class="wizard">
 											<div class="wizard-inner">
 												<div class="connecting-line"></div>
-												<ul class="nav nav-tabs" role="tablist">
+												<ul class="nav nav-tabs" role="tablist" hidden>
 													<li role="presentation" class="active">
 														<a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" aria-expanded="true"><span class="round-tab">Syarat & Ketentuan </span></a>
 													</li>
@@ -71,10 +68,13 @@
 											<div class="tab-content" id="main_form">	
 												<!-- Syarat & Ketentuan -->
 												<div class="tab-pane active" role="tabpanel" id="step1">
-													<h5 class="text-center">Syarat & Ketentuan</h5>
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal">&times;</button>
+														<h4 class="modal-title">Syarat & Ketentuan</h4>
+													</div>													
 													<div class="card-body">
 													@foreach(App\Models\Halamans::latest()->paginate(1) as $halaman)
-														@if ( $halaman->id=="14")
+														@if ( $halaman->id=='15')
 														<div class="modal-body">
 															<div class="card-body">
 															{!! $halaman->deskripsi !!}
@@ -91,8 +91,10 @@
 												
 												<!-- Form Daftar -->
 												<div class="tab-pane" role="tabpanel" id="step2">
-													<h4 class="text-center">Form Daftar</h4>
-													<div class="card-body">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal">&times;</button>
+														<h4 class="modal-title">Daftar Anggota</h4>
+													</div>													<div class="card-body">
 													<form method="POST" action="{{ route('register') }}">
 															@csrf
 															<div class="card-body">

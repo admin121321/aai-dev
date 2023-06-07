@@ -25,7 +25,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = User::select('users.*')->latest()->get();
+            $data = User::select('users.*')->orderBy('created_at', 'DESC')->latest()->get();
             return Datatables::of($data)->addIndexColumn()
                 ->addColumn('action', function($data){
                     $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"> <i class="bi bi-pencil-square"></i>Edit</button>';
@@ -287,6 +287,7 @@ class UserController extends Controller
                 'inst'       => strtoupper($request->inst),
                 'level'      => strtoupper($request->level),
                 'id_anggota' => $request->id_anggota,
+                'kategori'   => $request->kategori,
                 'no_telpn'   => $request->no_telpn, 
                 'foto'       =>  $fileName_new
             ];
@@ -319,6 +320,7 @@ class UserController extends Controller
                 'inst'       => strtoupper($request->inst),
                 'level'      => strtoupper($request->level),
                 'id_anggota' => $request->id_anggota,
+                'kategori'   => $request->kategori,
                 'no_telpn'   => $request->no_telpn,
             ];
         }
