@@ -28,9 +28,15 @@ class ContactMail extends Mailable
      *
      * @return $this
      */
+    // public function build()
+    // {
+    //     return $this->subject('Kontak Kami - '. $this->data->subject)
+    //                 ->view('frontends.contact');
+    // }
+
     public function build()
     {
-        return $this->subject('Kontak Kami - '. $this->data->subject)
+        return $this->subject($this->data->subject)
                     ->view('frontends.contact');
     }
 }

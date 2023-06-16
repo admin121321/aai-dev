@@ -7,6 +7,7 @@ use App\Models\Halamans;
 use App\Models\Contact; 
 use App\Models\KategoriPosting;  
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use DataTables;
@@ -91,10 +92,23 @@ class WelcomesController extends Controller
             'subject' => 'required',
             'message' => 'required'
         ]);
-  
+        
         Contact::create($request->all());
+        
+        // $data = $request->all();
+        // //  Send mail to admin
+        // \Mail::send('frontends.contact', array(
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        //     'phone' => $data['phone'],
+        //     'subject' => $data['subject'],
+        //     'message' => $data['message'],
+        // ), function($message) use ($request){
+        //     $message->from($request->email);
+        //     $message->to('admin@aaijakarta.or.id', 'Admin AAI')->subject($request->get('subject'));
+        // });
         return redirect()->back()
-                         ->with(['success' => 'Thank you for contact us. we will contact you shortly.']);
+                         ->with(['success' => 'Terima Kasih, Pesan Anda Berhasil Terkirim']);
     }
 
     public function showPembinaanKearsipan()
