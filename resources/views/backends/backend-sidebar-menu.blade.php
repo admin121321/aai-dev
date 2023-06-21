@@ -80,40 +80,40 @@
                     <li><a href="{{ url('/users') }}" class="nav-link">Anggota</a></li>
                 </ul>
             </li>
-            <!-- <li class="menu-header">Posting</li> -->
-            <!-- <li class="dropdown">
+            <li class="menu-header">Posting</li>
+            <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-file-alt"></i><span>Posting</span></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ url('/kategori-posting') }}" class="nav-link" href="layout-default.html">kategori Posting</a></li>
                     <li><a href="{{ url('/posting') }}" class="nav-link" >Posting</a></li>
                 </ul>
-            </li> -->
-            <!-- <li class="dropdown">
+            </li>
+            <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i><span>Iklan</span></a>
                 <ul class="dropdown-menu">
                 <li><a href="{{ url('/iklan') }}" class="nav-link" href="layout-default.html">Iklan</a></li>
                 </ul>
-            </li> -->
+            </li>
             <li class="menu-header">Konsul</li>
             <!-- FIlter Data Konsul Sesuai Kategori -->
-              @foreach(App\Models\Category::all() as $categories)
-                @if(Auth::user()->id==$categories->id_useri)
-                    @if(Auth::user()->is_admin)
-                    <li class="dropdown">
-                        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
-                        <ul class="dropdown-menu">
-                        <li><a href="{{ url('admin/ticket-advokat') }}" class="nav-link" >List Konsul</a></li>
-                        </ul>
-                    </li>
-                    @else
-                    <li class="dropdown">
-                        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
-                        <ul class="dropdown-menu">
-                        <li><a href="{{ url('my_tickets') }}" class="nav-link" >List Konsul</a></li>
-                        </ul>
-                    </li>
+                @foreach(App\Models\Category::all() as $categories)
+                    @if(Auth::user()->id==$categories->id_useri)
+                        @if(Auth::user()->is_admin)
+                        <li class="dropdown">
+                            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
+                            <ul class="dropdown-menu">
+                            <li><a href="{{ url('admin/ticket-advokat') }}" class="nav-link" >List Konsul</a></li>
+                            </ul>
+                        </li>
+                        @else
+                        <li class="dropdown">
+                            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
+                            <ul class="dropdown-menu">
+                            <li><a href="{{ url('my_tickets') }}" class="nav-link" >List Konsul</a></li>
+                            </ul>
+                        </li>
+                        @endif
                     @endif
-                @endif
                 @endforeach
                 <li class="dropdown">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-gear"></i><span>Pengaturan Akun</span></a>
@@ -133,6 +133,25 @@
                 <li><a href="{{ url('/posting-redaksi') }}" class="nav-link" >Posting</a></li>
                 </ul>
             </li>
+            @foreach(App\Models\Category::all() as $categories)
+                @if(Auth::user()->id==$categories->id_useri)
+                    @if(Auth::user()->is_admin)
+                    <li class="dropdown">
+                        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
+                        <ul class="dropdown-menu">
+                        <li><a href="{{ url('admin/ticket-advokat') }}" class="nav-link" >List Konsul</a></li>
+                        </ul>
+                    </li>
+                    @else
+                    <li class="dropdown">
+                        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-envelope"></i><span>Konsul</span></a>
+                        <ul class="dropdown-menu">
+                        <li><a href="{{ url('my_tickets') }}" class="nav-link" >List Konsul</a></li>
+                        </ul>
+                    </li>
+                    @endif
+                @endif
+            @endforeach
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-gear"></i><span>Pengaturan Akun</span></a>
                 <ul class="dropdown-menu">
