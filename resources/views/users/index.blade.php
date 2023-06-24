@@ -291,6 +291,39 @@
         </div>
     </div>
 </div>
+<!-- Modal Edit Password-->
+<div class="modal fade" id="fxModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content bg-light rounded h-100 p-4">
+        <form method="post" id="password_form" enctype="multipart/form-data" class="form-horizontal">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Update Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                </div>
+                <span id="password_result"></span>
+                <div class="modal-body">
+                    <!-- Data Akses -->
+                    <div class="card-header">
+                        <h6> Data Akses </h6>
+                    </div>
+                    <div class="form-group">
+                        <label>Email<a style="color:red;">*</a> : </label>
+                        <input type="email" name="email" id="email-edit" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Password<a style="color:red;">*</a> : </label>
+                        <input type="password" name="password" id="password-edit" class="form-control"/>
+                    </div>
+                <input type="hidden" name="hidden_id_pass" id="hidden_id_pass" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <input type="submit" name="action_button_pass" id="submit" value="Submit" class="btn btn-info action_button_pas" />
+            </div>
+        </form>  
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
 
     $(document).ready(function() {
@@ -349,6 +382,8 @@
         $('#action').val('Add');
         $('#form_result').html('');
         $('#formModal').modal('show');
+        $('#fxModal').modal('show');
+        $('#password_result').html('');
     });
  
     $('#sample_form').on('submit', function(event){
@@ -443,6 +478,7 @@
                 $('#u_k').val(data.result.u_k).change();
                 $('#inst').val(data.result.inst).change();
                 $('#email').val(data.result.email);
+                $('#password').val(data.result.password);
                 $('#level').val(data.result.level);
                 $('#is_admin').val(data.result.is_admin).change();
                 $('#verifikasi').val(data.result.verifikasi).change();
@@ -456,6 +492,7 @@
                 $('.modal-title').text('Ubah Data Anggota');
                 $('#action_button').val('Update');
                 $('#action').val('Edit'); 
+                // Class Hide Password
                 $('.editpass').hide(); 
                 $('#formModal').modal('show');
             },
@@ -491,7 +528,7 @@
         })
     });
 
-     // detail
+    // detail
      $(document).on('click', '.detailButton', function(event){
         event.preventDefault(); 
         var id = $(this).attr('id'); alert(id);
@@ -543,7 +580,95 @@
             },
         })
     });
+
+    // Password
+    $(document).on('click', '.passwordButton', function(event){
+        event.preventDefault();
+        // var formData = new FormData($(this)[0]); 
+        // var SITEURL = '{{ URL::to('') }}';
+        var id = $(this).attr('id'); alert(id);
+        $('#password_result').html('');
+
+        $.ajax({
+            url :"/users/edit_pass/"+id+"/",
+            enctype: 'multipart/form-data',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            dataType:"json",
+            // Important!
+            processData: false,  
+            contentType: false,
+            cache: false,
+            // data: formData,
+
+            success:function(data)
+            {
+                // console.log('success: '+data);
+                $('#email-edit').val(data.result.email);
+                $('#password-edit').val(data.result.password);
+                $('#hidden_id_pass').val(id);
+                $('.modal-title').text('Ubah Data Anggota');
+                $('.action_button_pass').val('Update'); 
+                $('#fxModal').modal('show');
+                
+            // console.log(
+            //         'email: '+data.result.email
+            // );
+            },
+            error: function(data) {
+                var errors = data.responseJSON;
+                console.log(errors);
+            }
+        })
+    });
     
+    $('#password_form').on('submit', function(event){
+        event.preventDefault()
+        var formData = new FormData($(this)[0]);
+        var email_lir = $("#email-edit").val();
+        var password_lir = $("#password-edit").val();
+        var id = $("#hidden_id_pass").val();
+        // var id = $(this).attr('id'); alert(id);
+        var action_urli = "{{ route('users.update_pass') }}";
+        // var action_urli ="users/update_pass/"+id+"/";     
+        $.ajax({
+            type: 'POST',
+            enctype: 'multipart/form-data',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            url: action_urli,
+            processData: false,  // Important!
+            contentType: false,
+            cache: false,
+            // data:$(this).serialize(),
+            data: formData,
+            dataType: 'json',
+            success: function(data) {
+                console.log('success: '+data);
+                var html = '';
+                if(data.errors)
+                {
+                    html = '<div class="alert alert-danger">';
+                    for(var count = 0; count < data.errors.length; count++)
+                    {
+                        html += '<p>' + data.errors[count] + '</p>';
+                    }
+                    html += '</div>';
+                }
+                if(data.success)
+                {
+                    html = '<div class="alert alert-success">' + data.success + '</div>';
+                    $('#sample_form')[0].reset();
+                    $('#posting_table').DataTable().ajax.reload();
+                    window.location.reload();
+                }
+                $('#password_result').html(html);
+            },
+            error: function(data) {
+                var errors = data.responseJSON;
+                console.log(errors);
+            }
+        });
+    });
+    var id;
 });
 </script>
 @endsection

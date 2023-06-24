@@ -28,9 +28,10 @@ class UserController extends Controller
             $data = User::select('users.*')->orderBy('created_at', 'DESC')->latest()->get();
             return Datatables::of($data)->addIndexColumn()
                 ->addColumn('action', function($data){
-                    $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"> <i class="bi bi-pencil-square"></i>Edit</button>';
-                    $button .= '   <button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm"> <i class="bi bi-backspace-reverse-fill"></i> Delete</button>';
+                    $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"> <i class="bi bi-pencil-square"></i>Edit Profile</button>';
+                    $button .= '<button type="button" name="edit" id="'.$data->id.'" class="passwordButton btn btn-warning btn-sm"> <i class="bi bi-pencil-square"></i>Edit Pass</button>';
                     $button .= '<button type="button" name="edit" id="'.$data->id.'" class="detailButton btn btn-success btn-sm"> <i class="bi bi-pencil-square"></i>Detail</button>';
+                    $button .= '   <button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm"> <i class="bi bi-backspace-reverse-fill"></i> Delete</button>';
                     return $button;
                 })
                 ->make(true);
@@ -213,6 +214,41 @@ class UserController extends Controller
         }
  
         User::whereId($request->hidden_id)->update($form_data);
+ 
+        return response()->json([
+            'success' => 'Data is successfully updated',
+            
+        ]);
+    }
+
+    public function edit_pass($id)
+    {
+        if(request()->ajax())
+        {
+            $data = User::findOrFail($id);
+            return response()->json(['result' => $data]);
+        }
+    }
+
+    public function update_pass(Request $request, User $user)
+    {
+        $rules = array(
+          
+        );
+ 
+        $error = Validator::make($request->all(), $rules);
+ 
+        if($error->fails())
+        {
+            return response()->json(['errors' => $error->errors()->all()]);
+        }
+
+        $form_data = array(
+            'email'      => $request->email,
+            'password'   => Hash::make($request->password),
+        );
+ 
+        User::whereId($request->hidden_id_pass)->update($form_data);
  
         return response()->json([
             'success' => 'Data is successfully updated',
