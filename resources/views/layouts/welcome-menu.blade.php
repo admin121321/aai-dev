@@ -5,14 +5,16 @@
         <meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<meta name="description" content="Selamat Datang di Website Resmi AAI (Asosiasi Arsipari Indonesia) Wilayah Jakarta">
-		<meta name="author" content="Website AAI Jakarta">
+		<meta name="description" content="{!! $postings->deskripsi !!}">
+		<meta name="author" content="AAI Jakarta">
 		<meta name="keyword" content="AAI Jakarta">
         <link href="{{ asset('themes-frontend/images/icon-aai-jakarta.png') }}" rel="icon">
-		<!-- Shareable -->
-		<meta property="og:title" content="Website AAI Jakarta" />
-		<meta property="og:type" content="article" />
-        <title>{{ config('app.subname', 'AAI Jakarta') }}</title>
+		<!-- Facebook Meta Tags -->
+		<meta property="og:title" content="{{ urlencode($postings->judul) }}" />
+		<meta property="og:type" content="berita aai" />
+		<meta property="og:image" content="{{ url('/images/'.$postings->gambar) }}">
+		
+        <title>{{ config('app.subname', 'AAI Jakarta') }} | {{ urlencode($postings->judul) }}</title>
 		@extends('layouts.welcome-css')
         <!-- modal -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">

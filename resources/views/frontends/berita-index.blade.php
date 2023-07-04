@@ -1,3 +1,4 @@
+
 <section class="single">
 	<div class="container">
 		<div class="row">
@@ -17,7 +18,7 @@
 									</a>
 								</figure>
 								<div class="details">
-									<h1><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"></a><?php echo str_replace('-', ' ', ucwords($posting->judul));?></h1>
+									<h1><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><?php echo str_replace('-', ' ', ucwords($posting->judul));?></a></h1>
 									<p><?php echo substr("$posting->deskripsi", 0, 70);?></p>
 									<div class="detail">
 										<div class="time"><?php echo strip_tags("$posting->created_at");?></div>
@@ -77,30 +78,30 @@
 				<div class="title"><i class="ion-android-share-alt"></i> Berbagi Info</div>
 					<ul class="social">
 						<li>
-							<a href="#" class="facebook">
+							<a href="https://www.facebook.com/sharer/sharer.php?u=https://aaijakarta.or.id/berita/{{ urlencode($postings->judul) }}" class="facebook">
 								<i class="ion-social-facebook"></i> Facebook
 							</a>
 						</li>
 						<li>
-							<a href="#" class="twitter">
+							<a href="https://twitter.com/intent/tweet?text=https://aaijakarta.or.id/berita/{{ urlencode($postings->judul) }}" class="twitter">
 								<i class="ion-social-twitter"></i> Twitter
 							</a>
 						</li>
-						<li>
+						<!--<li>
 							<a href="#" class="googleplus">
 								<i class="ion-social-googleplus"></i> Google+
 							</a>
-						</li>
+						</li>-->
 						<li>
-							<a href="#" class="linkedin">
+							<a href="https://www.linkedin.com/sharing/share-offsite/?url=https://aaijakarta.or.id/berita/{{ urlencode($postings->judul) }}" class="linkedin">
 								<i class="ion-social-linkedin"></i> Linkedin
 							</a>
 						</li>
-						<li>
+						<!-- <li>
 							<a href="#" class="skype">
 								<i class="ion-ios-email-outline"></i> Email
 							</a>
-						</li>
+						</li>-->
 						<!-- <li class="count">
 							20
 							<div>Shares</div>
