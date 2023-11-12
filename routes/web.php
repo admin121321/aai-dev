@@ -61,6 +61,8 @@ Route::get('/users/edit/{id}/', [App\Http\Controllers\UserController::class, 'ed
 Route::post('/users/update', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
 Route::get('/users/edit_pass/{id}/', [App\Http\Controllers\UserController::class, 'edit_pass'])->name('users.edit_pass');
 Route::post('/users/update_pass', [App\Http\Controllers\UserController::class, 'update_pass'])->name('users.update_pass');
+Route::get('/users/edit_verif/{id}/', [App\Http\Controllers\UserController::class, 'edit_verif'])->name('users.edit_verif');
+Route::post('/users/update_verif', [App\Http\Controllers\UserController::class, 'update_verif'])->name('users.update_verif');
 Route::get('/users/destroy/{id}/', [App\Http\Controllers\UserController::class, 'destroy']);
 Route::get('/users/export-user-pdf', [App\Http\Controllers\UserController::class, 'export_pdf'])->name('users.export_pdf');
 Route::get('/users/export-user-excel', [App\Http\Controllers\UserController::class, 'export_excel'])->name('users.export_excel');

@@ -23,12 +23,12 @@
                     <table class="table text-start align-middle table-bordered table-hover mb-0 posting_datatable"> 
                         <thead>
                             <tr>
-                                <th>ID Anggota</th>
-                                <th>Nama</th>
-                                <th>Kategori Pekerjaan</th>
-                                <th>Foto</th>
-                                <th>Verifikasi</th>
-                                <th width="180px">Action</th>
+                                <th style="width:30px;">ID Anggota</th>
+                                <th style="width:100px;">Nama</th>
+                                <!-- <th>Kategori Pekerjaan</th> -->
+                                <!-- <th>Foto</th> -->
+                                <!-- <th>Verifikasi</th> -->
+                                <th style="width:130px;">Aksi Perubahan</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -88,6 +88,14 @@
                                     </div>
                                     <div class="form-floating mb-3" name="tampilgambar" id="tampilgambar">
                                         <img name="tampilgambar" id="tampilgambar">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Bukti Pembayaran</label>
+                                        <input type="file" name="bukti_pembayaran" id="bukti_pembayaran" class="form-control" accept="images-pembayaran/*" onchange="readURL(this);"/>
+                                        <input type="hidden" name="hidden_image" id="hidden_image">
+                                    </div>
+                                    <div class="form-floating mb-3" name="tampilpembayaran" id="tampilpembayaran">
+                                        <img name="tampilpembayaran" id="tampilpembayaran">
                                     </div>
                                     <!-- Data Pekerjaan -->
                                     <div class="card-header">
@@ -243,7 +251,7 @@
         </div>        
     </section>
 </div>
-<!-- Modal -->
+<!-- Modal Detail-->
 <div class="modal fade" id="fModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -297,7 +305,7 @@
         <div class="modal-content bg-light rounded h-100 p-4">
         <form method="post" id="password_form" enctype="multipart/form-data" class="form-horizontal">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel">Update Password</h5>
+                    <h5 class="modal-title" id="ModalLabel">Ganti Password</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                 </div>
                 <span id="password_result"></span>
@@ -324,6 +332,44 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Edit Verifikasi-->
+<div class="modal fade" id="verifModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content bg-light rounded h-100 p-4">
+        <form method="post" id="verifikasi_form" enctype="multipart/form-data" class="form-horizontal">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Rubah Verifikasi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                </div>
+                <span id="verifikasi_result"></span>
+                <div class="modal-body">
+                    <!-- Data Akses -->
+                    <div class="card-header">
+                        <h6> Verifikasi Anggota </h6>
+                    </div>
+                    <div class="form-floating mb-3" name="tampil_pembayaran" id="tampil_pembayaran">
+                        <label>Bukti Pembayaran</label>
+                        <img name="tampil_pembayaran" id="tampil_pembayaran">
+                    </div>
+                    <div class="form-group">
+                        <label>Verifikasi Anggota<a style="color:red;">*</a> : </label>
+                        <select class="form-control" id="verifikasi-edit" name="verifikasi" required>
+                            <option value="0">Tidak Aktif</option>
+                            <option value="1">Aktif</option>
+                        </select>
+                    </div>
+                <input type="hidden" name="hidden_id_verifikasi" id="hidden_id_verifikasi" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <input type="submit" name="action_button_verifikasi" id="submit" value="Submit" class="btn btn-info action_button_verifikasi" />
+            </div>
+        </form>  
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript">
 
     $(document).ready(function() {
@@ -336,7 +382,7 @@
                 if(row.verifikasi==0){
                     return `
                             <div class='btn-group mr-2'>
-                              <button type='button' class='btn btn-danger btn-sm' style="width:50px;">Belum</button>
+                              <button type='button' class='btn btn-danger btn-sm' style="width:110px;">Belum Verifikasi</button>
                             </div>
                     `
                     }
@@ -345,31 +391,31 @@
                     }
                 } },
             {data: 'name', name: 'name'},
-            {data: 'kategori', name: 'kategori'},
-            {data: 'foto', name: 'foto', orderable:true, "render": function (data, type, row, meta) {
-                if(row.foto==0){
-                    return '<div class="btn-group mr-2"><button class="btn btn-danger btn-sm">Belum Upload Foto</button></div>'
-                }else{
-                    return '<img src="/images-foto/' + data + '" alt="' + data + '"height="100px" width="100px"/>';
-                }
-                } },
-            {data: 'verifikasi', name: 'verifikasi', orderable:true,
-                render: function(data, type, row, meta){
-                    if(row.verifikasi==0){
-                    return `
-                            <div class='btn-group mr-2'>
-                              <button type='button' class='btn btn-danger btn-sm' style="width:50px;">Belum</button>
-                            </div>
-                    `
-                    }
-                    else{
-                        return `
-                            <div class='btn-group mr-2'>
-                              <button type='button' class='unpublish btn btn-success btn-sm' style="width:50px;">Sudah</button>
-                            </div>
-                        `
-                    }
-                }},
+            // {data: 'kategori', name: 'kategori'},
+            // {data: 'foto', name: 'foto', orderable:true, "render": function (data, type, row, meta) {
+            //     if(row.foto==0){
+            //         return '<div class="btn-group mr-2"><button class="btn btn-danger btn-sm">Belum Upload Foto</button></div>'
+            //     }else{
+            //         return '<img src="/images-foto/' + data + '" alt="' + data + '"height="100px" width="100px"/>';
+            //     }
+            //     } },
+            // {data: 'verifikasi', name: 'verifikasi', orderable:true,
+            //     render: function(data, type, row, meta){
+            //         if(row.verifikasi==0){
+            //         return `
+            //                 <div class='btn-group mr-2'>
+            //                   <button type='button' class='btn btn-danger btn-sm' style="width:50px;">Belum</button>
+            //                 </div>
+            //         `
+            //         }
+            //         else{
+            //             return `
+            //                 <div class='btn-group mr-2'>
+            //                   <button type='button' class='unpublish btn btn-success btn-sm' style="width:50px;">Sudah</button>
+            //                 </div>
+            //             `
+            //         }
+            //     }},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
@@ -384,6 +430,8 @@
         $('#formModal').modal('show');
         $('#fxModal').modal('show');
         $('#password_result').html('');
+        $('#verifModal').modal('show');
+        $('#verifikasi_result').html('');
     });
  
     $('#sample_form').on('submit', function(event){
@@ -488,6 +536,8 @@
                 $('#persetujuan').val(data.result.persetujuan).change();
                 $('#tampilgambar').html(
                 `<img src="/images-foto/${data.result.foto}" width="100" class="img-fluid img-thumbnail">`);
+                $('#tampilpembayaran').html(
+                `<img src="/images-pembayaran/${data.result.bukti_pembayaran}" width="100" class="img-fluid img-thumbnail">`);
                 $('#hidden_id').val(id);
                 $('.modal-title').text('Ubah Data Anggota');
                 $('#action_button').val('Update');
@@ -661,6 +711,96 @@
                     window.location.reload();
                 }
                 $('#password_result').html(html);
+            },
+            error: function(data) {
+                var errors = data.responseJSON;
+                console.log(errors);
+            }
+        });
+    });
+    var id;
+
+    //verifikasi
+    $(document).on('click', '.verifikasiButton', function(event){
+        event.preventDefault();
+        // var formData = new FormData($(this)[0]); 
+        // var SITEURL = '{{ URL::to('') }}';
+        var id = $(this).attr('id'); alert(id);
+        $('#verifikasi_result').html('');
+
+        $.ajax({
+            url :"/users/edit_verif/"+id+"/",
+            enctype: 'multipart/form-data',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            dataType:"json",
+            // Important!
+            processData: false,  
+            contentType: false,
+            cache: false,
+            // data: formData,
+
+            success:function(data)
+            {
+                // console.log('success: '+data);
+                $('#verifikasi-edit').val(data.result.verifikasi);
+                $('#tampil_pembayaran').html(
+                `<img src="/images-pembayaran/${data.result.bukti_pembayaran}" style="height:300px width:130px;" class="img-fluid img-thumbnail">`);
+                $('#hidden_id').val(id);
+                $('#hidden_id_verifikasi').val(id);
+                $('.modal-title').text('Verifikasi Anggota');
+                $('.action_button_verifikasi').val('Update'); 
+                $('#verifModal').modal('show');
+                
+            // console.log(
+            //         'email: '+data.result.email
+            // );
+            },
+            error: function(data) {
+                var errors = data.responseJSON;
+                console.log(errors);
+            }
+        })
+    });
+    
+    $('#verifikasi_form').on('submit', function(event){
+        event.preventDefault()
+        var formData = new FormData($(this)[0]);
+        var verifikasi_lir = $("#verifikasi-edit").val();
+        var id = $("#hidden_id_verifikasi").val();
+        // var id = $(this).attr('id'); alert(id);
+        var action_urli = "{{ route('users.update_verif') }}";
+        // var action_urli ="users/update_pass/"+id+"/";     
+        $.ajax({
+            type: 'POST',
+            enctype: 'multipart/form-data',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            url: action_urli,
+            processData: false,  // Important!
+            contentType: false,
+            cache: false,
+            // data:$(this).serialize(),
+            data: formData,
+            dataType: 'json',
+            success: function(data) {
+                console.log('success: '+data);
+                var html = '';
+                if(data.errors)
+                {
+                    html = '<div class="alert alert-danger">';
+                    for(var count = 0; count < data.errors.length; count++)
+                    {
+                        html += '<p>' + data.errors[count] + '</p>';
+                    }
+                    html += '</div>';
+                }
+                if(data.success)
+                {
+                    html = '<div class="alert alert-success">' + data.success + '</div>';
+                    $('#sample_form')[0].reset();
+                    $('#posting_table').DataTable().ajax.reload();
+                    window.location.reload();
+                }
+                $('#verifikasi_result').html(html);
             },
             error: function(data) {
                 var errors = data.responseJSON;

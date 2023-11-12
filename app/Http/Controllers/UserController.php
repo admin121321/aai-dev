@@ -27,11 +27,15 @@ class UserController extends Controller
         if ($request->ajax()) {
             $data = User::select('users.*')->orderBy('created_at', 'DESC')->latest()->get();
             return Datatables::of($data)->addIndexColumn()
+                // ->addColumn('created_at', function($data){
+                //     return $data->created_at;
+                // })
                 ->addColumn('action', function($data){
-                    $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"> <i class="bi bi-pencil-square"></i>Edit Profile</button>';
-                    $button .= '<button type="button" name="edit" id="'.$data->id.'" class="passwordButton btn btn-warning btn-sm"> <i class="bi bi-pencil-square"></i>Edit Pass</button>';
-                    $button .= '<button type="button" name="edit" id="'.$data->id.'" class="detailButton btn btn-success btn-sm"> <i class="bi bi-pencil-square"></i>Detail</button>';
-                    $button .= '   <button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm"> <i class="bi bi-backspace-reverse-fill"></i> Delete</button>';
+                    $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"> <i class="bi bi-pencil-square"></i>Profile</button>';
+                    $button .= '<button type="button" name="edit" id="'.$data->id.'" class="passwordButton btn btn-warning btn-sm"> <i class="bi bi-pencil-square"></i>Password</button>';
+                    $button .= '<button type="button" name="edit" id="'.$data->id.'" class="detailButton btn btn-info btn-sm"> <i class="bi bi-pencil-square"></i>Detail</button>';
+                    $button .= '<button type="button" name="edit" id="'.$data->id.'" class="verifikasiButton btn btn-success btn-sm"> <i class="bi bi-pencil-square"></i>Verifikasi</button>';
+                    $button .= '<button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm"> <i class="bi bi-backspace-reverse-fill"></i> Delete</button>';
                     return $button;
                 })
                 ->make(true);
@@ -261,6 +265,40 @@ class UserController extends Controller
         );
  
         User::whereId($request->hidden_id_pass)->update($form_data);
+ 
+        return response()->json([
+            'success' => 'Data is successfully updated',
+            
+        ]);
+    }
+
+    public function edit_verif($id)
+    {
+        if(request()->ajax())
+        {
+            $data = User::findOrFail($id);
+            return response()->json(['result' => $data]);
+        }
+    }
+
+    public function update_verif(Request $request, User $user)
+    {
+        $rules = array(
+          
+        );
+ 
+        $error = Validator::make($request->all(), $rules);
+ 
+        if($error->fails())
+        {
+            return response()->json(['errors' => $error->errors()->all()]);
+        }
+
+        $form_data = array(
+            'verifikasi'   => $request->verifikasi,
+        );
+ 
+        User::whereId($request->hidden_id_verifikasi)->update($form_data);
  
         return response()->json([
             'success' => 'Data is successfully updated',
