@@ -44,11 +44,16 @@ class UserController extends Controller
     {
         $this->validate($request,[
             'foto' => '|image|mimes:jpg,jpeg,png,ico',
+            'bukti_pembayaran' => '|image|mimes:jpg,jpeg,png,ico,pdf',
         ]);
 
         $foto = $request->file('foto');
 
         if ($foto == NULL){
+            $bukti_file = date('YmdHis').'.'.$bukti_pembayaran->getClientOriginalName();
+            $tujuan_upload = 'images-pembayaran';
+            $bukti_pembayaran->move($tujuan_upload,$bukti_file);
+
             $id_generate = IdGenerator::generate(['table' => 'users', 'length' => 9, 'prefix' =>date('Y')]);
             //output: 191000001
             $form_data = array(
@@ -77,12 +82,18 @@ class UserController extends Controller
                     'kategori'   => $request->kategori,
                     'no_telpn'   => $request->no_telpn,
                     'persetujuan'=> $request->persetujuan,
+                    'bukti_pembayaran' => $file_bukti
             );
 
         } else {
             $nama_file = date('YmdHis').'.'.$foto->getClientOriginalName();
             $tujuan_upload = 'images-foto';
-            $foto->move($tujuan_upload,$nama_file);  
+            $foto->move($tujuan_upload,$nama_file);
+            
+            $bukti_file = date('YmdHis').'.'.$bukti_pembayaran->getClientOriginalName();
+            $tujuan_upload = 'images-pembayaran';
+            $bukti_pembayaran->move($tujuan_upload,$bukti_file);
+
             $id_generate = IdGenerator::generate(['table' => 'users', 'length' => 9, 'prefix' =>date('Y')]);
             //output: 191000001
             $form_data = array(
@@ -111,6 +122,7 @@ class UserController extends Controller
                     'kategori'   =>  $request->kategori,
                     'no_telpn'   =>  $request->no_telpn,
                     'persetujuan'=> $request->persetujuan,
+                    'bukti_pembayaran' => $bukti_file
             );
         }
 

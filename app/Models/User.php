@@ -43,6 +43,7 @@ class User extends Authenticatable
         'no_telpn',
         'kategori',
         'persetujuan',
+        'bukti_pembayaran'
     ];
 
     /**

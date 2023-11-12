@@ -69,6 +69,14 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'nip' => ['required'],
+            't_lahir' => ['required'],
+            'tgl_lahir' => ['required'],
+            'j_k' => ['required'],
+            'inst' => ['required'],
+            'kategori' => ['required'],
+            'no_telpn' => ['required', 'string', 'max:12'],
+            'bukti_pembayaran' => 'required','|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
@@ -82,6 +90,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $bukti_pembayaran = $data['bukti_pembayaran'];
+        $bukti_file = date('YmdHis').'.'.$bukti_pembayaran->getClientOriginalName();
+        $tujuan_upload = 'images-pembayaran';
+        $bukti_pembayaran->move($tujuan_upload,$bukti_file);
+
+
         $id_generate = IdGenerator::generate(['table' => 'users', 'length' => 9, 'prefix' =>date('Y')]);
             //output: 191000001
         // $id_generate = Helper::IDGenerator(new User, 'id_anggota', 2, 'y');
@@ -97,6 +111,7 @@ class RegisterController extends Controller
             'kategori'     => $data['kategori'],
             'no_telpn'     => $data['no_telpn'],
             'persetujuan'  => $data['persetujuan'],
+            'bukti_pembayaran' => $bukti_file,
             'pang'         => '0',
             'gol'          => '0',
             'ting'         => '0',

@@ -94,8 +94,9 @@
 													<div class="modal-header">
 														<button type="button" class="close" data-dismiss="modal">&times;</button>
 														<h4 class="modal-title">Daftar Anggota</h4>
-													</div>													<div class="card-body">
-													<form method="POST" action="{{ route('register') }}">
+													</div>													
+												   <div class="card-body">
+													<form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
 															@csrf
 															<div class="card-body">
 																<div class="form-group row">
@@ -181,7 +182,7 @@
 																<div class="form-group row">
 																	<label for="no_telpn" class="col-md-4 col-form-label text-md-right">{{__('No Handphone') }}</label>
 																	<div class="col-md-6">
-																		<input id="no_telpn" type="number" class="form-control @error('no_telpn') is-invalid @enderror" name="no_telpn" value="{{ old('no_telpn') }}" onkeyup="this.value = this.value.toUpperCase()" required autocomplete="no_telpn" autofocus>
+																		<input id="no_telpn" type="number" minlength="11" min="11" maxlength="12" max="12" class="form-control @error('no_telpn') is-invalid @enderror" name="no_telpn" value="{{ old('no_telpn') }}" onkeyup="this.value = this.value.toUpperCase()" required autocomplete="no_telpn" autofocus>
 																		@error('no_telpn')
 																			<span class="invalid-feedback" role="alert">
 																				<strong>{{ $message }}</strong>
@@ -265,6 +266,20 @@
 
 																	<div class="col-md-6">
 																		<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+																	</div>
+																</div>
+															</div>
+
+															<div class="card-body">
+																<div class="form-group row">
+																	<label for="bukti_pembayaran" class="col-md-4 col-form-label text-md-right">{{__('Bukti Pembayaran') }}</label>
+																	<div class="col-md-6">
+																		<input id="bukti_pembayaran" type="file" class="form-control @error('bukti_pembayaran') is-invalid @enderror" name="bukti_pembayaran" value="{{ old('bukti_pembayaran') }}" required autocomplete="bukti_pembayaran" autofocus>
+																		@error('bukti_pembayaran')
+																			<span class="invalid-feedback" role="alert">
+																				<strong>{{ $message }}</strong>
+																			</span>
+																		@enderror
 																	</div>
 																</div>
 															</div>
