@@ -19,12 +19,13 @@
                     <table class="table text-start align-middle table-bordered table-hover mb-0 posting_datatable"> 
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Nama Pembuat</th>
-                                <th>Kategori</th>
+                                <!-- <th>ID</th> -->
                                 <th>Judul</th>
+                                <th>Kategori</th>
                                 <th>Gambar</th>
+                                <th>Nama Pembuat</th>
                                 <th>Verifikasi</th>
+                                <th>Tanggal Input</th>
                                 <th width="180px">Action</th>
                             </tr>
                         </thead>
@@ -51,7 +52,7 @@
                                 <div class="form-floating mb-3">
                                 <label for="floatingTextarea">Kategori </label>
                                     <select class="form-control" id="id_kategori" name="id_kategori" aria-label="Floating label select example">
-                                        <option>--Pilih Unit Kerja--</option>
+                                        <option>--Pilih Kategori Berita--</option>
                                         @foreach(App\Models\KategoriPosting::all() as $kategori)
                                         <option value="{{ $kategori->id}}" id="id_kategori">{{ $kategori->nama_kategori }}</option>
                                         @endforeach
@@ -127,13 +128,13 @@
         serverSide: true,
         ajax: "{{ route('postings.index-user') }}",
         columns: [
-            {data: 'id', name: 'id'},
-            {data: 'id_user', name: 'id_user'},
-            {data: 'id_kategori', name: 'id_kategori'},
+            // {data: 'id', name: 'id'},
             {data: 'judul', name: 'judul'},
+            {data: 'id_kategori', name: 'id_kategori'},
             {data: 'gambar', name: 'gambar', "render": function (data, type, row, meta) {
                     return '<img src="/images/' + data + '" alt="' + data + '"height="100px" width="100px"/>';
                 } },
+            {data: 'id_user', name: 'id_user'},
             {data: 'verifikasi_posting', name: 'verifikasi_posting', orderable:true,
                 render: function(data, type, row, meta){
                     if(row.verifikasi_posting==0){
@@ -151,6 +152,8 @@
                         `
                     }
                 }},
+            {data: 'created_at', name: 'created_at', type: 'datetime',
+                render: DataTable.render.datetime('D/M/YYYY') },
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });

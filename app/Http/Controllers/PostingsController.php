@@ -25,6 +25,7 @@ class PostingsController extends Controller
                      ->join('kategori_postings', 'kategori_postings.id', '=', 'postings.id_kategori')
                      ->select('postings.*', 'users.name', 'kategori_postings.nama_kategori') 
                     //  ->where('users.id',$id_useri)
+                     ->orderBy('created_at', 'DESC')
                      ->latest()
                      ->get();
             // $data = Posting::with('User','KategoriPosting')->latest()->get();
@@ -57,6 +58,7 @@ class PostingsController extends Controller
                      ->join('kategori_postings', 'kategori_postings.id', '=', 'postings.id_kategori')
                      ->select('postings.*', 'users.name', 'kategori_postings.nama_kategori') 
                     //  ->where('users.id',$id_useri)
+                     ->orderBy('created_at', 'DESC')
                      ->latest()
                      ->get();
             // $data = Posting::with('User','KategoriPosting')->latest()->get();

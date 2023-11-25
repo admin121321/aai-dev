@@ -12,7 +12,7 @@
 			</div>
 		</h1>
 		<div class="owl-carousel owl-theme carousel-1">
-		@foreach(App\Models\Posting::paginate(0) as $posting)
+		@foreach(App\Models\Posting::latest()->paginate(0) as $posting)
 			<article class="article">
 				<div class="inner">
 				@if ($posting->verifikasi_posting == "0")

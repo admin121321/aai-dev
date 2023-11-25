@@ -4,11 +4,11 @@
 		<div class="row">
 			<div class="col-md-4 sidebar" id="sidebar">
 				<aside>
-				@foreach(App\Models\Posting::paginate(1) as $posting)
+				<h1 class="aside-title">Berita Terbaru</h1>
+				@foreach(App\Models\Posting::latest()->paginate(2) as $posting)
 					@if ($posting->verifikasi_posting == "0")
 
 					@elseif($posting->verifikasi_posting == "1")
-					<h1 class="aside-title">Berita Terbaru</h1>
 					<div class="aside-body">
 						<article class="article-fw">
 							<div class="inner">
@@ -54,7 +54,7 @@
 								<figcaption>gambar <?php echo str_replace('-', ' ', $postings->judul);?></figcaption>
 							</figure>
 						</div>
-						<div class="description">
+						<div class="description" style="text-align: justify; text-justify: inter-word;">
 						<p>{!! $postings->deskripsi !!}</p>
 						</div>
 					</div>
@@ -163,7 +163,7 @@
 							<div class="padding">
 								<h2><a href="{{ route('berita.show',str_replace('', '-', $posting->judul)) }}"><?php echo str_replace('-', ' ', $posting->judul);?></a></h2>
 								<div class="detail">
-									<div class="category"><a href="category.html">Lifestyle</a></div>
+									<div class="category"><a href="#">{{ $postings->nama_kategori }}</a></div>
 									<div class="time"><?php echo str_replace('-', ' ', $posting->created_at);?></div>
 								</div>
 							</div>
