@@ -14,7 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-    'subname' => 'AAI Jakarta',
+    'subname' => 'Asosiasi Arsiparsi Indonesia Provinsi DKI Jakarta',
 
     /*
     |--------------------------------------------------------------------------

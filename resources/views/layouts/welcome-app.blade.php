@@ -11,7 +11,7 @@
 		<!-- Shareable -->
 		<meta property="og:title" content="Website AAI Jakarta" />
 		<meta property="og:type" content="article" />
-        <title>{{ config('app.subname', 'AAI Jakarta') }}</title>
+        <title>{{ config('app.subname', 'Asosiasi Arsiparsi Indonesia Provinsi DKI Jakarta') }}</title>
 		@extends('layouts.welcome-css')
 	</head>
 
