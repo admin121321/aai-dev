@@ -182,7 +182,7 @@
 																<div class="form-group row">
 																	<label for="no_telpn" class="col-md-4 col-form-label text-md-right">{{__('No Handphone') }}</label>
 																	<div class="col-md-6">
-																		<input id="no_telpn" type="number" minlength="11" min="11" maxlength="12" max="12" class="form-control @error('no_telpn') is-invalid @enderror" name="no_telpn" value="{{ old('no_telpn') }}" onkeyup="this.value = this.value.toUpperCase()" required autocomplete="no_telpn" autofocus>
+																		<input id="no_telpn" type="text" minlength="11" min="11" maxlength="12" max="12" class="form-control @error('no_telpn') is-invalid @enderror" name="no_telpn" value="{{ old('no_telpn') }}" onkeyup="this.value = this.value.toUpperCase()" required autocomplete="no_telpn" autofocus>
 																		@error('no_telpn')
 																			<span class="invalid-feedback" role="alert">
 																				<strong>{{ $message }}</strong>
@@ -213,6 +213,7 @@
 																		<div class="col-md-6">
 																		<select name="kategori" class="form-control" required>
 																			<option>-----Pilih Kategori Pekerjaan-----</option>
+																			<option value="PNS (Arsiparis DKI Jakarta)">PNS (Arsiparis DKI Jakarta)</option>
 																			<option value="PNS (Non Arsiparis DKI Jakarta)">PNS (Non Arsiparis DKI Jakarta)</option>
 																			<option value="PPPK (Non PNS DKI Jakarta)">PPPK (Non PNS DKI Jakarta)</option>
 																			<option value="Pegawai BUMN/BUMD/Swasta">Pegawai BUMN/BUMD/Swasta</option>

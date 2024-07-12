@@ -132,8 +132,7 @@
                             @enderror
                         </div>
                     </div>
-                    
-                    @if (Auth::User()->kategori=="PNS Arsiparis")
+		   @if (Auth::User()->kategori=="PNS Arsiparis")
                      <div class="card-header"><b>Pangkat</b></div>
                      <div class="card-body">
                         <div class="form-group row">
@@ -227,16 +226,10 @@
                                 </div>
                             </div>
                         </div>
-                    @else
-                    <input id="pang" type="date" class="form-control"  name="pang" placeholder="{{ $users->pang }}" value="{{ $users->pang }}" hidden>
-                    <input id="tmt_pang" type="date" class="form-control"  name="tmt_pang" placeholder="{{ $users->tmt_pang }}" value="{{ $users->tmt_pang }}" hidden>
-                    <input id="gol" type="date" class="form-control"  name="gol" placeholder="{{ $users->gol }}" value="{{ $users->gol }}" hidden>
-                    <input id="ting" type="date" class="form-control"  name="ting" placeholder="{{ $users->ting }}" value="{{ $users->ting }}" hidden>
-                    <input id="tmt_ting" type="date" class="form-control"  name="tmt_ting" placeholder="{{ $users->tmt_ting }}" value="{{ $users->tmt_ting }}" hidden>
-                    @endif
+
                      <div class="card-header"><b>Unit Kerja</b></div>
                      <div class="card-body">
-                        <div class="form-group row">
+			             <div class="form-group row">
                             <label  class="col-md-4 col-form-label text-md-right">{{ __('Unit Kerja') }}</label>
                             <div class="col-md-6">
                             <select class="form-control" id="kategori" name="kategori">
@@ -249,12 +242,12 @@
                                 <option value="Mahasiswa">Mahasiswa</option>
                             </select>
                             </div>
-                        </div>
-                        <div class="form-group row">
+                        </div>                        
+			<div class="form-group row">
                             <label for="u_k" class="col-md-4 col-form-label text-md-right">{{ __('Unit Kerja') }}</label>
                             <div class="col-md-6">
                                 <input id="u_k" type="text" class="form-control"  name="u_k" placeholder="{{ $users->u_k }}" value="{{ $users->u_k }}">
-                                @error('u_k')
+                                @error('ting')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -262,7 +255,14 @@
                             </div>
                         </div>
                     </div>
-
+		    @else
+                    <input id="kategori" type="text" class="form-control"  name="kategori" placeholder="{{ $users->kategori }}" value="{{ $users->kategori }}" hidden>
+                    <input id="pang" type="text" class="form-control"  name="pang" placeholder="{{ $users->pang }}" value="{{ $users->pang }}" hidden>
+                    <input id="tmt_pang" type="text" class="form-control"  name="tmt_pang" placeholder="{{ $users->tmt_pang }}" value="{{ $users->tmt_pang }}" hidden>
+                    <input id="gol" type="text" class="form-control"  name="gol" placeholder="{{ $users->gol }}" value="{{ $users->gol }}" hidden>
+                    <input id="ting" type="text" class="form-control"  name="ting" placeholder="{{ $users->ting }}" value="{{ $users->ting }}" hidden>
+                    <input id="tmt_ting" type="text" class="form-control"  name="tmt_ting" placeholder="{{ $users->tmt_ting }}" value="{{ $users->tmt_ting }}" hidden>
+                    @endif
                      <div class="card-header"><b>Instansi</b></div>
                      <div class="card-body">
                         <div class="form-group row">
