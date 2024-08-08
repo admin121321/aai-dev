@@ -216,7 +216,7 @@
 																			<option value="PNS (Arsiparis DKI Jakarta)">PNS (Arsiparis DKI Jakarta)</option>
 																			<option value="PNS (Non Arsiparis DKI Jakarta)">PNS (Non Arsiparis DKI Jakarta)</option>
 																			<option value="PPPK (Non PNS DKI Jakarta)">PPPK (Non PNS DKI Jakarta)</option>
-																			<option value="Pegawai BUMN/BUMD/Swasta">Pegawai BUMN/BUMD/Swasta</option>
+																			<option value="PNS Luar DKI/Pegawai BUMN/BUMD/Swasta">PNS Luar DKI/Pegawai BUMN/BUMD/Swasta</option>
 																			<option value="Masyarakat Pemerhati Arsip">Masyarakat Pemerhati Arsip</option>
 																			<option value="Mahasiswa">Mahasiswa</option>
 																		</select>
