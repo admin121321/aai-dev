@@ -45,7 +45,8 @@ function googleTranslateElementInit() {
         </div>
     </div>
 
-    <!-- Start nav -->  
+    <!-- Start nav -->
+    @include('frontends.welcome-modal')  
     @include('frontends.welcome-navigation')
     <!-- End nav -->
 </header>
